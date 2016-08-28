@@ -1,0 +1,19 @@
+<form [formGroup]="fg" #f="ngForm">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Normal Checkbox -->
+            <radio [fgd]="f" name="radio1" field="toggle1" label="Simple Checkbox"></radio>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Checkbox -->
+            <radio [fgd]="f" name="radio1" field="toggle2" [disabled]="true" label="Disabled Checkbox"></radio>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Checked by default -->
+            <radio [fgd]="f" name="radio1" field="toggle1" label="Checked by default" [value]="true"></radio>
+        </div>
+    </div>
+
+
+</form>

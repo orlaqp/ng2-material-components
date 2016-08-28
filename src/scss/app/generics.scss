@@ -1,0 +1,161 @@
+/*
+ * Generate Margin Class
+ * margin, margin-top, margin-bottom, margin-left, margin-right
+ */
+
+@mixin margin ($from, $to, $increment) {
+
+    $value: $from;
+    @while $value <= $to {
+        .m-#{$value} {
+            margin: #{$value}px !important;
+        }
+
+        .m-t-#{$value} {
+            margin-top: #{$value}px !important;
+        }
+
+        .m-b-#{$value} {
+            margin-bottom: #{$value}px !important;
+        }
+
+        .m-l-#{$value} {
+            margin-left: #{$value}px !important;
+        }
+
+        .m-r-#{$value} {
+            margin-right: #{$value}px !important;
+        }
+
+        $value: $value + $increment;
+    }
+
+}
+
+@include margin(0, 45, 5);
+
+/*
+ * Generate Padding Class
+ * padding, padding-top, padding-bottom, padding-left, padding-right
+ */
+
+@mixin padding ($from, $to, $increment) {
+
+    $value: $from;
+    @while $value <= $to {
+
+        .p-#{$value} {
+            padding: #{$value}px !important;
+        }
+
+        .p-t-#{$value} {
+            padding-top: #{$value}px !important;
+        }
+
+        .p-b-#{$value} {
+            padding-bottom: #{$value}px !important;
+        }
+
+        .p-l-#{$value} {
+            padding-left: #{$value}px !important;
+        }
+
+        .p-r-#{$value} {
+            padding-right: #{$value}px !important;
+        }
+
+        $value: $value + $increment;
+
+    }
+}
+
+@include padding(0, 45, 5);
+
+/*
+ * Generate Font-Size Classes (8px - 20px)
+ */
+@mixin font-size ($from, $to) {
+
+    @for $size from $from through $to {
+
+        .f-.#{$size} {
+            font-size: #{$size}px !important;
+        }
+
+    }
+}
+
+@include font-size(8, 20);
+
+
+/*
+ * Font Weight
+ */
+.f-300 { font-weight: 300 !important; }
+.f-400 { font-weight: 400 !important; }
+.f-500 { font-weight: 500 !important; }
+.f-700 { font-weight: 700 !important; }
+
+/*
+ * Position Classes
+ */
+.p-relative { position: relative !important; }
+.p-absolute { position: absolute !important; }
+.p-fixed { position: fixed !important; }
+.p-static { position: static !important; }
+
+/*
+ * Overflow
+ */
+.o-hidden { overflow: hidden !important; }
+.o-visible { overflow: visible !important; }
+.o-auto { overflow: auto !important; }
+
+/*
+ * Display
+ */
+.d-block { display: block !important; }
+.di-block { display: inline-block !important; }
+
+/*
+ * Material Background Colors
+ */
+$array: c-white bgm-white $m-white, c-black bgm-black $m-black, c-brown bgm-brown $m-brown, c-pink bgm-pink $m-pink, c-red bgm-red $m-red, c-blue bgm-blue $m-blue, c-purple bgm-purple $m-purple, c-deeppurple bgm-deeppurple $m-deeppurple, c-lightblue bgm-lightblue $m-lightblue, c-cyan bgm-cyan $m-cyan, c-teal bgm-teal $m-teal, c-green bgm-green $m-green, c-lightgreen bgm-lightgreen $m-lightgreen, c-lime bgm-lime $m-lime, c-yellow bgm-yellow $m-yellow, c-amber bgm-amber $m-amber, c-orange bgm-orange $m-orange, c-deeporange bgm-deeporange $m-deeporange, c-gray bgm-gray $m-gray, c-bluegray bgm-bluegray $m-bluegray, c-indigo bgm-indigo $m-indigo;
+
+@each $color in $array {
+    $t-color: nth($color, 1);
+    $bg-color: nth($color, 2);
+    $color: nth($color, 3);
+
+    .#{$t-color} {
+        color: $color !important;
+    }
+
+    .#{$bg-color} {
+        background-color: $color !important;
+    }
+}
+
+/*
+ * Background Colors
+ */
+.bg-black-trp { background-color: rgba(0,0,0,0.1) !important; }
+
+/*
+ * Border
+ */
+.b-0 { border: 0 !important; }
+
+/*
+ * width
+ */
+.w-100 { width: 100% !important; }
+/*
+ * height
+ */
+.h-100 { height: 100% !important; }
+
+/*
+ * Border Radius
+ */
+.brd-2 { border-radius: 2px; }
