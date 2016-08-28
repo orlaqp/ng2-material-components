@@ -1,9 +1,0 @@
-.form-group.m-b-25.w-100([ngClass]="{ 'has-error': !control.valid && (fgd.form.submitted || control.dirty)}")
-    label(*ngIf="label") {{label}}
-    .fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
-        textarea.form-control.auto-size(#i, [attr.disabled]="disabled",
-            placeholder="{{placeholder}}", [formControl]="control",
-            (focus)="onFocus(i)", (blur)="onBlur(i)", [attr.rows]="rows")
-
-    div(*ngIf="!control.valid && (control.dirty || fgd.form.submitted)")
-        small.help-block.animated.fadeInDown(*ngFor="let v of validations", [class.hidden]="!control.errors[v.type]") {{v.message}}
