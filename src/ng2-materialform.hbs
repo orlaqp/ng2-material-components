@@ -1,0 +1,56 @@
+// models
+export { IMenuItem } from './models/menu-item';
+export { ISelectionItem } from './models/selection-item';
+
+// layout
+{{#each layout}}
+import { {{name}}Component } from './layout/{{key}}/{{key}}.component';
+{{/each}}
+
+{{#each layout}}
+export { {{name}}Component } from './layout/{{key}}/{{key}}.component';
+{{/each}}
+
+export const MATERIAL_LAYOUT = [
+{{#each layout}}
+    {{name}}Component,
+{{/each}}
+];
+
+// navigation
+{{#each navigation}}
+import { {{name}}Component } from './navigation/{{key}}/{{key}}.component';
+{{/each}}
+
+{{#each navigation}}
+export { {{name}}Component } from './navigation/{{key}}/{{key}}.component';
+{{/each}}
+
+export const MATERIAL_NAVIGATION = [
+{{#each navigation}}
+    {{name}}Component,
+{{/each}}
+];
+
+
+// forms
+{{#each forms}}
+import { {{name}}Component } from './forms/{{key}}/{{key}}.component';
+{{/each}}
+
+{{#each forms}}
+export { {{name}}Component } from './forms/{{key}}/{{key}}.component';
+{{/each}}
+
+export const MATERIAL_FORM = [
+{{#each forms}}
+    {{name}}Component,
+{{/each}}
+];
+
+
+export const MATERIAL_ALL = [
+    MATERIAL_LAYOUT,
+    MATERIAL_NAVIGATION,
+    MATERIAL_FORM,
+];

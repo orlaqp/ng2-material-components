@@ -1,0 +1,7 @@
+li.toggled([ngClass]="{ 'active': active, 'toggled': expanded, 'sub-menu': item.children }", (click)="onItemClicked($event)")
+    a(href='', (click)="$event.preventDefault()")
+        i(*ngIf="item.icon", class="zmdi zmdi-{{item.icon}}")
+        | {{item.title}}
+
+    ul(*ngIf="item.children", [ngStyle]="{ display: childrenDisplay }")
+        side-menu-item([item]="child", *ngFor="let child of item.children")

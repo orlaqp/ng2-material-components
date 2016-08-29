@@ -1,0 +1,12 @@
+app-header(color="blue", [addMenuTrigger]="true", brand="Material Components - Demo", (onSidebarToggle)="open = $event")
+
+sidebar([open]="open")
+    img.w-100(src="./img/angular-logo2.png")
+    side-menu([items]="menuItems")
+
+section#main
+    router-outlet
+
+footer#footer.slds-p-vertical--small.slds-p-horizontal--x-large.slds-grid.slds-text-body--small
+    .slds-col © 2016. Code licensed under the MIT License.
+    .slds-col.slds-text-align--right Last updated on #{now}. v#{version}

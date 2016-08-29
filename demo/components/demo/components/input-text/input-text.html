@@ -1,0 +1,16 @@
+<form [formGroup]="inputForm" #f="ngForm">
+    <div class="layout-row layout-column-xs layout-padding">
+        <input-text [fgd]="f" label="First Name" class="flex-50" field="firstName">
+            <h1>something</h1>
+        </input-text>
+    </div>
+
+    <pre>
+        {{f.value | json }}
+    </pre>
+
+    <select class="" name="select1">
+        <option value="option1">option 1</option>
+        <option value="option2">option 2</option>
+    </select>
+</form>

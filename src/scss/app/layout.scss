@@ -1,0 +1,46 @@
+@mixin flex-container {
+
+
+	// See? Simple.
+	display: flex;
+
+	// Set all direct children to NOT flex...
+	> * {
+
+		flex: 0 0 auto;
+	}
+}
+
+// ...unless explicitly marked as stretchy.
+// Obviously, you can do it the opposite way.
+@mixin stretchy {
+
+	flex: 1 1 auto;
+}
+
+// The .flex-container can be a column instead of a row.
+@mixin column {
+
+	flex-direction: column;
+}
+
+.full-screen {
+
+	@include flex-container;
+	@include column;
+
+	> .header,
+	> .footer {
+		height: 50px;
+		background-color: transparent !important;
+	}
+
+	> .main {
+		@include stretchy;
+	}
+}
+
+html, body, app {
+  // height: 100%;
+  margin: 0;
+}

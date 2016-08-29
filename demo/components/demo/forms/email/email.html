@@ -1,0 +1,31 @@
+<form [formGroup]="fg" #f="ngForm">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Email Control -->
+            <email [fgd]="f" field="personalEmail" label="Personal Email"></email>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Email -->
+            <email [fgd]="f" field="disabledEmail" [disabled]="true" label="Disabled Email"></email>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Default email -->
+            <email [fgd]="f" field="defaultEmail" label="Default email" [value]="'email@address.com'"></email>
+        </div>
+    </div>
+    <div class="row m-t-20">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Invalid email -->
+            <email [fgd]="f" field="invalidEmail" label="Enter an invalid email"></email>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Icon on the right also -->
+            <email [fgd]="f" field="invalidEmail" label="With an icon onthe right" rightIcon="email-open"></email>
+        </div>
+
+    </div>
+
+
+</form>

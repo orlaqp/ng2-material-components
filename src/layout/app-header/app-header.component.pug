@@ -1,0 +1,20 @@
+header#header.clearfix([attr.data-current-skin]='color')
+    ul.header-inner
+        // menu trigger
+        li#menu-trigger([attr.data-trigger]="'#sidebar'", *ngIf="addMenuTrigger", [class.open]="sidebarOpen", (click)="toggleSidebar()")
+            .line-wrap
+                .line.top
+                .line.center
+                .line.bottom
+        // brand
+        li.logo.hidden-xs(*ngIf="brand")
+            a(href='index.html') {{brand}}
+
+        // logo
+        li.hidden-xs(*ngIf="!brand && logo")
+            a.m-l-10(href='index.html')
+                img(src='{{logo}}')
+
+
+    // for extra content injection
+    ng-content

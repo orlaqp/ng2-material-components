@@ -1,0 +1,23 @@
+# layout
+layout:
+    app-header:         true
+    sidebar:            true
+
+# Input Components
+forms:
+    checkbox:           true
+    email:              true
+    number:             true
+    password:           true
+    percent:            true
+    phone:              true
+    select-picker:      true
+    text-box:           true
+    text-area:          true
+
+# user interface elements
+navigation:
+    side-menu:          true
+    tabset:             true
+    tab:                true
+    tab-heading:        true

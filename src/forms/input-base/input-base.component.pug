@@ -1,0 +1,30 @@
+include ../../mixins/base.pug
+
+.input-group.m-b-15.w-100(
+    [class.fg-float]="floatingLabel"
+    style="width: 100%"
+    [ngClass]="{ 'has-error': !control.valid && (fgd.form.submitted || control.dirty)}")
+
+    label(*ngIf="label && !floatingLabel") {{label}}
+
+    span.input-group-addon(*ngIf="leftIcon")
+        +dynamic-icn('leftIcon')
+
+    .fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
+
+        input.form-control(
+            #i,
+            type="text",
+            placeholder="{{placeholder}}",
+            [formControl]="control",
+            [attr.disabled]="disabled",
+            (focus)="onFocus(i)",
+            (blur)="onBlur(i)")
+
+        label.fg-label(*ngIf="label && floatingLabel") {{label}}
+
+    span.input-group-addon.last(*ngIf="rightIcon")
+        +dynamic-icn('rightIcon')
+
+    div(*ngIf="!control.valid && (control.dirty || fgd.form.submitted)")
+        small.help-block.animated.fadeInDown(*ngFor="let v of validations", [class.hidden]="!control.errors[v.type]") {{v.message}}
