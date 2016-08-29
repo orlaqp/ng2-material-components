@@ -52,6 +52,7 @@ import { RadioComponent } from './forms/radio/radio.component';
 import { SelectPickerComponent } from './forms/select-picker/select-picker.component';
 import { TextBoxComponent } from './forms/text-box/text-box.component';
 import { TextAreaComponent } from './forms/text-area/text-area.component';
+import { ToggleComponent } from './forms/toggle/toggle.component';
 import { DateTimePickerComponent } from './forms/date-time-picker/date-time-picker.component';
 
 import { MaskedInputDirective } from './forms/mask/masked-input.directive';
@@ -65,6 +66,7 @@ export { RadioComponent } from './forms/radio/radio.component';
 export { SelectPickerComponent } from './forms/select-picker/select-picker.component';
 export { TextBoxComponent } from './forms/text-box/text-box.component';
 export { TextAreaComponent } from './forms/text-area/text-area.component';
+export { ToggleComponent } from './forms/toggle/toggle.component';
 export { DateTimePickerComponent } from './forms/date-time-picker/date-time-picker.component';
 
 export { MaskedInputDirective } from './forms/mask/masked-input.directive';
@@ -79,6 +81,7 @@ export const MATERIAL_FORM = [
     SelectPickerComponent,
     TextBoxComponent,
     TextAreaComponent,
+    ToggleComponent,
     DateTimePickerComponent,
 
     MaskedInputDirective,

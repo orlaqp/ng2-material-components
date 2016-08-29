@@ -1,0 +1,16 @@
+<form [formGroup]="fg" #f="ngForm">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="personalEmail" label="Personal Email"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="personalEmail" [disabled]="true" label="Personal Email"></toggle>
+        </div>
+
+    </div>
+
+</form>
