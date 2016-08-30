@@ -1,5 +1,8 @@
-.radio.m-b-15
+.radio.m-b-15([class.disabled]="disabled")
   label
-    input(type='radio', name="{{name}}" [formControl]="control", [attr.disabled]="disabled", [attr.value]="value")
+    input(type='radio', name="{{groupName}}",
+        [attr.disabled]="disabled",
+        [attr.value]="value",
+        (click)="check()")
     i.input-helper
     | {{label}}

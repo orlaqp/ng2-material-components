@@ -1,1 +1,1 @@
-Checkbox functionality. not much to explain here
+Radio button groups functionality. Not much to explain here

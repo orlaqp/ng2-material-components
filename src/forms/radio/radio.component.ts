@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, Inject, Host, forwardRef, ElementRef, AfterViewInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
-import { InputBase } from '../input-base/input-base.component';
-import { TypeEnum } from '../../models/type-enum';
+import { RadioGroupComponent } from './radio-group.component';
 
 /**
  * Encapsulate checkbox control functionality
@@ -12,28 +11,37 @@ import { TypeEnum } from '../../models/type-enum';
     directives: [ REACTIVE_FORM_DIRECTIVES ],
     templateUrl: './radio.component.pug',
 })
-export class RadioComponent extends InputBase implements OnInit {
+export class RadioComponent implements AfterViewInit {
 
     @Input() fgd: FormGroupDirective;
     @Input() field: string;
     @Input() label: string;
     @Input() disabled: boolean;
     @Input() nane: string;
-    @Input() value: boolean;
 
-    constructor(el: ElementRef) {
-        super(el);
-        this.dataType = TypeEnum.Boolean;
+    @Input() value: string;
+
+    get groupName() : string {
+        return this.radioGroup.field.replace('.', '_');
     }
 
-    public addValidators(): void { }
+    constructor(
+        private el: ElementRef,
+        @Host() @Inject(forwardRef(() => RadioGroupComponent)) private radioGroup: RadioGroupComponent) { }
 
-    public ngOnInit(): void {
-        this.onInit();
+    public ngAfterViewInit() {
+        if (this.radioGroup.defaultValue === this.value) {
+            this.el.nativeElement.getElementsByTagName('input')[0].checked = true;
+            setTimeout(() => { this._updateValue(); }, 0);
+        }
     }
 
-    public ngOnDestroy(): void {
+    public check(): void {
+        this._updateValue();
+    }
 
+    private _updateValue(): void {
+        this.radioGroup.control.updateValue(this.value);
     }
 
 }

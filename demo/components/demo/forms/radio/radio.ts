@@ -9,6 +9,7 @@ import { MATERIAL_FORM } from '../../../../../dist/ng2-materialform';
 })
 export class DemoRadioComponent implements OnInit {
     public fg: FormGroup;
+    public defaultValue: string = 'option6';
 
     constructor() {
         this.fg = new FormGroup({});
