@@ -81,6 +81,7 @@
     "pug-loader": "^2.2.1",
     "q": "^1.4.1",
     "raw-loader": "^0.5.1",
+    "replace": "^0.3.0",
     "semver": "^5.3.0",
     "string-replace-loader": "^1.0.3",
     "style-loader": "^0.13.1",
