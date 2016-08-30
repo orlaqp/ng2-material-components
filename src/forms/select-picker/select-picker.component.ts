@@ -33,14 +33,10 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
     }
 
     ngAfterViewInit() {
-
-        setTimeout(() => {
-            $(this.el.nativeElement).find('.my-selectpicker')
-                .selectpicker({
-                    liveSearch: this.liveSearch,
-                });
-        }, 0);
-
+        $(this.el.nativeElement).find('.my-selectpicker')
+            .selectpicker({
+                liveSearch: this.liveSearch,
+            });
     }
 
     public addValidators(): void { }
