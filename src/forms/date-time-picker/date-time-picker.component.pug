@@ -1,12 +1,12 @@
 .input-group.form-group
-  span.input-group-addon
-    i.zmdi.zmdi-calendar
-  .dtp-container.fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
-    input.form-control.date-time-picker(
-        #i,
-        type="text",
-        placeholder="{{placeholder}}",
-        [formControl]="control",
-        [attr.disabled]="disabled",
-        (focus)="onFocus(i)",
-        (blur)="onBlur(i)")
+    span.input-group-addon
+        i.zmdi.zmdi-calendar
+    .dtp-container.fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
+        input.form-control.date-time-picker(
+            #i,
+            type="text",
+            placeholder="{{placeholder}}",
+            [formControl]="control",
+            [attr.disabled]="disabled",
+            (focus)="onFocus(i)",
+            (blur)="onBlur(i)")

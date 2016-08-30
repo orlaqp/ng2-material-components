@@ -4,21 +4,22 @@ html(lang="en")
     base(href="#{htmlWebpackPlugin.options.baseHref}")
     meta(charset="UTF-8")
     title ng2-material-ui
+    link(rel="stylesheet", type="text/css", href="assets/demo.css")
     link(rel="shortcut icon", href="img/favicon.ico")
     link(rel="stylesheet", type="text/css", href="assets/prismjs/prism-okaidia.css")
     link(rel="stylesheet", type="text/css", href="assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/css/bootstrap-select.min.css")
-    
+
     //- Intl pollyfill for Safari
     script(type="application/javascript", src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en")
-    
+
     // jquery, bootstrap and plugins
     script(type="application/javascript", src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
-    script(type="application/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.js") 
-    script(type="application/javascript", src="assets/moment/moment.min.js") 
-    script(type="application/javascript", src="assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js") 
-    
+    script(type="application/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.js")
+    script(type="application/javascript", src="assets/moment/moment.min.js")
+    script(type="application/javascript", src="assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js")
+
 
   body
     app

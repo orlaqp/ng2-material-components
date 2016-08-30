@@ -11,8 +11,14 @@ export class DemoDateTimePickerComponent implements OnInit {
 
     public fg: FormGroup;
 
+    public minDate: moment.Moment;
+    public maxDate: moment.Moment;
+
     constructor() {
         this.fg = new FormGroup({});
+
+        this.minDate = moment().subtract('day', 5);
+        this.maxDate = moment().add('day', 5);
     }
 
     ngOnInit() { }

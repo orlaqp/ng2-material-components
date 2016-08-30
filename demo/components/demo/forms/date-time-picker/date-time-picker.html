@@ -6,10 +6,67 @@
 
     <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
-            <!-- Email Control -->
-            <date-time-picker [fgd]="f" field="birthday" label="Birthday"></date-time-picker>
+            <!-- Standard Date Time Picker -->
+            <date-time-picker
+                [fgd]="f"
+                field="birthday"
+                placeholder="Birthday">
+            </date-time-picker>
         </div>
 
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Date Time Picker -->
+            <date-time-picker
+                [fgd]="f"
+                field="birthdayDisabled"
+                placeholder="Birthday Disabled"
+                [disabled]="true">
+            </date-time-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Custom Format -->
+            <date-time-picker
+                [fgd]="f"
+                field="justDate"
+                placeholder="Just Date"
+                format="MM/DD/YYYY">
+            </date-time-picker>
+        </div>
+
+    </div>
+
+    <div class="row m-t-35">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Min Date -->
+            <date-time-picker
+                [fgd]="f"
+                field="minDate"
+                placeholder="Min Date"
+                [minDate]="minDate">
+            </date-time-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Max Date -->
+            <date-time-picker
+                [fgd]="f"
+                field="maxDate"
+                placeholder="Max Date"
+                [maxDate]="maxDate">
+            </date-time-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Range -->
+            <date-time-picker
+                [fgd]="f"
+                field="range"
+                placeholder="Between"
+                [minDate]="minDate"
+                [maxDate]="maxDate">
+            </date-time-picker>
+        </div>
     </div>
 
 </form>
