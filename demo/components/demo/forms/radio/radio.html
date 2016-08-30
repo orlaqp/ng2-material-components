@@ -1,6 +1,10 @@
 <form [formGroup]="fg" #f="ngForm">
 
-    <div class="row">
+    <pre>
+        {{ f.value | json }}
+    </pre>
+
+    <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- Normal Checkbox -->
             <radio [fgd]="f" name="radio1" field="toggle1" label="Simple Checkbox"></radio>

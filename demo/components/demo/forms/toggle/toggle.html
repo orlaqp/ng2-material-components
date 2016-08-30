@@ -1,7 +1,11 @@
 
 <form [formGroup]="fg" #f="ngForm">
 
-    <div class="row">
+    <pre>
+        {{ f.value | json }}
+    </pre>
+
+    <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4 m-b-20">
             <!-- Standard Toggle -->
             <toggle [fgd]="f" field="personalEmail" label="Personal Email"></toggle>
