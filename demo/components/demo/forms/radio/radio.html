@@ -1,18 +1,56 @@
 <form [formGroup]="fg" #f="ngForm">
 
-    <div class="row">
+    <pre>
+        {{ f.value | json }}
+    </pre>
+
+    <div class="row m-t-35">
+
         <div class="col-xs-12 col-sm-4">
-            <!-- Normal Checkbox -->
-            <radio [fgd]="f" name="radio1" field="toggle1" label="Simple Checkbox"></radio>
+
+            <p class="readme">
+                Standard group
+            </p>
+
+            <radio-group [fgd]="f" field="simpleRadioGroup">
+                <!-- Normal Checkbox -->
+                <radio label="Option 1" value="option1"></radio>
+                <radio label="Option 2" value="option2"></radio>
+                <radio label="Option 3" value="option3"></radio>
+            </radio-group>
+
         </div>
+
         <div class="col-xs-12 col-sm-4">
-            <!-- Disabled Checkbox -->
-            <radio [fgd]="f" name="radio1" field="toggle2" [disabled]="true" label="Disabled Checkbox"></radio>
+
+            <p class="readme">
+                Group with selected value
+            </p>
+
+            <radio-group [fgd]="f" field="defaultRadioGroup" [defaultValue]="defaultValue">
+                <!-- Normal Checkbox -->
+                <radio label="Option 4" value="option4"></radio>
+                <radio label="Option 5" value="option5"></radio>
+                <radio label="Option 6" value="option6"></radio>
+            </radio-group>
+
         </div>
+
         <div class="col-xs-12 col-sm-4">
-            <!-- Checked by default -->
-            <radio [fgd]="f" name="radio1" field="toggle1" label="Checked by default" [value]="true"></radio>
+
+            <p class="readme">
+                Group with options disabled
+            </p>
+
+            <radio-group [fgd]="f" field="disabledRadioGroup" [defaultValue]="defaultValue">
+                <!-- Normal Checkbox -->
+                <radio label="Option 7" value="option7"></radio>
+                <radio label="Option 8" value="option8" [disabled]="true"></radio>
+                <radio label="Option 9" value="option9"></radio>
+            </radio-group>
+
         </div>
+
     </div>
 
 

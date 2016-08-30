@@ -1,0 +1,70 @@
+
+<form [formGroup]="fg" #f="ngForm">
+
+    <pre>
+        {{ f.value | json }}
+    </pre>
+
+    <div class="row m-t-35">
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Standard Toggle -->
+            <toggle [fgd]="f" field="defaultToggle" label="Toggle Switch Default"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Toggled -->
+            <toggle [fgd]="f" field="disabledToggle" [disabled]="true" label="Toggle Switch Disabled"></toggle>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="red" label="Toggle Switch Red" color="red"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="cyan" label="Toggle Switch Cyan" color="cyan"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="purple" label="Toggle Switch Purple" color="purple"></toggle>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="blue" label="Toggle Switch Blue" color="blue"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="lime" label="Toggle Switch Lime" color="lime"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="pink" label="Toggle Switch Pink" color="pink"></toggle>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="green" label="Toggle Switch Green" color="green"></toggle>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 m-b-20">
+            <!-- Email Control -->
+            <toggle [fgd]="f" field="amber" label="Toggle Switch Amber" color="amber"></toggle>
+        </div>
+
+    </div>
+
+</form>

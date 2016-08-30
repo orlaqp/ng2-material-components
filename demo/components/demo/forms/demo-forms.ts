@@ -12,6 +12,7 @@ import { DemoRadioComponent } from './radio/radio';
 import { DemoSelectPickerComponent } from './select-picker/select-picker';
 import { DemoTextAreaComponent } from './text-area/text-area';
 import { DemoTextBoxComponent } from './text-box/text-box';
+import { DemoToggleComponent } from './toggle/toggle';
 import { DemoDateTimePickerComponent } from './date-time-picker/date-time-picker';
 
 
@@ -25,6 +26,7 @@ const components: any[] = [
     { category: 'forms', key: 'select-picker', component: DemoSelectPickerComponent },
     { category: 'forms', key: 'text-area', component: DemoTextAreaComponent },
     { category: 'forms', key: 'text-box', component: DemoTextBoxComponent },
+    { category: 'forms', key: 'toggle', component: DemoToggleComponent },
     { category: 'forms', key: 'date-time-picker', component: DemoDateTimePickerComponent },
 ];
 

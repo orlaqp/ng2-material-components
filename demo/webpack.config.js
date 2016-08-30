@@ -111,7 +111,10 @@ const config = {
                 }, {
                     from: path.resolve(__dirname, '../node_modules/moment/min/moment.min.js'),
                     to: 'assets/moment/moment.min.js'
-                },
+                }, {
+                    from: path.resolve(__dirname, 'demo.css'),
+                    to: 'assets'
+                }
             ]),
                 // new BrowserSyncPlugin({
                 //   host: '0.0.0.0',

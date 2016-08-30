@@ -48,10 +48,12 @@ import { EmailComponent } from './forms/email/email.component';
 import { NumberComponent } from './forms/number/number.component';
 import { PasswordComponent } from './forms/password/password.component';
 import { PhoneComponent } from './forms/phone/phone.component';
+import { RadioGroupComponent } from './forms/radio/radio-group.component';
 import { RadioComponent } from './forms/radio/radio.component';
 import { SelectPickerComponent } from './forms/select-picker/select-picker.component';
 import { TextBoxComponent } from './forms/text-box/text-box.component';
 import { TextAreaComponent } from './forms/text-area/text-area.component';
+import { ToggleComponent } from './forms/toggle/toggle.component';
 import { DateTimePickerComponent } from './forms/date-time-picker/date-time-picker.component';
 
 import { MaskedInputDirective } from './forms/mask/masked-input.directive';
@@ -61,10 +63,12 @@ export { EmailComponent } from './forms/email/email.component';
 export { NumberComponent } from './forms/number/number.component';
 export { PasswordComponent } from './forms/password/password.component';
 export { PhoneComponent } from './forms/phone/phone.component';
+export { RadioGroupComponent } from './forms/radio/radio-group.component';
 export { RadioComponent } from './forms/radio/radio.component';
 export { SelectPickerComponent } from './forms/select-picker/select-picker.component';
 export { TextBoxComponent } from './forms/text-box/text-box.component';
 export { TextAreaComponent } from './forms/text-area/text-area.component';
+export { ToggleComponent } from './forms/toggle/toggle.component';
 export { DateTimePickerComponent } from './forms/date-time-picker/date-time-picker.component';
 
 export { MaskedInputDirective } from './forms/mask/masked-input.directive';
@@ -75,10 +79,12 @@ export const MATERIAL_FORM = [
     NumberComponent,
     PasswordComponent,
     PhoneComponent,
+    RadioGroupComponent,
     RadioComponent,
     SelectPickerComponent,
     TextBoxComponent,
     TextAreaComponent,
+    ToggleComponent,
     DateTimePickerComponent,
 
     MaskedInputDirective,

@@ -136,10 +136,10 @@ $alert-warning-border:		 	        transparent;
 $alert-danger-border:		 	        transparent;
 $alert-inverse-border:		 	        transparent;
 
-$alert-success-bg:                      fade($m-green, 70%);
-$alert-info-bg:		 		            fade($m-blue, 70%);
-$alert-warning-bg:                      fade($m-amber, 70%);
-$alert-danger-bg:                       fade($m-red, 70%);
+$alert-success-bg:                      rgba($m-green, .7);
+$alert-info-bg:		 		            rgba($m-blue, .7);
+$alert-warning-bg:                      rgba($m-amber, .7);
+$alert-danger-bg:                       rgba($m-red, .7);
 $alert-inverse-bg:                      #333;
 
 $alert-success-text:                    #fff;

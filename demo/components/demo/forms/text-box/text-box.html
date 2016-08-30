@@ -1,6 +1,10 @@
 <form [formGroup]="fg" #f="ngForm">
 
-    <div class="row">
+    <pre>
+        {{ f.value | json }}
+    </pre>
+
+    <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- First Name -->
             <text-box [fgd]="f" field="firstName" label="First Name"></text-box>

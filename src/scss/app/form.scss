@@ -293,7 +293,7 @@ html:not(.ie9) {
         &:not(:disabled) {
             &:checked {
                 & + .ts-helper {
-                    background: fade($color, 50%);
+                    background: rgba($color, .5);
 
                     &:before {
                         background: $color;
@@ -301,7 +301,7 @@ html:not(.ie9) {
 
                     &:active {
                         &:before {
-                            box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px fade($color, 20%);
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba($color, .2);
                         }
                     }
                 }

@@ -1,0 +1,9 @@
+.toggle-switch([class.disabled]="disabled", [attr.data-ts-color]="color")
+    label.ts-label([attr.for]='identifier') {{label}}
+    input(
+        [attr.id]="identifier",
+        type='checkbox',
+        hidden='hidden',
+        [attr.disabled]="disabled",
+        [formControl]="control")
+    label.ts-helper([attr.for]='identifier')
