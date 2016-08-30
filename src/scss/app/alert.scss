@@ -21,22 +21,22 @@
 
 .growl-animated {
     &.alert-inverse {
-        box-shadow: 0 0 5px fade($alert-inverse-bg, 50%);
+        box-shadow: 0 0 5px rgba($alert-inverse-bg, .5);
     }
-    
+
     &.alert-info {
-        box-shadow: 0 0 5px fade($alert-info-bg, 50%);
+        box-shadow: 0 0 5px rgba($alert-info-bg, .5);
     }
 
     &.alert-success {
-        box-shadow: 0 0 5px fade($alert-success-bg, 50%);
+        box-shadow: 0 0 5px rgba($alert-success-bg, .5);
     }
 
     &.alert-warning {
-        box-shadow: 0 0 5px fade($alert-warning-bg, 50%);
+        box-shadow: 0 0 5px rgba($alert-warning-bg, .5);
     }
 
     &.alert-danger {
-        box-shadow: 0 0 5px fade($alert-danger-bg, 50%);
+        box-shadow: 0 0 5px rgba($alert-danger-bg, .5);
     }
 }

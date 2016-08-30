@@ -16,6 +16,7 @@ export class ToggleComponent extends InputBase implements OnInit {
     @Input() label: string;
     @Input() value: string;
     @Input() disabled: boolean;
+    @Input() color: string = '';
 
     public identifier: string;
 
