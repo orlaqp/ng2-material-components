@@ -1,6 +1,6 @@
 {
   "name": "ng2-materialform",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Great colleciton of beautiful designed material components",
   "main": "./dist/ng2-materialform.js",
   "homepage": "https://github.com/orlaqp/ng2-material-components",
@@ -51,6 +51,7 @@
     "browser-sync": "^2.14.0",
     "browser-sync-webpack-plugin": "^1.1.2",
     "clean-webpack-plugin": "^0.1.10",
+    "conventional-changelog-cli": "^1.2.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "del": "^2.2.2",
@@ -83,6 +84,7 @@
     "raw-loader": "^0.5.1",
     "replace": "^0.3.0",
     "semver": "^5.3.0",
+    "shelljs": "^0.7.4",
     "simple-git": "^1.48.0",
     "string-replace-loader": "^1.0.3",
     "style-loader": "^0.13.1",
