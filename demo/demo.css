@@ -1,3 +1,7 @@
 .toggle-switch .ts-label {
     min-width: 130px;
 }
+
+pre.code {
+    max-height: 300px;
+}
