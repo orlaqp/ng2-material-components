@@ -1,0 +1,32 @@
+import { ElementRef } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
+import { ControlWithType } from '../../models/control-with-type';
+import { TypeEnum } from '../../models/type-enum';
+import { IValidationInfo } from '../../models/validation-info';
+export declare class InputBase {
+    dataType: TypeEnum;
+    model: Object;
+    fgd: FormGroupDirective;
+    field: string;
+    floatingLabel: boolean;
+    required: boolean;
+    min: number;
+    max: number;
+    value: any;
+    decimal: boolean;
+    validations: IValidationInfo[];
+    control: ControlWithType;
+    toggled: boolean;
+    _el: ElementRef;
+    static minValidator(length: number): IValidationInfo;
+    static maxValidator(length: number): IValidationInfo;
+    constructor(el: ElementRef);
+    onFocus(ele: any): void;
+    onBlur(ele: any): void;
+    addValidators(): void;
+    addMinValidation(): void;
+    addMaxValidation(): void;
+    onInit(): void;
+    private _getValidators();
+    private _processControl(field);
+}

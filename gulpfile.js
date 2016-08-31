@@ -26,7 +26,7 @@ var PATHS = {
     spec: ['src/**/*.ts', 'test/util/*.ts'],
     typings: 'typings/index.d.ts',
     temp: 'temp/',
-    includedComponentsHbs : './src/ng2-materialform.hbs',
+    includedComponentsHbs : './src/ng2-materialcomponents.hbs',
     dist: 'dist'
 };
 
@@ -45,7 +45,7 @@ function capitalize(str) {
     return splittedEnter.join(" ");
 }
 
-// process ng2-materialform.pug file
+// process ng2-materialcomponents.pug file
 gulp.task('config', function() {
 
     // load configuration

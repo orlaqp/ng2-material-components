@@ -1,4 +1,4 @@
-require('../dist/ng2-materialform.bundle.css');
+require('../dist/ng2-materialcomponents.bundle.css');
 
 import './vendor';
 import {Component, enableProdMode} from '@angular/core';
@@ -7,7 +7,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_ROUTER_PROVIDERS} from './routes';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {MATERIAL_ALL, IMenuItem} from '../dist/ng2-materialform';
+import {MATERIAL_ALL, IMenuItem} from '../dist/ng2-materialcomponents';
 
 // import {provideNglConfig} from '../dist/ng-lightning';
 

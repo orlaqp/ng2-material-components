@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IMenuItem} from '../../../dist/ng2-materialform';
+import {IMenuItem} from '../../../dist/ng2-materialcomponents';
 
 @Component({
   selector: 'demo-side-menu',

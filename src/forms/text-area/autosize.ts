@@ -67,9 +67,9 @@ function assign(ta: any, options: any) {
             const width = ta.style.width;
             ta.style.width = '0px';
             // Force reflow:
-            /* jshint ignore:start */
+            /* tslint:disable */
             ta.offsetWidth;
-            /* jshint ignore:end */
+            /* tslint:enable */
             ta.style.width = width;
         }
 
