@@ -3,13 +3,12 @@ import { processComponents } from '../demo-base/demo-base';
 import { MATERIAL_ALL } from '../../../../dist/ng2-material-components';
 
 // components
+import { DemoActionsComponent } from './actions/actions';
 import { DemoCardComponent } from './card/card';
 
-
-
 const components: any[] = [
+    { category: 'user-interface', key: 'actions', component: DemoActionsComponent },
     { category: 'user-interface', key: 'card', component: DemoCardComponent },
-
 ];
 
 const content = {};
