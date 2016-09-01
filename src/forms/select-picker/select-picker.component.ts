@@ -39,7 +39,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
                 .selectpicker({
                     liveSearch: this.liveSearch,
                 })
-        , 0);
+        , 100);
     }
 
     public addValidators(): void { }
