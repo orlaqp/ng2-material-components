@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM } from '../../../../../dist/ng2-materialcomponents';
+import { MATERIAL_FORM } from '../../../../../dist/ng2-material-components';
 
 @Component({
     selector: 'demo-date-time-picker',

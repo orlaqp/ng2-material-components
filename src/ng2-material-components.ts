@@ -90,6 +90,30 @@ export const MATERIAL_FORM = [
     MaskedInputDirective,
 ];
 
+// user interface
+import { CardComponent } from './user-interface/card/card.component';
+import { CardHeaderComponent } from './user-interface/card/card-header.component';
+import { CardBodyComponent } from './user-interface/card/card-body.component';
+import { CardPaddingDirective } from './user-interface/card/card-padding.directive';
+import { ActionsComponent } from './user-interface/actions/actions.component';
+import { ActionItemDirective } from './user-interface/actions/action-item.directive';
+
+export { CardComponent } from './user-interface/card/card.component';
+export { CardHeaderComponent } from './user-interface/card/card-header.component';
+export { CardBodyComponent } from './user-interface/card/card-body.component';
+export { CardPaddingDirective } from './user-interface/card/card-padding.directive';
+export { ActionsComponent } from './user-interface/actions/actions.component';
+export { ActionItemDirective } from './user-interface/actions/action-item.directive';
+
+export const MATERIAL_USER_INTERFACE = [
+    CardComponent,
+    CardHeaderComponent,
+    CardBodyComponent,
+    CardPaddingDirective,
+    ActionsComponent,
+    ActionItemDirective,
+];
+
 
 export const MATERIAL_ALL = [
     MATERIAL_COMMON,

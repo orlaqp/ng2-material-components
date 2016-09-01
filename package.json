@@ -1,8 +1,8 @@
 {
-  "name": "ng2-materialcomponents",
+  "name": "ng2-material-components",
   "version": "0.0.10-0",
   "description": "Great colleciton of beautiful designed material components",
-  "main": "./dist/ng2-materialcomponents.js",
+  "main": "./ng2-material-components.js",
   "homepage": "https://github.com/orlaqp/ng2-material-components",
   "repository": {
     "type": "git",

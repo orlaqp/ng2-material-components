@@ -1,6 +1,6 @@
 export interface IMenuItem {
     id: string;
-    title: string;
+    title?: string;
     icon?: string;
     component?: string;
     action?: string;

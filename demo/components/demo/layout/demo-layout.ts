@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { processComponents, IComponent } from '../demo-base/demo-base';
-import { MATERIAL_ALL } from '../../../../dist/ng2-materialcomponents';
+import { MATERIAL_ALL } from '../../../../dist/ng2-material-components';
 
 // components
 import { DemoAppHeaderComponent } from './app-header/app-header';

@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+import { MATERIAL_USER_INTERFACE, IMenuItem } from '../../../../../dist/ng2-material-components';
+
+@Component({
+    selector: 'demo-card',
+    directives: [MATERIAL_USER_INTERFACE, REACTIVE_FORM_DIRECTIVES],
+    template: require('./card.html'),
+})
+export class DemoCardComponent {
+    public actionItems: IMenuItem[] = [
+        { id: '1', icon: 'refresh-alt' },
+        { id: '1', icon: 'download' },
+        { id: '1', icon: 'more-vert' },
+    ];
+}

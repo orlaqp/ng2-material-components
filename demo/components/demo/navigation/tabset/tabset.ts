@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MATERIAL_NAVIGATION } from '../../../../../dist/ng2-materialcomponents';
+import { MATERIAL_NAVIGATION } from '../../../../../dist/ng2-material-components';
 
 @Component({
   selector: 'demo-tabset',

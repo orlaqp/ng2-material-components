@@ -18,7 +18,7 @@ export function processComponents(components: IComponent[]): void {
         const componentFile = componentFolder + key;
 
         component.html = require('!!prismjs?lang=markup!../' + componentFile + '.html');
-        component.ts = require('!!string-replace?search=../../../../../dist&replace=ng2-materialcomponents!prismjs?lang=typescript!../' + componentFile + '.ts');
+        component.ts = require('!!string-replace?search=../../../../../dist&replace=ng2-material-components!prismjs?lang=typescript!../' + componentFile + '.ts');
 
         if (!component.title) {
             component.title = key.charAt(0).toUpperCase() + key.slice(1);

@@ -1,4 +1,4 @@
-require('../dist/ng2-materialcomponents.bundle.css');
+require('../dist/ng2-material-components.bundle.css');
 
 import './vendor';
 import {Component, enableProdMode} from '@angular/core';
@@ -7,7 +7,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {APP_ROUTER_PROVIDERS} from './routes';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {MATERIAL_ALL, IMenuItem} from '../dist/ng2-materialcomponents';
+import {MATERIAL_ALL, IMenuItem} from '../dist/ng2-material-components';
 
 // import {provideNglConfig} from '../dist/ng-lightning';
 
@@ -29,7 +29,8 @@ export class App {
             { id: '1', title: 'Layout', icon: 'view-compact', route: '/layout' },
             { id: '2', title: 'Navigation', icon: 'navigation', route: '/navigation' },
             { id: '3', title: 'Forms', icon: 'check-all', route: '/forms' },
-            { id: '4', title: 'Widgets', icon: 'view-compact', route: '/widgets' },
+            { id: '4', title: 'User Interface', icon: 'widgets', route: '/user-interface' },
+            { id: '5', title: 'Widgets', icon: 'view-compact', route: '/widgets' },
         ];
     }
 
