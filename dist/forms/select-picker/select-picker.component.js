@@ -28,10 +28,13 @@ var SelectPickerComponent = (function (_super) {
         this.onInit();
     };
     SelectPickerComponent.prototype.ngAfterViewInit = function () {
-        $(this.el.nativeElement).find('.my-selectpicker')
-            .selectpicker({
-            liveSearch: this.liveSearch,
-        });
+        var _this = this;
+        setTimeout(function () {
+            return $(_this.el.nativeElement).find('.my-selectpicker')
+                .selectpicker({
+                liveSearch: _this.liveSearch,
+            });
+        }, 0);
     };
     SelectPickerComponent.prototype.addValidators = function () { };
     __decorate([

@@ -994,9 +994,12 @@ System.registerDynamic("ng2-materialcomponents/forms/select-picker/select-picker
             this.onInit();
         };
         SelectPickerComponent.prototype.ngAfterViewInit = function () {
-            $(this.el.nativeElement).find('.my-selectpicker').selectpicker({
-                liveSearch: this.liveSearch
-            });
+            var _this = this;
+            setTimeout(function () {
+                return $(_this.el.nativeElement).find('.my-selectpicker').selectpicker({
+                    liveSearch: _this.liveSearch
+                });
+            }, 0);
         };
         SelectPickerComponent.prototype.addValidators = function () {};
         __decorate([core_1.Input(), __metadata('design:type', forms_1.FormGroupDirective)], SelectPickerComponent.prototype, "fgd", void 0);
