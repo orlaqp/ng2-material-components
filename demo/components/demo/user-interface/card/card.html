@@ -36,6 +36,7 @@
                     <small>This card comes with shadow</small>
                 </h2>
                 <actions [actionItems]="actionItems"></actions>
+                <card-action color="blue" icon="plus" (actionClicked)="onActionClicked($event)"></card-action>
             </card-header>
             <card-body [padded]="true">
                 <p>
@@ -63,6 +64,7 @@
                     <small>Subtitle can go here ...</small>
                 </h2>
                 <actions [actionItems]="actionItems" [alt]="true"></actions>
+                <card-action color="white" icon="check"></card-action>
             </card-header>
             <card-body [padded]="true">
                 <p>
@@ -80,6 +82,7 @@
                     <small>Subtitle can go here ...</small>
                 </h2>
                 <actions [actionItems]="actionItems" [alt]="true"></actions>
+                <card-action color="blue" icon="check-all"></card-action>
             </card-header>
             <card-body [padded]="true">
                 <p>
@@ -97,6 +100,7 @@
                     <small>Subtitle can go here ...</small>
                 </h2>
                 <actions [actionItems]="actionItems" [alt]="true"></actions>
+                <card-action color="white" icon="comment"></card-action>
             </card-header>
             <card-body [padded]="true">
                 <p>

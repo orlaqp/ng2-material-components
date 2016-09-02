@@ -149,7 +149,6 @@ export class InputBase {
 
         // subscribe for changes
         // this.control.valueChanges.subscribe(data => {
-        //     debugger;
         //     console.log('value changed: ' + data);
         // });
 
