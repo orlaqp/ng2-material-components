@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Renderer, AfterViewInit } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer, AfterViewInit, HostListener } from '@angular/core';
 import { IMenuItem } from '../../models/menu-item';
 import { ActionsService } from './actions.service';
 
@@ -25,7 +25,9 @@ export class ActionItemDirective implements AfterViewInit {
         this.renderer.setElementClass(i, `zmdi-${icon}`, true);
     }
 
+    @HostListener('click', [])
     public onActionClicked(): void {
+        debugger;
         this.actionsService.announceAction(this.actionItem);
     }
 
