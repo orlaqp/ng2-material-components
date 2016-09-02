@@ -5,3 +5,23 @@
 pre.code {
     max-height: 300px;
 }
+
+/* buttons */
+.demo-buttons .lead {
+    margin-top: 20px;
+}
+
+.demo-buttons .circular-icon-buttons {
+    margin-top: 20px;
+}
+
+.demo-buttons bw-button.normal button {
+    min-width: 112px;
+    margin-left: 3px;
+    margin-top: 5px;
+}
+
+.demo-buttons .waves-circle {
+    margin-left: 3px;
+    margin-top: 5px;
+}
