@@ -13,7 +13,7 @@ export class ButtonComponent {
     @Input() block: boolean;
     @Input() circular: boolean;
 
-    @Input() size: string;
+    @Input() size: string = ''; // lg, sm, xs
     @Input() disabled: boolean;
 
     @Output() clicked = new EventEmitter();

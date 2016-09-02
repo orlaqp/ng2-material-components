@@ -29,4 +29,8 @@ export class DemoButtonComponent {
         { title: 'call', icon:  'phone', color: 'purple' },
     ];
 
+    onClicked() {
+        window.alert('Button clicked');
+    }
+
 }

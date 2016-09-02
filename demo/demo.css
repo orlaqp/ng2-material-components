@@ -25,3 +25,12 @@ pre.code {
     margin-left: 3px;
     margin-top: 5px;
 }
+
+.demo-buttons .btn-block {
+    margin-top: 10px;
+}
+
+/* button groups */
+.demo-button-groups .btn-group {
+    margin-right: 3px;
+}

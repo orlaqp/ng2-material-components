@@ -6,12 +6,14 @@ import { MATERIAL_ALL } from '../../../../dist/ng2-material-components';
 import { DemoHeaderComponent } from './header/header';
 import { DemoActionsComponent } from './actions/actions';
 import { DemoButtonComponent } from './button/button';
+import { DemoButtonGroupComponent } from './button-group/button-group';
 import { DemoCardComponent } from './card/card';
 
 const components: any[] = [
     { category: 'user-interface', key: 'header', component: DemoHeaderComponent },
     { category: 'user-interface', key: 'actions', component: DemoActionsComponent },
     { category: 'user-interface', key: 'button', component: DemoButtonComponent },
+    { category: 'user-interface', key: 'button-group', component: DemoButtonGroupComponent },
     { category: 'user-interface', key: 'card', component: DemoCardComponent },
 ];
 

@@ -1,8 +1,9 @@
-button.btn.waves-effect(class="bgm-{{color}}",
+button.btn.waves-effect(class="bgm-{{color}} btn-{{size}}",
     [class.btn-icon-text]="iconAndtext",
     [class.btn-block]="block",
     [class.waves-circle]="circular",
     [class.waves-float]="circular",
-    [class.btn-icon]="circular")
+    [class.btn-icon]="circular",
+    [attr.disabled]="disabled")
     i.zmdi(*ngIf="icon", class="zmdi-{{icon}}")
     | {{title}}
