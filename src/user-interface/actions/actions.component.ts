@@ -19,9 +19,7 @@ export class ActionsComponent implements OnInit {
 
     constructor(private actionsService: ActionsService) {
         actionsService.actionClicked$.subscribe(actionItem => {
-            if (!actionItem.children) {
-                this.actionClicked.emit(actionItem);
-            }
+            this.actionClicked.emit(actionItem);
         });
     }
 

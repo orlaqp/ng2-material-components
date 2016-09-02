@@ -14,14 +14,28 @@ export class ActionItemDirective implements AfterViewInit {
         this._createAnchor(this._el.nativeElement, this.actionItem);
     }
 
-    @HostListener('click', [])
-    public onActionClicked(): void {
-        this._actionsService.announceAction(this.actionItem);
+    @HostListener('click', ['$event'])
+    public onActionClicked($event: MouseEvent, menuItem?: IMenuItem): void {
+
+        $event.preventDefault();
+
+        let item: IMenuItem = menuItem ? menuItem : this.actionItem;
+
+        // only send notification when the item does not have children
+        if (!item.children) {
+            this._actionsService.announceAction(item);
+        }
     }
 
-    private _createAnchor(ele: any, menuItem: IMenuItem) {
+    private _createAnchor(ele: any, menuItem: IMenuItem, submenu: boolean = false) {
         var anchor = this._renderer.createElement(ele, 'a');
         this._renderer.setElementAttribute(anchor, 'href', '');
+
+        if (submenu) {
+            this._renderer.listen(anchor, 'click', (event: MouseEvent) => {
+                this.onActionClicked(event, menuItem);
+            });
+        }
 
         var i = this._renderer.createElement(anchor, 'i');
 
@@ -53,7 +67,7 @@ export class ActionItemDirective implements AfterViewInit {
             this.actionItem.children.forEach((item: IMenuItem) => {
                 let li = this._renderer.createElement(ul, 'li');
 
-                this._createAnchor(li, item);
+                this._createAnchor(li, item, true);
             });
         }
     }
