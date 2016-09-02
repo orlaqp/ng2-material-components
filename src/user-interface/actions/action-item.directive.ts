@@ -1,12 +1,13 @@
 import { Directive, ElementRef, Input, Renderer, AfterViewInit } from '@angular/core';
 import { IMenuItem } from '../../models/menu-item';
+import { ActionsService } from './actions.service';
 
 @Directive({ selector: '[actionItem]' })
 export class ActionItemDirective implements AfterViewInit {
 
     @Input() actionItem: IMenuItem;
 
-    constructor(private el: ElementRef, private renderer: Renderer) { }
+    constructor(private el: ElementRef, private renderer: Renderer, private actionsService: ActionsService) { }
 
     public ngAfterViewInit() {
         // add anchor
@@ -22,6 +23,10 @@ export class ActionItemDirective implements AfterViewInit {
         var i = this.renderer.createElement(anchor, 'i');
         this.renderer.setElementClass(i, 'zmdi', true);
         this.renderer.setElementClass(i, `zmdi-${icon}`, true);
+    }
+
+    public onActionClicked(): void {
+        this.actionsService.announceAction(this.actionItem);
     }
 
 }
