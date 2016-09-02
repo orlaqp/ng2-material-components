@@ -99,7 +99,7 @@ import { CardActionComponent } from './user-interface/card/card-action.component
 import { ActionsComponent } from './user-interface/actions/actions.component';
 import { ActionItemDirective } from './user-interface/actions/action-item.directive';
 import { HeaderComponent } from './user-interface/header/header.component';
-
+import { ButtonComponent } from './user-interface/button/button.component';
 
 export { CardComponent } from './user-interface/card/card.component';
 export { CardHeaderComponent } from './user-interface/card/card-header.component';
@@ -109,6 +109,7 @@ export { CardActionComponent } from './user-interface/card/card-action.component
 export { ActionsComponent } from './user-interface/actions/actions.component';
 export { ActionItemDirective } from './user-interface/actions/action-item.directive';
 export { HeaderComponent } from './user-interface/header/header.component';
+export { ButtonComponent } from './user-interface/button/button.component';
 
 export const MATERIAL_USER_INTERFACE = [
     CardComponent,
@@ -119,6 +120,7 @@ export const MATERIAL_USER_INTERFACE = [
     ActionsComponent,
     ActionItemDirective,
     HeaderComponent,
+    ButtonComponent,
 ];
 
 

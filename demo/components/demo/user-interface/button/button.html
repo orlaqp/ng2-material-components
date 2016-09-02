@@ -1,0 +1,41 @@
+<div class="demo-buttons">
+
+    <p class="lead">
+        Normal Buttons
+    </p>
+
+    <!-- Normal buttons -->
+    <div>
+        <bw-button *ngFor="let c of colors" [color]="c" [title]="c" class="normal"></bw-button>
+    </div>
+
+    <div class="m-t-20">
+        <bw-button *ngFor="let c of buttons" [color]="c.color" [title]="c.title" [icon]="c.icon" class="normal"></bw-button>
+    </div>
+
+    <br/>
+
+    <p class="lead">
+        Default Icon Buttons
+    </p>
+
+    <!-- Icon buttons -->
+    <div class="m-t-20">
+        <bw-button *ngFor="let c of buttons" [color]="'white'" [icon]="c.icon"></bw-button>
+    </div>
+
+    <!-- Circular Icon buttons -->
+    <div class="m-t-20">
+        <bw-button *ngFor="let c of buttons" [color]="'white'" [icon]="c.icon" [circular]="true"></bw-button>
+    </div>
+
+    <br/>
+
+    <p class="lead">
+        Circular Icon Buttons
+    </p>
+
+    <!-- Normal buttons -->
+    <bw-button *ngFor="let c of buttons" [color]="c.color" [icon]="c.icon" [circular]="true"></bw-button>
+
+</div>
