@@ -1,3 +1,8 @@
+<a name="0.0.11"></a>
+## [0.0.11](https://github.com/orlaqp/ng2-material-components/compare/v0.0.10...v0.0.11) (2016-09-02)
+
+
+
 # Change Log
 All notable changes to this project will be documented in this file.
 
@@ -7,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - Header Component
 - Actions Component
 - Card Component
+- Card Action Component
 
 
 ## [0.0.2] - 2016-08-30
