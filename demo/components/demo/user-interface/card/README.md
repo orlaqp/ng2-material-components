@@ -1,1 +1,1 @@
-Checkbox functionality. not much to explain here
+Cards can be used for multiple purposes in any app.
