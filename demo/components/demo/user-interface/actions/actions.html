@@ -3,7 +3,7 @@
     <div class="col-xs-12">
         <bw-header [block]="true">
             <h2>Some block header here</h2>
-            <actions [actionItems]="actionItems"></actions>
+            <actions [actionItems]="actionItems" (actionClicked)="onActionClicked($event)"></actions>
         </bw-header>
     </div>
 

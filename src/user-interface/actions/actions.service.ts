@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { IMenuItem } from '../../models/menu-item';
 
@@ -6,7 +7,7 @@ import { IMenuItem } from '../../models/menu-item';
 export class ActionsService {
 
     // observable string streams
-    actionClicked$ = this.actionClickedSource.asObservable();
+    actionClicked$: Observable<IMenuItem>;
 
     // observable string source
     private actionClickedSource = new Subject<IMenuItem>();
@@ -15,5 +16,7 @@ export class ActionsService {
         this.actionClickedSource.next(action);
     }
 
-    constructor() { }
+    constructor() {
+        this.actionClicked$ = this.actionClickedSource.asObservable();
+    }
 }

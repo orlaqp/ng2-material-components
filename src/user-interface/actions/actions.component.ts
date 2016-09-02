@@ -19,7 +19,6 @@ export class ActionsComponent implements OnInit {
 
     constructor(private actionsService: ActionsService) {
         actionsService.actionClicked$.subscribe(actionItem => {
-            debugger;
             this.actionClicked.emit(actionItem);
         });
     }

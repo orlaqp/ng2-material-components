@@ -1,1 +1,1 @@
-Checkbox functionality. not much to explain here
+Useful component to define a list of actions that allow sub items.

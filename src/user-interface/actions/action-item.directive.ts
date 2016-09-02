@@ -27,7 +27,6 @@ export class ActionItemDirective implements AfterViewInit {
 
     @HostListener('click', [])
     public onActionClicked(): void {
-        debugger;
         this.actionsService.announceAction(this.actionItem);
     }
 

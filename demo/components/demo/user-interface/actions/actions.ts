@@ -8,6 +8,7 @@ import { MATERIAL_USER_INTERFACE, IMenuItem } from '../../../../../dist/ng2-mate
     template: require('./actions.html'),
 })
 export class DemoActionsComponent {
+
     public actionItems: IMenuItem[] = [
         { id: '1', icon: 'refresh-alt' },
         { id: '2', icon: 'download' },
@@ -17,4 +18,8 @@ export class DemoActionsComponent {
             { id: '33', title: 'Settings', icon: 'settings' },
         ] },
     ];
+
+    onActionClicked(menuItem: IMenuItem): void {
+        window.alert('Action: ' + menuItem.id + ' clicked');
+    }
 }
