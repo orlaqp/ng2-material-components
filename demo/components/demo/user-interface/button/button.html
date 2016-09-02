@@ -39,6 +39,18 @@
     <bw-button *ngFor="let c of buttons" [color]="c.color" [icon]="c.icon" [circular]="true"></bw-button>
 
     <p class="lead">
+        Different Sizes
+    </p>
+
+    <div class="button-sizes">        
+        <!-- Normal buttons -->
+        <bw-button color="white" title="Large" size="lg"></bw-button>
+        <bw-button color="blue" title="Default" size="default"></bw-button>
+        <bw-button color="cyan" title="Small" size="sm"></bw-button>
+        <bw-button color="green" title="Tiny" size="xs"></bw-button>
+    </div>
+
+    <p class="lead">
         Block Buttons
     </p>
 

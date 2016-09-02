@@ -4,7 +4,7 @@
     <bw-button-group [options]="options" type="primary" (optionSelected)="onOptionSelected($event)"></bw-button-group>
     <bw-button-group [options]="options" type="info" (optionSelected)="onOptionSelected($event)"></bw-button-group>
     <bw-button-group [options]="options" type="warning" (optionSelected)="onOptionSelected($event)"></bw-button-group>
-    <bw-button-group [options]="options" type="danger" (optionSelected)="onOptionSelected($event)"></bw-button-group>
+    <bw-button-group [options]="options" type="success" (optionSelected)="onOptionSelected($event)"></bw-button-group>
 
     <p class="lead m-t-20">
         Default option Selected
@@ -14,6 +14,15 @@
     <bw-button-group [options]="options" type="primary" [activeOption]="defaultOptionSelected" (optionSelected)="onOptionSelected($event)"></bw-button-group>
     <bw-button-group [options]="options" type="info" [activeOption]="defaultOptionSelected" (optionSelected)="onOptionSelected($event)"></bw-button-group>
     <bw-button-group [options]="options" type="warning" [activeOption]="defaultOptionSelected" (optionSelected)="onOptionSelected($event)"></bw-button-group>
-    <bw-button-group [options]="options" type="danger" [activeOption]="defaultOptionSelected" (optionSelected)="onOptionSelected($event)"></bw-button-group>
+    <bw-button-group [options]="options" type="success" [activeOption]="defaultOptionSelected" (optionSelected)="onOptionSelected($event)"></bw-button-group>
+
+    <p class="lead m-t-20">
+        Different Sizes
+    </p>
+
+    <bw-button-group [options]="options" type="default" size="lg"> </bw-button-group>
+    <bw-button-group [options]="options" type="primary"> </bw-button-group>
+    <bw-button-group [options]="options" type="info" size="sm"> </bw-button-group>
+    <bw-button-group [options]="options" type="success" size="xs"> </bw-button-group>
 
 </div>

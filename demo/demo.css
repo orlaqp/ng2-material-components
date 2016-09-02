@@ -26,6 +26,11 @@ pre.code {
     margin-top: 5px;
 }
 
+.demo-buttons .button-sizes button {
+    margin-left: 10px;
+}
+
+
 .demo-buttons .btn-block {
     margin-top: 10px;
 }

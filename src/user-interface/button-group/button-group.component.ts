@@ -10,6 +10,7 @@ export class ButtonGroupComponent {
     @Input() options: string[];
     @Input() type: string; // default, primary, info, success, warning, danger
     @Input() activeOption: string;
+    @Input() size: string = 'default'; // lg, sm, xs
 
     @Output() optionSelected = new EventEmitter<string>();
 
