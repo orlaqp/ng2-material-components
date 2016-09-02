@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'bw-header',
-    templateUrl: 'header.component.html',
+    templateUrl: 'header.component.pug',
 })
 export class HeaderComponent implements OnInit {
 
