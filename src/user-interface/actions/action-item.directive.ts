@@ -7,27 +7,55 @@ export class ActionItemDirective implements AfterViewInit {
 
     @Input() actionItem: IMenuItem;
 
-    constructor(private el: ElementRef, private renderer: Renderer, private actionsService: ActionsService) { }
+    constructor(private _el: ElementRef, private _renderer: Renderer, private _actionsService: ActionsService) { }
 
     public ngAfterViewInit() {
         // add anchor
-        var anchor = this.renderer.createElement(this.el.nativeElement, 'a');
-
-        // add icon if it was provided
-        let icon = this.actionItem.icon;
-
-        if (!icon) {
-            throw 'Action items need to have an icon defined';
-        }
-
-        var i = this.renderer.createElement(anchor, 'i');
-        this.renderer.setElementClass(i, 'zmdi', true);
-        this.renderer.setElementClass(i, `zmdi-${icon}`, true);
+        this._createAnchor(this._el.nativeElement, this.actionItem);
     }
 
     @HostListener('click', [])
     public onActionClicked(): void {
-        this.actionsService.announceAction(this.actionItem);
+        this._actionsService.announceAction(this.actionItem);
+    }
+
+    private _createAnchor(ele: any, menuItem: IMenuItem) {
+        var anchor = this._renderer.createElement(ele, 'a');
+        this._renderer.setElementAttribute(anchor, 'href', '');
+
+        var i = this._renderer.createElement(anchor, 'i');
+
+        // add icon if it was provided
+        let icon = menuItem.icon;
+
+        if (icon) {
+            this._renderer.setElementClass(i, 'zmdi', true);
+            this._renderer.setElementClass(i, `zmdi-${icon}`, true);
+        }
+
+        // add title if it was provided
+        let title = menuItem.title;
+
+        if (title) {
+            this._renderer.createText(anchor, title);
+        }
+
+        if (menuItem.children) {
+            // add dropwn class
+            this._renderer.setElementClass(ele, 'dropdown', true);
+            this._renderer.setElementAttribute(ele, 'data-toggle', 'dropdown');
+
+            let ul = this._renderer.createElement(ele, 'ul');
+            this._renderer.setElementClass(ul, 'dropdown-menu', true);
+            this._renderer.setElementClass(ul, 'dm-icon', true);
+            this._renderer.setElementClass(ul, 'dropdown-menu-right', true);
+
+            this.actionItem.children.forEach((item: IMenuItem) => {
+                let li = this._renderer.createElement(ul, 'li');
+
+                this._createAnchor(li, item);
+            });
+        }
     }
 
 }

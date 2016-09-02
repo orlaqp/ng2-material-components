@@ -19,7 +19,9 @@ export class ActionsComponent implements OnInit {
 
     constructor(private actionsService: ActionsService) {
         actionsService.actionClicked$.subscribe(actionItem => {
-            this.actionClicked.emit(actionItem);
+            if (!actionItem.children) {
+                this.actionClicked.emit(actionItem);
+            }
         });
     }
 
@@ -27,5 +29,12 @@ export class ActionsComponent implements OnInit {
         if (!this.actionItems || this.actionItems.length === 0) {
             throw 'Actions component need actions to show';
         }
+    }
+
+    get dropdown(): boolean {
+        // if any action item contain children the I should add the dropdown class
+        return this.actionItems.some((item: IMenuItem) => {
+            return item.children !== undefined;
+        });
     }
 }
