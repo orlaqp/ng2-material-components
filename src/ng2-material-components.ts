@@ -101,6 +101,7 @@ import { ActionItemDirective } from './user-interface/actions/action-item.direct
 import { HeaderComponent } from './user-interface/header/header.component';
 import { ButtonComponent } from './user-interface/button/button.component';
 import { ButtonGroupComponent } from './user-interface/button-group/button-group.component';
+import { PreLoaderDirective } from './user-interface/pre-loader/pre-loader.directive';
 
 export { CardComponent } from './user-interface/card/card.component';
 export { CardHeaderComponent } from './user-interface/card/card-header.component';
@@ -112,6 +113,7 @@ export { ActionItemDirective } from './user-interface/actions/action-item.direct
 export { HeaderComponent } from './user-interface/header/header.component';
 export { ButtonComponent } from './user-interface/button/button.component';
 export { ButtonGroupComponent } from './user-interface/button-group/button-group.component';
+export { PreLoaderDirective } from './user-interface/pre-loader/pre-loader.directive';
 
 export const MATERIAL_USER_INTERFACE = [
     CardComponent,
@@ -124,6 +126,7 @@ export const MATERIAL_USER_INTERFACE = [
     HeaderComponent,
     ButtonComponent,
     ButtonGroupComponent,
+    PreLoaderDirective,
 ];
 
 

@@ -7,6 +7,7 @@ import { DemoHeaderComponent } from './header/header';
 import { DemoActionsComponent } from './actions/actions';
 import { DemoButtonComponent } from './button/button';
 import { DemoButtonGroupComponent } from './button-group/button-group';
+import { DemoPreLoaderComponent } from './pre-loader/pre-loader';
 import { DemoCardComponent } from './card/card';
 
 const components: any[] = [
@@ -14,6 +15,7 @@ const components: any[] = [
     { category: 'user-interface', key: 'actions', component: DemoActionsComponent },
     { category: 'user-interface', key: 'button', component: DemoButtonComponent },
     { category: 'user-interface', key: 'button-group', component: DemoButtonGroupComponent },
+    { category: 'user-interface', key: 'pre-loader', component: DemoPreLoaderComponent },
     { category: 'user-interface', key: 'card', component: DemoCardComponent },
 ];
 
