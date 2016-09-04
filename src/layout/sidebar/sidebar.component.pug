@@ -1,15 +1,4 @@
 aside#sidebar.sidebar.c-overflow(style='overflow: visible;', [ngClass]="{ 'toggled': open }")
-  #mCSB_1(tabindex='0', style='max-height: 651px;')
-    div(style='position: relative; top: 0px; left: 0px; width: 100%;', dir='ltr')
+  #mCSB_1(tabindex='0', style='height: 100%;')
+    div(style='position: relative; top: 0px; left: 0px; width: 100%; height: 100%; overflow: auto;', dir='ltr')
         ng-content
-      
-  #mCSB_1_scrollbar_vertical.mCSB_scrollTools.mCSB_1_scrollbar.mCS-minimal-dark.mCSB_scrollTools_vertical(style='display: block;')
-    .mCSB_draggerContainer
-      #mCSB_1_dragger_vertical.mCSB_dragger(style='position: absolute; min-height: 50px; display: block; height: 491px; max-height: 641px;', oncontextmenu='return false;')
-        .mCSB_dragger_bar(style='line-height: 50px;')
-      .mCSB_draggerRail
-  #mCSB_1_scrollbar_horizontal.mCSB_scrollTools.mCSB_1_scrollbar.mCS-minimal-dark.mCSB_scrollTools_horizontal(style='display: none;')
-    .mCSB_draggerContainer
-      #mCSB_1_dragger_horizontal.mCSB_dragger(style='position: absolute; min-width: 50px; width: 0px; left: 0px;', oncontextmenu='return false;')
-        .mCSB_dragger_bar
-      .mCSB_draggerRail
