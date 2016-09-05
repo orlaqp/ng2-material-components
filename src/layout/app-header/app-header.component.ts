@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { IMenuItem } from '../../models/menu-item';
 
 @Component({
     selector: 'app-header',
@@ -10,6 +12,7 @@ export class AppHeaderComponent implements OnInit {
     @Input() logoPath: string;
     @Input() brand: string;
     @Input() sidebarOpen: boolean = false;
+    @Input() actions: Observable<IMenuItem[]>;
 
     @Output() onSidebarToggle = new EventEmitter();
 

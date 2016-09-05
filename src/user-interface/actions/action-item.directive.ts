@@ -37,14 +37,18 @@ export class ActionItemDirective implements AfterViewInit {
             });
         }
 
-        var i = this._renderer.createElement(anchor, 'i');
-
         // add icon if it was provided
         let icon = menuItem.icon;
 
         if (icon) {
+            var i = this._renderer.createElement(anchor, 'i');
+
             this._renderer.setElementClass(i, 'zmdi', true);
             this._renderer.setElementClass(i, `zmdi-${icon}`, true);
+
+            if (this._actionsService.showBig) {
+                this._renderer.setElementClass(i, 'tm-icon', true);
+            }
         }
 
         // add title if it was provided

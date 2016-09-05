@@ -12,6 +12,7 @@ import { ActionsService } from './actions.service';
 export class ActionsComponent implements OnInit {
     @Input() actionItems: IMenuItem[];
     @Input() alt: boolean;
+    @Input() showBig: boolean = false;
 
     @Output() actionClicked = new EventEmitter();
 
@@ -24,6 +25,8 @@ export class ActionsComponent implements OnInit {
     }
 
     public ngOnInit() {
+        this.actionsService.showBig = this.showBig;
+
         if (!this.actionItems || this.actionItems.length === 0) {
             throw 'Actions component need actions to show';
         }

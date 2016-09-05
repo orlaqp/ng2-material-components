@@ -7,4 +7,11 @@
         </bw-header>
     </div>
 
+    <div class="col-xs-12">
+        <bw-header [block]="true">
+            <h2>Some block header here</h2>
+            <actions [actionItems]="actionItems" [showBig]="true" (actionClicked)="onActionClicked($event)"></actions>
+        </bw-header>
+    </div>
+
 </div>

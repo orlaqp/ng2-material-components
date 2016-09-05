@@ -6,6 +6,8 @@ import { IMenuItem } from '../../models/menu-item';
 @Injectable()
 export class ActionsService {
 
+    showBig: boolean;
+
     // observable string streams
     actionClicked$: Observable<IMenuItem>;
 
