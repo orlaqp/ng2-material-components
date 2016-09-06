@@ -1,52 +1,51 @@
-<a name="0.0.17"></a>
-## [0.0.17](https://github.com/orlaqp/ng2-material-components/compare/v0.0.16...v0.0.17) (2016-09-04)
+<a name="0.0.18"></a>
+## [0.0.18](https://github.com/orlaqp/ng2-material-components/compare/v0.0.17...v0.0.18) (2016-09-06)
 
 
 
-<a name="0.0.16"></a>
-## [0.0.16](https://github.com/orlaqp/ng2-material-components/compare/v0.0.15...v0.0.16) (2016-09-04)
-
-
-
-<a name="0.0.15"></a>
-## [0.0.15](https://github.com/orlaqp/ng2-material-components/compare/v0.0.14...v0.0.15) (2016-09-04)
-
-
-
-<a name="0.0.14"></a>
-## [0.0.14](https://github.com/orlaqp/ng2-material-components/compare/v0.0.13...v0.0.14) (2016-09-02)
-
-
-
-<a name="0.0.13"></a>
-## [0.0.13](https://github.com/orlaqp/ng2-material-components/compare/v0.0.12...v0.0.13) (2016-09-02)
-
-
-
-<a name="0.0.12"></a>
-## [0.0.12](https://github.com/orlaqp/ng2-material-components/compare/v0.0.11...v0.0.12) (2016-09-02)
-
-
-
-<a name="0.0.11"></a>
-## [0.0.11](https://github.com/orlaqp/ng2-material-components/compare/v0.0.10...v0.0.11) (2016-09-02)
 
 
 
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [0.0.12] - 2016-08-30
+<a name="0.0.18"></a>
+## [0.0.18](https://github.com/orlaqp/ng2-material-components/compare/v0.0.17...v0.0.18) (2016-09-04)
+
+### Added
+
+- Support for actions to app header component
+- Support for Material Colors to Actions Component
+
+<a name="0.0.17"></a>
+## [0.0.17](https://github.com/orlaqp/ng2-material-components/compare/v0.0.16...v0.0.17) (2016-09-04)
+
+
+<a name="0.0.16"></a>
+## [0.0.16](https://github.com/orlaqp/ng2-material-components/compare/v0.0.15...v0.0.16) (2016-09-04)
+
+
+<a name="0.0.15"></a>
+## [0.0.15](https://github.com/orlaqp/ng2-material-components/compare/v0.0.14...v0.0.15) (2016-09-04)
+
+
+<a name="0.0.14"></a>
+## [0.0.14](https://github.com/orlaqp/ng2-material-components/compare/v0.0.13...v0.0.14) (2016-09-02)
 ### Added
 
 - Button Groups
 
-## [0.0.12] - 2016-08-30
+<a name="0.0.13"></a>
+## [0.0.13](https://github.com/orlaqp/ng2-material-components/compare/v0.0.12...v0.0.13) (2016-09-02)
+
+<a name="0.0.12"></a>
+## [0.0.12](https://github.com/orlaqp/ng2-material-components/compare/v0.0.11...v0.0.12) (2016-09-02)
 ### Added
 
 - Buttons
 
-## [0.0.11] - 2016-08-30
+<a name="0.0.11"></a>
+## [0.0.11](https://github.com/orlaqp/ng2-material-components/compare/v0.0.10...v0.0.11) (2016-09-02)
 ### Added
 
 - Header Component
