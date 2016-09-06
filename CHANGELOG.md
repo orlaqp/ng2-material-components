@@ -1,11 +1,3 @@
-<a name="0.0.18"></a>
-## [0.0.18](https://github.com/orlaqp/ng2-material-components/compare/v0.0.17...v0.0.18) (2016-09-06)
-
-
-
-
-
-
 # Change Log
 All notable changes to this project will be documented in this file.
 
