@@ -37,6 +37,13 @@
         top: -5px;
         z-index: 4;
     }
+
+    .top-menu {
+        position: absolute;
+        right: 10px;
+        top: -10px;
+        z-index: 4;
+    }
 }
 
 /*
@@ -47,6 +54,17 @@
     padding: 0;
     z-index: 3;
     margin: 0;
+
+    // colors
+    @each $color in $colors-array {
+        $t-color: nth($color, 1);
+        $bg-color: nth($color, 2);
+        $color: nth($color, 3);
+
+        &.#{$t-color} > li > a > i {
+            color: $color !important;
+        }
+    }
 
     & > li {
         display: inline-block;
@@ -62,7 +80,7 @@
         padding-top: 5px;
 
         & > i {
-            color: #adadad;
+            color: $m-light-gray;
             font-size: 20px;
         }
 

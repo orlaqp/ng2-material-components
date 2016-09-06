@@ -63,6 +63,17 @@
     list-style: none;
     padding: 0;
 
+    // colors
+    @each $color in $colors-array {
+        $t-color: nth($color, 1);
+        $bg-color: nth($color, 2);
+        $color: nth($color, 3);
+
+        &.#{$t-color} > li > a {
+            color: $color !important;
+        }
+    }
+
     & > li {
         display: inline-block;
         margin: 0 1px;
@@ -87,11 +98,13 @@
         }
 
         & > a {
-            color: #fff;
             display: block;
             text-align: center;
             z-index: 1;
             position: relative;
+
+            // colors
+
 
             & > .tm-icon {
                 font-size: 24px;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMenuItem } from '../../models/menu-item';
 import { ActionItemDirective } from './action-item.directive';
 import { ActionsService } from './actions.service';
@@ -11,12 +11,13 @@ import { ActionsService } from './actions.service';
 })
 export class ActionsComponent implements OnInit {
     @Input() actionItems: IMenuItem[];
-    @Input() alt: boolean;
+    @Input() alt: boolean = false;
     @Input() showBig: boolean = false;
+    @Input() color: string = 'light-gray';
 
     @Output() actionClicked = new EventEmitter();
 
-    @ViewChildren(ActionItemDirective) items: QueryList<ActionItemDirective>;
+    // @ViewChildren(ActionItemDirective) items: QueryList<ActionItemDirective>;
 
     constructor(private actionsService: ActionsService) {
         actionsService.actionClicked$.subscribe(actionItem => {

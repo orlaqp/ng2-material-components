@@ -1,4 +1,8 @@
-app-header(color="blue", [addMenuTrigger]="true", brand="Material Components - Demo", (onSidebarToggle)="open = $event")
+app-header(color="blue",
+    [addMenuTrigger]="true",
+    brand="Material Components - Demo",
+    (onSidebarToggle)="open = $event",
+    [actions]="headerActions")
 
 sidebar([open]="open")
     img.w-100(src="./img/angular-logo2.png")

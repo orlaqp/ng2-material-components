@@ -1,2 +1,6 @@
-ul.actions([ngClass]="{ 'actions-alt': alt, 'dropdown': dropdown, 'actions': !showBig, 'top-menu': showBig }")
+ul.actions(
+    class="c-{{color}}",
+    [ngClass]="{ 'actions-alt': alt, 'dropdown': dropdown }",
+    [class.actions]="!showBig",
+    [class.top-menu]="showBig")
     li(*ngFor="let item of actionItems", [actionItem]="item")

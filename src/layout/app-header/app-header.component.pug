@@ -15,6 +15,11 @@ header#header.clearfix([attr.data-current-skin]='color')
             a.m-l-10(href='index.html')
                 img(src='{{logo}}')
 
+        li.pull-right(*ngIf="actions")
+            actions(color="white",
+                [actionItems]="actions",
+                [showBig]="true",
+                (actionClicked)="headerActionClicked($event)")
 
     // for extra content injection
     ng-content

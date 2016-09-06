@@ -9,7 +9,7 @@ import { MATERIAL_USER_INTERFACE, IMenuItem } from '../../../../../dist/ng2-mate
 })
 export class DemoActionsComponent {
 
-    public actionItems: IMenuItem[] = [
+    actionItems: IMenuItem[] = [
         { id: '1', icon: 'refresh-alt' },
         { id: '2', icon: 'download' },
         { id: '3', icon: 'more-vert', children: [
@@ -19,7 +19,13 @@ export class DemoActionsComponent {
         ] },
     ];
 
+    actionsColor: string = 'light-gray';
+
     onActionClicked(menuItem: IMenuItem): void {
         window.alert('Action: ' + menuItem.id + ' clicked');
+    }
+
+    changeActionsColor(color: string) {
+        this.actionsColor = color;
     }
 }
