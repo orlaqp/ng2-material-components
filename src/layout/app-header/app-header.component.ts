@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IMenuItem } from '../../models/menu-item';
 
@@ -6,7 +6,7 @@ import { IMenuItem } from '../../models/menu-item';
     selector: 'app-header',
     templateUrl: 'app-header.component.pug',
 })
-export class AppHeaderComponent implements OnInit {
+export class AppHeaderComponent {
     @Input() color: string;
     @Input() addMenuTrigger: boolean;
     @Input() logoPath: string;
@@ -22,6 +22,4 @@ export class AppHeaderComponent implements OnInit {
         this.sidebarOpen = !this.sidebarOpen;
         this.onSidebarToggle.emit(this.sidebarOpen);
     }
-
-    ngOnInit() { }
 }
