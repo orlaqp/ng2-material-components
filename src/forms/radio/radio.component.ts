@@ -1,6 +1,6 @@
-import { Component, Input, Inject, Host, forwardRef, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
-import { RadioGroupComponent } from './radio-group.component';
+import { RadioGroupService } from './radio-group.service';
 
 /**
  * Encapsulate checkbox control functionality
@@ -18,21 +18,27 @@ export class RadioComponent implements AfterViewInit {
     @Input() label: string;
     @Input() disabled: boolean;
     @Input() nane: string;
-
     @Input() value: string;
 
     get groupName() : string {
-        return this.radioGroup.field.replace('.', '_');
+        return this._service.fieldName.replace('.', '_');
     }
 
     constructor(
         private el: ElementRef,
-        @Host() @Inject(forwardRef(() => RadioGroupComponent)) private radioGroup: RadioGroupComponent) { }
+        // @Host() @Inject(forwardRef(() => RadioGroupComponent)) private radioGroup: RadioGroupComponent
+        private _service: RadioGroupService
+    ) { }
 
     public ngAfterViewInit() {
-        if (this.radioGroup.defaultValue === this.value) {
-            this.el.nativeElement.getElementsByTagName('input')[0].checked = true;
-            setTimeout(() => { this._updateValue(); }, 0);
+        let ele: any = this.el.nativeElement.getElementsByTagName('input')[0];
+
+        this._service.optionSelected$.subscribe((value) => {
+            ele.checked = value === this.value;
+        });
+
+        if (this._service.defaultValue === this.value) {
+            window.setTimeout(() => { this._service.announceSelectedOption(this.value); }, 0);
         }
     }
 
@@ -41,7 +47,7 @@ export class RadioComponent implements AfterViewInit {
     }
 
     private _updateValue(): void {
-        this.radioGroup.control.updateValue(this.value);
+        this._service.announceSelectedOption(this.value);
     }
 
 }

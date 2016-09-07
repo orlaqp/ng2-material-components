@@ -17,8 +17,6 @@ export class ActionsComponent implements OnInit {
 
     @Output() actionClicked = new EventEmitter();
 
-    // @ViewChildren(ActionItemDirective) items: QueryList<ActionItemDirective>;
-
     constructor(private actionsService: ActionsService) {
         actionsService.actionClicked$.subscribe(actionItem => {
             this.actionClicked.emit(actionItem);
