@@ -29,5 +29,4 @@ export interface IDateRangeOptions {
     drops: string; // 'down' or 'up'
     buttonClasses: string;
     isInvalidDate?: Function;
-    
 };
