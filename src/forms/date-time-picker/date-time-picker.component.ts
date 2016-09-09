@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, Input, ElementRef } from '@angular/co
 // import { SelectControlValueAccessor } from '@angular/forms';
 import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroupDirective } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
+import { Picker } from './picker';
 import {
     datePickerModes,
     keyMap,
@@ -35,7 +36,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() timeZone: string = '';
     @Input() format: string = 'MM/DD/YYYY hh:mm:ss A';
     @Input() dayViewHeaderFormat: string = 'MMMM YYYY';
-    @Input() extraFormats: boolean = false;
+    @Input() extraFormats: string = null;
     @Input() stepping: number = 1;
     @Input() minDate: moment.Moment;
     @Input() maxDate: moment.Moment;
@@ -72,7 +73,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() enabledHours: boolean = false;
     @Input() viewDate: moment.Moment;
 
-    private picker: any = {};
+    private picker: Picker;
     private component: JQuery;
     private element: JQuery;
     private widget: JQuery;
@@ -80,8 +81,8 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     private date: moment.Moment;
     private unset = true;
     private input: JQuery;
-    private component: boolean = false;
-    private widget: boolean = false;
+    private component: JQuery = null;
+    private widget: JQuery = null;
     private use24Hours: boolean;
     private minViewModeNumber: number = 0;
     private actualFormat: string;
@@ -240,7 +241,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
                 // NOTE: uncomment if toggled state will be restored in show()
                 //if (component) {
-                //    component.find('span').toggleClass(options.icons.time + ' ' + options.icons.date);
+                //    component.find('span').toggleClass(this.icons.time + ' ' + this.icons.date);
                 //}
             }
         },
@@ -355,74 +356,74 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
                 },
                 'minute': function (m: moment.Moment) {
                     return m.seconds(0);
-                }
+                },
             };
 
         if (this.input.prop('disabled') || (!this.ignoreReadonly && this.input.prop('readonly')) || this.widget) {
             return this.picker;
         }
-        if (input.val() !== undefined && input.val().trim().length !== 0) {
-            setValue(parseInputDate(input.val().trim()));
-        } else if (unset && options.useCurrent && (options.inline || (input.is('input') && input.val().trim().length === 0))) {
-            currentMoment = getMoment();
-            if (typeof options.useCurrent === 'string') {
-                currentMoment = useCurrentGranularity[options.useCurrent](currentMoment);
+        if (this.input.val() !== undefined && this.input.val().trim().length !== 0) {
+            this.setValue(this.parseInputDate(this.input.val().trim()));
+        } else if (this.unset && this.useCurrent && (this.inline || (this.input.is('input') && this.input.val().trim().length === 0))) {
+            currentMoment = this.getMoment();
+            if (typeof this.useCurrent === 'string') {
+                currentMoment = this.useCurrentGranularity[this.useCurrent](currentMoment);
             }
-            setValue(currentMoment);
+            this.setValue(currentMoment);
         }
-        widget = getTemplate();
+        this.widget = this.getTemplate();
 
-        fillDow();
-        fillMonths();
+        this.fillDow();
+        this.fillMonths();
 
-        widget.find('.timepicker-hours').hide();
-        widget.find('.timepicker-minutes').hide();
-        widget.find('.timepicker-seconds').hide();
+        this.widget.find('.timepicker-hours').hide();
+        this.widget.find('.timepicker-minutes').hide();
+        this.widget.find('.timepicker-seconds').hide();
 
-        update();
-        showMode();
+        this.update();
+        this.showMode();
 
-        $(window).on('resize', place);
-        widget.on('click', '[data-action]', doAction); // this handles clicks on the widget
-        widget.on('mousedown', false);
+        $(window).on('resize', this.place);
+        this.widget.on('click', '[data-action]', this.doAction); // this handles clicks on the widget
+        (<any>this.widget).on('mousedown', false);
 
-        if (component && component.hasClass('btn')) {
-            component.toggleClass('active');
+        if (this.component && this.component.hasClass('btn')) {
+            this.component.toggleClass('active');
         }
-        place();
-        widget.show();
-        if (options.focusOnShow && !input.is(':focus')) {
-            input.focus();
+        this.place();
+        this.widget.show();
+        if (this.focusOnShow && !this.input.is(':focus')) {
+            this.input.focus();
         }
 
-        notifyEvent({
-            type: 'dp.show'
+        this.notifyEvent({
+            type: 'dp.show',
         });
-        return picker;
+        return this.picker;
     }
 
     /**
      * Shows or hides the widget
      */
     toggle() {
-        return (widget ? hide() : show());
+        return (this.widget ? this.hide() : this.show());
     }
 
-    keydown(e) {
-        var handler = null,
-            index,
-            index2,
-            pressedKeys = [],
+    keydown(e: JQueryEventObject) {
+        var handler: any = null,
+            index: string,
+            index2: number,
+            pressedKeys: string[] = [],
             pressedModifiers = {},
             currentKey = e.which,
-            keyBindKeys,
-            allModifiersPressed,
+            keyBindKeys: string[],
+            allModifiersPressed: boolean,
             pressed = 'p';
 
-        keyState[currentKey] = pressed;
+        this.keyState[currentKey] = pressed;
 
-        for (index in keyState) {
-            if (keyState.hasOwnProperty(index) && keyState[index] === pressed) {
+        for (index in this.keyState) {
+            if (this.keyState.hasOwnProperty(index) && this.keyState[index] === pressed) {
                 pressedKeys.push(index);
                 if (parseInt(index, 10) !== currentKey) {
                     pressedModifiers[index] = true;
@@ -430,8 +431,8 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
             }
         }
 
-        for (index in options.keyBinds) {
-            if (options.keyBinds.hasOwnProperty(index) && typeof (options.keyBinds[index]) === 'function') {
+        for (index in this.keyBinds) {
+            if (this.keyBinds.hasOwnProperty(index) && typeof (this.keyBinds[index]) === 'function') {
                 keyBindKeys = index.split(' ');
                 if (keyBindKeys.length === pressedKeys.length && keyMap[currentKey] === keyBindKeys[keyBindKeys.length - 1]) {
                     allModifiersPressed = true;
@@ -442,7 +443,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
                         }
                     }
                     if (allModifiersPressed) {
-                        handler = options.keyBinds[index];
+                        handler = this.keyBinds[index];
                         break;
                     }
                 }
@@ -450,26 +451,141 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         }
 
         if (handler) {
-            handler.call(picker, widget);
+            handler.call(this.picker, this.widget);
             e.stopPropagation();
             e.preventDefault();
         }
     }
 
-
-    private _getOptions(): any {
-        // Object.assign(options, {
-        //     format: this.format,
-        //     minDate: this.minDate,
-        //     maxDate: this.maxDate,
-        //     disabledDates: this.disabledDates,
-        //     enabledDates: this.enabledDates,
-        //     sideBySide: this.sideBySide,
-        //     inline: this.inline,
-        // });
-        //
-        // return options;
+    keyup(e: JQueryEventObject) {
+        this.keyState[e.which] = 'r';
+        e.stopPropagation();
+        e.preventDefault();
     }
+
+    change(e: JQueryEventObject) {
+        var val = $(e.target).val().trim(),
+            parsedDate = val ? this.parseInputDate(val) : null;
+        this.setValue(parsedDate);
+        e.stopImmediatePropagation();
+        return false;
+    }
+
+    attachDatePickerElementEvents() {
+        this.input.on({
+            'change': this.change,
+            'blur': this.debug ? '' : this.hide,
+            'keydown': this.keydown,
+            'keyup': this.keyup,
+            'focus': this.allowInputToggle ? this.show : '',
+        });
+
+        if (this.element.is('input')) {
+            this.input.on({
+                'focus': this.show,
+            });
+        } else if (this.component) {
+            this.component.on('click', this.toggle);
+            (<any>this.component).on('mousedown', false);
+        }
+    }
+
+    detachDatePickerElementEvents() {
+        this.input.off({
+            'change': this.change,
+            'blur': blur,
+            'keydown': this.keydown,
+            'keyup': this.keyup,
+            'focus': this.allowInputToggle ? this.hide : '',
+        });
+
+        if (this.element.is('input')) {
+            this.input.off({
+                'focus': this.show,
+            });
+        } else if (this.component) {
+            this.component.off('click', this.toggle);
+            (<any>this.component).off('mousedown', false);
+        }
+    }
+
+    indexGivenDates(givenDatesArray: any) {
+        // Store given enabledDates and disabledDates as keys.
+        // This way we can check their existence in O(1) time instead of looping through whole array.
+        // (for example: options.enabledDates['2014-02-27'] === true)
+        var givenDatesIndexed = {};
+        $.each(givenDatesArray, function () {
+            var dDate = this.parseInputDate(this);
+            if (dDate.isValid()) {
+                givenDatesIndexed[dDate.format('YYYY-MM-DD')] = true;
+            }
+        });
+        return (Object.keys(givenDatesIndexed).length) ? givenDatesIndexed : false;
+    }
+
+    indexGivenHours(givenHoursArray: any) {
+        // Store given enabledHours and disabledHours as keys.
+        // This way we can check their existence in O(1) time instead of looping through whole array.
+        // (for example: options.enabledHours['2014-02-27'] === true)
+        var givenHoursIndexed = {};
+        $.each(givenHoursArray, function () {
+            givenHoursIndexed[this] = true;
+        });
+        return (Object.keys(givenHoursIndexed).length) ? givenHoursIndexed : false;
+    }
+
+    initFormatting() {
+        var format = this.format || 'L LT';
+
+        this.actualFormat = format.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function (formatInput) {
+            var newinput = this.date.localeData().longDateFormat(formatInput) || formatInput;
+            return newinput.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function (formatInput2: string) { //temp fix for #740
+                return this.date.localeData().longDateFormat(formatInput2) || formatInput2;
+            });
+        });
+
+
+        this.parseFormats = this.extraFormats ? this.extraFormats.slice() : [];
+        if (this.parseFormats.indexOf(format) < 0 && this.parseFormats.indexOf(this.actualFormat) < 0) {
+            this.parseFormats.push(this.actualFormat);
+        }
+
+        this.use24Hours = (this.actualFormat.toLowerCase().indexOf('a') < 1 && this.actualFormat.replace(/\[.*?\]/g, '').indexOf('h') < 1);
+
+        if (this.isEnabled('y')) {
+            this.minViewModeNumber = 2;
+        }
+        if (this.isEnabled('M')) {
+            this.minViewModeNumber = 1;
+        }
+        if (this.isEnabled('d')) {
+            this.minViewModeNumber = 0;
+        }
+
+        this.currentViewMode = Math.max(this.minViewModeNumber, this.currentViewMode);
+
+        if (!this.unset) {
+            this.setValue(this.date);
+        }
+    };
+
+
+    /********************************************************************************
+     *
+     * Public API functions
+     * =====================
+     *
+     * Important: Do not expose direct references to private objects or the options
+     * object to the outer world. Always return a clone when returning values or make
+     * a clone when setting a private variable.
+     *
+     ********************************************************************************/
+
+
+
+
+
+
 
     private _dateFormatted(d: moment.Moment) {
         return d.format(this.format);
@@ -828,7 +944,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         });
     }
 
-    private showMode(dir: number) {
+    private showMode(dir?: number) {
         if (!this.widget) {
             return;
         }
