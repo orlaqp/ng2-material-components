@@ -103,8 +103,8 @@ const config = {
                 }, {
                     from: path.resolve(__dirname, 'index.css')
                 }, {
-                    from: path.resolve(__dirname, '../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'),
-                    to: 'assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js'
+                    from: path.resolve(__dirname, '../node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'),
+                    to: 'assets/bootstrap-datetimepicker/bootstrap-datetimepicker.js'
                 }, {
                     from: path.resolve(__dirname, '../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'),
                     to: 'assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'
