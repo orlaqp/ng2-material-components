@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+import { Component, OnInit, OnDestroy, Input, ElementRef } from '@angular/core';
+import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
-import { IDateRangeOptions } from './date-range-options';
 import { pickerTemplate } from './date-range-picker.helper';
+import { InputBase } from '../input-base/input-base.component';
 
 @Component({
     moduleId: module.id,
@@ -10,36 +10,40 @@ import { pickerTemplate } from './date-range-picker.helper';
     directives: [REACTIVE_FORM_DIRECTIVES],
     templateUrl: '../input-base/input-base.component.pug',
 })
-export class DateRangePickerComponent implements OnInit {
+export class DateRangePickerComponent extends InputBase implements OnInit, OnDestroy {
 
-    @Input() parentEl: JQuery;
-    @Input() startDate: moment.Moment;
-    @Input() endDate: moment.Moment;
+    @Input() fgd: FormGroupDirective;
+    @Input() placeholder: string;
+    @Input() field: string;
+    @Input() label: string;
+
+    @Input() parentEl: JQuery = $('body');
+    @Input() startDate: moment.Moment = moment().startOf('day');
+    @Input() endDate: moment.Moment = moment().endOf('day');
     @Input() minDate: moment.Moment;
     @Input() maxDate: moment.Moment;
-    @Input() dateLimit: boolean | Object;
-    @Input() autoApply: boolean;
-    @Input() singleDatePicker: boolean;
-    @Input() showDropdowns: boolean;
-    @Input() showWeekNumbers: boolean;
-    @Input() showISOWeekNumbers: boolean;
-    @Input() showCustomRangeLabel: boolean;
-    @Input() timePicker: boolean;
-    @Input() timePicker24Hour: boolean;
-    @Input() timePickerIncrement: number;
-    @Input() timePickerSeconds: boolean;
-    @Input() linkedCalendars: boolean;
-    @Input() autoUpdateInput: boolean;
-    @Input() alwaysShowCalendars: boolean;
-    @Input() ranges: any;
-    @Input() applyClass: string;
-    @Input() cancelClass: string;
+    @Input() dateLimit: boolean | Object = false;
+    @Input() autoApply: boolean = false;
+    @Input() singleDatePicker: boolean = false;
+    @Input() showDropdowns: boolean = false;
+    @Input() showWeekNumbers: boolean = false;
+    @Input() showISOWeekNumbers: boolean = false;
+    @Input() showCustomRangeLabel: boolean = true;
+    @Input() timePicker: boolean = false;
+    @Input() timePicker24Hour: boolean = false;
+    @Input() timePickerIncrement: number = 1;
+    @Input() timePickerSeconds: boolean = false;
+    @Input() linkedCalendars: boolean = true;
+    @Input() autoUpdateInput: boolean = true;
+    @Input() alwaysShowCalendars: boolean = false;
+    @Input() ranges: any = {};
+    @Input() buttonClasses: string = 'btn btn-sm';
+    @Input() applyClass: string = 'btn-success';
+    @Input() cancelClass: string = 'btn-default';
     @Input() template: string | JQuery;
     @Input() locale: IDateRangePickerLocale;
     @Input() opens: string; // 'left'/'right'/'center'
     @Input() drops: string; // 'down' or 'up'
-    @Input() buttonClasses: string;
-    @Input() isInvalidDate: Function;
 
     private element: JQuery;
     private container: JQuery;
@@ -56,10 +60,13 @@ export class DateRangePickerComponent implements OnInit {
     private chosenLabel: string;
 
     constructor(private ele: ElementRef) {
-        this.element = $(ele.nativeElement);
+        super(ele);
     }
 
     ngOnInit() {
+        this.onInit();
+
+        this.element = $(this.ele.nativeElement).find('.form-control');
 
         if (this.element.hasClass('dropup'))
             this.drops = 'up';
@@ -88,10 +95,17 @@ export class DateRangePickerComponent implements OnInit {
             this.template = pickerTemplate;
 
         // find out the parent element
-        this.parentEl = (this.parentEl && $(this.parentEl).length)
-            ? $(this.parentEl) : $(this.parentEl);
+        // this.parentEl = (this.parentEl && $(this.parentEl).length)
+        //     ? $(this.parentEl) : $(this.parentEl);
 
-        this.container = $(this.template).appendTo(this.parentEl);
+        // check if the template does not exist in parentEL yet
+        let container: any = this.parentEl.find('.daterangepicker');
+
+        if (container.length === 0) {
+            this.container = $(this.template).appendTo(this.parentEl);
+        } else {
+            this.container = container;
+        }
 
         this._handleOverrides();
         this._processInitialValues();
@@ -125,8 +139,13 @@ export class DateRangePickerComponent implements OnInit {
         this._processEventListeners();
         this._processInitialValue();
 
-
     }
+
+    ngOnDestroy() {
+        this.remove();
+    }
+
+    public addValidators(): void { }
 
     private _handleOverrides(): void {
 
@@ -222,7 +241,7 @@ export class DateRangePickerComponent implements OnInit {
             this.buttonClasses = this.buttonClasses;
 
         if (typeof this.buttonClasses === 'object')
-            this.buttonClasses = this.buttonClasses.join(' ');
+            this.buttonClasses = (<any>this.buttonClasses).join(' ');
 
         if (typeof this.showDropdowns === 'boolean')
             this.showDropdowns = this.showDropdowns;
@@ -348,7 +367,7 @@ export class DateRangePickerComponent implements OnInit {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
             }
             if (this.showCustomRangeLabel) {
-                list += '<li data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
+                list += '<li class="btn btn-sm" data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
             }
             list += '</ul>';
             this.container.find('.ranges').prepend(list);
@@ -506,9 +525,9 @@ export class DateRangePickerComponent implements OnInit {
         this.updateMonthsInView();
     };
 
-    // private isInvalidDate(options?: any) {
-    //     return false;
-    // }
+    private isInvalidDate(options?: any) {
+        return false;
+    }
 
     private isCustomDate(options?: any) {
        return false;
@@ -647,7 +666,6 @@ export class DateRangePickerComponent implements OnInit {
 
         var curDate = moment([lastYear, lastMonth, startDay, 12, minute, second]);
 
-        let col: number, row: number;
         for (let i = 0, col = 0, row = 0; i < 42; i++, col++, curDate = moment(curDate).add(24, 'hour')) {
             if (i > 0 && col % 7 === 0) {
                 col = 0;
@@ -679,7 +697,7 @@ export class DateRangePickerComponent implements OnInit {
 
         var minDate = side === 'left' ? this.minDate : this.startDate;
         var maxDate = this.maxDate;
-        var selected: moment.Moment = side === 'left' ? this.startDate : this.endDate;
+        // var selected: moment.Moment = side === 'left' ? this.startDate : this.endDate;
         var arrow = this.locale.direction === 'ltr' ? {left: 'chevron-left', right: 'chevron-right'} : {left: 'chevron-right', right: 'chevron-left'};
 
         var html = '<table class="table-condensed">';
@@ -691,7 +709,7 @@ export class DateRangePickerComponent implements OnInit {
             html += '<th></th>';
 
         if ((!minDate || minDate.isBefore(calendar.firstDay)) && (!this.linkedCalendars || side === 'left')) {
-            html += '<th class="prev available"><i class="fa fa-' + arrow.left + ' glyphicon glyphicon-' + arrow.left + '"></i></th>';
+            html += '<th class="prev available"><i class="zmdi zmdi-' + arrow.left + '"></i></th>';
         } else {
             html += '<th></th>';
         }
@@ -733,7 +751,7 @@ export class DateRangePickerComponent implements OnInit {
 
         html += '<th colspan="5" class="month">' + dateHtml + '</th>';
         if ((!maxDate || maxDate.isAfter(calendar.lastDay)) && (!this.linkedCalendars || side === 'right' || this.singleDatePicker)) {
-            html += '<th class="next available"><i class="fa fa-' + arrow.right + ' glyphicon glyphicon-' + arrow.right + '"></i></th>';
+            html += '<th class="next available"><i class="zmdi zmdi-' + arrow.right + '"></i></th>';
         } else {
             html += '<th></th>';
         }
@@ -1141,20 +1159,20 @@ export class DateRangePickerComponent implements OnInit {
        }
     }
 
-    // private outsideClick(e: MouseEvent) {
-    //    var target = $(e.target);
-    //    // if the page is clicked anywhere except within the daterangerpicker/button
-    //    // itself then call this.hide()
-    //    if (
-    //        // ie modal dialog fix
-    //        e.type === 'focusin' ||
-    //        target.closest(this.element).length ||
-    //        target.closest(this.container).length ||
-    //        target.closest('.calendar-table').length
-    //        ) return;
-    //    this.hide();
-    //    this.element.trigger('outsideClick.daterangepicker', this);
-    // }
+    private outsideClick(e: MouseEvent) {
+       var target = $(e.target);
+       // if the page is clicked anywhere except within the daterangerpicker/button
+       // itself then call this.hide()
+       if (
+           // ie modal dialog fix
+           e.type === 'focusin' ||
+           target.closest(this.element).length ||
+           target.closest(this.container).length ||
+           target.closest('.calendar-table').length
+           ) return;
+       this.hide();
+       this.element.trigger('outsideClick.daterangepicker', this);
+    }
 
     private showCalendars() {
        this.container.addClass('show-calendar');
@@ -1374,9 +1392,17 @@ export class DateRangePickerComponent implements OnInit {
       }
     }
 
-    private clickApply(e: JQueryMouseEventObject) {
+    private clickApply(e?: JQueryMouseEventObject) {
         this.hide();
         this.element.trigger('apply.daterangepicker', this);
+        this.updateControlValue();
+    }
+
+    private updateControlValue() {
+        let startDate = this.startDate.format(this.locale.format);
+        let endDate = this.endDate.format(this.locale.format);
+
+        this.control.updateValue(`${startDate} - ${endDate}`);
     }
 
     private clickCancel(e: JQueryMouseEventObject) {
