@@ -19,9 +19,9 @@ $bs-daterangepicker-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !default;
 
 .daterangepicker {
 
-    .calendar.left .calendar-table {
-        padding-right: 0px;
-    }
+    // .calendar.left .calendar-table {
+    //     padding-right: 0px !important;
+    // }
 
     .table-condensed {
         & > thead {
@@ -60,7 +60,14 @@ $bs-daterangepicker-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !default;
     td.active, td.active:hover {
         background-color: $bs-daterangepicker-header-bg !important;
         color: #fff !important;
-        border-radius: 50% !important;
+
+        &.start-date {
+            border-radius: 50% 0 0 50% !important;
+        }
+
+        &.end-date {
+            border-radius: 0% 50% 50% 0% !important;
+        }
     }
 
 }
