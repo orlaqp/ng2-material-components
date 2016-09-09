@@ -27,6 +27,20 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() sideBySide: boolean;
     @Input() inline: boolean;
 
+
+    private date: moment.Moment;
+    private viewDate: string;
+    private unset = true;
+    private input: JQuery;
+    private component: boolean = false;
+    private widget: boolean = false;
+    private use24Hours: boolean;
+    private minViewModeNumber: number = 0;
+    private actualFormat: string;
+    private parseFormats: string[];
+    private currentViewMode: string
+    private keyState: any = {};
+
     constructor(private el: ElementRef) {
         super(el);
     }
