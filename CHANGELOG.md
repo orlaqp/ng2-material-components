@@ -1,7 +1,20 @@
+<a name="0.0.20"></a>
+## [0.0.20](https://github.com/orlaqp/ng2-material-components/compare/v0.0.19...v0.0.20) (2016-09-09)
+
+
+
 # Change Log
 All notable changes to this project will be documented in this file.
 
-<a name="0.0.18"></a>
+<a name="0.0.20"></a>
+## [0.0.20](https://github.com/orlaqp/ng2-material-components/compare/v0.0.19...v0.0.20) (2016-09-09)
+
+### Changed
+
+- Removed dependency from date range jquery plugin
+
+
+<a name="0.0.19"></a>
 ## [0.0.19](https://github.com/orlaqp/ng2-material-components/compare/v0.0.18...v0.0.19) (2016-09-07)
 
 ### Fixed
