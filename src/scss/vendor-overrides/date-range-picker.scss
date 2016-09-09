@@ -1,0 +1,73 @@
+$bs-daterangepicker-header-bg: $m-teal;
+$bs-daterangepicker-header-bg2: #00877a;
+$bs-off-color: #CDCDCD;
+$bs-on-color: #333;
+
+
+
+$bs-daterangepicker-timepicker-font-size: 1.2em !default;
+$bs-daterangepicker-active-bg: $btn-primary-bg !default;
+$bs-daterangepicker-active-color: $btn-primary-color !default;
+$bs-daterangepicker-border-radius: $border-radius-base !default;
+$bs-daterangepicker-btn-hover-bg: $gray-lighter !default;
+$bs-daterangepicker-disabled-color: $gray-light !default;
+$bs-daterangepicker-alternate-color: $gray-light !default;
+$bs-daterangepicker-secondary-border-color: #ccc !default;
+$bs-daterangepicker-secondary-border-color-rgba: rgba(0, 0, 0, 0.2) !default;
+$bs-daterangepicker-primary-border-color: white !default;
+$bs-daterangepicker-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !default;
+
+.daterangepicker {
+
+    // .calendar.left .calendar-table {
+    //     padding-right: 0px !important;
+    // }
+
+    .table-condensed {
+        & > thead {
+            & th {
+                border-radius: 0;
+                color: white;
+                font-weight: 100;
+                text-transform: uppercase;
+            }
+
+            & > tr:first-child > th {
+                background-color: $bs-daterangepicker-header-bg;
+                height: 45px;
+            }
+
+            & > tr:nth-child(2) > th {
+                background-color: $bs-daterangepicker-header-bg2;
+            }
+        }
+
+        & > tbody {
+
+            td {
+                font-size: 13px;
+                font-weight: normal;
+                color: $bs-on-color;
+            }
+
+        }
+    }
+
+    .off {
+        color: $bs-off-color !important;
+    }
+
+    td.active, td.active:hover {
+        background-color: $bs-daterangepicker-header-bg !important;
+        color: #fff !important;
+
+        &.start-date {
+            border-radius: 50% 0 0 50% !important;
+        }
+
+        &.end-date {
+            border-radius: 0% 50% 50% 0% !important;
+        }
+    }
+
+}

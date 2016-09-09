@@ -2,7 +2,6 @@ include ../../mixins/base.pug
 
 .input-group.m-b-15.w-100(
     [class.fg-float]="floatingLabel"
-    style="width: 100%"
     [ngClass]="{ 'has-error': !control.valid && (fgd.form.submitted || control.dirty)}")
 
     label(*ngIf="label && !floatingLabel") {{label}}
