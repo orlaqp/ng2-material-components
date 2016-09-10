@@ -511,7 +511,7 @@ export class Picker {
         this.viewMode = viewMode;
         currentViewMode = Math.max(viewModes.indexOf(viewMode), minViewModeNumber);
 
-        showMode();
+        this.showMode();
         return picker;
     }
 

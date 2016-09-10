@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ElementRef } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroupDirective } from '@angular/forms';
 import { DateTimePickerBase } from './date-time-picker-base';
-import { IDateTimePickerOptions, extractOptions } from './date-time-picker-options';
+import { extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
 
 declare var $: JQueryStatic;
@@ -52,7 +52,6 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     @Input() focusOnShow: boolean = true;
     @Input() inline: boolean = false;
     @Input() keepInvalid: boolean = false;
-    @Input() datepickerInput: string = '.form-control';
     @Input() keyBinds: any = this.keyBinds;
     @Input() debug: boolean = false;
     @Input() allowInputToggle: boolean = true;
@@ -61,11 +60,13 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     @Input() enabledHours: boolean = false;
     @Input() viewDate: moment.Moment;
     @Input() parseInputDateFn: Function;
+    @Input() timePicker: boolean = false;
 
     public unset = true;
     public parseFormats: string[];
     public actualFormat: string;
 
+    private datepickerInput: string = '.form-control';
     private date: moment.Moment;
     private use24Hours: boolean;
     private minViewModeNumber: number = 0;
@@ -87,7 +88,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         },
 
         pickerSwitch: function() {
-            this.showMode(1);
+             this.pickerComponent.showMode(1);
         },
 
         selectMonth: (e: JQueryEventObject) => {
@@ -99,7 +100,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
                     this.hide();
                 }
             } else {
-                this.showMode(-1);
+                 this.showMode(-1);
                 this.fillDate();
             }
             this.viewUpdate('M');
@@ -114,7 +115,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
                     this.hide();
                 }
             } else {
-                this.showMode(-1);
+                 this.showMode(-1);
                 this.fillDate();
             }
             this.viewUpdate('YYYY');
@@ -129,7 +130,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
                     this.hide();
                 }
             } else {
-                this.showMode(-1);
+                 this.pickerComponent.showMode(-1);
                 this.fillDate();
             }
             this.viewUpdate('YYYY');
@@ -1414,8 +1415,12 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
             this.date = targetMoment;
             //viewDate = date.clone(); // TODO this doesn't work right on first use
             this.input.val(this.date.format(this.actualFormat));
-            this.element.data('date', this.date.format(this.actualFormat));
-            this.unset = false;
+
+            let dateFormat = this.date.format(this.actualFormat);
+            this.control.updateValue(dateFormat);
+
+            this.element.data('date', dateFormat);
+            // this.unset = false;
             this.update();
             this.notifyEvent({
                 type: 'dp.change',

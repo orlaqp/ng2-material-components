@@ -44,13 +44,7 @@ export class App implements OnInit {
         ];
     }
 
-    ngOnInit() {
-        // this._headerActionsSubject = new Subject<IMenuItem[]>();
-
-        // debugger;
-        //
-        // this._headerActionsSubject.next(items);
-    }
+    ngOnInit() { }
 
     testRouting() {
         this._router.navigateByUrl('/layout');
