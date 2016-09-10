@@ -52,21 +52,23 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     @Input() focusOnShow: boolean = true;
     @Input() inline: boolean = false;
     @Input() keepInvalid: boolean = false;
-    @Input() datepickerInput: string = '.datepickerinput';
+    @Input() datepickerInput: string = '.form-control';
     @Input() keyBinds: any = this.keyBinds;
     @Input() debug: boolean = false;
-    @Input() allowInputToggle: boolean = false;
+    @Input() allowInputToggle: boolean = true;
     @Input() disabledTimeIntervals: boolean = false;
     @Input() disabledHours: boolean = false;
     @Input() enabledHours: boolean = false;
     @Input() viewDate: moment.Moment;
+    @Input() parseInputDateFn: Function;
+
+    public unset = true;
+    public parseFormats: string[];
+    public actualFormat: string;
 
     private date: moment.Moment;
-    private unset = true;
     private use24Hours: boolean;
     private minViewModeNumber: number = 0;
-    private actualFormat: string;
-    private parseFormats: string[];
     private currentViewMode: number;
     private keyState: any = {};
     private actions: any = {
@@ -309,8 +311,8 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         //         this.control.updateValue(this._dateFormatted(d));
         //     });
 
-
         // initializing element and component attributes
+
         if (this.element.is('input')) {
             this.input = this.element;
         } else {
@@ -341,7 +343,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
 
         // $.extend(true, options, dataToOptions());
 
-        this.picker = new Picker(this.component, this.element, extractOptions(this));
+        this.picker = new Picker(this, extractOptions(this));
 
         this.initFormatting();
 
@@ -422,8 +424,8 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         this.update();
         this.showMode();
 
-        $(window).on('resize', this.place);
-        this.widget.on('click', '[data-action]', this.doAction); // this handles clicks on the widget
+        $(window).on('resize', $.proxy(this.place, this));
+        this.widget.on('click', '[data-action]', $.proxy(this.doAction, this)); // this handles clicks on the widget
         (<any>this.widget).on('mousedown', false);
 
         if (this.component && this.component.hasClass('btn')) {
@@ -512,19 +514,19 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
 
     attachDatePickerElementEvents() {
         this.input.on({
-            'change': this.change,
-            'blur': this.debug ? '' : this.hide,
-            'keydown': this.keydown,
-            'keyup': this.keyup,
-            'focus': this.allowInputToggle ? this.show : '',
+            'change': $.proxy(this.change, this),
+            'blur': this.debug ? '' : $.proxy(this.hide, this),
+            'keydown': $.proxy(this.keydown, this),
+            'keyup': $.proxy(this.keyup, this),
+            'focus': this.allowInputToggle ? $.proxy(this.show, this) : '',
         });
 
         if (this.element.is('input')) {
             this.input.on({
-                'focus': this.show,
+                'focus': $.proxy(this.show, this),
             });
         } else if (this.component) {
-            this.component.on('click', this.toggle);
+            this.component.on('click', $.proxy(this.toggle, this));
             (<any>this.component).on('mousedown', false);
         }
     }
@@ -601,6 +603,13 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
             this.minViewModeNumber = 0;
         }
 
+        // get currentViewMode based on the viewMode input
+        let viewMode = this.viewMode;
+        let mode: any = this.datePickerModes.find((value: { clsName: string, navFnc: string, navStep: number}): boolean => {
+            return value.clsName === viewMode;
+        });
+        this.currentViewMode = mode.navStep;
+
         this.currentViewMode = Math.max(this.minViewModeNumber, this.currentViewMode);
 
         if (!this.unset) {
@@ -608,6 +617,48 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         }
     };
 
+
+    hide() {
+        var transitioning = false;
+        if (!this.widget) {
+            return this.picker;
+        }
+        // Ignore event if in the middle of a picker transition
+        this.widget.find('.collapse').each(function() {
+            var collapseData = $(this).data('collapse');
+            if (collapseData && collapseData.transitioning) {
+                transitioning = true;
+                return false;
+            }
+            return true;
+        });
+        if (transitioning) {
+            return this.picker;
+        }
+        if (this.component && this.component.hasClass('btn')) {
+            this.component.toggleClass('active');
+        }
+        this.widget.hide();
+
+        $(window).off('resize', this.place);
+        this.widget.off('click', '[data-action]');
+        (<any>this.widget).off('mousedown', false);
+
+        this.widget.remove();
+        this.widget = null;
+
+        this.notifyEvent({
+            type: 'dp.hide',
+            date: this.date.clone(),
+        });
+
+        this.input.blur();
+
+        this.currentViewMode = 0;
+        this.viewDate = this.date.clone();
+
+        return this.picker;
+    }
 
     /********************************************************************************
      *
@@ -1096,8 +1147,9 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
             months.eq(this.date.month()).addClass('active');
         }
 
+        let that = this;
         months.each(function(index) {
-            if (!this.isValid(this.viewDate.clone().month(index), 'M')) {
+            if (!that.isValid(that.viewDate.clone().month(index), 'M')) {
                 $(this).addClass('disabled');
             }
         });
@@ -1388,59 +1440,17 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         }
     }
 
-    private hide() {
-        var transitioning = false;
-        if (!this.widget) {
-            return this.picker;
-        }
-        // Ignore event if in the middle of a picker transition
-        this.widget.find('.collapse').each(function() {
-            var collapseData = $(this).data('collapse');
-            if (collapseData && collapseData.transitioning) {
-                transitioning = true;
-                return false;
-            }
-            return true;
-        });
-        if (transitioning) {
-            return this.picker;
-        }
-        if (this.component && this.component.hasClass('btn')) {
-            this.component.toggleClass('active');
-        }
-        this.widget.hide();
-
-        $(window).off('resize', this.place);
-        this.widget.off('click', '[data-action]');
-        (<any>this.widget).off('mousedown', false);
-
-        this.widget.remove();
-        this.widget = null;
-
-        this.notifyEvent({
-            type: 'dp.hide',
-            date: this.date.clone(),
-        });
-
-        this.input.blur();
-
-        this.currentViewMode = 0;
-        this.viewDate = this.date.clone();
-
-        return this.picker;
-    }
-
     private clear() {
         this.setValue(null);
     }
 
     private parseInputDate(inputDate: any) {
-        if (this.parseInputDate === undefined) {
+        if (this.parseInputDateFn === undefined) {
             if (!moment.isMoment(inputDate)) {
                 inputDate = this.getMoment(inputDate);
             }
         } else {
-            inputDate = this.parseInputDate(inputDate);
+            inputDate = this.parseInputDateFn(inputDate);
         }
         //inputDate.locale(options.locale);
         return inputDate;

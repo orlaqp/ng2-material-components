@@ -1,10 +1,11 @@
 import { IDateTimePickerOptions } from './date-time-picker-options';
+import { DateTimePickerComponent } from './date-time-picker.component';
 
 export class Picker {
 
-    constructor(private component: JQuery, private element: JQuery, private options: IDateTimePickerOptions) {
-
-    }
+    constructor(
+        private pickerComponent: DateTimePickerComponent,
+        private options: IDateTimePickerOptions) { }
 
     // toggle = toggle;
     //
@@ -14,41 +15,41 @@ export class Picker {
 
     destroy() {
         ///<summary>Destroys the widget and removes all attached event listeners</summary>
-        hide();
-        detachDatePickerElementEvents();
-        element.removeData('DateTimePicker');
-        element.removeData('date');
+         this.pickerComponent.hide();
+         this.pickerComponent.detachDatePickerElementEvents();
+         this.pickerComponent.element.removeData('DateTimePicker');
+         this.pickerComponent.element.removeData('date');
     }
 
     disable() {
         ///<summary>Disables the input element, the component is attached to, by adding a disabled="true" attribute to it.
         ///If the widget was visible before that call it is hidden. Possibly emits dp.hide</summary>
-        hide();
-        if (component && component.hasClass('btn')) {
-            component.addClass('disabled');
+         this.pickerComponent.hide();
+        if ( this.pickerComponent.component &&  this.pickerComponent.component.hasClass('btn')) {
+             this.pickerComponent.component.addClass('disabled');
         }
-        input.prop('disabled', true);
-        return picker;
+         this.pickerComponent.input.prop('disabled', true);
+        return this;
     }
 
     enable() {
         ///<summary>Enables the input element, the component is attached to, by removing disabled attribute from it.</summary>
-        if (component && component.hasClass('btn')) {
-            component.removeClass('disabled');
+        if ( this.pickerComponent.component &&  this.pickerComponent.component.hasClass('btn')) {
+             this.pickerComponent.component.removeClass('disabled');
         }
-        input.prop('disabled', false);
-        return picker;
+         this.pickerComponent.input.prop('disabled', false);
+        return this;
     }
 
     ignoreReadonly(ignoreReadonly) {
         if (arguments.length === 0) {
-            return options.ignoreReadonly;
+            return this.options.ignoreReadonly;
         }
         if (typeof ignoreReadonly !== 'boolean') {
             throw new TypeError('ignoreReadonly () expects a boolean parameter');
         }
-        options.ignoreReadonly = ignoreReadonly;
-        return picker;
+        this.options.ignoreReadonly = ignoreReadonly;
+        return this;
     }
 
     options(newOptions) {
@@ -67,7 +68,7 @@ export class Picker {
                 throw new TypeError('option ' + key + ' is not recognized!');
             }
         });
-        return picker;
+        return this;
     }
 
     date(newDate) {
@@ -76,22 +77,22 @@ export class Picker {
         ///<returns type="Moment">date.clone()</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Sets the components model current moment to it. Passing a null value unsets the components model current moment. Parsing of the newDate parameter is made using moment library with the options.format and options.useStrict components configuration.</summary>
+        ///<summary>Sets the components model current moment to it. Passing a null value unsets the components model current moment. Parsing of the newDate parameter is made using moment library with the this.format and this.useStrict components configuration.</summary>
         ///<param name="newDate" locid="$.fn.datetimepicker.date_p:newDate">Takes string, Date, moment, null parameter.</param>
         ///</signature>
         if (arguments.length === 0) {
-            if (unset) {
+            if ( this.pickerComponent.unset) {
                 return null;
             }
-            return date.clone();
+            return  this.pickerComponent.date.clone();
         }
 
         if (newDate !== null && typeof newDate !== 'string' && !moment.isMoment(newDate) && !(newDate instanceof Date)) {
             throw new TypeError('date() parameter must be one of [null, string, moment or Date]');
         }
 
-        setValue(newDate === null ? null : parseInputDate(newDate));
-        return picker;
+         this.pickerComponent.setValue(newDate === null ? null :  this.pickerComponent.parseInputDate(newDate));
+        return this;
     }
 
     format(newFormat) {
@@ -99,14 +100,14 @@ export class Picker {
         ///<param name="newFormat">info about para</param>
         ///<returns type="string|boolean">returns foo</returns>
         if (arguments.length === 0) {
-            return options.format;
+            return this.format;
         }
 
         if ((typeof newFormat !== 'string') && ((typeof newFormat !== 'boolean') || (newFormat !== false))) {
             throw new TypeError('format() expects a string or boolean:false parameter ' + newFormat);
         }
 
-        options.format = newFormat;
+        this.format = newFormat;
         if (actualFormat) {
             initFormatting(); // reinit formatting
         }
@@ -115,41 +116,41 @@ export class Picker {
 
     timeZone(newZone) {
         if (arguments.length === 0) {
-            return options.timeZone;
+            return this.timeZone;
         }
 
         if (typeof newZone !== 'string') {
             throw new TypeError('newZone() expects a string parameter');
         }
 
-        options.timeZone = newZone;
+        this.timeZone = newZone;
 
         return picker;
     }
 
     dayViewHeaderFormat(newFormat) {
         if (arguments.length === 0) {
-            return options.dayViewHeaderFormat;
+            return this.dayViewHeaderFormat;
         }
 
         if (typeof newFormat !== 'string') {
             throw new TypeError('dayViewHeaderFormat() expects a string parameter');
         }
 
-        options.dayViewHeaderFormat = newFormat;
+        this.dayViewHeaderFormat = newFormat;
         return picker;
     }
 
     extraFormats(formats) {
         if (arguments.length === 0) {
-            return options.extraFormats;
+            return this.extraFormats;
         }
 
         if (formats !== false && !(formats instanceof Array)) {
             throw new TypeError('extraFormats() expects an array or false parameter');
         }
 
-        options.extraFormats = formats;
+        this.extraFormats = formats;
         if (parseFormats) {
             initFormatting(); // reinit formatting
         }
@@ -162,24 +163,24 @@ export class Picker {
         ///<returns type="array">options.disabledDates</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Setting this takes precedence over options.minDate, options.maxDate configuration. Also calling this function removes the configuration of
+        ///<summary>Setting this takes precedence over this.minDate, this.maxDate configuration. Also calling this function removes the configuration of
         ///options.enabledDates if such exist.</summary>
         ///<param name="dates" locid="$.fn.datetimepicker.disabledDates_p:dates">Takes an [ string or Date or moment ] of values and allows the user to select only from those days.</param>
         ///</signature>
         if (arguments.length === 0) {
-            return (options.disabledDates ? $.extend({}, options.disabledDates) : options.disabledDates);
+            return (options.disabledDates ? $.extend({}, this.disabledDates) : this.disabledDates);
         }
 
         if (!dates) {
-            options.disabledDates = false;
+            this.disabledDates = false;
             update();
             return picker;
         }
         if (!(dates instanceof Array)) {
             throw new TypeError('disabledDates() expects an array parameter');
         }
-        options.disabledDates = indexGivenDates(dates);
-        options.enabledDates = false;
+        this.disabledDates = indexGivenDates(dates);
+        this.enabledDates = false;
         update();
         return picker;
     }
@@ -190,34 +191,34 @@ export class Picker {
         ///<returns type="array">options.enabledDates</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Setting this takes precedence over options.minDate, options.maxDate configuration. Also calling this function removes the configuration of options.disabledDates if such exist.</summary>
+        ///<summary>Setting this takes precedence over this.minDate, this.maxDate configuration. Also calling this function removes the configuration of this.disabledDates if such exist.</summary>
         ///<param name="dates" locid="$.fn.datetimepicker.enabledDates_p:dates">Takes an [ string or Date or moment ] of values and allows the user to select only from those days.</param>
         ///</signature>
         if (arguments.length === 0) {
-            return (options.enabledDates ? $.extend({}, options.enabledDates) : options.enabledDates);
+            return (options.enabledDates ? $.extend({}, this.enabledDates) : this.enabledDates);
         }
 
         if (!dates) {
-            options.enabledDates = false;
+            this.enabledDates = false;
             update();
             return picker;
         }
         if (!(dates instanceof Array)) {
             throw new TypeError('enabledDates() expects an array parameter');
         }
-        options.enabledDates = indexGivenDates(dates);
-        options.disabledDates = false;
+        this.enabledDates = indexGivenDates(dates);
+        this.disabledDates = false;
         update();
         return picker;
     }
 
     daysOfWeekDisabled(daysOfWeekDisabled) {
         if (arguments.length === 0) {
-            return options.daysOfWeekDisabled.splice(0);
+            return this.daysOfWeekDisabled.splice(0);
         }
 
         if ((typeof daysOfWeekDisabled === 'boolean') && !daysOfWeekDisabled) {
-            options.daysOfWeekDisabled = false;
+            this.daysOfWeekDisabled = false;
             update();
             return picker;
         }
@@ -225,7 +226,7 @@ export class Picker {
         if (!(daysOfWeekDisabled instanceof Array)) {
             throw new TypeError('daysOfWeekDisabled() expects an array parameter');
         }
-        options.daysOfWeekDisabled = daysOfWeekDisabled.reduce(function(previousValue, currentValue) {
+        this.daysOfWeekDisabled = daysOfWeekDisabled.reduce(function(previousValue, currentValue) {
             currentValue = parseInt(currentValue, 10);
             if (currentValue > 6 || currentValue < 0 || isNaN(currentValue)) {
                 return previousValue;
@@ -252,11 +253,11 @@ export class Picker {
 
     maxDate(maxDate) {
         if (arguments.length === 0) {
-            return options.maxDate ? options.maxDate.clone() : options.maxDate;
+            return this.maxDate ? this.maxDate.clone() : this.maxDate;
         }
 
         if ((typeof maxDate === 'boolean') && maxDate === false) {
-            options.maxDate = false;
+            this.maxDate = false;
             update();
             return picker;
         }
@@ -273,9 +274,9 @@ export class Picker {
             throw new TypeError('maxDate() Could not parse date parameter: ' + maxDate);
         }
         if (options.minDate && parsedDate.isBefore(options.minDate)) {
-            throw new TypeError('maxDate() date parameter is before options.minDate: ' + parsedDate.format(actualFormat));
+            throw new TypeError('maxDate() date parameter is before this.minDate: ' + parsedDate.format(actualFormat));
         }
-        options.maxDate = parsedDate;
+        this.maxDate = parsedDate;
         if (options.useCurrent && !options.keepInvalid && date.isAfter(maxDate)) {
             setValue(options.maxDate);
         }
@@ -288,11 +289,11 @@ export class Picker {
 
     minDate(minDate) {
         if (arguments.length === 0) {
-            return options.minDate ? options.minDate.clone() : options.minDate;
+            return this.minDate ? this.minDate.clone() : this.minDate;
         }
 
         if ((typeof minDate === 'boolean') && minDate === false) {
-            options.minDate = false;
+            this.minDate = false;
             update();
             return picker;
         }
@@ -309,9 +310,9 @@ export class Picker {
             throw new TypeError('minDate() Could not parse date parameter: ' + minDate);
         }
         if (options.maxDate && parsedDate.isAfter(options.maxDate)) {
-            throw new TypeError('minDate() date parameter is after options.maxDate: ' + parsedDate.format(actualFormat));
+            throw new TypeError('minDate() date parameter is after this.maxDate: ' + parsedDate.format(actualFormat));
         }
-        options.minDate = parsedDate;
+        this.minDate = parsedDate;
         if (options.useCurrent && !options.keepInvalid && date.isBefore(minDate)) {
             setValue(options.minDate);
         }
@@ -324,18 +325,18 @@ export class Picker {
 
     defaultDate(defaultDate) {
         ///<signature helpKeyword="$.fn.datetimepicker.defaultDate">
-        ///<summary>Returns a moment with the options.defaultDate option configuration or false if not set</summary>
+        ///<summary>Returns a moment with the this.defaultDate option configuration or false if not set</summary>
         ///<returns type="Moment">date.clone()</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Will set the picker's inital date. If a boolean:false value is passed the options.defaultDate parameter is cleared.</summary>
+        ///<summary>Will set the picker's inital date. If a boolean:false value is passed the this.defaultDate parameter is cleared.</summary>
         ///<param name="defaultDate" locid="$.fn.datetimepicker.defaultDate_p:defaultDate">Takes a string, Date, moment, boolean:false</param>
         ///</signature>
         if (arguments.length === 0) {
-            return options.defaultDate ? options.defaultDate.clone() : options.defaultDate;
+            return this.defaultDate ? this.defaultDate.clone() : this.defaultDate;
         }
         if (!defaultDate) {
-            options.defaultDate = false;
+            this.defaultDate = false;
             return picker;
         }
 
@@ -355,9 +356,9 @@ export class Picker {
             throw new TypeError('defaultDate() date passed is invalid according to component setup validations');
         }
 
-        options.defaultDate = parsedDate;
+        this.defaultDate = parsedDate;
 
-        if ((options.defaultDate && options.inline) || input.val().trim() === '') {
+        if ((options.defaultDate && this.inline) || input.val().trim() === '') {
             setValue(options.defaultDate);
         }
         return picker;
@@ -365,14 +366,14 @@ export class Picker {
 
     locale(locale) {
         if (arguments.length === 0) {
-            return options.locale;
+            return this.locale;
         }
 
         if (!moment.localeData(locale)) {
             throw new TypeError('locale() locale ' + locale + ' is not loaded from moment locales!');
         }
 
-        options.locale = locale;
+        this.locale = locale;
         date.locale(options.locale);
         viewDate.locale(options.locale);
 
@@ -388,21 +389,21 @@ export class Picker {
 
     stepping(stepping) {
         if (arguments.length === 0) {
-            return options.stepping;
+            return this.stepping;
         }
 
         stepping = parseInt(stepping, 10);
         if (isNaN(stepping) || stepping < 1) {
             stepping = 1;
         }
-        options.stepping = stepping;
+        this.stepping = stepping;
         return picker;
     }
 
     useCurrent(useCurrent) {
         var useCurrentOptions = ['year', 'month', 'day', 'hour', 'minute'];
         if (arguments.length === 0) {
-            return options.useCurrent;
+            return this.useCurrent;
         }
 
         if ((typeof useCurrent !== 'boolean') && (typeof useCurrent !== 'string')) {
@@ -411,13 +412,13 @@ export class Picker {
         if (typeof useCurrent === 'string' && useCurrentOptions.indexOf(useCurrent.toLowerCase()) === -1) {
             throw new TypeError('useCurrent() expects a string parameter of ' + useCurrentOptions.join(', '));
         }
-        options.useCurrent = useCurrent;
+        this.useCurrent = useCurrent;
         return picker;
     }
 
     collapse(collapse) {
         if (arguments.length === 0) {
-            return options.collapse;
+            return this.collapse;
         }
 
         if (typeof collapse !== 'boolean') {
@@ -426,7 +427,7 @@ export class Picker {
         if (options.collapse === collapse) {
             return picker;
         }
-        options.collapse = collapse;
+        this.collapse = collapse;
         if (widget) {
             hide();
             show();
@@ -436,7 +437,7 @@ export class Picker {
 
     icons(icons) {
         if (arguments.length === 0) {
-            return $.extend({}, options.icons);
+            return $.extend({}, this.icons);
         }
 
         if (!(icons instanceof Object)) {
@@ -452,7 +453,7 @@ export class Picker {
 
     tooltips(tooltips) {
         if (arguments.length === 0) {
-            return $.extend({}, options.tooltips);
+            return $.extend({}, this.tooltips);
         }
 
         if (!(tooltips instanceof Object)) {
@@ -468,25 +469,25 @@ export class Picker {
 
     useStrict(useStrict) {
         if (arguments.length === 0) {
-            return options.useStrict;
+            return this.useStrict;
         }
 
         if (typeof useStrict !== 'boolean') {
             throw new TypeError('useStrict() expects a boolean parameter');
         }
-        options.useStrict = useStrict;
+        this.useStrict = useStrict;
         return picker;
     }
 
     sideBySide(sideBySide) {
         if (arguments.length === 0) {
-            return options.sideBySide;
+            return this.sideBySide;
         }
 
         if (typeof sideBySide !== 'boolean') {
             throw new TypeError('sideBySide() expects a boolean parameter');
         }
-        options.sideBySide = sideBySide;
+        this.sideBySide = sideBySide;
         if (widget) {
             hide();
             show();
@@ -496,7 +497,7 @@ export class Picker {
 
     viewMode(viewMode) {
         if (arguments.length === 0) {
-            return options.viewMode;
+            return this.viewMode;
         }
 
         if (typeof viewMode !== 'string') {
@@ -507,7 +508,7 @@ export class Picker {
             throw new TypeError('viewMode() parameter must be one of (' + viewModes.join(', ') + ') value');
         }
 
-        options.viewMode = viewMode;
+        this.viewMode = viewMode;
         currentViewMode = Math.max(viewModes.indexOf(viewMode), minViewModeNumber);
 
         showMode();
@@ -516,7 +517,7 @@ export class Picker {
 
     toolbarPlacement(toolbarPlacement) {
         if (arguments.length === 0) {
-            return options.toolbarPlacement;
+            return this.toolbarPlacement;
         }
 
         if (typeof toolbarPlacement !== 'string') {
@@ -525,7 +526,7 @@ export class Picker {
         if (toolbarPlacements.indexOf(toolbarPlacement) === -1) {
             throw new TypeError('toolbarPlacement() parameter must be one of (' + toolbarPlacements.join(', ') + ') value');
         }
-        options.toolbarPlacement = toolbarPlacement;
+        this.toolbarPlacement = toolbarPlacement;
 
         if (widget) {
             hide();
@@ -536,7 +537,7 @@ export class Picker {
 
     widgetPositioning(widgetPositioning) {
         if (arguments.length === 0) {
-            return $.extend({}, options.widgetPositioning);
+            return $.extend({}, this.widgetPositioning);
         }
 
         if (({}).toString.call(widgetPositioning) !== '[object Object]') {
@@ -550,7 +551,7 @@ export class Picker {
             if (horizontalModes.indexOf(widgetPositioning.horizontal) === -1) {
                 throw new TypeError('widgetPositioning() expects horizontal parameter to be one of (' + horizontalModes.join(', ') + ')');
             }
-            options.widgetPositioning.horizontal = widgetPositioning.horizontal;
+            this.widgetPositioning.horizontal = widgetPositioning.horizontal;
         }
         if (widgetPositioning.vertical) {
             if (typeof widgetPositioning.vertical !== 'string') {
@@ -560,7 +561,7 @@ export class Picker {
             if (verticalModes.indexOf(widgetPositioning.vertical) === -1) {
                 throw new TypeError('widgetPositioning() expects vertical parameter to be one of (' + verticalModes.join(', ') + ')');
             }
-            options.widgetPositioning.vertical = widgetPositioning.vertical;
+            this.widgetPositioning.vertical = widgetPositioning.vertical;
         }
         update();
         return picker;
@@ -568,28 +569,28 @@ export class Picker {
 
     calendarWeeks(calendarWeeks) {
         if (arguments.length === 0) {
-            return options.calendarWeeks;
+            return this.calendarWeeks;
         }
 
         if (typeof calendarWeeks !== 'boolean') {
             throw new TypeError('calendarWeeks() expects parameter to be a boolean value');
         }
 
-        options.calendarWeeks = calendarWeeks;
+        this.calendarWeeks = calendarWeeks;
         update();
         return picker;
     }
 
     showTodayButton(showTodayButton) {
         if (arguments.length === 0) {
-            return options.showTodayButton;
+            return this.showTodayButton;
         }
 
         if (typeof showTodayButton !== 'boolean') {
             throw new TypeError('showTodayButton() expects a boolean parameter');
         }
 
-        options.showTodayButton = showTodayButton;
+        this.showTodayButton = showTodayButton;
         if (widget) {
             hide();
             show();
@@ -599,14 +600,14 @@ export class Picker {
 
     showClear(showClear) {
         if (arguments.length === 0) {
-            return options.showClear;
+            return this.showClear;
         }
 
         if (typeof showClear !== 'boolean') {
             throw new TypeError('showClear() expects a boolean parameter');
         }
 
-        options.showClear = showClear;
+        this.showClear = showClear;
         if (widget) {
             hide();
             show();
@@ -616,7 +617,7 @@ export class Picker {
 
     widgetParent(widgetParent) {
         if (arguments.length === 0) {
-            return options.widgetParent;
+            return this.widgetParent;
         }
 
         if (typeof widgetParent === 'string') {
@@ -627,7 +628,7 @@ export class Picker {
             throw new TypeError('widgetParent() expects a string or a jQuery object parameter');
         }
 
-        options.widgetParent = widgetParent;
+        this.widgetParent = widgetParent;
         if (widget) {
             hide();
             show();
@@ -637,40 +638,40 @@ export class Picker {
 
     keepOpen(keepOpen) {
         if (arguments.length === 0) {
-            return options.keepOpen;
+            return this.keepOpen;
         }
 
         if (typeof keepOpen !== 'boolean') {
             throw new TypeError('keepOpen() expects a boolean parameter');
         }
 
-        options.keepOpen = keepOpen;
+        this.keepOpen = keepOpen;
         return picker;
     }
 
     focusOnShow(focusOnShow) {
         if (arguments.length === 0) {
-            return options.focusOnShow;
+            return this.focusOnShow;
         }
 
         if (typeof focusOnShow !== 'boolean') {
             throw new TypeError('focusOnShow() expects a boolean parameter');
         }
 
-        options.focusOnShow = focusOnShow;
+        this.focusOnShow = focusOnShow;
         return picker;
     }
 
     inline(inline) {
         if (arguments.length === 0) {
-            return options.inline;
+            return this.inline;
         }
 
         if (typeof inline !== 'boolean') {
             throw new TypeError('inline() expects a boolean parameter');
         }
 
-        options.inline = inline;
+        this.inline = inline;
         return picker;
     }
 
@@ -681,10 +682,10 @@ export class Picker {
 
     keyBinds(keyBinds) {
         if (arguments.length === 0) {
-            return options.keyBinds;
+            return this.keyBinds;
         }
 
-        options.keyBinds = keyBinds;
+        this.keyBinds = keyBinds;
         return picker;
     }
 
@@ -697,71 +698,71 @@ export class Picker {
             throw new TypeError('debug() expects a boolean parameter');
         }
 
-        options.debug = debug;
+        this.debug = debug;
         return picker;
     }
 
     allowInputToggle(allowInputToggle) {
         if (arguments.length === 0) {
-            return options.allowInputToggle;
+            return this.allowInputToggle;
         }
 
         if (typeof allowInputToggle !== 'boolean') {
             throw new TypeError('allowInputToggle() expects a boolean parameter');
         }
 
-        options.allowInputToggle = allowInputToggle;
+        this.allowInputToggle = allowInputToggle;
         return picker;
     }
 
     showClose(showClose) {
         if (arguments.length === 0) {
-            return options.showClose;
+            return this.showClose;
         }
 
         if (typeof showClose !== 'boolean') {
             throw new TypeError('showClose() expects a boolean parameter');
         }
 
-        options.showClose = showClose;
+        this.showClose = showClose;
         return picker;
     }
 
     keepInvalid(keepInvalid) {
         if (arguments.length === 0) {
-            return options.keepInvalid;
+            return this.keepInvalid;
         }
 
         if (typeof keepInvalid !== 'boolean') {
             throw new TypeError('keepInvalid() expects a boolean parameter');
         }
-        options.keepInvalid = keepInvalid;
+        this.keepInvalid = keepInvalid;
         return picker;
     }
 
     datepickerInput(datepickerInput) {
         if (arguments.length === 0) {
-            return options.datepickerInput;
+            return this.datepickerInput;
         }
 
         if (typeof datepickerInput !== 'string') {
             throw new TypeError('datepickerInput() expects a string parameter');
         }
 
-        options.datepickerInput = datepickerInput;
+        this.datepickerInput = datepickerInput;
         return picker;
     }
 
     parseInputDate(parseInputDate) {
         if (arguments.length === 0) {
-            return options.parseInputDate;
+            return this.parseInputDate;
         }
 
         if (typeof parseInputDate !== 'function') {
             throw new TypeError('parseInputDate() sholud be as function');
         }
 
-        options.parseInputDate = parseInputDate;
+        this.parseInputDate = parseInputDate;
 
         return picker;
     }
@@ -772,23 +773,23 @@ export class Picker {
         ///<returns type="array">options.disabledTimeIntervals</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Setting this takes precedence over options.minDate, options.maxDate configuration. Also calling this function removes the configuration of
+        ///<summary>Setting this takes precedence over this.minDate, this.maxDate configuration. Also calling this function removes the configuration of
         ///options.enabledDates if such exist.</summary>
         ///<param name="dates" locid="$.fn.datetimepicker.disabledTimeIntervals_p:dates">Takes an [ string or Date or moment ] of values and allows the user to select only from those days.</param>
         ///</signature>
         if (arguments.length === 0) {
-            return (options.disabledTimeIntervals ? $.extend({}, options.disabledTimeIntervals) : options.disabledTimeIntervals);
+            return (options.disabledTimeIntervals ? $.extend({}, this.disabledTimeIntervals) : this.disabledTimeIntervals);
         }
 
         if (!disabledTimeIntervals) {
-            options.disabledTimeIntervals = false;
+            this.disabledTimeIntervals = false;
             update();
             return picker;
         }
         if (!(disabledTimeIntervals instanceof Array)) {
             throw new TypeError('disabledTimeIntervals() expects an array parameter');
         }
-        options.disabledTimeIntervals = disabledTimeIntervals;
+        this.disabledTimeIntervals = disabledTimeIntervals;
         update();
         return picker;
     }
@@ -799,24 +800,24 @@ export class Picker {
         ///<returns type="array">options.disabledHours</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Setting this takes precedence over options.minDate, options.maxDate configuration. Also calling this function removes the configuration of
+        ///<summary>Setting this takes precedence over this.minDate, this.maxDate configuration. Also calling this function removes the configuration of
         ///options.enabledHours if such exist.</summary>
         ///<param name="hours" locid="$.fn.datetimepicker.disabledHours_p:hours">Takes an [ int ] of values and disallows the user to select only from those hours.</param>
         ///</signature>
         if (arguments.length === 0) {
-            return (options.disabledHours ? $.extend({}, options.disabledHours) : options.disabledHours);
+            return (options.disabledHours ? $.extend({}, this.disabledHours) : this.disabledHours);
         }
 
         if (!hours) {
-            options.disabledHours = false;
+            this.disabledHours = false;
             update();
             return picker;
         }
         if (!(hours instanceof Array)) {
             throw new TypeError('disabledHours() expects an array parameter');
         }
-        options.disabledHours = indexGivenHours(hours);
-        options.enabledHours = false;
+        this.disabledHours = indexGivenHours(hours);
+        this.enabledHours = false;
         if (options.useCurrent && !options.keepInvalid) {
             var tries = 0;
             while (!isValid(date, 'h')) {
@@ -838,23 +839,23 @@ export class Picker {
         ///<returns type="array">options.enabledHours</returns>
         ///</signature>
         ///<signature>
-        ///<summary>Setting this takes precedence over options.minDate, options.maxDate configuration. Also calling this function removes the configuration of options.disabledHours if such exist.</summary>
+        ///<summary>Setting this takes precedence over this.minDate, this.maxDate configuration. Also calling this function removes the configuration of this.disabledHours if such exist.</summary>
         ///<param name="hours" locid="$.fn.datetimepicker.enabledHours_p:hours">Takes an [ int ] of values and allows the user to select only from those hours.</param>
         ///</signature>
         if (arguments.length === 0) {
-            return (options.enabledHours ? $.extend({}, options.enabledHours) : options.enabledHours);
+            return (options.enabledHours ? $.extend({}, this.enabledHours) : this.enabledHours);
         }
 
         if (!hours) {
-            options.enabledHours = false;
+            this.enabledHours = false;
             update();
             return picker;
         }
         if (!(hours instanceof Array)) {
             throw new TypeError('enabledHours() expects an array parameter');
         }
-        options.enabledHours = indexGivenHours(hours);
-        options.disabledHours = false;
+        this.enabledHours = indexGivenHours(hours);
+        this.disabledHours = false;
         if (options.useCurrent && !options.keepInvalid) {
             var tries = 0;
             while (!isValid(date, 'h')) {
@@ -870,7 +871,7 @@ export class Picker {
         return picker;
     }
     /**
-     * Returns the component's model current viewDate, a moment object or null if not set. Passing a null value unsets the components model current moment. Parsing of the newDate parameter is made using moment library with the options.format and options.useStrict components configuration.
+     * Returns the component's model current viewDate, a moment object or null if not set. Passing a null value unsets the components model current moment. Parsing of the newDate parameter is made using moment library with the this.format and this.useStrict components configuration.
      * @param {Takes string, viewDate, moment, null parameter.} newDate
      * @returns {viewDate.clone()}
      */
