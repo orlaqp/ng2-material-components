@@ -982,11 +982,11 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
         } else if (!that.multiple) {
           var selectedIndex = that.liObj[(<HTMLSelectElement>that.$element[0]).selectedIndex];
 
-          if (typeof selectedIndex !== 'number' || that.options.size === false) return;
+          if (typeof selectedIndex !== 'number' || that.size === false) return;
 
           // scroll to selected option
           var offset = that.$lis.eq(selectedIndex)[0].offsetTop - that.$menuInner[0].offsetTop;
-          offset = offset - that.$menuInner[0].offsetHeight/2 + that.sizeInfo.liHeight/2;
+          offset = offset - that.$menuInner[0].offsetHeight / 2 + that.sizeInfo.liHeight / 2;
           that.$menuInner[0].scrollTop = offset;
         }
       });
@@ -999,7 +999,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
             triggerChange = true;
 
         // Don't close on multi choice menu
-        if (that.multiple && that.options.maxOptions !== 1) {
+        if (that.multiple && that.maxOptions !== 1) {
           e.stopPropagation();
         }
 
