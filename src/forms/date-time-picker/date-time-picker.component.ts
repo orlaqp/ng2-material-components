@@ -1,20 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input, ElementRef } from '@angular/core';
-// import { SelectControlValueAccessor } from '@angular/forms';
 import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroupDirective } from '@angular/forms';
-import { InputBase } from '../input-base/input-base.component';
+import { DateTimePickerBase } from './date-time-picker-base';
+import { IDateTimePickerOptions, extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
-import {
-    datePickerModes,
-    keyMap,
-    viewModes,
-    verticalModes,
-    horizontalModes,
-    toolbarPlacements,
-    icons,
-    tooltips,
-    widgetPositioning,
-    keyBinds,
-} from './date-time-picker-helper';
 
 declare var $: JQueryStatic;
 
@@ -23,7 +11,7 @@ declare var $: JQueryStatic;
     directives: [REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor],
     templateUrl: 'date-time-picker.component.pug',
 })
-export class DateTimePickerComponent extends InputBase implements AfterViewInit, OnInit {
+export class DateTimePickerComponent extends DateTimePickerBase implements AfterViewInit, OnInit {
     @Input() fgd: FormGroupDirective;
     @Input() placeholder: string;
     @Input() field: string;
@@ -40,14 +28,14 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() stepping: number = 1;
     @Input() minDate: moment.Moment;
     @Input() maxDate: moment.Moment;
-    @Input() useCurrent: boolean = true;
+    @Input() useCurrent: string;
     @Input() collapse: boolean = true;
     @Input() locale: string = moment.locale();
-    @Input() defaultDate: moment.Moment | boolean = false;
+    @Input() defaultDate: moment.Moment = null;
     @Input() disabledDates: string[] | moment.Moment[] | Date[];
     @Input() enabledDates: string[] | moment.Moment[] | Date[];
-    @Input() icons: any = icons;
-    @Input() tooltips: any = tooltips;
+    @Input() icons: any = this.icons;
+    @Input() tooltips: any = this.tooltips;
     @Input() useStrict: boolean = false;
     @Input() sideBySide: boolean = false;
     @Input() daysOfWeekDisabled: string = null;
@@ -57,7 +45,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() showTodayButton: boolean = false;
     @Input() showClear: boolean = false;
     @Input() showClose: boolean = false;
-    @Input() widgetPositioning: any = widgetPositioning;
+    @Input() widgetPositioning: any = this.widgetPositioning;
     @Input() widgetParent: JQuery = null;
     @Input() ignoreReadonly: boolean = false;
     @Input() keepOpen: boolean = false;
@@ -65,7 +53,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() inline: boolean = false;
     @Input() keepInvalid: boolean = false;
     @Input() datepickerInput: string = '.datepickerinput';
-    @Input() keyBinds = keyBinds;
+    @Input() keyBinds: any = this.keyBinds;
     @Input() debug: boolean = false;
     @Input() allowInputToggle: boolean = false;
     @Input() disabledTimeIntervals: boolean = false;
@@ -73,39 +61,30 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     @Input() enabledHours: boolean = false;
     @Input() viewDate: moment.Moment;
 
-    private picker: Picker;
-    private component: JQuery;
-    private element: JQuery;
-    private widget: JQuery;
-
     private date: moment.Moment;
     private unset = true;
-    private input: JQuery;
-    private component: JQuery = null;
-    private widget: JQuery = null;
     private use24Hours: boolean;
     private minViewModeNumber: number = 0;
     private actualFormat: string;
     private parseFormats: string[];
     private currentViewMode: number;
     private keyState: any = {};
-
     private actions: any = {
         next: () => {
-            var navFnc = datePickerModes[this.currentViewMode].navFnc;
-            this.viewDate.add(datePickerModes[this.currentViewMode].navStep, navFnc);
+            var navFnc = this.datePickerModes[this.currentViewMode].navFnc;
+            this.viewDate.add(this.datePickerModes[this.currentViewMode].navStep, navFnc);
             this.fillDate();
             this.viewUpdate(navFnc);
         },
 
         previous: () => {
-            var navFnc = datePickerModes[this.currentViewMode].navFnc;
-            this.viewDate.subtract(datePickerModes[this.currentViewMode].navStep, navFnc);
+            var navFnc = this.datePickerModes[this.currentViewMode].navFnc;
+            this.viewDate.subtract(this.datePickerModes[this.currentViewMode].navStep, navFnc);
             this.fillDate();
             this.viewUpdate(navFnc);
         },
 
-        pickerSwitch: function () {
+        pickerSwitch: function() {
             this.showMode(1);
         },
 
@@ -309,6 +288,8 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
     constructor(private el: ElementRef) {
         super(el);
+
+        this.element = $(el.nativeElement);
     }
 
     public addValidators(): void { }
@@ -319,14 +300,64 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
     ngAfterViewInit() {
 
-        let options = this._getOptions();
+        // let options = this._getOptions();
+        //
+        // let ele = $(this.el.nativeElement).find('.date-time-picker');
+        // ele.datetimepicker(options)
+        //     .on('dp.change', (data: any) => {
+        //         let d: moment.Moment = data.date;
+        //         this.control.updateValue(this._dateFormatted(d));
+        //     });
 
-        let ele = $(this.el.nativeElement).find('.date-time-picker');
-        ele.datetimepicker(options)
-            .on('dp.change', (data: any) => {
-                let d: moment.Moment = data.date;
-                this.control.updateValue(this._dateFormatted(d));
-            });
+
+        // initializing element and component attributes
+        if (this.element.is('input')) {
+            this.input = this.element;
+        } else {
+            this.input = this.element.find(this.datepickerInput);
+            if (this.input.length === 0) {
+                this.input = this.element.find('input');
+            } else if (!this.input.is('input')) {
+                throw new Error('CSS class "' + this.datepickerInput + '" cannot be applied to non input element');
+            }
+        }
+
+        if (this.element.hasClass('input-group')) {
+            // in case there is more then one 'input-group-addon' Issue #48
+            if (this.element.find('.datepickerbutton').length === 0) {
+                this.component = this.element.find('.input-group-addon');
+            } else {
+                this.component = this.element.find('.datepickerbutton');
+            }
+        }
+
+        if (!this.inline && !this.input.is('input')) {
+            throw new Error('Could not initialize DateTimePicker without an input element');
+        }
+
+        // Set defaults for date here now instead of in var declaration
+        this.date = this.getMoment();
+        this.viewDate = this.date.clone();
+
+        // $.extend(true, options, dataToOptions());
+
+        this.picker = new Picker(this.component, this.element, extractOptions(this));
+
+        this.initFormatting();
+
+        this.attachDatePickerElementEvents();
+
+        if (this.input.prop('disabled')) {
+            this.picker.disable();
+        }
+        if (this.input.is('input') && this.input.val().trim().length !== 0) {
+            this.setValue(this.parseInputDate(this.input.val().trim()));
+        } else if (this.defaultDate && this.input.attr('placeholder') === undefined) {
+            this.setValue(this.defaultDate);
+        }
+        if (this.inline) {
+            this.show();
+        }
     }
 
 
@@ -336,25 +367,33 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     *
     ********************************************************************************/
 
+    doAction(e: JQueryEventObject) {
+        if ($(e.currentTarget).is('.disabled')) {
+            return false;
+        }
+        this.actions[$(e.currentTarget).data('action')].apply(this.picker, arguments);
+        return false;
+    }
+
     /**
      * Shows the widget. Possibly will emit dp.show and dp.change
      */
-    show() {
+    show(): Picker {
         var currentMoment: moment.Moment,
             useCurrentGranularity = {
-                'year': function (m: moment.Moment) {
+                'year': function(m: moment.Moment) {
                     return m.month(0).date(1).hours(0).seconds(0).minutes(0);
                 },
-                'month': function (m: moment.Moment) {
+                'month': function(m: moment.Moment) {
                     return m.date(1).hours(0).seconds(0).minutes(0);
                 },
-                'day': function (m: moment.Moment) {
+                'day': function(m: moment.Moment) {
                     return m.hours(0).seconds(0).minutes(0);
                 },
-                'hour': function (m: moment.Moment) {
+                'hour': function(m: moment.Moment) {
                     return m.seconds(0).minutes(0);
                 },
-                'minute': function (m: moment.Moment) {
+                'minute': function(m: moment.Moment) {
                     return m.seconds(0);
                 },
             };
@@ -367,7 +406,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         } else if (this.unset && this.useCurrent && (this.inline || (this.input.is('input') && this.input.val().trim().length === 0))) {
             currentMoment = this.getMoment();
             if (typeof this.useCurrent === 'string') {
-                currentMoment = this.useCurrentGranularity[this.useCurrent](currentMoment);
+                currentMoment = useCurrentGranularity[this.useCurrent](currentMoment);
             }
             this.setValue(currentMoment);
         }
@@ -434,10 +473,10 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         for (index in this.keyBinds) {
             if (this.keyBinds.hasOwnProperty(index) && typeof (this.keyBinds[index]) === 'function') {
                 keyBindKeys = index.split(' ');
-                if (keyBindKeys.length === pressedKeys.length && keyMap[currentKey] === keyBindKeys[keyBindKeys.length - 1]) {
+                if (keyBindKeys.length === pressedKeys.length && this.keyMap[currentKey] === keyBindKeys[keyBindKeys.length - 1]) {
                     allModifiersPressed = true;
                     for (index2 = keyBindKeys.length - 2; index2 >= 0; index2--) {
-                        if (!(keyMap[keyBindKeys[index2]] in pressedModifiers)) {
+                        if (!(this.keyMap[keyBindKeys[index2]] in pressedModifiers)) {
                             allModifiersPressed = false;
                             break;
                         }
@@ -514,7 +553,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         // This way we can check their existence in O(1) time instead of looping through whole array.
         // (for example: options.enabledDates['2014-02-27'] === true)
         var givenDatesIndexed = {};
-        $.each(givenDatesArray, function () {
+        $.each(givenDatesArray, function() {
             var dDate = this.parseInputDate(this);
             if (dDate.isValid()) {
                 givenDatesIndexed[dDate.format('YYYY-MM-DD')] = true;
@@ -528,7 +567,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         // This way we can check their existence in O(1) time instead of looping through whole array.
         // (for example: options.enabledHours['2014-02-27'] === true)
         var givenHoursIndexed = {};
-        $.each(givenHoursArray, function () {
+        $.each(givenHoursArray, function() {
             givenHoursIndexed[this] = true;
         });
         return (Object.keys(givenHoursIndexed).length) ? givenHoursIndexed : false;
@@ -537,9 +576,9 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     initFormatting() {
         var format = this.format || 'L LT';
 
-        this.actualFormat = format.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function (formatInput) {
+        this.actualFormat = format.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function(formatInput) {
             var newinput = this.date.localeData().longDateFormat(formatInput) || formatInput;
-            return newinput.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function (formatInput2: string) { //temp fix for #740
+            return newinput.replace(/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g, function(formatInput2: string) { //temp fix for #740
                 return this.date.localeData().longDateFormat(formatInput2) || formatInput2;
             });
         });
@@ -583,13 +622,9 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
 
 
-
-
-
-
-    private _dateFormatted(d: moment.Moment) {
-        return d.format(this.format);
-    }
+    // private _dateFormatted(d: moment.Moment) {
+    //     return d.format(this.format);
+    // }
 
     // Private methods for the plugin
     private hasTimeZone() {
@@ -648,36 +683,36 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
     private getDatePickerTemplate() {
         var headTemplate: JQuery = $('<thead>')
-                .append($('<tr>')
-                    .append($('<th>').addClass('prev').attr('data-action', 'previous')
-                        .append($('<span>').addClass(icons.previous))
-                        )
-                    .append($('<th>').addClass('picker-switch').attr('data-action', 'pickerSwitch').attr('colspan', (this.calendarWeeks ? '6' : '5')))
-                    .append($('<th>').addClass('next').attr('data-action', 'next')
-                        .append($('<span>').addClass(icons.next))
-                        )
-                    ),
+            .append($('<tr>')
+                .append($('<th>').addClass('prev').attr('data-action', 'previous')
+                    .append($('<span>').addClass(this.icons.previous))
+                )
+                .append($('<th>').addClass('picker-switch').attr('data-action', 'pickerSwitch').attr('colspan', (this.calendarWeeks ? '6' : '5')))
+                .append($('<th>').addClass('next').attr('data-action', 'next')
+                    .append($('<span>').addClass(this.icons.next))
+                )
+            ),
             contTemplate = $('<tbody>')
                 .append($('<tr>')
                     .append($('<td>').attr('colspan', (this.calendarWeeks ? '8' : '7')))
-                    );
+                );
 
         return [
             $('<div>').addClass('datepicker-days')
                 .append($('<table>').addClass('table-condensed')
                     .append(headTemplate)
                     .append($('<tbody>'))
-                    ),
+                ),
             $('<div>').addClass('datepicker-months')
                 .append($('<table>').addClass('table-condensed')
                     .append(headTemplate.clone())
                     .append(contTemplate.clone())
-                    ),
+                ),
             $('<div>').addClass('datepicker-years')
                 .append($('<table>').addClass('table-condensed')
                     .append(headTemplate.clone())
                     .append(contTemplate.clone())
-                    ),
+                ),
             $('<div>').addClass('datepicker-decades')
                 .append($('<table>').addClass('table-condensed')
                     .append(headTemplate.clone())
@@ -693,11 +728,11 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
         if (this.isEnabled('h')) {
             topRow.append($('<td>')
-                .append($('<a>').attr({ href: '#', tabindex: '-1', 'title': this.tooltips.incrementHour }).addClass('btn').attr('data-action', 'incrementHours').append($('<span>').addClass(icons.up))));
+                .append($('<a>').attr({ href: '#', tabindex: '-1', 'title': this.tooltips.incrementHour }).addClass('btn').attr('data-action', 'incrementHours').append($('<span>').addClass(this.icons.up))));
             middleRow.append($('<td>')
                 .append($('<span>').addClass('timepicker-hour').attr({ 'data-time-component': 'hours', 'title': this.tooltips.pickHour }).attr('data-action', 'showHours')));
             bottomRow.append($('<td>')
-                .append($('<a>').attr({ href: '#', tabindex: '-1', 'title': this.tooltips.decrementHour }).addClass('btn').attr('data-action', 'decrementHours').append($('<span>').addClass(icons.down))));
+                .append($('<a>').attr({ href: '#', tabindex: '-1', 'title': this.tooltips.decrementHour }).addClass('btn').attr('data-action', 'decrementHours').append($('<span>').addClass(this.icons.down))));
         }
         if (this.isEnabled('m')) {
             if (this.isEnabled('h')) {
@@ -744,7 +779,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
     private getTimePickerTemplate() {
         var hoursView = $('<div>').addClass('timepicker-hours')
-                .append($('<table>').addClass('table-condensed')),
+            .append($('<table>').addClass('table-condensed')),
             minutesView = $('<div>').addClass('timepicker-minutes')
                 .append($('<table>').addClass('table-condensed')),
             secondsView = $('<div>').addClass('timepicker-seconds')
@@ -754,8 +789,8 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         if (this.isEnabled('h')) {
             ret.push(hoursView);
         }
-            ret.push(minutesView);
-            if (this.isEnabled('m')) {
+        ret.push(minutesView);
+        if (this.isEnabled('m')) {
         }
         if (this.isEnabled('s')) {
             ret.push(secondsView);
@@ -764,7 +799,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         return ret;
     }
 
-    private  getToolbar() {
+    private getToolbar() {
         var row: JQuery[] = [];
         if (this.showTodayButton) {
             row.push($('<td>').append($('<a>').attr({ 'data-action': 'today', 'title': this.tooltips.today }).append($('<span>').addClass(this.icons.today))));
@@ -909,7 +944,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
 
         // find the first parent element that has a relative css positioning
         if (parent.css('position') !== 'relative') {
-            parent = parent.parents().filter(function () {
+            parent = parent.parents().filter(function() {
                 return $(this).css('position') === 'relative';
             }).first();
         }
@@ -951,7 +986,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         if (dir) {
             this.currentViewMode = Math.max(this.minViewModeNumber, Math.min(3, this.currentViewMode + dir));
         }
-        this.widget.find('.datepicker > div').hide().filter('.datepicker-' + datePickerModes[this.currentViewMode].clsName).show();
+        this.widget.find('.datepicker > div').hide().filter('.datepicker-' + this.datePickerModes[this.currentViewMode].clsName).show();
     }
 
     private fillDow() {
@@ -966,7 +1001,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
             row.append($('<th>').addClass('dow').text(currentDate.format('dd')));
             currentDate.add(1, 'd');
         }
-        dayViewHeaderFormatwidget.find('.datepicker-days thead').append(row);
+        this.widget.find('.datepicker-days thead').append(row);
     }
 
     private isInDisabledDates(testDate: moment.Moment) {
@@ -1012,7 +1047,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         }
         if (this.disabledTimeIntervals && (granularity === 'h' || granularity === 'm' || granularity === 's')) {
             var found = false;
-            $.each(this.disabledTimeIntervals, function () {
+            $.each(this.disabledTimeIntervals, function() {
                 if (targetMoment.isBetween(this[0], this[1])) {
                     found = true;
                     return false;
@@ -1026,80 +1061,80 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
     }
 
     private fillMonths() {
-       var spans: any = [],
-           monthsShort = this.viewDate.clone().startOf('y').startOf('d');
-       while (monthsShort.isSame(this.viewDate, 'y')) {
-           spans.push($('<span>').attr('data-action', 'selectMonth').addClass('month').text(monthsShort.format('MMM')));
-           monthsShort.add(1, 'M');
-       }
-       this.widget.find('.datepicker-months td').empty().append(spans);
+        var spans: any = [],
+            monthsShort = this.viewDate.clone().startOf('y').startOf('d');
+        while (monthsShort.isSame(this.viewDate, 'y')) {
+            spans.push($('<span>').attr('data-action', 'selectMonth').addClass('month').text(monthsShort.format('MMM')));
+            monthsShort.add(1, 'M');
+        }
+        this.widget.find('.datepicker-months td').empty().append(spans);
     }
 
     private updateMonths() {
-       var monthsView = this.widget.find('.datepicker-months'),
-           monthsViewHeader = monthsView.find('th'),
-           months = monthsView.find('tbody').find('span');
+        var monthsView = this.widget.find('.datepicker-months'),
+            monthsViewHeader = monthsView.find('th'),
+            months = monthsView.find('tbody').find('span');
 
-       monthsViewHeader.eq(0).find('span').attr('title', this.tooltips.prevYear);
-       monthsViewHeader.eq(1).attr('title', this.tooltips.selectYear);
-       monthsViewHeader.eq(2).find('span').attr('title', this.tooltips.nextYear);
+        monthsViewHeader.eq(0).find('span').attr('title', this.tooltips.prevYear);
+        monthsViewHeader.eq(1).attr('title', this.tooltips.selectYear);
+        monthsViewHeader.eq(2).find('span').attr('title', this.tooltips.nextYear);
 
-       monthsView.find('.disabled').removeClass('disabled');
+        monthsView.find('.disabled').removeClass('disabled');
 
-       if (!this.isValid(this.viewDate.clone().subtract(1, 'y'), 'y')) {
-           monthsViewHeader.eq(0).addClass('disabled');
-       }
+        if (!this.isValid(this.viewDate.clone().subtract(1, 'y'), 'y')) {
+            monthsViewHeader.eq(0).addClass('disabled');
+        }
 
-       monthsViewHeader.eq(1).text(this.viewDate.year());
+        monthsViewHeader.eq(1).text(this.viewDate.year());
 
-       if (!this.isValid(this.viewDate.clone().add(1, 'y'), 'y')) {
-           monthsViewHeader.eq(2).addClass('disabled');
-       }
+        if (!this.isValid(this.viewDate.clone().add(1, 'y'), 'y')) {
+            monthsViewHeader.eq(2).addClass('disabled');
+        }
 
-       months.removeClass('active');
-       if (this.date.isSame(this.viewDate, 'y') && !this.unset) {
-           months.eq(this.date.month()).addClass('active');
-       }
+        months.removeClass('active');
+        if (this.date.isSame(this.viewDate, 'y') && !this.unset) {
+            months.eq(this.date.month()).addClass('active');
+        }
 
-       months.each(function (index) {
-           if (!this.isValid(this.viewDate.clone().month(index), 'M')) {
-               $(this).addClass('disabled');
-           }
-       });
-   }
+        months.each(function(index) {
+            if (!this.isValid(this.viewDate.clone().month(index), 'M')) {
+                $(this).addClass('disabled');
+            }
+        });
+    }
 
     private updateYears() {
-       var yearsView = this.widget.find('.datepicker-years'),
-           yearsViewHeader = yearsView.find('th'),
-           startYear = this.viewDate.clone().subtract(5, 'y'),
-           endYear = this.viewDate.clone().add(6, 'y'),
-           html = '';
+        var yearsView = this.widget.find('.datepicker-years'),
+            yearsViewHeader = yearsView.find('th'),
+            startYear = this.viewDate.clone().subtract(5, 'y'),
+            endYear = this.viewDate.clone().add(6, 'y'),
+            html = '';
 
-       yearsViewHeader.eq(0).find('span').attr('title', this.tooltips.prevDecade);
-       yearsViewHeader.eq(1).attr('title', this.tooltips.selectDecade);
-       yearsViewHeader.eq(2).find('span').attr('title', this.tooltips.nextDecade);
+        yearsViewHeader.eq(0).find('span').attr('title', this.tooltips.prevDecade);
+        yearsViewHeader.eq(1).attr('title', this.tooltips.selectDecade);
+        yearsViewHeader.eq(2).find('span').attr('title', this.tooltips.nextDecade);
 
-       yearsView.find('.disabled').removeClass('disabled');
+        yearsView.find('.disabled').removeClass('disabled');
 
-       if (this.minDate && this.minDate.isAfter(startYear, 'y')) {
-           yearsViewHeader.eq(0).addClass('disabled');
-       }
+        if (this.minDate && this.minDate.isAfter(startYear, 'y')) {
+            yearsViewHeader.eq(0).addClass('disabled');
+        }
 
-       yearsViewHeader.eq(1).text(startYear.year() + '-' + endYear.year());
+        yearsViewHeader.eq(1).text(startYear.year() + '-' + endYear.year());
 
-       if (this.maxDate && this.maxDate.isBefore(endYear, 'y')) {
-           yearsViewHeader.eq(2).addClass('disabled');
-       }
+        if (this.maxDate && this.maxDate.isBefore(endYear, 'y')) {
+            yearsViewHeader.eq(2).addClass('disabled');
+        }
 
-       while (!startYear.isAfter(endYear, 'y')) {
-           html += '<span data-action="selectYear" class="year' + (startYear.isSame(this.date, 'y') && !this.unset ? ' active' : '') + (!this.isValid(startYear, 'y') ? ' disabled' : '') + '">' + startYear.year() + '</span>';
-           startYear.add(1, 'y');
-       }
+        while (!startYear.isAfter(endYear, 'y')) {
+            html += '<span data-action="selectYear" class="year' + (startYear.isSame(this.date, 'y') && !this.unset ? ' active' : '') + (!this.isValid(startYear, 'y') ? ' disabled' : '') + '">' + startYear.year() + '</span>';
+            startYear.add(1, 'y');
+        }
 
-       yearsView.find('td').html(html);
-   }
+        yearsView.find('td').html(html);
+    }
 
-    private  updateDecades() {
+    private updateDecades() {
         var decadesView = this.widget.find('.datepicker-decades'),
             decadesViewHeader = decadesView.find('th'),
             startDecade = moment({ y: this.viewDate.year() - (this.viewDate.year() % 100) - 1 }),
@@ -1359,7 +1394,7 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
             return this.picker;
         }
         // Ignore event if in the middle of a picker transition
-        this.widget.find('.collapse').each(function () {
+        this.widget.find('.collapse').each(function() {
             var collapseData = $(this).data('collapse');
             if (collapseData && collapseData.transitioning) {
                 transitioning = true;
@@ -1395,9 +1430,21 @@ export class DateTimePickerComponent extends InputBase implements AfterViewInit,
         return this.picker;
     }
 
+    private clear() {
+        this.setValue(null);
+    }
 
-
-
+    private parseInputDate(inputDate: any) {
+        if (this.parseInputDate === undefined) {
+            if (!moment.isMoment(inputDate)) {
+                inputDate = this.getMoment(inputDate);
+            }
+        } else {
+            inputDate = this.parseInputDate(inputDate);
+        }
+        //inputDate.locale(options.locale);
+        return inputDate;
+    }
 
 
 }

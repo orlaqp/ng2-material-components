@@ -102,7 +102,7 @@ export const widgetPositioning = {
     vertical: 'auto',
 };
 
-export const keyBinds = {
+export const keyBinds: any = {
     up: (widget: JQuery) => {
         if (!widget) {
             return;
