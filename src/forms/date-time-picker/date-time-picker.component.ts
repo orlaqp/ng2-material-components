@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroupDirective } from '@angular/forms';
 import { DateTimePickerBase } from './date-time-picker-base';
 import { extractOptions } from './date-time-picker-options';
@@ -61,6 +61,8 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     @Input() viewDate: moment.Moment;
     @Input() parseInputDateFn: Function;
     @Input() timePicker: boolean = false;
+
+    @Output() dateChanged = new EventEmitter<moment.Moment>();
 
     public unset = true;
     public parseFormats: string[];
@@ -1418,6 +1420,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
 
             let dateFormat = this.date.format(this.actualFormat);
             this.control.updateValue(dateFormat);
+            this.dateChanged.emit(this.date.clone());
 
             this.element.data('date', dateFormat);
             // this.unset = false;
