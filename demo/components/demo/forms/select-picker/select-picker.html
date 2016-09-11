@@ -20,8 +20,9 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Select with live search -->
             <select-picker [fgd]="f"
-                field="color"
+                field="color1"
                 label="Colors"
+                [disabled]="true"
                 [items]="colorItems">
             </select-picker>
         </div>
@@ -29,9 +30,9 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Multiselection -->
             <select-picker [fgd]="f"
-                field="color"
+                field="multipleColors"
                 label="Colors"
-                [allowMultiSelection]="true"
+                [multiple]="true"
                 [items]="colorItems">
             </select-picker>
         </div>

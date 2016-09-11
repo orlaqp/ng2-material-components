@@ -32,7 +32,5 @@ export class DemoSelectPickerComponent implements OnInit {
         this.fg = new FormGroup({});
     }
 
-    ngOnInit() {
-        $('#my-test-dropdown').selectpicker();
-    }
+    ngOnInit() {}
 }

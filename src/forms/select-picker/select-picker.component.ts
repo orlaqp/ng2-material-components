@@ -24,19 +24,6 @@ processPolyfills();
 })
 export class SelectPickerComponent extends InputBase implements OnInit, AfterViewInit {
 
-    private $element: JQuery;
-    private $newElement: JQuery = null;
-    private $button: JQuery = null;
-    private $menu: JQuery = null;
-    private $lis: JQuery = null;
-    private $menuInner: JQuery = null;
-    private $searchbox: JQuery = null;
-    private $bsContainer: JQuery = null;
-
-    private liObj: any = null;
-    private sizeInfo: any;
-    private changed_arguments: any = null;
-
     @Input() fgd: FormGroupDirective;
     @Input() field: string;
     @Input() disabled: boolean;
@@ -79,10 +66,22 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
         caret: '<span class="caret"></span>',
     };
     @Input() maxOptions: number = null;
-    @Input() mobile: boolean = false;
+    @Input() isMobile: boolean = false;
     @Input() selectOnTab: boolean = false;
     @Input() dropdownAlignRight: boolean | string = false;
 
+    private $element: JQuery;
+    private $newElement: JQuery = null;
+    private $button: JQuery = null;
+    private $menu: JQuery = null;
+    private $lis: JQuery = null;
+    private $menuInner: JQuery = null;
+    private $searchbox: JQuery = null;
+    private $bsContainer: JQuery = null;
+
+    private liObj: any = null;
+    private sizeInfo: any;
+    private changed_arguments: any = null;
 
     @Input() countSelectedText: Function = (numSelected: number, numTotal: number) => {
         return (numSelected === 1) ? '{0} item selected' : '{0} items selected';
@@ -153,7 +152,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
         if (this.container) this.selectPosition();
         this.$menu.data('this', this);
         this.$newElement.data('this', this);
-        if (this.mobile) this.mobile();
+        if (this.isMobile) this.mobile();
 
         this.$newElement.on({
             'hide.bs.dropdown': function(e: Event) {
