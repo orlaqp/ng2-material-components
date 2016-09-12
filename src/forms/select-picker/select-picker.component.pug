@@ -1,5 +1,5 @@
 select.my-selectpicker(
     style="display: none;",
-    [attr.multiple]="allowMultiSelection ? true : null",
+    [attr.multiple]="multiple ? true : null",
     [formControl]="control")
     option(*ngFor="let item of items", value="{{item.id}}") {{item.title}}
