@@ -1,10 +1,23 @@
-<a name="0.0.21"></a>
-## [0.0.21](https://github.com/orlaqp/ng2-material-components/compare/v0.0.20...v0.0.21) (2016-09-10)
+<a name="0.0.22"></a>
+## [0.0.22](https://github.com/orlaqp/ng2-material-components/compare/v0.0.21...v0.0.22) (2016-09-12)
 
 
 
 # Change Log
 All notable changes to this project will be documented in this file.
+
+<a name="0.0.22"></a>
+## [0.0.21](https://github.com/orlaqp/ng2-material-components/compare/v0.0.21...v0.0.22) (2016-09-10)
+
+### Added
+
+- dateChanged output for date time picker control
+- rangeChanged output for date range picker control
+
+### Changed
+
+- Remove date time picker plugin dependency
+
 
 <a name="0.0.21"></a>
 ## [0.0.21](https://github.com/orlaqp/ng2-material-components/compare/v0.0.20...v0.0.21) (2016-09-10)
