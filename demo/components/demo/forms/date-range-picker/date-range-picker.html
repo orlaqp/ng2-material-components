@@ -9,7 +9,8 @@
             <!-- Standard Date Time Picker -->
             <date-range-picker
                 [fgd]="f"
-                field="dateRange1">               
+                field="dateRange1"
+                (rangeChanged)="rangeChanged($event)">
             </date-range-picker>
         </div>
 

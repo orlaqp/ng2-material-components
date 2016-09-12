@@ -65,7 +65,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
     @Input() template: any = {
         caret: '<span class="caret"></span>',
     };
-    @Input() maxOptions: number = null;
+    @Input() maxOptions: number = 100;
     @Input() isMobile: boolean = false;
     @Input() selectOnTab: boolean = false;
     @Input() dropdownAlignRight: boolean | string = false;
@@ -488,6 +488,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
 
         this.tabIndex();
 
+        debugger;
         var selectedItems = this.$element.find('option').map(function() {
             if (this.selected) {
                 if (that.hideDisabled && (this.disabled || this.parentNode.tagName === 'OPTGROUP' && this.parentNode.disabled)) return;
@@ -513,6 +514,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
 
         //Fixes issue in IE10 occurring when no default option is selected and at least one option is disabled
         //Convert all the values into a comma delimited string
+        debugger;
         var title = !this.multiple ? selectedItems[0] : selectedItems.join(this.multipleSeparator);
 
         //If this is multi select, and the selectText type is count, the show 1 of 2 selected etc..
@@ -888,6 +890,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
      * @param {JQuery} $lis - the 'li' element that is being modified
      */
     private setSelected(index: number, selected?: any, $lis?: any) {
+        debugger;
         if (!$lis) {
             this.togglePlaceholder(); // check if setSelected is being called by changing the value of the select
             $lis = this.findLis().eq(this.liObj[index]);
@@ -956,6 +959,7 @@ export class SelectPickerComponent extends InputBase implements OnInit, AfterVie
     }
 
     private clickListener() {
+        debugger;
         var that = this,
             $document = $(document);
 

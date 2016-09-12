@@ -10,7 +10,8 @@
             <date-time-picker
                 [fgd]="f"
                 field="birthday"
-                placeholder="Birthday">
+                placeholder="Birthday"
+                (dateChanged)="dateChanged($event)">
             </date-time-picker>
         </div>
 

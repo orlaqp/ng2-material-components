@@ -16,4 +16,8 @@ export class DemoDateRangePickerComponent implements OnInit {
     }
 
     ngOnInit() { }
+
+    rangeChanged(range: DateRange) {
+        alert('Range Changed');
+    }
 }

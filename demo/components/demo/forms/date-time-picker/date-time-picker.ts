@@ -22,4 +22,8 @@ export class DemoDateTimePickerComponent implements OnInit {
     }
 
     ngOnInit() { }
+
+    dateChanged(d: moment.Moment) {
+        alert('Date changed');
+    }
 }

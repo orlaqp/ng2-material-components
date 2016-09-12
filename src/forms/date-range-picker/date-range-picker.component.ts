@@ -1,8 +1,13 @@
-import { Component, OnInit, OnDestroy, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
+
+export class DateRange {
+    from: moment.Moment;
+    to: moment.Moment;
+}
 
 @Component({
     moduleId: module.id,
@@ -44,6 +49,8 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
     @Input() locale: IDateRangePickerLocale;
     @Input() opens: string; // 'left'/'right'/'center'
     @Input() drops: string; // 'down' or 'up'
+
+    @Output() rangeChanged = new EventEmitter<DateRange>();
 
     private element: JQuery;
     private container: JQuery;
@@ -1403,6 +1410,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
         let endDate = this.endDate.format(this.locale.format);
 
         this.control.updateValue(`${startDate} - ${endDate}`);
+        this.rangeChanged.emit({ from: this.startDate.clone(), to: this.endDate.clone() });
     }
 
     private clickCancel(e: JQueryMouseEventObject) {

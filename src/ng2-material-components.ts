@@ -71,7 +71,7 @@ export { TextBoxComponent } from './forms/text-box/text-box.component';
 export { TextAreaComponent } from './forms/text-area/text-area.component';
 export { ToggleComponent } from './forms/toggle/toggle.component';
 export { DateTimePickerComponent } from './forms/date-time-picker/date-time-picker.component';
-export { DateRangePickerComponent } from './forms/date-range-picker/date-range-picker.component';
+export { DateRangePickerComponent, DateRange } from './forms/date-range-picker/date-range-picker.component';
 
 export { MaskedInputDirective } from './forms/mask/masked-input.directive';
 
