@@ -114,6 +114,15 @@ const config = {
                 }, {
                     from: path.resolve(__dirname, 'demo.css'),
                     to: 'assets'
+                }, {
+                    from: path.resolve(__dirname, '../node_modules/bootstrap/dist/js/bootstrap.min.js'),
+                    to: 'assets'
+                }, {
+                    from: path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.js'),
+                    to: 'assets'
+                }, {
+                    from: path.resolve(__dirname, './assets/polyfill.min.js'),
+                    to: 'assets'
                 }
             ]),
                 // new BrowserSyncPlugin({

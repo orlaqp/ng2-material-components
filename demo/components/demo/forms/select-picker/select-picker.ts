@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM, ISelectionItem } from '../../../../../dist/ng2-material-components';
+import { MATERIAL_FORM, MATERIAL_USER_INTERFACE, ISelectionItem } from '../../../../../dist/ng2-material-components';
 
 @Component({
     selector: 'demo-select-picker',
-    directives: [MATERIAL_FORM, REACTIVE_FORM_DIRECTIVES],
+    directives: [MATERIAL_FORM, MATERIAL_USER_INTERFACE, REACTIVE_FORM_DIRECTIVES],
     template: require('./select-picker.html'),
 })
 export class DemoSelectPickerComponent implements OnInit {
@@ -33,4 +33,9 @@ export class DemoSelectPickerComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    updateItems() {
+        debugger;
+        this.colorItems =  [ { id: '1', title: 'Cuba' }];
+    }
 }

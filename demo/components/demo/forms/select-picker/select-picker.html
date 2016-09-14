@@ -12,8 +12,10 @@
             <select-picker [fgd]="f"
                 field="color"
                 label="Colors"
-                [liveSearch]="false"
-                [items]="colorItems">
+                [liveSearch]="true"
+                [items]="colorItems"
+                liveSearchPlaceholder="... type to seach ..."
+                liveSearchStyle="startsWith">
             </select-picker>
         </div>
 
@@ -33,7 +35,8 @@
                 field="multipleColors"
                 label="Colors"
                 [multiple]="true"
-                [items]="colorItems">
+                [items]="colorItems"
+                [maxOptions]="2">
             </select-picker>
         </div>
 
