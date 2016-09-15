@@ -39,4 +39,41 @@
 
     </div>
 
+    <div class="row m-t-35 bgm-green p-t-20 p-b-20">
+
+        <div class="col-xs-12 col-sm-6">
+            <!-- Classic text area -->
+            <text-area [fgd]="f"
+                field="longText"
+                label="Big Description"
+                placeholder="please enter a long text here"
+                [autosize]="false"
+                [alt]="true">
+            </text-area>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <!-- Disabled text area -->
+            <text-area [fgd]="f"
+                [disabled]="true"
+                field="disabledDescription"
+                label="Description Disabled"
+                placeholder="no text can be entered here because I am disabled"
+                [autosize]="false"
+                [alt]="true">
+            </text-area>
+        </div>
+
+        <div class="col-xs-12">
+            <!-- Autozized text area -->
+            <text-area [fgd]="f"
+                field="autosized"
+                label="Auto-Expand Content"
+                placeholder="I am going to expand myself with the content you enter here"
+                [alt]="true">
+            </text-area>
+        </div>
+
+    </div>
+
 </form>

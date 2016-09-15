@@ -54,4 +54,54 @@
     </div>
 
 
+    <div class="row m-t-35 bgm-green m-t-15 m-b-15 p-t-15 p-b-15">
+
+        <div class="col-xs-12 col-sm-4">
+
+            <p class="readme c-white">
+                Standard group
+            </p>
+
+            <radio-group [fgd]="f" field="simpleRadioGroup" [alt]="true">
+                <!-- Normal Checkbox -->
+                <radio label="Option 1" value="option1"></radio>
+                <radio label="Option 2" value="option2"></radio>
+                <radio label="Option 3" value="option3"></radio>
+            </radio-group>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+
+            <p class="readme c-white">
+                Group with selected value
+            </p>
+
+            <radio-group [fgd]="f" field="defaultRadioGroup" [defaultValue]="defaultValue" [alt]="true">
+                <!-- Normal Checkbox -->
+                <radio label="Option 4" value="option4"></radio>
+                <radio label="Option 5" value="option5"></radio>
+                <radio label="Option 6" value="option6"></radio>
+            </radio-group>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+
+            <p class="readme c-white">
+                Group with options disabled
+            </p>
+
+            <radio-group [fgd]="f" field="disabledRadioGroup" [defaultValue]="defaultValue" [alt]="true">
+                <!-- Normal Checkbox -->
+                <radio label="Option 7" value="option7"></radio>
+                <radio label="Option 8" value="option8" [disabled]="true"></radio>
+                <radio label="Option 9" value="option9"></radio>
+            </radio-group>
+
+        </div>
+
+    </div>
+
+
 </form>

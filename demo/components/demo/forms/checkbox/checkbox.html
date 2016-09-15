@@ -19,5 +19,20 @@
         </div>
     </div>
 
+    <div class="row m-t-35 p-t-15 m-b-25 bgm-green">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Normal Checkbox -->
+            <checkbox [fgd]="f" field="toggle1" label="Simple Checkbox" [alt]="true"></checkbox>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Checkbox -->
+            <checkbox [fgd]="f" field="toggle2" [disabled]="true" label="Disabled Checkbox" [alt]="true"></checkbox>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- Checked by default -->
+            <checkbox [fgd]="f" field="toggle1" label="Checked by default" [value]="true" [alt]="true"></checkbox>
+        </div>
+    </div>
+
 
 </form>

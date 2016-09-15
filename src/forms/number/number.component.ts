@@ -24,6 +24,7 @@ export class NumberComponent extends InputBase implements OnInit {
     @Input() rightIcon: string;
     @Input() disabled: boolean;
     @Input() value: number;
+    @Input() alt: boolean;
 
     @Input() decimal: boolean;
     @Input() currency: boolean;

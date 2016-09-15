@@ -18,6 +18,7 @@ export class TextBoxComponent extends InputBase implements OnInit {
     @Input() rightIcon: string;
     @Input() value: string;
     @Input() disabled: boolean;
+    @Input() alt: boolean;
 
     // validators
     @Input() required: boolean;

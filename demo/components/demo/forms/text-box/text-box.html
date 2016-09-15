@@ -43,6 +43,39 @@
 
     </div>
 
+    <p class="lead">
+        When using on darker backgrounds
+    </p>
+
+
+    <!-- Alternate background -->
+    <div class="row m-t-35 p-t-25 p-b-25 bgm-green">
+
+        <div class="col-xs-12 col-sm-6">
+            <!-- Icon on the left -->
+            <text-box
+                [fgd]="f"
+                field="withLeftIcon"
+                label="Icon on the left"
+                leftIcon="account-add"
+                [alt]="true">
+            </text-box>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <!-- Icon on the right also -->
+            <text-box
+                [fgd]="f"
+                field="withLeftIcon"
+                label="Icon on the left"
+                rightIcon="face"
+                [alt]="true">
+            </text-box>
+        </div>
+
+    </div>
+
+
     <div class="row m-t-35">
 
         <div class="col-xs-12 col-sm-4">

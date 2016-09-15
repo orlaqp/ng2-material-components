@@ -20,6 +20,7 @@ export class PhoneComponent extends InputBase implements OnInit {
     @Input() disabled: boolean;
     @Input() value: number;
     @Input() fax: boolean;
+    @Input() alt: boolean;
 
     // validators
     @Input() required: boolean;

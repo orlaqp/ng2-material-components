@@ -1,4 +1,6 @@
-.form-group.m-b-25.w-100([ngClass]="{ 'has-error': !control.valid && (fgd.form.submitted || control.dirty)}")
+.text-area.form-group.m-b-25.w-100(
+        [class.fc-alt]="alt",
+        [ngClass]="{ 'has-error': !control.valid && (fgd.form.submitted || control.dirty)}")
     label(*ngIf="label") {{label}}
     .fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
         textarea.form-control.auto-size(#i, [attr.disabled]="disabled",

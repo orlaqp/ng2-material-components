@@ -19,6 +19,7 @@ export class RadioGroupComponent extends InputBase {
     @Input() field: string;
     @Input() disabled: boolean = false;
     @Input() defaultValue: string;
+    @Input() alt: boolean;
 
     constructor(el: ElementRef, private service: RadioGroupService) {
         super(el);

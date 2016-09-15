@@ -72,6 +72,7 @@ input:focus {
     &.disabled {
         @include opacity(0.6);
     }
+
 }
 
 .checkbox {
@@ -110,6 +111,41 @@ input:focus {
             top: 1px;
         }
     }
+
+    &.fc-alt {
+        label {
+            color: white;
+        }
+        .input-helper {
+            &:before {
+                border: 1px solid white;
+            }
+            &:after {
+                border-bottom: 2px solid white;
+                border-left: 2px solid white;
+            }
+        }
+    }
+}
+
+.radio-group {
+
+    &.fc-alt {
+        .radio {
+            color: white;
+
+            .input-helper {
+                &:before {
+                    left: 0;
+                    border: 1px solid white;
+                }
+                &:after {
+                    background: white;
+                }
+            }
+        }
+    }
+
 }
 
 .radio {
@@ -190,6 +226,19 @@ html:not(.ie9) {
 .input-group {
     &:not(.input-group-lg):not(.input-group-sm) .input-group-addon {
         font-size: 15px;
+    }
+
+    &.fc-alt {
+        .input-group-addon { color: white; }
+        .fg-line {
+            &:after { background: white; }
+            input {
+                color: white;
+                border-color: white;
+            }
+
+        }
+        .fg-label { color: white; }
     }
 }
 
@@ -459,4 +508,46 @@ html:not(.ie9) {
 
 .has-warning {
     @include checkbox-fgline-validation($m-orange);
+}
+
+
+/*
+ * Text Area
+ */
+
+.text-area.form-group {
+
+    &.fc-alt {
+        color: white;
+
+        .fg-line {
+
+            &:after {
+                background-color: white;
+            }
+
+            textarea {
+                color: white;
+                background: transparent;
+
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                  color: #d6d6d6;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                  color: #d6d6d6;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                  color: #d6d6d6;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                  color: #d6d6d6;
+                }
+            }
+        }
+
+
+    }
+
+
+
 }

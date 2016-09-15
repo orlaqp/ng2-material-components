@@ -19,6 +19,7 @@ export class CheckboxComponent extends InputBase implements OnInit {
     @Input() label: string;
     @Input() disabled: boolean;
     @Input() value: boolean;
+    @Input() alt: boolean;
 
     constructor(el: ElementRef) {
         super(el);

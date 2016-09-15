@@ -25,6 +25,7 @@ export class TextAreaComponent extends InputBase implements OnInit {
     @Input() leftIcon: string;
     @Input() disabled: boolean;
     @Input() value: string;
+    @Input() alt: boolean;
 
     // validators
     @Input() required: boolean;

@@ -20,6 +20,7 @@ export class PasswordComponent extends InputBase implements OnInit {
     @Input() rightIcon: string;
     @Input() disabled: boolean;
     @Input() value: string;
+    @Input() alt: boolean;
 
     // validators
     @Input() required: boolean;
