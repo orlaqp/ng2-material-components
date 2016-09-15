@@ -12,6 +12,7 @@ export class ButtonComponent {
     @Input() icon: string;
     @Input() block: boolean;
     @Input() circular: boolean;
+    @Input() rounded: boolean;
 
     @Input() size: string = ''; // lg, sm, xs
     @Input() disabled: boolean;

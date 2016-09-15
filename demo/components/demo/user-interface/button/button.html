@@ -1,10 +1,10 @@
 <div class="demo-buttons">
 
+    <!-- Normal buttons -->
     <p class="lead">
         Normal Buttons
     </p>
 
-    <!-- Normal buttons -->
     <div>
         <bw-button *ngFor="let c of colors" [color]="c" [title]="c" class="normal" (clicked)="onClicked()"></bw-button>
     </div>
@@ -13,13 +13,22 @@
         <bw-button *ngFor="let c of buttons" [color]="c.color" [title]="c.title" [icon]="c.icon" class="normal"></bw-button>
     </div>
 
+    <!-- Rounded buttons -->
+    <p class="lead">
+        Rounded Buttons
+    </p>
+
+    <div>
+        <bw-button *ngFor="let c of colors" [color]="c" [title]="c" class="normal" [rounded]="true" (clicked)="onClicked()"></bw-button>
+    </div>
+
     <br/>
 
+    <!-- Icon buttons -->
     <p class="lead">
         Default Icon Buttons
     </p>
 
-    <!-- Icon buttons -->
     <div class="m-t-20">
         <bw-button *ngFor="let c of buttons" color="white" [icon]="c.icon"></bw-button>
     </div>
@@ -42,7 +51,7 @@
         Different Sizes
     </p>
 
-    <div class="button-sizes">        
+    <div class="button-sizes">
         <!-- Normal buttons -->
         <bw-button color="white" title="Large" size="lg"></bw-button>
         <bw-button color="blue" title="Default" size="default"></bw-button>

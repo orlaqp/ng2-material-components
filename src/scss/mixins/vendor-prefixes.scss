@@ -29,146 +29,150 @@
 }
 
 
-// Animations
-@mixin animation($animation) {
-    @include prefix(animation, $animation, webkit o);
-}
-@mixin animation-name($name) {
-    @include prefix(animation-name, $name, webkit);
-}
-@mixin animation-duration($duration) {
-    @include prefix(animation-duration, $duration, webkit);
-}
-@mixin animation-timing-function($timing-function) {
-    @include prefix(animation-timing-function, $timing-function, webkit);
-}
-@mixin animation-delay($delay) {
-    @include prefix(animation-delay, $delay, webkit);
-}
-@mixin animation-iteration-count($iteration-count) {
-    @include prefix(animation-iteration-count, $iteration-count, webkit);
-}
-@mixin animation-direction($direction) {
-    @include prefix(animation-direction, $direction, webkit);
-}
-@mixin animation-fill-mode($fill-mode) {
-    @include prefix(animation-fill-mode, $fill-mode, webkit);
-}
-
-// Backface visibility
-// Prevent browsers from flickering when using CSS 3D transforms.
-// Default value is `visible`, but can be changed to `hidden`
-
-@mixin backface-visibility($visibility){
-    @include prefix(backface-visibility, $visibility, webkit moz);
-}
-
-// Drop shadows
+// // Animations
+// @mixin animation($animation) {
+//     @include prefix(animation, $animation, webkit o);
+// }
+// @mixin animation-name($name) {
+//     @include prefix(animation-name, $name, webkit);
+// }
+// @mixin animation-duration($duration) {
+//     @include prefix(animation-duration, $duration, webkit);
+// }
+// @mixin animation-timing-function($timing-function) {
+//     @include prefix(animation-timing-function, $timing-function, webkit);
+// }
+// @mixin animation-delay($delay) {
+//     @include prefix(animation-delay, $delay, webkit);
+// }
+// @mixin animation-iteration-count($iteration-count) {
+//     @include prefix(animation-iteration-count, $iteration-count, webkit);
+// }
+// @mixin animation-direction($direction) {
+//     @include prefix(animation-direction, $direction, webkit);
+// }
+// @mixin animation-fill-mode($fill-mode) {
+//     @include prefix(animation-fill-mode, $fill-mode, webkit);
+// }
 //
-// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
-// supported browsers that have box shadow capabilities now support it.
+// // Backface visibility
+// // Prevent browsers from flickering when using CSS 3D transforms.
+// // Default value is `visible`, but can be changed to `hidden`
+//
+// @mixin backface-visibility($visibility){
+//     @include prefix(backface-visibility, $visibility, webkit moz);
+// }
+//
+// // Drop shadows
+// //
+// // Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+// // supported browsers that have box shadow capabilities now support it.
+//
+// @mixin box-shadow($shadow) {
+//     @include prefix(box-shadow, $shadow, webkit); // iOS <4.3 & Android <4.1
+// }
+//
+// // Box sizing
+// @mixin box-sizing($boxmodel) {
+//     @include prefix(box-sizing, $boxmodel, webkit moz);
+// }
+//
+// // CSS3 Content Columns
+// @mixin content-columns($column-count, $column-gap: $grid-gutter-width) {
+//     @include prefix(column-count, $column-count, webkit moz);
+//     @include prefix(column-gap, $column-gap, webkit moz);
+// }
+//
+// // Optional hyphenation
+// @mixin hyphens($mode: auto) {
+//     word-wrap: break-word;
+//     @include prefix(hyphens, $mode, webkit moz ms o);
+// }
+//
+// // Placeholder text
+// @mixin placeholder($color: $input-color-placeholder) {
+//   // Firefox
+//   &::-moz-placeholder {
+//     color: $color;
+//     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+//   }
+//   &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
+//   &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+// }
+//
+// // Transformations
+// @mixin scale($ratio) {
+//     @include prefix(transform, $ratio, webkit ms o);
+// }
+// @mixin scaleXY($ratioX, $ratioY) {
+//     @include prefix(transform, scale($ratioX, $ratioY), webkit ms o);
+// }
+// @mixin scaleX($ratio) {
+//     @include prefix(transform, scaleX($ratio), webkit ms o);
+// }
+// @mixin scaleY($ratio) {
+//     @include prefix(transform, scaleY($ratio), webkit moz o);
+// }
+// @mixin skew($x, $y) {
+//     @include prefix(transform, skewX($x) skewY($y), webkit ms o);
+//   // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+// }
+// @mixin translate($x, $y) {
+//     @include prefix(transform, translate($x, $y), webkit ms o);
+// }
+// @mixin translate3d($x, $y, $z, $content:null) {
+//     @include prefix(transform, translate3d($x, $y, $z), webkit, $content);
+// }
+// @mixin rotate($degrees) {
+//     @include prefix(transform, rotate($degrees), webkit ms o);
+// }
+// @mixin rotateX($degrees) {
+//     @include prefix(transform, rotateX($degrees), webkit ms o);
+// }
+// @mixin rotateY($degrees) {
+//     @include prefix(transform, rotateY($degrees), webkit ms o);
+// }
+// @mixin perspective($perspective) {
+//     @include prefix(perspective, $perspective, webkit moz);
+// }
+// @mixin perspective-origin($perspective) {
+//     @include prefix(perspective-origin, $perspective, webkit moz);
+// }
+// @mixin transform-origin($origin) {
+//     @include prefix(transform-origin, $origin, webkit moz ms);
+// }
+//
+// // Transitions
+//
+// @mixin transition($transition) {
+//     @include prefix(transition, $transition, webkit o);
+// }
+// @mixin transition-property($transition-property) {
+//     @include prefix(transition-property, $transition-property, webkit);
+// }
+// @mixin transition-delay($transition-delay) {
+//     @include prefix(transition-delay, $transition-delay, webkit);
+// }
+// @mixin transition-duration($transition-duration) {
+//     @include prefix(transition-duration, $transition-duration, webkit);
+// }
+// @mixin transition-timing-function($timing-function) {
+//     @include prefix(transition-timing-function, $timing-function, webkit);
+// }
+// @mixin transition-transform($transition) {
+//   -webkit-transition: -webkit-transform $transition;
+//      -moz-transition: -moz-transform $transition;
+//        -o-transition: -o-transform $transition;
+//           transition: transform $transition;
+// }
+//
+// // User select
+// // For selecting text on the page
+//
+// @mixin user-select($select) {
+//     @include prefix(user-select, $select, webkit moz ms);
+// }
 
-@mixin box-shadow($shadow) {
-    @include prefix(box-shadow, $shadow, webkit); // iOS <4.3 & Android <4.1
-}
-
-// Box sizing
-@mixin box-sizing($boxmodel) {
-    @include prefix(box-sizing, $boxmodel, webkit moz);
-}
-
-// CSS3 Content Columns
-@mixin content-columns($column-count, $column-gap: $grid-gutter-width) {
-    @include prefix(column-count, $column-count, webkit moz);
-    @include prefix(column-gap, $column-gap, webkit moz);
-}
-
-// Optional hyphenation
-@mixin hyphens($mode: auto) {
-    word-wrap: break-word;
-    @include prefix(hyphens, $mode, webkit moz ms o);
-}
-
-// Placeholder text
-@mixin placeholder($color: $input-color-placeholder) {
-  // Firefox
-  &::-moz-placeholder {
-    color: $color;
-    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
-  }
-  &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
-}
-
-// Transformations
-@mixin scale($ratio) {
-    @include prefix(transform, $ratio, webkit ms o);
-}
-@mixin scaleXY($ratioX, $ratioY) {
-    @include prefix(transform, scale($ratioX, $ratioY), webkit ms o);
-}
-@mixin scaleX($ratio) {
-    @include prefix(transform, scaleX($ratio), webkit ms o);
-}
-@mixin scaleY($ratio) {
-    @include prefix(transform, scaleY($ratio), webkit moz o);
-}
-@mixin skew($x, $y) {
-    @include prefix(transform, skewX($x) skewY($y), webkit ms o);
-  // See https://github.com/twbs/bootstrap/issues/4885; IE9+
-}
-@mixin translate($x, $y) {
-    @include prefix(transform, translate($x, $y), webkit ms o);
-}
-@mixin translate3d($x, $y, $z, $content:null) {
-    @include prefix(transform, translate3d($x, $y, $z), webkit, $content);
-}
-@mixin rotate($degrees) {
-    @include prefix(transform, rotate($degrees), webkit ms o);
-}
-@mixin rotateX($degrees) {
-    @include prefix(transform, rotateX($degrees), webkit ms o);
-}
-@mixin rotateY($degrees) {
-    @include prefix(transform, rotateY($degrees), webkit ms o);
-}
-@mixin perspective($perspective) {
-    @include prefix(perspective, $perspective, webkit moz);
-}
-@mixin perspective-origin($perspective) {
-    @include prefix(perspective-origin, $perspective, webkit moz);
-}
-@mixin transform-origin($origin) {
-    @include prefix(transform-origin, $origin, webkit moz ms);
-}
-
-// Transitions
-
-@mixin transition($transition) {
-    @include prefix(transition, $transition, webkit o);
-}
-@mixin transition-property($transition-property) {
-    @include prefix(transition-property, $transition-property, webkit);
-}
-@mixin transition-delay($transition-delay) {
-    @include prefix(transition-delay, $transition-delay, webkit);
-}
-@mixin transition-duration($transition-duration) {
-    @include prefix(transition-duration, $transition-duration, webkit);
-}
-@mixin transition-timing-function($timing-function) {
-    @include prefix(transition-timing-function, $timing-function, webkit);
-}
-@mixin transition-transform($transition) {
-  -webkit-transition: -webkit-transform $transition;
-     -moz-transition: -moz-transform $transition;
-       -o-transition: -o-transform $transition;
-          transition: transform $transition;
-}
-
-// User select
-// For selecting text on the page
-
-@mixin user-select($select) {
-    @include prefix(user-select, $select, webkit moz ms);
+@mixin border-radius($radius) {
+    @include prefix(border-radius, $radius, webkit moz);
 }

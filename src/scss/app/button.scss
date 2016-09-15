@@ -14,6 +14,11 @@
     &:not(.btn-link) {
         @include z-depth(1);
     }
+
+
+    &.btn-rounded {
+        @include border-radius(25px);
+    }
 }
 
 .btn-group, .btn-group-vertical {
