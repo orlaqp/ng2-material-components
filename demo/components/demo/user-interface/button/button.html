@@ -6,6 +6,10 @@
     </p>
 
     <div>
+        <bw-button title="Simple" [simple]="true" icon="chevron-left" (clicked)="onClicked()"></bw-button>
+    </div>
+
+    <div>
         <bw-button *ngFor="let c of colors" [color]="c" [title]="c" class="normal" (clicked)="onClicked()"></bw-button>
     </div>
 
