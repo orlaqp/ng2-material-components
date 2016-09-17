@@ -68,7 +68,7 @@ const config = {
                     // browse to http://localhost:3000/ during development,
                     // ./public directory is being served
                     host: 'localhost',
-                    port: 3000,
+                    port: 4000,
                     server: {
                         baseDir: [path.resolve(__dirname, 'dist')]
                     },
@@ -122,6 +122,12 @@ const config = {
                     to: 'assets'
                 }, {
                     from: path.resolve(__dirname, './assets/polyfill.min.js'),
+                    to: 'assets'
+                }, {
+                    from: path.resolve(__dirname, '../node_modules/node-waves/dist/waves.min.js'),
+                    to: 'assets'
+                }, {
+                    from: path.resolve(__dirname, '../node_modules/node-waves/dist/waves.min.css'),
                     to: 'assets'
                 }
             ]),

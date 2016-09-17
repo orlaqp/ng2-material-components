@@ -7,6 +7,7 @@ html(lang="en")
     link(rel="stylesheet", type="text/css", href="assets/demo.css")
     link(rel="shortcut icon", href="img/favicon.ico")
     link(rel="stylesheet", type="text/css", href="assets/prismjs/prism-okaidia.css")
+    link(rel="stylesheet", type="text/css", href="assets/waves.min.css")
     
     //- Intl pollyfill for Safari
     script(type="application/javascript", src="assets/polyfill.min.js")
@@ -15,7 +16,13 @@ html(lang="en")
     script(type="application/javascript", src="assets/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous")
     script(src="assets/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
     script(type="application/javascript", src="assets/moment/moment.min.js")
+    script(type="application/javascript", src="assets/waves.min.js")
     
   body
     app
       div(style="position:fixed;top:49%;width:100%;text-align:center;font-size:large;") Loading...
+    
+    script.
+      $(function() {
+          Waves.init(); 
+      });
