@@ -2,12 +2,22 @@
 
     <!-- Normal buttons -->
     <p class="lead">
-        Normal Buttons
+        Simple Buttons
     </p>
 
     <div>
-        <bw-button title="Simple" [simple]="true" icon="chevron-left" (clicked)="onClicked()"></bw-button>
+        <bw-button *ngFor="let c of buttons" [icon]="c.icon" [simple]="true" [simpleColor]="c.color"></bw-button>
     </div>
+
+    <div class="m-t-20">
+        <bw-button *ngFor="let c of buttons" [title]="c.title" [icon]="c.icon" [simple]="true" [simpleColor]="c.color"></bw-button>
+    </div>
+
+
+    <!-- Normal buttons -->
+    <p class="lead">
+        Normal Buttons
+    </p>
 
     <div>
         <bw-button *ngFor="let c of colors" [color]="c" [title]="c" class="normal" (clicked)="onClicked()"></bw-button>

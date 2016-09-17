@@ -14,6 +14,7 @@ export class ButtonComponent implements OnChanges {
     @Input() circular: boolean;
     @Input() rounded: boolean;
     @Input() simple: boolean;
+    @Input() simpleColor: string;
 
     @Input() size: string = ''; // lg, sm, xs
     @Input() disabled: boolean;
