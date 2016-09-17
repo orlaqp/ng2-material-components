@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'bw-button',
     templateUrl: 'button.component.pug',
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnChanges {
 
     @Input() title: string;
     @Input() color: string;
@@ -24,6 +24,14 @@ export class ButtonComponent {
 
     get iconAndtext(): boolean {
         return this.title !== undefined && this.icon !== undefined && !this.circular;
+    }
+
+    ngOnChanges(changes: {[propertyName: string]: any}) {
+        let simple: boolean = changes['simple'];
+
+        if (simple) {
+            this.color = 'white';
+        }
     }
 
     onClick(e: MouseEvent): void {
