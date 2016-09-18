@@ -232,6 +232,7 @@ html:not(.ie9) {
         .input-group-addon {
             color: white;
         }
+
         .fg-line {
             &:after { background: white; }
             input {
@@ -240,7 +241,26 @@ html:not(.ie9) {
             }
 
         }
+
         .fg-label { color: white; }
+
+        &.has-error {
+            .fg-line {
+                &:after { background: $m-red; }
+                input {
+                    color: $m-red;
+                    border-color: $m-red;
+                }
+
+            }
+
+            & .input-group-addon {
+                color: $m-red !important;
+                border-color: transparent;
+                background-color: transparent;
+            }
+        }
+
     }
 }
 
@@ -254,13 +274,13 @@ html:not(.ie9) {
     }
 }
 
-.has-error {
-    & .input-group-addon {
-        color: #eb3954 !important;
-        border-color: transparent;
-        background-color: transparent;
-    }
-}
+// .has-error {
+//     & .input-group-addon {
+//         color: #eb3954 !important;
+//         border-color: transparent;
+//         background-color: transparent;
+//     }
+// }
 
 /*
  * Input Feilds
