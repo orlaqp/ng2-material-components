@@ -229,7 +229,9 @@ html:not(.ie9) {
     }
 
     &.fc-alt {
-        .input-group-addon { color: white; }
+        .input-group-addon {
+            color: white;
+        }
         .fg-line {
             &:after { background: white; }
             input {
@@ -249,6 +251,14 @@ html:not(.ie9) {
     & > .zmdi {
         position: relative;
         top: 3px;
+    }
+}
+
+.has-error {
+    & .input-group-addon {
+        color: #eb3954 !important;
+        border-color: transparent;
+        background-color: transparent;
     }
 }
 
