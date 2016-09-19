@@ -2,6 +2,7 @@ app-header(color="blue",
     [addMenuTrigger]="true",
     [brand]="appTitle",
     (onSidebarToggle)="open = $event",
+    (onActionClicked)="onActionClicked($event)",
     [actions]="headerActions")
 
 sidebar([open]="open")

@@ -28,10 +28,6 @@ export class AppHeaderComponent {
     }
 
     headerActionClicked(item: IMenuItem) {
-        if (item.url) {
-            window.location.href = item.url;
-        }
-
         this.onActionClicked.emit(item);
     }
 }
