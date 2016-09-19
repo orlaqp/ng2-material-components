@@ -1,21 +1,21 @@
-<form [formGroup]="fg" #f="ngForm">
+<form [formGroup]="fg">
 
     <pre>
-        {{ f.value | json }}
+        {{ fg.value | json }}
     </pre>
 
     <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- First Name -->
-            <text-box [fgd]="f" field="firstName" label="First Name" [required]="true"></text-box>
+            <text-box [fg]="fg" field="firstName" label="First Name" [required]="true"></text-box>
         </div>
         <div class="col-xs-12 col-sm-4">
             <!-- Middle Name -->
-            <text-box [fgd]="f" field="middleName" [disabled]="true" label="Middle Name"></text-box>
+            <text-box [fg]="fg" field="middleName" [disabled]="true" label="Middle Name"></text-box>
         </div>
         <div class="col-xs-12 col-sm-4">
             <!-- Last Name -->
-            <text-box [fgd]="f" field="lastName" label="Last Name" [value]="'Some Lastname'"></text-box>
+            <text-box [fg]="fg" field="lastName" label="Last Name" [value]="'Some Lastname'"></text-box>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
         <div class="col-xs-12 col-sm-6">
             <!-- Icon on the left -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="withLeftIcon"
                 label="Icon on the left"
                 leftIcon="account-add"
@@ -35,7 +35,7 @@
         <div class="col-xs-12 col-sm-6">
             <!-- Icon on the right also -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="withLeftIcon"
                 label="Icon on the left"
                 rightIcon="face">
@@ -55,7 +55,7 @@
         <div class="col-xs-12 col-sm-6">
             <!-- Icon on the left -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="withLeftIcon"
                 label="Icon on the left"
                 leftIcon="account-add"
@@ -67,7 +67,7 @@
         <div class="col-xs-12 col-sm-6">
             <!-- Icon on the right also -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="withLeftIcon"
                 label="Icon on the left"
                 rightIcon="face"
@@ -84,7 +84,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Required Validation -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="required"
                 label="Required field"
                 [required]="true">
@@ -94,7 +94,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Min Validation -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="min5"
                 label="5 characters minimum"
                 [min]="5">
@@ -104,7 +104,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Min Validation -->
             <text-box
-                [fgd]="f"
+                [fg]="fg"
                 field="max10"
                 label="10 characters max"
                 [max]="10">

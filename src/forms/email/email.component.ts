@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroupDirective } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { CustomValidators } from '../validators/custom-validators';
 import { IValidationInfo } from  '../../models/validation-info';
@@ -11,7 +11,7 @@ import { IValidationInfo } from  '../../models/validation-info';
 })
 export class EmailComponent extends InputBase implements OnInit {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
     @Input() label: string;

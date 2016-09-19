@@ -1,14 +1,14 @@
-<form [formGroup]="fg" #f="ngForm">
+<form [formGroup]="fg">
 
     <pre>
-        {{ f.value | json }}
+        {{ fg.value | json }}
     </pre>
 
     <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- Standard Date Time Picker -->
             <date-range-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="dateRange1"
                 (rangeChanged)="rangeChanged($event)">
             </date-range-picker>
