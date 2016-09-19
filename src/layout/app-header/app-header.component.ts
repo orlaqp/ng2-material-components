@@ -17,6 +17,7 @@ export class AppHeaderComponent {
     @Input() actions: IMenuItem[];
 
     @Output() onSidebarToggle = new EventEmitter();
+    @Output() onActionClicked = new EventEmitter();
 
     constructor(private _router: Router) { }
 
@@ -29,5 +30,7 @@ export class AppHeaderComponent {
         if (item.url) {
             window.location.href = item.url;
         }
+
+        this.onActionClicked.emit(item);
     }
 }
