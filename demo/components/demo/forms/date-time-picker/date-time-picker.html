@@ -70,4 +70,40 @@
         </div>
     </div>
 
+    <div class="row m-t-35 bgm-pink">
+        <div class="col-xs-12 col-sm-4">
+            <!-- Standard Date Time Picker -->
+            <date-time-picker
+                [fgd]="f"
+                field="birthday2"
+                placeholder="Birthday"
+                (dateChanged)="dateChanged($event)"
+                [alt]="true">
+            </date-time-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Disabled Date Time Picker -->
+            <date-time-picker
+                [fgd]="f"
+                field="birthdayDisabled2"
+                placeholder="Birthday Disabled"
+                [disabled]="true"
+                [alt]="true">
+            </date-time-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Custom Format -->
+            <date-time-picker
+                [fgd]="f"
+                field="justDate2"
+                placeholder="Just Date"
+                format="MM/DD/YYYY"
+                [alt]="true">
+            </date-time-picker>
+        </div>
+
+    </div>
+
 </form>

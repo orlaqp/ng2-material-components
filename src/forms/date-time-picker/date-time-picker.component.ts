@@ -18,6 +18,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     @Input() label: string;
     @Input() floatingLabel: boolean;
     @Input() disabled: boolean;
+    @Input() alt: boolean;
 
     // options
     // format reference: http://momentjs.com/docs/#/displaying/
