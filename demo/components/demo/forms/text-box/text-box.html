@@ -7,7 +7,7 @@
     <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- First Name -->
-            <text-box [fgd]="f" field="firstName" label="First Name"></text-box>
+            <text-box [fgd]="f" field="firstName" label="First Name" [required]="true"></text-box>
         </div>
         <div class="col-xs-12 col-sm-4">
             <!-- Middle Name -->
@@ -27,7 +27,8 @@
                 [fgd]="f"
                 field="withLeftIcon"
                 label="Icon on the left"
-                leftIcon="account-add">
+                leftIcon="account-add"
+                [required]="true">
             </text-box>
         </div>
 
@@ -58,7 +59,8 @@
                 field="withLeftIcon"
                 label="Icon on the left"
                 leftIcon="account-add"
-                [alt]="true">
+                [alt]="true"
+                [required]="true">
             </text-box>
         </div>
 
@@ -69,7 +71,8 @@
                 field="withLeftIcon"
                 label="Icon on the left"
                 rightIcon="face"
-                [alt]="true">
+                [alt]="true"
+                [required]="true">
             </text-box>
         </div>
 

@@ -27,6 +27,7 @@ export class App implements OnInit {
     public open: boolean;
     public menuItems: IMenuItem[];
     public headerActions: IMenuItem[];
+    public appTitle = 'Material Components - Demo';
 
     // private _headerActionsSubject: Subject<IMenuItem[]>;
 
@@ -42,6 +43,14 @@ export class App implements OnInit {
         this.headerActions = [
             { id: 'github', icon: 'github', url: 'https://github.com/orlaqp/ng2-material-components' },
         ];
+
+        // Set property changes over time
+        // setTimeout(() => this.appTitle = 'Title Changed', 4000);
+        // setTimeout(() => {
+        //     this.headerActions = [
+        //         { id: 'github', icon: 'calendar' },
+        //     ];
+        // }, 4000);
     }
 
     ngOnInit() { }
