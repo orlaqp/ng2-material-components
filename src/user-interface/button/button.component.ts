@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'bw-button',
     templateUrl: 'button.component.pug',
 })
-export class ButtonComponent implements OnInit, OnChanges {
+export class ButtonComponent implements OnInit {
 
     @Input() title: string;
     @Input() color: string;
@@ -33,14 +33,6 @@ export class ButtonComponent implements OnInit, OnChanges {
             this.simpleColor = this.color;
             this.color = null;
         }
-    }
-
-    ngOnChanges(changes: {[propertyName: string]: any}) {
-        let simple: boolean = changes['simple'];
-
-        // if (simple) {
-        //     this.color = 'white';
-        // }
     }
 
     onClick(e: MouseEvent): void {

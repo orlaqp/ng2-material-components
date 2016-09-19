@@ -6,10 +6,26 @@ export const MATERIAL_COMMON = [
     NgTranscludeDirective,
 ];
 
-
 // models
+import { ControlWithType } from './models/control-with-type';
+import { IMenuItem } from './models/menu-item';
+import { ISelectionItem } from './models/selection-item';
+import { SubmitableFormGroup } from './models/submitable-form-group';
+import { IValidationInfo } from './models/validation-info';
+
+export { ControlWithType } from './models/control-with-type';
 export { IMenuItem } from './models/menu-item';
 export { ISelectionItem } from './models/selection-item';
+export { SubmitableFormGroup } from './models/submitable-form-group';
+export { IValidationInfo } from './models/validation-info';
+
+export const MATERIAL_MODELS = [
+    ControlWithType,
+    IMenuItem,
+    ISelectionItem,
+    SubmitableFormGroup,
+    IValidationInfo,
+];
 
 // layout
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
@@ -41,8 +57,6 @@ export const MATERIAL_NAVIGATION = [
     TabHeadingDirective,
 ];
 
-
-// forms
 import { CheckboxComponent } from './forms/checkbox/checkbox.component';
 import { EmailComponent } from './forms/email/email.component';
 import { NumberComponent } from './forms/number/number.component';
@@ -138,6 +152,7 @@ export const MATERIAL_USER_INTERFACE = [
 
 export const MATERIAL_ALL = [
     MATERIAL_COMMON,
+    MATERIAL_MODELS,
     MATERIAL_LAYOUT,
     MATERIAL_NAVIGATION,
     MATERIAL_FORM,

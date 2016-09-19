@@ -1166,6 +1166,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
        }
     }
 
+    /* tslint:disable */
     private outsideClick(e: MouseEvent) {
        var target = $(e.target);
        // if the page is clicked anywhere except within the daterangerpicker/button
@@ -1180,6 +1181,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
        this.hide();
        this.element.trigger('outsideClick.daterangepicker', this);
     }
+    /* tslint:enable */
 
     private showCalendars() {
        this.container.addClass('show-calendar');
