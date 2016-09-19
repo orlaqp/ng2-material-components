@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 export class AppHeaderComponent {
     @Input() color: string;
     @Input() addMenuTrigger: boolean;
-    @Input() logoPath: string;
     @Input() brand: string;
     @Input() sidebarOpen: boolean = false;
     @Input() actions: IMenuItem[];
+    @Input() logoPath: string;
+    @Input() logoHref: string = '/';
 
     @Output() onSidebarToggle = new EventEmitter();
 
