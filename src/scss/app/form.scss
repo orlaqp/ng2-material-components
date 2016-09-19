@@ -235,9 +235,11 @@ html:not(.ie9) {
 
         .fg-line {
             &:after { background: $m-alt; }
-            input {
+            input.form-control {
                 color: $m-alt;
                 border-color: $m-alt;
+                background-color: transparent;
+                @include placeholder($m-alt-placeholder);
             }
 
         }
@@ -559,19 +561,7 @@ html:not(.ie9) {
             textarea {
                 color: $m-alt;
                 background: transparent;
-
-                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                  color: $m-alt-placeholder;
-                }
-                &::-moz-placeholder { /* Firefox 19+ */
-                  color: $m-alt-placeholder;
-                }
-                &:-ms-input-placeholder { /* IE 10+ */
-                  color: $m-alt-placeholder;
-                }
-                &:-moz-placeholder { /* Firefox 18- */
-                  color: $m-alt-placeholder;
-                }
+                @include placeholder($m-alt-placeholder);
             }
         }
 
