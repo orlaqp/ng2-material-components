@@ -2,7 +2,7 @@ import { Component, Input, ElementRef, OnChanges } from '@angular/core';
 import {
     REACTIVE_FORM_DIRECTIVES,
     SelectControlValueAccessor,
-    FormGroupDirective,
+    FormGroup,
     FormControl,
 } from '@angular/forms';
 import { ISelectionItem } from '../../models/selection-item';
@@ -29,7 +29,7 @@ processPolyfills();
 })
 export class SelectPickerComponent extends InputBase implements OnChanges {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() field: string;
     @Input() disabled: boolean;
     @Input() placeholder: string;

@@ -1,22 +1,22 @@
 
-<form [formGroup]="fg" #f="ngForm">
+<form [formGroup]="fg">
 
     <pre>
-        {{ f.value | json }}
+        {{ fg.value | json }}
     </pre>
 
     <div class="row m-t-35">
 
         <div class="col-xs-12 col-sm-3">
             <!-- Integer -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 field="integer"
                 label="Integer"></number>
         </div>
 
         <div class="col-xs-12 col-sm-3">
             <!-- Decimal -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 [decimal]="true"
                 field="decimal"
                 label="Decimal"></number>
@@ -24,7 +24,7 @@
 
         <div class="col-xs-12 col-sm-3">
             <!-- Decimal -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 [currency]="true"
                 field="currency"
                 label="Currency"></number>
@@ -32,7 +32,7 @@
 
         <div class="col-xs-12 col-sm-3">
             <!-- Decimal -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 [percent]="true"
                 field="percentage"
                 label="Percentage"></number>
@@ -44,7 +44,7 @@
 
         <div class="col-xs-12 col-sm-3">
             <!-- Disabled -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 [disabled]="true"
                 [currency]="true"
                 field="disabled"
@@ -53,7 +53,7 @@
 
         <div class="col-xs-12 col-sm-3">
             <!-- Default value -->
-            <number [fgd]="f"
+            <number [fg]="fg"
                 field="defaultValue"
                 label="Default Value"
                 [value]="99"></number>

@@ -1,14 +1,14 @@
-<form [formGroup]="fg" #f="ngForm">
+<form [formGroup]="fg">
 
     <pre>
-        {{ f.value | json }}
+        {{ fg.value | json }}
     </pre>
 
     <div class="row m-t-35">
         <div class="col-xs-12 col-sm-4">
             <!-- Standard Date Time Picker -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="birthday"
                 placeholder="Birthday"
                 (dateChanged)="dateChanged($event)">
@@ -18,7 +18,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Disabled Date Time Picker -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="birthdayDisabled"
                 placeholder="Birthday Disabled"
                 [disabled]="true">
@@ -28,7 +28,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Custom Format -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="justDate"
                 placeholder="Just Date"
                 format="MM/DD/YYYY">
@@ -41,7 +41,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Min Date -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="minDate"
                 placeholder="Min Date"
                 [minDate]="minDate">
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Max Date -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="maxDate"
                 placeholder="Max Date"
                 [maxDate]="maxDate">
@@ -61,7 +61,7 @@
         <div class="col-xs-12 col-sm-4">
             <!-- Range -->
             <date-time-picker
-                [fgd]="f"
+                [fg]="fg"
                 field="range"
                 placeholder="Between"
                 [minDate]="minDate"

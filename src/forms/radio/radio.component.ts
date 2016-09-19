@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
 import { RadioGroupService } from './radio-group.service';
 
 /**
@@ -13,7 +13,7 @@ import { RadioGroupService } from './radio-group.service';
 })
 export class RadioComponent implements AfterViewInit {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() field: string;
     @Input() label: string;
     @Input() disabled: boolean;

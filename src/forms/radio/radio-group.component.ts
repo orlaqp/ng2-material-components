@@ -1,7 +1,7 @@
 // from here: https://github.com/pleerock/ng2-radio-group
 
 import { Component, Input, ElementRef } from '@angular/core';
-import { FormGroupDirective } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { RadioComponent } from './radio.component';
 import { RadioGroupService } from './radio-group.service';
@@ -15,7 +15,7 @@ import { RadioGroupService } from './radio-group.service';
 })
 export class RadioGroupComponent extends InputBase {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() field: string;
     @Input() disabled: boolean = false;
     @Input() defaultValue: string;

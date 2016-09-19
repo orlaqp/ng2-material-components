@@ -1,6 +1,5 @@
 import { ElementRef } from '@angular/core';
 import {
-    FormGroupDirective,
     FormGroup,
     Validators } from '@angular/forms';
 import { SubmitableFormGroup } from '../../models/submitable-form-group';
@@ -13,7 +12,7 @@ export class InputBase {
 
     public dataType: TypeEnum;
     public model: Object;
-    public fgd: FormGroupDirective;
+    public fg: FormGroup;
     public field: string;
     public floatingLabel: boolean;
     public required: boolean;
@@ -125,15 +124,14 @@ export class InputBase {
         // the latest element is the array indicates the control name so I should
         // not process it
         let fieldName: string = pathTokens.pop();
-        let fgd: FormGroupDirective = that.fgd;
-        let fg: FormGroup = fgd.form;
+        let fg: FormGroup = that.fg;
 
         // create controls group tree
         pathTokens.forEach((token: string) => {
-            if (!fgd.control.controls[token]) {
-                fgd.control.addControl(token, new SubmitableFormGroup({}));
+            if (!fg.controls[token]) {
+                fg.addControl(token, new SubmitableFormGroup({}));
             }
-            fg = <FormGroup>fgd.control.controls[token];
+            fg = <FormGroup>fg.controls[token];
         });
 
         // make sure value is not null
@@ -158,7 +156,7 @@ export class InputBase {
         fg.addControl(fieldName, this.control);
 
         // if (!this.required) {
-        //     fgd.control.exclude(fieldName);
+        //     fg.exclude(fieldName);
         // }
     }
 
