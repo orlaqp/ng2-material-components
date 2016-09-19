@@ -1,15 +1,15 @@
 
-<form [formGroup]="fg" #f="ngForm">
+<form [formGroup]="fg">
 
     <pre>
-        {{ f.value | json }}
+        {{ fg.value | json }}
     </pre>
 
     <div class="row m-t-35">
 
         <div class="col-xs-12 col-sm-4">
             <!-- Simple select -->
-            <select-picker [fgd]="f"
+            <select-picker [fg]="fg"
                 field="color"
                 label="Colors"
                 [liveSearch]="true"
@@ -21,7 +21,7 @@
 
         <div class="col-xs-12 col-sm-4">
             <!-- Select with live search -->
-            <select-picker [fgd]="f"
+            <select-picker [fg]="fg"
                 field="color1"
                 label="Colors"
                 [disabled]="true"
@@ -31,7 +31,7 @@
 
         <div class="col-xs-12 col-sm-4">
             <!-- Multiselection -->
-            <select-picker [fgd]="f"
+            <select-picker [fg]="fg"
                 field="multipleColors"
                 label="Colors"
                 [multiple]="true"

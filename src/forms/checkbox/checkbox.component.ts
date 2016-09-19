@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, CheckboxControlValueAccessor, FormGroupDirective } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, CheckboxControlValueAccessor, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { TypeEnum } from '../../models/type-enum';
 
@@ -14,7 +14,7 @@ import { TypeEnum } from '../../models/type-enum';
 })
 export class CheckboxComponent extends InputBase implements OnInit {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() field: string;
     @Input() label: string;
     @Input() disabled: boolean;

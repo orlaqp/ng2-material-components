@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
@@ -17,7 +17,7 @@ export class DateRange {
 })
 export class DateRangePickerComponent extends InputBase implements OnInit, OnDestroy {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
     @Input() label: string;

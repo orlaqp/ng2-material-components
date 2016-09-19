@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroupDirective } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { TypeEnum } from '../../models/type-enum';
 import { MaskedInputDirective } from '../mask/masked-input.directive';
@@ -15,7 +15,7 @@ import createNumberMask from '../mask/addons/create-number-mask';
 })
 export class NumberComponent extends InputBase implements OnInit {
 
-    @Input() fgd: FormGroupDirective;
+    @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
     @Input() label: string;
