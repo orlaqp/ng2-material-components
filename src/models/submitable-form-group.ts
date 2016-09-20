@@ -9,21 +9,13 @@ import {
 export class SubmitableFormGroup extends FormGroup {
     // public controls: {[key: string]: AbstractControl};
 
-    private _submitted: boolean;
-
-    get submitted(): boolean {
-        return this._submitted;
-    }
+    public submitted: boolean;
 
     constructor(
         controls: {[key: string]: AbstractControl},
         other: {[key: string]: boolean },
         asyncValidator?: AsyncValidatorFn) {
         super(controls, other, asyncValidator);
-    }
-
-    public markAsSubmitted(): void {
-        this._submitted = true;
     }
 
     public getValue(): any {
