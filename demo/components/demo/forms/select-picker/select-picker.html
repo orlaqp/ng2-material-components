@@ -42,4 +42,44 @@
 
     </div>
 
+    <div class="row m-t-35 p-t-15 p-b-15 bgm-blue">
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Simple select -->
+            <select-picker [fg]="fg"
+                field="color"
+                label="Colors"
+                [liveSearch]="true"
+                [items]="colorItems"
+                liveSearchPlaceholder="... type to seach ..."
+                liveSearchStyle="startsWith"
+                [alt]="true">
+            </select-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Select with live search -->
+            <select-picker [fg]="fg"
+                field="color1"
+                label="Colors"
+                [disabled]="true"
+                [items]="colorItems"
+                [alt]="true">
+            </select-picker>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <!-- Multiselection -->
+            <select-picker [fg]="fg"
+                field="multipleColors"
+                label="Colors"
+                [multiple]="true"
+                [items]="colorItems"
+                [maxOptions]="2"
+                [alt]="true">
+            </select-picker>
+        </div>
+
+    </div>
+
 </form>
