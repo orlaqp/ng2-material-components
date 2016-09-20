@@ -114,15 +114,15 @@ input:focus {
 
     &.fc-alt {
         label {
-            color: white;
+            color: $m-alt;
         }
         .input-helper {
             &:before {
-                border: 1px solid white;
+                border: 1px solid $m-alt;
             }
             &:after {
-                border-bottom: 2px solid white;
-                border-left: 2px solid white;
+                border-bottom: 2px solid $m-alt;
+                border-left: 2px solid $m-alt;
             }
         }
     }
@@ -132,15 +132,15 @@ input:focus {
 
     &.fc-alt {
         .radio {
-            color: white;
+            color: $m-alt;
 
             .input-helper {
                 &:before {
                     left: 0;
-                    border: 1px solid white;
+                    border: 1px solid $m-alt;
                 }
                 &:after {
-                    background: white;
+                    background: $m-alt;
                 }
             }
         }
@@ -230,19 +230,21 @@ html:not(.ie9) {
 
     &.fc-alt {
         .input-group-addon {
-            color: white;
+            color: $m-alt;
         }
 
         .fg-line {
-            &:after { background: white; }
-            input {
-                color: white;
-                border-color: white;
+            &:after { background: $m-alt; }
+            input.form-control {
+                color: $m-alt;
+                border-color: $m-alt;
+                background-color: transparent;
+                @include placeholder($m-alt-placeholder);
             }
 
         }
 
-        .fg-label { color: white; }
+        .fg-label { color: $m-alt; }
 
         &.has-error {
             .fg-line {
@@ -548,30 +550,18 @@ html:not(.ie9) {
 .text-area.form-group {
 
     &.fc-alt {
-        color: white;
+        color: $m-alt;
 
         .fg-line {
 
             &:after {
-                background-color: white;
+                background-color: $m-alt;
             }
 
             textarea {
-                color: white;
+                color: $m-alt;
                 background: transparent;
-
-                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                  color: #d6d6d6;
-                }
-                &::-moz-placeholder { /* Firefox 19+ */
-                  color: #d6d6d6;
-                }
-                &:-ms-input-placeholder { /* IE 10+ */
-                  color: #d6d6d6;
-                }
-                &:-moz-placeholder { /* Firefox 18- */
-                  color: #d6d6d6;
-                }
+                @include placeholder($m-alt-placeholder);
             }
         }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 
 @Injectable()
 export class ActionsService {
@@ -9,12 +9,12 @@ export class ActionsService {
     showBig: boolean;
 
     // observable string streams
-    actionClicked$: Observable<IMenuItem>;
+    actionClicked$: Observable<MenuItem>;
 
     // observable string source
-    private actionClickedSource = new Subject<IMenuItem>();
+    private actionClickedSource = new Subject<MenuItem>();
 
-    announceAction(action: IMenuItem) {
+    announceAction(action: MenuItem) {
         this.actionClickedSource.next(action);
     }
 

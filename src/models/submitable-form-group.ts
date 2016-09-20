@@ -1,20 +1,21 @@
-import { FormGroup } from '@angular/forms';
+import {
+    FormGroup,
+    AbstractControl,
+    AsyncValidatorFn,
+} from '@angular/forms';
+
+
 
 export class SubmitableFormGroup extends FormGroup {
     // public controls: {[key: string]: AbstractControl};
 
-    private _submitted: boolean;
+    public submitted: boolean;
 
-    get submitted(): boolean {
-        return this._submitted;
-    }
-
-    constructor(args: any) {
-        super(args);
-    }
-
-    public markAsSubmitted(): void {
-        this._submitted = true;
+    constructor(
+        controls: {[key: string]: AbstractControl},
+        other: {[key: string]: boolean },
+        asyncValidator?: AsyncValidatorFn) {
+        super(controls, other, asyncValidator);
     }
 
     public getValue(): any {

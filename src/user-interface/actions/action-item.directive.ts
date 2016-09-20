@@ -1,11 +1,11 @@
 import { Directive, ElementRef, Input, Renderer, AfterViewInit, HostListener } from '@angular/core';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 import { ActionsService } from './actions.service';
 
 @Directive({ selector: '[actionItem]' })
 export class ActionItemDirective implements AfterViewInit {
 
-    @Input() actionItem: IMenuItem;
+    @Input() actionItem: MenuItem;
 
     constructor(private _el: ElementRef, private _renderer: Renderer, private _actionsService: ActionsService) { }
 
@@ -15,11 +15,11 @@ export class ActionItemDirective implements AfterViewInit {
     }
 
     @HostListener('click', ['$event'])
-    public onActionClicked($event: MouseEvent, menuItem?: IMenuItem): void {
+    public onActionClicked($event: MouseEvent, menuItem?: MenuItem): void {
 
         $event.preventDefault();
 
-        let item: IMenuItem = menuItem ? menuItem : this.actionItem;
+        let item: MenuItem = menuItem ? menuItem : this.actionItem;
 
         // only send notification when the item does not have children
         if (!item.children) {
@@ -27,7 +27,7 @@ export class ActionItemDirective implements AfterViewInit {
         }
     }
 
-    private _createAnchor(ele: any, menuItem: IMenuItem, submenu: boolean = false) {
+    private _createAnchor(ele: any, menuItem: MenuItem, submenu: boolean = false) {
         var anchor = this._renderer.createElement(ele, 'a');
         this._renderer.setElementAttribute(anchor, 'href', '');
 
@@ -68,7 +68,7 @@ export class ActionItemDirective implements AfterViewInit {
             this._renderer.setElementClass(ul, 'dm-icon', true);
             this._renderer.setElementClass(ul, 'dropdown-menu-right', true);
 
-            this.actionItem.children.forEach((item: IMenuItem) => {
+            this.actionItem.children.forEach((item: MenuItem) => {
                 let li = this._renderer.createElement(ul, 'li');
 
                 this._createAnchor(li, item, true);

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 import { ActionsComponent } from '../../user-interface/actions/actions.component';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class AppHeaderComponent {
     @Input() addMenuTrigger: boolean;
     @Input() brand: string;
     @Input() sidebarOpen: boolean = false;
-    @Input() actions: IMenuItem[];
+    @Input() actions: MenuItem[];
     @Input() logoPath: string;
     @Input() logoHref: string = '/';
 
@@ -27,7 +27,7 @@ export class AppHeaderComponent {
         this.onSidebarToggle.emit(this.sidebarOpen);
     }
 
-    headerActionClicked(item: IMenuItem) {
+    headerActionClicked(item: MenuItem) {
         this.onActionClicked.emit(item);
     }
 }

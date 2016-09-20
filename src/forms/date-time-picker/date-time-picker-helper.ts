@@ -1,5 +1,3 @@
-import { Picker } from './picker';
-
 export const datePickerModes = [
     {
         clsName: 'days',

@@ -14,7 +14,7 @@ export class RadioGroupService {
         this.optionSelectedSource.next(value);
     }
 
-    get optionSelected$() {
+    get optionSelected$(): Observable<string> {
         return this.optionSelectedSource.asObservable();
     }
 

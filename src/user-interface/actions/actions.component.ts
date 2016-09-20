@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 import { ActionItemDirective } from './action-item.directive';
 import { ActionsService } from './actions.service';
 
@@ -10,7 +10,7 @@ import { ActionsService } from './actions.service';
   providers: [ ActionsService ],
 })
 export class ActionsComponent implements OnInit {
-    @Input() actionItems: IMenuItem[];
+    @Input() actionItems: MenuItem[];
     @Input() alt: boolean = false;
     @Input() showBig: boolean = false;
     @Input() color: string = 'light-gray';
@@ -33,7 +33,7 @@ export class ActionsComponent implements OnInit {
 
     get dropdown(): boolean {
         // if any action item contain children the I should add the dropdown class
-        return this.actionItems.some((item: IMenuItem) => {
+        return this.actionItems.some((item: MenuItem) => {
             return item.children !== undefined;
         });
     }

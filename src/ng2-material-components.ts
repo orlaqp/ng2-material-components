@@ -6,10 +6,11 @@ export const MATERIAL_COMMON = [
     NgTranscludeDirective,
 ];
 
-
-// models
-export { IMenuItem } from './models/menu-item';
-export { ISelectionItem } from './models/selection-item';
+export { ControlWithType } from './models/control-with-type';
+export { MenuItem } from './models/menu-item';
+export { SelectionItem } from './models/selection-item';
+export { SubmitableFormGroup } from './models/submitable-form-group';
+export { ValidationInfo } from './models/validation-info';
 
 // layout
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
@@ -41,8 +42,6 @@ export const MATERIAL_NAVIGATION = [
     TabHeadingDirective,
 ];
 
-
-// forms
 import { CheckboxComponent } from './forms/checkbox/checkbox.component';
 import { EmailComponent } from './forms/email/email.component';
 import { NumberComponent } from './forms/number/number.component';

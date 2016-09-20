@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM, MATERIAL_USER_INTERFACE, ISelectionItem } from '../../../../../dist/ng2-material-components';
+import { MATERIAL_FORM, MATERIAL_USER_INTERFACE, SelectionItem } from '../../../../../dist/ng2-material-components';
 
 @Component({
     selector: 'demo-select-picker',
@@ -11,7 +11,7 @@ export class DemoSelectPickerComponent implements OnInit {
 
     public fg: FormGroup;
 
-    public colorItems: Array<ISelectionItem> = [
+    public colorItems: Array<SelectionItem> = [
         { id: '1', title: 'Red' },
         { id: '2', title: 'Blue' },
         { id: '3', title: 'Green' },

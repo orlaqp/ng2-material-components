@@ -1,3 +1,3 @@
 INPUT
 
-* `items: IMenuItem[]`: An array of menu elements that you want to show.
+* `items: MenuItem[]`: An array of menu elements that you want to show.

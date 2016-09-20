@@ -10,7 +10,7 @@ import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // import { Observable } from 'rxjs/Observable';
 // import { Subject } from 'rxjs/Subject';
 
-import {MATERIAL_ALL, IMenuItem} from '../dist/ng2-material-components';
+import {MATERIAL_ALL, MenuItem} from '../dist/ng2-material-components';
 
 // import {provideNglConfig} from '../dist/ng-lightning';
 
@@ -25,11 +25,11 @@ if (__ENV__.production) {
 })
 export class App implements OnInit {
     public open: boolean;
-    public menuItems: IMenuItem[];
-    public headerActions: IMenuItem[];
+    public menuItems: MenuItem[];
+    public headerActions: MenuItem[];
     public appTitle = 'Material Components - Demo';
 
-    // private _headerActionsSubject: Subject<IMenuItem[]>;
+    // private _headerActionsSubject: Subject<MenuItem[]>;
 
     constructor(private _router: Router) {
         this.menuItems = [
@@ -47,7 +47,7 @@ export class App implements OnInit {
 
     ngOnInit() { }
 
-    onActionClicked(item: IMenuItem) {
+    onActionClicked(item: MenuItem) {
         if (item.url) {
             window.location.href = item.url;
         }
