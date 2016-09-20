@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {IMenuItem} from '../../../dist/ng2-material-components';
+import {MenuItem} from '../../../dist/ng2-material-components';
 
 @Component({
   selector: 'demo-side-menu',
   template: require('./side-menu.html'),
 })
 export class DemoSideMenuComponent implements OnInit {
-    public menuItems: IMenuItem[];
+    public menuItems: MenuItem[];
 
   constructor() {
 

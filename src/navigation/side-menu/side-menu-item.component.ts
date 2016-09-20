@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 
 @Component({
     selector: 'side-menu-item',
@@ -9,7 +9,7 @@ import { IMenuItem } from '../../models/menu-item';
 })
 export class SideMenuItemComponent implements OnInit {
 
-    @Input() item: IMenuItem;
+    @Input() item: MenuItem;
 
     public expanded: boolean;
     public childrenDisplay: string;

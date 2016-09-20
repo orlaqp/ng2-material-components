@@ -5,7 +5,7 @@ import {
     FormGroup,
     FormControl,
 } from '@angular/forms';
-import { ISelectionItem } from '../../models/selection-item';
+import { SelectionItem } from '../../models/selection-item';
 import { InputBase } from '../input-base/input-base.component';
 declare var $: JQueryStatic;
 
@@ -35,7 +35,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
     @Input() placeholder: string;
 
     // options
-    @Input() items: ISelectionItem[];
+    @Input() items: SelectionItem[];
     @Input() multiple: boolean = false;
     @Input() autofocus: boolean = false;
 
@@ -78,11 +78,11 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
     // @Input() dropdownAlignRight: boolean | string = false;
 
     open: boolean = false;
-    filteredItems: ISelectionItem[];
+    filteredItems: SelectionItem[];
     selection: string;
     query: FormControl;
 
-    private _clonedItems: ISelectionItem[];
+    private _clonedItems: SelectionItem[];
 
     // @Input() countSelectedText: Function = (numSelected: number, numTotal: number) => {
     //     return (numSelected === 1) ? '{0} item selected' : '{0} items selected';
@@ -112,8 +112,8 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
         let that = this;
 
         if (changes['items']) {
-            let clone: ISelectionItem[] = [];
-            clone = changes['items'].currentValue.map((item: ISelectionItem) => {
+            let clone: SelectionItem[] = [];
+            clone = changes['items'].currentValue.map((item: SelectionItem) => {
                 return {
                     id: item.id,
                     title: item.title,
@@ -135,7 +135,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
         this.open = !this.open;
     }
 
-    toggleItem(item: ISelectionItem) {
+    toggleItem(item: SelectionItem) {
         if (!this.multiple) {
             this._clonedItems.forEach(item => {
                 item.selected = false;
@@ -180,7 +180,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
         }
     }
 
-    private _processMultipleSelection(item: ISelectionItem) {
+    private _processMultipleSelection(item: SelectionItem) {
         let selectedItems = this._clonedItems.filter(item => {
             return item.selected;
         });
@@ -203,7 +203,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
     //
 
     //
-    // private _selectedItems: ISelectionItem[] = [];
+    // private _selectedItems: SelectionItem[] = [];
     //
     // private _initialized: boolean = false;
     // private $element: JQuery;

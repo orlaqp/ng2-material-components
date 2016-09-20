@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { CustomValidators } from '../validators/custom-validators';
-import { IValidationInfo } from  '../../models/validation-info';
+import { ValidationInfo } from  '../../models/validation-info';
 
 @Component({
     selector: 'password',
@@ -28,7 +28,7 @@ export class PasswordComponent extends InputBase implements OnInit {
     @Input() max: number;
     @Input() enforceComplexity: boolean;
 
-    public validations: IValidationInfo[];
+    public validations: ValidationInfo[];
 
     constructor(el: ElementRef) {
         super(el);

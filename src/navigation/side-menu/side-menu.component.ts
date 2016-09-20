@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { IMenuItem } from '../../models/menu-item';
+import { MenuItem } from '../../models/menu-item';
 import { SideMenuItemComponent } from './side-menu-item.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { SideMenuItemComponent } from './side-menu-item.component';
 })
 export class SideMenuComponent implements OnInit {
 
-    @Input() items: IMenuItem[];
+    @Input() items: MenuItem[];
 
     constructor() { }
 

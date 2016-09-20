@@ -6,7 +6,7 @@ import { SubmitableFormGroup } from '../../models/submitable-form-group';
 import { ControlWithType }  from '../../models/control-with-type';
 import { TypeEnum }  from '../../models/type-enum';
 import { CustomValidators } from '../validators/custom-validators';
-import { IValidationInfo } from '../../models/validation-info';
+import { ValidationInfo } from '../../models/validation-info';
 
 export class InputBase {
 
@@ -21,13 +21,13 @@ export class InputBase {
     public value: any;
     public decimal: boolean;
 
-    public validations: IValidationInfo[];
+    public validations: ValidationInfo[];
     public control: ControlWithType;
     public toggled: boolean;
 
     public _el: ElementRef;
 
-    static minValidator(length: number): IValidationInfo {
+    static minValidator(length: number): ValidationInfo {
         return {
             validator: Validators.minLength(length),
             type: 'minlength',
@@ -35,7 +35,7 @@ export class InputBase {
         };
     }
 
-    static maxValidator(length: number): IValidationInfo {
+    static maxValidator(length: number): ValidationInfo {
         return {
             validator: Validators.maxLength(length),
             type: 'maxlength',
@@ -112,7 +112,7 @@ export class InputBase {
 
         // only add validators if neccessary
         if (this.validations.length > 0) {
-            this.validations.forEach((item: IValidationInfo) => validators.push(item.validator));
+            this.validations.forEach((item: ValidationInfo) => validators.push(item.validator));
         }
 
         return validators;

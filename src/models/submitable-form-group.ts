@@ -1,4 +1,10 @@
-import { FormGroup } from '@angular/forms';
+import {
+    FormGroup,
+    AbstractControl,
+    AsyncValidatorFn,
+} from '@angular/forms';
+
+
 
 export class SubmitableFormGroup extends FormGroup {
     // public controls: {[key: string]: AbstractControl};
@@ -9,8 +15,11 @@ export class SubmitableFormGroup extends FormGroup {
         return this._submitted;
     }
 
-    constructor(args: any) {
-        super(args);
+    constructor(
+        controls: {[key: string]: AbstractControl},
+        other: {[key: string]: boolean },
+        asyncValidator?: AsyncValidatorFn) {
+        super(controls, other, asyncValidator);
     }
 
     public markAsSubmitted(): void {

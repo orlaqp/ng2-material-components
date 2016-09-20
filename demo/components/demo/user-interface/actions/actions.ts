@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
-import { MATERIAL_USER_INTERFACE, IMenuItem } from '../../../../../dist/ng2-material-components';
+import { MATERIAL_USER_INTERFACE, MenuItem } from '../../../../../dist/ng2-material-components';
 
 @Component({
     selector: 'demo-actions',
@@ -9,7 +9,7 @@ import { MATERIAL_USER_INTERFACE, IMenuItem } from '../../../../../dist/ng2-mate
 })
 export class DemoActionsComponent {
 
-    actionItems: IMenuItem[] = [
+    actionItems: MenuItem[] = [
         { id: '1', icon: 'refresh-alt' },
         { id: '2', icon: 'download' },
         { id: '3', icon: 'more-vert', children: [
@@ -21,7 +21,7 @@ export class DemoActionsComponent {
 
     actionsColor: string = 'light-gray';
 
-    onActionClicked(menuItem: IMenuItem): void {
+    onActionClicked(menuItem: MenuItem): void {
         window.alert('Action: ' + menuItem.id + ' clicked');
     }
 
