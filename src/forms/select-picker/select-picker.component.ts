@@ -113,13 +113,17 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
 
         if (changes['items']) {
             let clone: ISelectionItem[] = [];
-            clone = changes['items'].currentValue.map((item: ISelectionItem) => {
-                return {
-                    id: item.id,
-                    title: item.title,
-                    disabled: item.disabled,
-                };
-            });
+
+            let currentValue = changes['items'].currentValue;
+            if (currentValue) {
+                clone = currentValue.map((item: ISelectionItem) => {
+                    return {
+                        id: item.id,
+                        title: item.title,
+                        disabled: item.disabled,
+                    };
+                });
+            }
 
             that._clonedItems = clone;
             this._updateSelectionText();
