@@ -139,6 +139,7 @@
     }
 }
 
+[data-current-skin="red"] { @include current-skin($m-red); }
 [data-current-skin="lightblue"] { @include current-skin($m-lightblue); }
 [data-current-skin="bluegray"] { @include current-skin($m-bluegray); }
 [data-current-skin="blue"] { @include current-skin($m-blue); }

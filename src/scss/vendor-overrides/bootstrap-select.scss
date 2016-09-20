@@ -1,8 +1,6 @@
 @import '../variables';
 @import '../mixins/images';
-// @import '../mixins/vendor-prefixes';
-
-@import '../vendor/bootstrap-select';
+@import '../../src/forms/select-picker/select-picker.component';
 
 // @import '../../../node_modules/bootstrap-select/dist/css/bootstrap-select.css';
 

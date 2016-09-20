@@ -99,6 +99,11 @@ gulp.task('clean', function() {
     return require('del')(BUILD);
 });
 
+gulp.task('scss-copy', function() {
+    return gulp.src('./src/scss/**/*')
+        .pipe(gulp.dest('./dist/scss'));
+});
+
 gulp.task('scss', function() {
     return gulp.src('./src/scss/app.scss')
         .pipe(sass.sync().on('error', sass.logError))
@@ -160,6 +165,7 @@ gulp.task('build', gulp.series(
     'clean',
     // 'config',
     'build:ts',
+    'scss-copy',
     'scss',
     'fonts',
     'images',
