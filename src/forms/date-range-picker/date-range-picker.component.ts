@@ -3,12 +3,15 @@ import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
+import * as moment from 'moment';
 
 export class DateRange {
-    from: moment.Moment;
-    to: moment.Moment;
+    constructor(public from: moment.Moment, public to: moment.Moment) {
+        this.from = from;
+        this.to = to;
+    }
 
-    isValid() {
+    get isValid(): boolean {
         return this.from.isValid() && this.to.isValid() && this.to.isAfter(this.from);
     }
 }
@@ -1416,7 +1419,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
         let endDate = this.endDate.format(this.locale.format);
 
         this.control.updateValue(`${startDate} - ${endDate}`);
-        this.rangeChanged.emit({ from: this.startDate.clone(), to: this.endDate.clone() });
+        this.rangeChanged.emit(new DateRange(this.startDate.clone(), this.endDate.clone()));
     }
 
     private clickCancel(e: JQueryMouseEventObject) {
