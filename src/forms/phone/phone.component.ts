@@ -27,6 +27,7 @@ export class PhoneComponent extends InputBase implements OnInit {
 
     constructor(el: ElementRef) {
         super(el);
+        this.inputType = 'tel';
     }
 
     public addValidators(): void { }

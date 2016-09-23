@@ -32,6 +32,8 @@ export class PasswordComponent extends InputBase implements OnInit {
 
     constructor(el: ElementRef) {
         super(el);
+        // change text control to password
+        this.inputType = 'password';
     }
 
     public addValidators(): void {
@@ -62,9 +64,6 @@ export class PasswordComponent extends InputBase implements OnInit {
         if (!this.leftIcon) {
             this.leftIcon = 'key';
         }
-
-        // change text control to password
-        this._el.nativeElement.getElementsByClassName('form-control')[0].type = 'password';
     }
 
     public ngOnDestroy(): void {

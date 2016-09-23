@@ -24,6 +24,7 @@ export class InputBase {
     public validations: ValidationInfo[];
     public control: ControlWithType;
     public toggled: boolean;
+    public inputType: string = "text"; // text, password, number, email, datetime, date
 
     public _el: ElementRef;
 

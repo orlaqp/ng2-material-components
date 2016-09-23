@@ -3,12 +3,14 @@ html(lang="en")
   head
     base(href="#{htmlWebpackPlugin.options.baseHref}")
     meta(charset="UTF-8")
+    // prevent mobile device from zooming
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0")
     title ng2-material-components
     link(rel="stylesheet", type="text/css", href="assets/demo.css")
     link(rel="shortcut icon", href="img/favicon.ico")
     link(rel="stylesheet", type="text/css", href="assets/prismjs/prism-okaidia.css")
     link(rel="stylesheet", type="text/css", href="assets/waves.min.css")
-    
+
     //- Intl pollyfill for Safari
     script(type="application/javascript", src="assets/polyfill.min.js")
 
@@ -17,12 +19,12 @@ html(lang="en")
     script(src="assets/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
     script(type="application/javascript", src="assets/moment/moment.min.js")
     script(type="application/javascript", src="assets/waves.min.js")
-    
+
   body
     app
       div(style="position:fixed;top:49%;width:100%;text-align:center;font-size:large;") Loading...
-    
+
     script.
       $(function() {
-          Waves.init(); 
+          Waves.init();
       });

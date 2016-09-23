@@ -14,7 +14,7 @@ include ../../mixins/base.pug
 
         input.form-control(
             #i,
-            type="text",
+            [type]="inputType",
             placeholder="{{placeholder}}",
             [formControl]="control",
             [attr.disabled]="disabled",
