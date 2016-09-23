@@ -3,6 +3,7 @@ import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angu
 import { DateTimePickerBase } from './date-time-picker-base';
 import { extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
+import { isMobile } from '../../utils/utilities';
 
 declare var $: JQueryStatic;
 
@@ -306,16 +307,12 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
 
     ngAfterViewInit() {
 
-        // let options = this._getOptions();
-        //
-        // let ele = $(this.el.nativeElement).find('.date-time-picker');
-        // ele.datetimepicker(options)
-        //     .on('dp.change', (data: any) => {
-        //         let d: moment.Moment = data.date;
-        //         this.control.updateValue(this._dateFormatted(d));
-        //     });
+        // debugger;
+        let mobile = isMobile();
 
-        // initializing element and component attributes
+        if (mobile) {
+            return;
+        }
 
         if (this.element.is('input')) {
             this.input = this.element;

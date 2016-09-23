@@ -6,6 +6,8 @@ export const MATERIAL_COMMON = [
     NgTranscludeDirective,
 ];
 
+export { isMobile } from  './utils/utilities';
+
 export { ControlWithType } from './models/control-with-type';
 export { MenuItem } from './models/menu-item';
 export { SelectionItem } from './models/selection-item';

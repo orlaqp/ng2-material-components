@@ -27,7 +27,7 @@ export class App implements OnInit {
     public open: boolean;
     public menuItems: MenuItem[];
     public headerActions: MenuItem[];
-    public appTitle = 'Material Components - Demo';
+    public appTitle = 'Demo';
 
     // private _headerActionsSubject: Subject<MenuItem[]>;
 

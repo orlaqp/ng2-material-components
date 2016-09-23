@@ -29,6 +29,7 @@ export class EmailComponent extends InputBase implements OnInit {
 
     constructor(el: ElementRef) {
         super(el);
+        this.inputType = 'email';
     }
 
     public addValidators(): void {
