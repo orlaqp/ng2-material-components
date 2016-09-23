@@ -7,6 +7,10 @@ import { InputBase } from '../input-base/input-base.component';
 export class DateRange {
     from: moment.Moment;
     to: moment.Moment;
+
+    isValid() {
+        return this.from.isValid() && this.to.isValid() && this.to.isAfter(this.from);
+    }
 }
 
 @Component({

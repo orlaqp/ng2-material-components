@@ -12,8 +12,8 @@ export class SubmitableFormGroup extends FormGroup {
     public submitted: boolean;
 
     constructor(
-        controls: {[key: string]: AbstractControl},
-        other: {[key: string]: boolean },
+        controls?: {[key: string]: AbstractControl},
+        other?: {[key: string]: boolean },
         asyncValidator?: AsyncValidatorFn) {
         super(controls, other, asyncValidator);
     }
