@@ -1,6 +1,5 @@
 import { Component, Input, ElementRef, OnChanges } from '@angular/core';
 import {
-    SelectControlValueAccessor,
     FormGroup,
     FormControl,
 } from '@angular/forms';

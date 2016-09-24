@@ -1,18 +1,8 @@
 require('../dist/ng2-material-components.bundle.css');
 
-import './vendor';
 import { Component, enableProdMode, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-// import { bootstrap } from '@angular/platform-browser-dynamic';
-// import { APP_ROUTER_PROVIDERS } from './routes';
-// import { disableDeprecatedForms, provideForms } from '@angular/forms';
-// import { Observable } from 'rxjs/Observable';
-// import { Subject } from 'rxjs/Subject';
-
 import { MenuItem } from '../dist/ng2-material-components';
-
-// import {provideNglConfig} from '../dist/ng-lightning';
 
 if (__ENV__.production) {
     enableProdMode();
@@ -53,11 +43,3 @@ export class AppComponent implements OnInit {
     }
 
 }
-
-// bootstrap(App, [
-//     disableDeprecatedForms(),
-//     MATERIAL_ALL,
-//     APP_ROUTER_PROVIDERS,
-//     provideForms(),
-//     { provide: LocationStrategy, useClass: HashLocationStrategy },
-// ]);

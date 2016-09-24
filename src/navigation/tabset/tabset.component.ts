@@ -1,12 +1,9 @@
 import {Component, OnInit, OnDestroy, HostBinding, Input} from '@angular/core';
-import {NgClass} from '@angular/common';
-import {NgTranscludeDirective} from '../../common';
 import {TabDirective} from '../tab/tab.directive';
 // todo: add active event to tab
 // todo: fix? mixing static and dynamic tabs position tabs in order of creation
 @Component({
   selector: 'tabset',
-  directives: [NgClass, NgTranscludeDirective],
   templateUrl: 'tabset.component.pug',
 })
 export class TabsetComponent implements OnInit, OnDestroy {

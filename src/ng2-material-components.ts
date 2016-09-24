@@ -8,11 +8,25 @@ export const MATERIAL_COMMON = [
 
 export { isMobile } from  './utils/utilities';
 
+import { ControlWithType } from './models/control-with-type';
+import { MenuItem } from './models/menu-item';
+import { SelectionItem } from './models/selection-item';
+import { SubmitableFormGroup } from './models/submitable-form-group';
+import { ValidationInfo } from './models/validation-info';
+
 export { ControlWithType } from './models/control-with-type';
 export { MenuItem } from './models/menu-item';
 export { SelectionItem } from './models/selection-item';
 export { SubmitableFormGroup } from './models/submitable-form-group';
 export { ValidationInfo } from './models/validation-info';
+
+export const MATERIAL_MODELS = [
+    ControlWithType,
+    MenuItem,
+    SelectionItem,
+    SubmitableFormGroup,
+    ValidationInfo,
+];
 
 // layout
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
@@ -28,17 +42,20 @@ export const MATERIAL_LAYOUT = [
 
 // navigation
 import { SideMenuComponent } from './navigation/side-menu/side-menu.component';
+import { SideMenuItemComponent } from './navigation/side-menu/side-menu-item.component';
 import { TabsetComponent } from './navigation/tabset/tabset.component';
 import { TabDirective } from './navigation/tab/tab.directive';
 import { TabHeadingDirective } from './navigation/tab-heading/tab-heading.directive';
 
 export { SideMenuComponent } from './navigation/side-menu/side-menu.component';
+export { SideMenuItemComponent } from './navigation/side-menu/side-menu-item.component';
 export { TabsetComponent } from './navigation/tabset/tabset.component';
 export { TabDirective } from './navigation/tab/tab.directive';
 export { TabHeadingDirective } from './navigation/tab-heading/tab-heading.directive';
 
 export const MATERIAL_NAVIGATION = [
     SideMenuComponent,
+    SideMenuItemComponent,
     TabsetComponent,
     TabDirective,
     TabHeadingDirective,
@@ -90,7 +107,7 @@ export const MATERIAL_FORM = [
     ToggleComponent,
     DateTimePickerComponent,
     DateRangePickerComponent,
-    
+
     MaskedInputDirective,
 ];
 

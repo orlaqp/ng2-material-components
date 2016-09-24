@@ -1,0 +1,14 @@
+mixin code-preview(comp)
+
+    tabset(type='pills')
+        tab(heading='Markup')
+            pre.code.language-html
+                code.language-html(ngNonBindable)!= comp.html
+        tab(heading='Typescript')
+            pre.code.language-typescript
+                | code
+                //- code.language-typescript(ngNonBindable)!= comp.ts
+        tab(heading='API')
+            pre.code.language-markdown
+                code.language-markdown.api(ngNonBindable)
+                    div!= comp.api

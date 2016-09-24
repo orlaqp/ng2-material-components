@@ -1,12 +1,16 @@
+
+import './vendor';
+
 import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent }   from './app.component';
 import { routing, appRoutingProviders } from './routes';
 
 import {
+    NgTranscludeDirective,
     MATERIAL_LAYOUT,
     MATERIAL_NAVIGATION,
     MATERIAL_FORM,
@@ -54,6 +58,14 @@ import { SupportRoute } from './components/support/support';
 
 @NgModule({
     declarations: [
+
+        // directves
+        NgTranscludeDirective,
+        MATERIAL_LAYOUT,
+        MATERIAL_NAVIGATION,
+        MATERIAL_FORM,
+        MATERIAL_USER_INTERFACE,
+
         // forms
         DemoCheckboxComponent,
         DemoEmailComponent,
@@ -88,16 +100,11 @@ import { SupportRoute } from './components/support/support';
         DemoFormsRoute,
         DemoUserInterfaceRoute,
         SupportRoute,
-
-        // directves
-        MATERIAL_LAYOUT,
-        MATERIAL_NAVIGATION,
-        MATERIAL_FORM,
-        MATERIAL_USER_INTERFACE,
     ],
     imports:      [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         routing,
     ],
     providers: [

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 
 @Component({

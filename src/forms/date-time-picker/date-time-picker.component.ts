@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
-import { DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { DateTimePickerBase } from './date-time-picker-base';
 import { extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
