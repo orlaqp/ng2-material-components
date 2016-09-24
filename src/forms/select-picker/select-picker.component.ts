@@ -154,7 +154,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
             .filter(item => item.selected)
             .map(item => item.id);
         let values = selectedItems.join(',');
-        this.control.updateValue(values);
+        this.control.setValue(values);
     }
 
     private _updateSelectionText() {

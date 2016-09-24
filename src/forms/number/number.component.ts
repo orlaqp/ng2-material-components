@@ -41,7 +41,6 @@ export class NumberComponent extends InputBase implements OnInit {
     constructor(el: ElementRef) {
         super(el);
         this.dataType = TypeEnum.Number;
-        this.inputType = 'number';
     }
 
     public addValidators(): void {

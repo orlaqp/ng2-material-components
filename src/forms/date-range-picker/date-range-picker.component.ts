@@ -1415,7 +1415,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
         let startDate = this.startDate.format(this.locale.format);
         let endDate = this.endDate.format(this.locale.format);
 
-        this.control.updateValue(`${startDate} - ${endDate}`);
+        this.control.setValue(`${startDate} - ${endDate}`);
         this.rangeChanged.emit(new DateRange(this.startDate.clone(), this.endDate.clone()));
     }
 

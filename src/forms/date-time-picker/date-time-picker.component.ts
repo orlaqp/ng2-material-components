@@ -1416,7 +1416,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
             this.input.val(this.date.format(this.actualFormat));
 
             let dateFormat = this.date.format(this.actualFormat);
-            this.control.updateValue(dateFormat);
+            this.control.setValue(dateFormat);
             this.dateChanged.emit(this.date.clone());
 
             this.element.data('date', dateFormat);

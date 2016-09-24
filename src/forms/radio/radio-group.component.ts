@@ -23,7 +23,7 @@ export class RadioGroupComponent extends InputBase {
         super(el);
 
         this.service.optionSelected$.subscribe((value) => {
-            this.control.updateValue(value);
+            this.control.setValue(value);
         });
     }
 
