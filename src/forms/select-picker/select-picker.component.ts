@@ -11,12 +11,7 @@ declare var $: JQueryStatic;
 
 import {
     processPolyfills,
-    // normalizeToBase,
-    // htmlEscape,
 } from './polyfills';
-
-// TODO: I need to come back to this
-// require('bootstrap-select');
 
 // Selectpicker.VERSION = '1.11.2';
 
@@ -152,9 +147,18 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
         }
 
         this._updateSelectionText();
+        this._updateValue();
     }
 
     public addValidators(): void { }
+
+    private _updateValue() {
+        let selectedItems = this._clonedItems
+            .filter(item => item.selected)
+            .map(item => item.id);
+        let values = selectedItems.join(',');
+        this.control.updateValue(values);
+    }
 
     private _updateSelectionText() {
 

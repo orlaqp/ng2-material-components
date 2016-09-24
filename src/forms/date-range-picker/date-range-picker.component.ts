@@ -3,7 +3,6 @@ import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
-import * as moment from 'moment';
 
 export class DateRange {
     constructor(public from: moment.Moment, public to: moment.Moment) {

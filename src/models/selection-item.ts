@@ -1,6 +1,10 @@
 export class SelectionItem {
-    id: number | string;
-    title: string;
-    selected?: boolean;
-    disabled?: boolean;
+
+    constructor(
+        public id?: number | string,
+        public title?: string,
+        public selected?: boolean,
+        public disabled?: boolean) {
+
+        }
 }
