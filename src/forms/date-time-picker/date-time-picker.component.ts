@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { DefaultValueAccessor, FormGroup } from '@angular/forms';
 import { DateTimePickerBase } from './date-time-picker-base';
 import { extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
@@ -9,7 +9,6 @@ declare var $: JQueryStatic;
 
 @Component({
     selector: 'date-time-picker',
-    directives: [REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor],
     templateUrl: 'date-time-picker.component.pug',
 })
 export class DateTimePickerComponent extends DateTimePickerBase implements AfterViewInit, OnInit {

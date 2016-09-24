@@ -1,10 +1,9 @@
+import {DateRange} from '../../../../../src/forms/date-range-picker/date-range-picker.component';
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM } from '../../../../../dist/ng2-material-components';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'demo-date-range-picker',
-    directives: [MATERIAL_FORM, REACTIVE_FORM_DIRECTIVES],
     template: require('./date-range-picker.html'),
 })
 export class DemoDateRangePickerComponent implements OnInit {

@@ -1,12 +1,11 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { DefaultValueAccessor, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { CustomValidators } from '../validators/custom-validators';
 import { ValidationInfo } from  '../../models/validation-info';
 
 @Component({
     selector: 'password',
-    directives: [ REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor ],
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class PasswordComponent extends InputBase implements OnInit {

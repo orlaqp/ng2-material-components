@@ -15,14 +15,12 @@ export { SubmitableFormGroup } from './models/submitable-form-group';
 export { ValidationInfo } from './models/validation-info';
 
 // layout
-import { AppHeaderComponent } from './layout/app-header/app-header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 export { AppHeaderComponent } from './layout/app-header/app-header.component';
 export { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 export const MATERIAL_LAYOUT = [
-    AppHeaderComponent,
     SidebarComponent,
 ];
 

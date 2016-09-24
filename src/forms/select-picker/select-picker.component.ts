@@ -1,6 +1,5 @@
 import { Component, Input, ElementRef, OnChanges } from '@angular/core';
 import {
-    REACTIVE_FORM_DIRECTIVES,
     SelectControlValueAccessor,
     FormGroup,
     FormControl,
@@ -19,7 +18,6 @@ processPolyfills();
 
 @Component({
     selector: 'select-picker',
-    directives: [REACTIVE_FORM_DIRECTIVES, SelectControlValueAccessor],
     templateUrl: 'select-picker.component.pug',
 })
 export class SelectPickerComponent extends InputBase implements OnChanges {

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM } from '../../../../../dist/ng2-material-components';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'demo-radio',
-    directives: [MATERIAL_FORM, REACTIVE_FORM_DIRECTIVES],
+    selector: 'demo-radio',    
     template: require('./radio.html'),
 })
 export class DemoRadioComponent implements OnInit {

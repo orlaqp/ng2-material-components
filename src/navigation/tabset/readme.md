@@ -20,7 +20,6 @@ import { TAB_DIRECTIVES } from 'ng2-bootstrap/components/tabs';
 // component Tabset
 @Component({
   selector: 'tabset',
-  directives: [NgClass, NgTransclude]
 })
 export class TabsetComponent implements OnInit {
   @Input() public vertical:boolean;

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM } from '../../../../../dist/ng2-material-components';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'demo-toggle',
-    directives: [MATERIAL_FORM, REACTIVE_FORM_DIRECTIVES],
     template: require('./toggle.html'),
 })
 export class DemoToggleComponent implements OnInit {

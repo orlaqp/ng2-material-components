@@ -1,10 +1,9 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { DefaultValueAccessor, FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 
 @Component({
     selector: 'phone',
-    directives: [ REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor ],
     templateUrl: '../input-base/input-base.component.pug',
     styles: ['.form-control { text-align: right; } '],
 })

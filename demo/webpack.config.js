@@ -17,7 +17,7 @@ const isProduction = ENV === 'demo:build';
 
 const config = {
         cache: false,
-        entry: path.resolve(__dirname, 'app.ts'),
+        entry: path.resolve(__dirname, 'main.ts'),
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: 'bundle.js'
