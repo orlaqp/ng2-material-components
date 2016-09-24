@@ -11,9 +11,6 @@ import {
     MATERIAL_NAVIGATION,
     MATERIAL_FORM,
     MATERIAL_USER_INTERFACE,
-    NgTranscludeDirective,
-    ActionItemDirective,
-    MaskedInputDirective,
 } from '../dist/ng2-material-components';
 
 // form components
@@ -91,18 +88,17 @@ import { SupportRoute } from './components/support/support';
         DemoFormsRoute,
         DemoUserInterfaceRoute,
         SupportRoute,
-        NgTranscludeDirective,
-        ActionItemDirective,
-        MaskedInputDirective,
+
+        // directves
+        MATERIAL_LAYOUT,
+        MATERIAL_NAVIGATION,
+        MATERIAL_FORM,
+        MATERIAL_USER_INTERFACE,
     ],
     imports:      [
         BrowserModule,
         FormsModule,
         routing,
-        MATERIAL_LAYOUT,
-        MATERIAL_NAVIGATION,
-        MATERIAL_FORM,
-        MATERIAL_USER_INTERFACE,
     ],
     providers: [
         appRoutingProviders,
