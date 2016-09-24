@@ -33,7 +33,9 @@ export class App implements OnInit {
 
     constructor(private _router: Router) {
         this.menuItems = [
-            { id: '1', title: 'Layout', icon: 'view-compact', route: '/layout' },
+            { id: '1', title: 'Layout', icon: 'view-compact', children: [
+                { id: '11', title: 'Header', icon: 'navigation', route: '/navigation' }
+            ] },
             { id: '2', title: 'Navigation', icon: 'navigation', route: '/navigation' },
             { id: '3', title: 'Forms', icon: 'check-all', route: '/forms' },
             { id: '4', title: 'User Interface', icon: 'widgets', route: '/user-interface' },
