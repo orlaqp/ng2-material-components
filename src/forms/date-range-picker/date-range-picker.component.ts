@@ -3,17 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
-
-export class DateRange {
-    constructor(public from: moment.Moment, public to: moment.Moment) {
-        this.from = from;
-        this.to = to;
-    }
-
-    get isValid(): boolean {
-        return this.from.isValid() && this.to.isValid() && this.to.isAfter(this.from);
-    }
-}
+import { DateRange } from '../../models/date-range';
 
 @Component({
     selector: 'date-range-picker',

@@ -10,12 +10,8 @@ import { AppComponent }   from './app.component';
 import { routing, appRoutingProviders } from './routes';
 
 import {
-    NgTranscludeDirective,
-    // MATERIAL_LAYOUT,
-    MATERIAL_NAVIGATION,
     MATERIAL_FORM,
-    MATERIAL_USER_INTERFACE,
-    LayoutModule,
+    UserInterfaceModule,
 } from '../dist/ng2-material-components';
 
 // form components
@@ -61,12 +57,7 @@ import { SupportRoute } from './components/support/support';
     declarations: [
 
         // directves
-        NgTranscludeDirective,
-        // MATERIAL_LAYOUT,
-        MATERIAL_NAVIGATION,
         MATERIAL_FORM,
-        MATERIAL_USER_INTERFACE,
-
         // forms
         DemoCheckboxComponent,
         DemoEmailComponent,
@@ -106,8 +97,9 @@ import { SupportRoute } from './components/support/support';
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        LayoutModule,
         routing,
+
+        UserInterfaceModule,
     ],
     providers: [
         appRoutingProviders,
