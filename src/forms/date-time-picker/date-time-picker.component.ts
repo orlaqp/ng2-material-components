@@ -68,6 +68,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     public unset = true;
     public parseFormats: string[];
     public actualFormat: string;
+    public inputType: string;
 
     private datepickerInput: string = '.form-control';
     private date: moment.Moment;
@@ -310,8 +311,12 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         let mobile = isMobile();
 
         if (mobile) {
+            this.inputType = 'date';
             return;
         }
+
+        // I do not want to use browser date functionality
+        this.inputType = 'text';
 
         if (this.element.is('input')) {
             this.input = this.element;

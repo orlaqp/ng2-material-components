@@ -4,7 +4,7 @@
     .dtp-container.fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
         input.form-control.date-time-picker(
             #i,
-            type="date",
+            [type]="inputType",
             placeholder="{{placeholder}}",
             [formControl]="control",
             [attr.disabled]="disabled",
