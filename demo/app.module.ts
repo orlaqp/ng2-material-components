@@ -10,8 +10,8 @@ import { AppComponent }   from './app.component';
 import { routing, appRoutingProviders } from './routes';
 
 import {
-    MATERIAL_FORM,
-    UserInterfaceModule,
+    MaterialFormsModule,
+    MaterialUserInterfaceModule,
 } from '../dist/ng2-material-components';
 
 // form components
@@ -29,12 +29,12 @@ import { DemoDateTimePickerComponent } from './components/demo/forms/date-time-p
 import { DemoDateRangePickerComponent } from './components/demo/forms/date-range-picker/date-range-picker';
 
 // layout components
-import { DemoAppHeaderComponent } from './components/demo/layout/app-header/app-header';
-import { DemoSidebarComponent } from './components/demo/layout/sidebar/sidebar';
+import { DemoAppHeaderComponent } from './components/demo/user-interface/app-header/app-header';
+import { DemoSidebarComponent } from './components/demo/user-interface/sidebar/sidebar';
 
 // navigation components
-import { DemoSideMenuComponent } from './components/demo/navigation/side-menu/side-menu';
-import { DemoTabsetComponent } from './components/demo/navigation/tabset/tabset';
+import { DemoSideMenuComponent } from './components/demo/user-interface/side-menu/side-menu';
+import { DemoTabsetComponent } from './components/demo/user-interface/tabset/tabset';
 
 // user interface components
 import { DemoHeaderComponent } from './components/demo/user-interface/header/header';
@@ -46,8 +46,8 @@ import { DemoCardComponent } from './components/demo/user-interface/card/card';
 
 
 import { HomeComponent } from './components/demo/home/home.component';
-import { DemoLayoutRoute } from './components/demo/layout/demo-layout';
-import { DemoNavigationRoute } from './components/demo/navigation/demo-navigation';
+// import { DemoLayoutRoute } from './components/demo/layout/demo-layout';
+// import { DemoNavigationRoute } from './components/demo/navigation/demo-navigation';
 import { DemoFormsRoute } from './components/demo/forms/demo-forms';
 import { DemoUserInterfaceRoute } from './components/demo/user-interface/demo-user-interface';
 import { SupportRoute } from './components/support/support';
@@ -56,9 +56,6 @@ import { SupportRoute } from './components/support/support';
 @NgModule({
     declarations: [
 
-        // directves
-        MATERIAL_FORM,
-        // forms
         DemoCheckboxComponent,
         DemoEmailComponent,
         DemoNumberComponent,
@@ -71,13 +68,10 @@ import { SupportRoute } from './components/support/support';
         DemoToggleComponent,
         DemoDateTimePickerComponent,
         DemoDateRangePickerComponent,
-        // layout
         DemoAppHeaderComponent,
         DemoSidebarComponent,
-        // navigation
         DemoSideMenuComponent,
         DemoTabsetComponent,
-        // user interface
         DemoHeaderComponent,
         DemoActionsComponent,
         DemoButtonComponent,
@@ -87,8 +81,6 @@ import { SupportRoute } from './components/support/support';
 
         AppComponent,
         HomeComponent,
-        DemoLayoutRoute,
-        DemoNavigationRoute,
         DemoFormsRoute,
         DemoUserInterfaceRoute,
         SupportRoute,
@@ -99,7 +91,8 @@ import { SupportRoute } from './components/support/support';
         ReactiveFormsModule,
         routing,
 
-        UserInterfaceModule,
+        MaterialFormsModule,
+        MaterialUserInterfaceModule,
     ],
     providers: [
         appRoutingProviders,

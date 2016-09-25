@@ -32,6 +32,25 @@ import { NgTranscludeDirective } from '../common';
     ],
     declarations: [
         NgTranscludeDirective,
+        ActionItemDirective,
+        ActionsComponent,
+        AppHeaderComponent,
+        ButtonComponent,
+        ButtonGroupComponent,
+        CardActionComponent,
+        CardBodyComponent,
+        CardHeaderComponent,
+        CardPaddingDirective,
+        CardComponent,
+        HeaderComponent,
+        PreloaderComponent,
+        PreLoaderDirective,
+        SideMenuItemComponent,
+        SideMenuComponent,
+        SidebarComponent,
+        TabDirective,
+        TabHeadingDirective,
+        TabsetComponent,
     ],
     exports: [
         ActionItemDirective,
@@ -58,4 +77,4 @@ import { NgTranscludeDirective } from '../common';
         ActionsService,
     ],
 })
-export class UserInterfaceModule { }
+export class MaterialUserInterfaceModule { }

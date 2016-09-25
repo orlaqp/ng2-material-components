@@ -23,7 +23,22 @@ import { ToggleComponent } from './toggle/toggle.component';
         CommonModule,
         ReactiveFormsModule,
     ],
-    declarations: [],
+    declarations: [
+        CheckboxComponent,
+        DateRangePickerComponent,
+        DateTimePickerComponent,
+        EmailComponent,
+        MaskedInputDirective,
+        NumberComponent,
+        PasswordComponent,
+        PhoneComponent,
+        RadioGroupComponent,
+        RadioComponent,
+        SelectPickerComponent,
+        TextAreaComponent,
+        TextBoxComponent,
+        ToggleComponent,
+    ],
     exports: [
         CheckboxComponent,
         DateRangePickerComponent,
@@ -44,4 +59,4 @@ import { ToggleComponent } from './toggle/toggle.component';
         RadioGroupService,
     ],
 })
-export class FormsModule { }
+export class MaterialFormsModule { }
