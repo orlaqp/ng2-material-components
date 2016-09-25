@@ -20,4 +20,4 @@ In the mean time you can run the following to play  with the demo locally:
 `npm run`
 
 
-**Note**: Upgrade to the final version of angular.
+**Note**: This version is alredy running on the final version of Angular 2!
