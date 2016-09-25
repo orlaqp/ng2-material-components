@@ -7,7 +7,10 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-    imports: [ CommonModule, ReactiveFormsModule ],
+    imports: [ 
+        CommonModule, 
+        ReactiveFormsModule 
+    ],
     declarations: [
         AppHeaderComponent,
         SidebarComponent,
