@@ -3,7 +3,7 @@ import {
     Input,
     OnInit,
     ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import autosize from './autosize';
 
@@ -12,7 +12,6 @@ import autosize from './autosize';
 
 @Component({
     selector: 'text-area',
-    directives: [ REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor ],
     templateUrl: './text-area.component.pug',
 })
 export class TextAreaComponent extends InputBase implements OnInit {

@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from '../../models/menu-item';
-import { ActionItemDirective } from './action-item.directive';
 import { ActionsService } from './actions.service';
 
 @Component({
   selector: 'actions',
-  directives: [ ActionItemDirective ],
   templateUrl: 'actions.component.pug',
   providers: [ ActionsService ],
 })

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { processComponents, IComponent } from '../demo-base/demo-base';
-import { MATERIAL_ALL } from '../../../../dist/ng2-material-components';
 
 // components
 import { DemoSideMenuComponent } from './side-menu/side-menu';
@@ -16,7 +15,6 @@ processComponents(components);
 
 @Component({
     template: require('./demo-navigation.jade')({ content, components }),
-    directives: [ MATERIAL_ALL ].concat(components.map((c: any) => c.component)),
 })
 export class DemoNavigationRoute {
     selectedTab: string[] = [];

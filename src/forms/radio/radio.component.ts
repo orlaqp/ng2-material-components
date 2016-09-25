@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { RadioGroupService } from './radio-group.service';
 
 /**
@@ -8,7 +8,6 @@ import { RadioGroupService } from './radio-group.service';
  */
 @Component({
     selector: 'radio',
-    directives: [ REACTIVE_FORM_DIRECTIVES ],
     templateUrl: './radio.component.pug',
 })
 export class RadioComponent implements AfterViewInit {

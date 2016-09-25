@@ -1,4 +1,5 @@
-import { provideRouter, Routes } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/demo/home/home.component';
 import { DemoLayoutRoute } from './components/demo/layout/demo-layout';
@@ -7,7 +8,7 @@ import { DemoFormsRoute } from './components/demo/forms/demo-forms';
 import { DemoUserInterfaceRoute } from './components/demo/user-interface/demo-user-interface';
 import {SupportRoute} from './components/support/support';
 
-export const routes: Routes = [
+export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'layout', component: DemoLayoutRoute },
     { path: 'navigation', component: DemoNavigationRoute },
@@ -16,6 +17,8 @@ export const routes: Routes = [
     { path: 'support', component: SupportRoute },
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes),
+export const appRoutingProviders: any[] = [
+
 ];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

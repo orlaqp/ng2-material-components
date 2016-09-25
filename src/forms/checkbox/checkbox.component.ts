@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, CheckboxControlValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { TypeEnum } from '../../models/type-enum';
 
@@ -9,7 +9,6 @@ import { TypeEnum } from '../../models/type-enum';
  */
 @Component({
     selector: 'checkbox',
-    directives: [ REACTIVE_FORM_DIRECTIVES, CheckboxControlValueAccessor ],
     templateUrl: './checkbox.component.pug',
 })
 export class CheckboxComponent extends InputBase implements OnInit {

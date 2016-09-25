@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
 import { pickerTemplate } from './date-range-picker.helper';
 import { InputBase } from '../input-base/input-base.component';
@@ -16,9 +16,7 @@ export class DateRange {
 }
 
 @Component({
-    moduleId: module.id,
     selector: 'date-range-picker',
-    directives: [REACTIVE_FORM_DIRECTIVES],
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class DateRangePickerComponent extends InputBase implements OnInit, OnDestroy {
@@ -1417,7 +1415,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
         let startDate = this.startDate.format(this.locale.format);
         let endDate = this.endDate.format(this.locale.format);
 
-        this.control.updateValue(`${startDate} - ${endDate}`);
+        this.control.setValue(`${startDate} - ${endDate}`);
         this.rangeChanged.emit(new DateRange(this.startDate.clone(), this.endDate.clone()));
     }
 

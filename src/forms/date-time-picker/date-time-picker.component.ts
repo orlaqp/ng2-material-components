@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { DateTimePickerBase } from './date-time-picker-base';
 import { extractOptions } from './date-time-picker-options';
 import { Picker } from './picker';
@@ -9,7 +9,6 @@ declare var $: JQueryStatic;
 
 @Component({
     selector: 'date-time-picker',
-    directives: [REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor],
     templateUrl: 'date-time-picker.component.pug',
 })
 export class DateTimePickerComponent extends DateTimePickerBase implements AfterViewInit, OnInit {
@@ -69,6 +68,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
     public unset = true;
     public parseFormats: string[];
     public actualFormat: string;
+    public inputType: string;
 
     private datepickerInput: string = '.form-control';
     private date: moment.Moment;
@@ -311,8 +311,12 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
         let mobile = isMobile();
 
         if (mobile) {
+            this.inputType = 'date';
             return;
         }
+
+        // I do not want to use browser date functionality
+        this.inputType = 'text';
 
         if (this.element.is('input')) {
             this.input = this.element;
@@ -1417,7 +1421,7 @@ export class DateTimePickerComponent extends DateTimePickerBase implements After
             this.input.val(this.date.format(this.actualFormat));
 
             let dateFormat = this.date.format(this.actualFormat);
-            this.control.updateValue(dateFormat);
+            this.control.setValue(dateFormat);
             this.dateChanged.emit(this.date.clone());
 
             this.element.data('date', dateFormat);

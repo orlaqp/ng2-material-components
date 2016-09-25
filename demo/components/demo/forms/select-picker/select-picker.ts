@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
-import { MATERIAL_FORM, MATERIAL_USER_INTERFACE, SelectionItem } from '../../../../../dist/ng2-material-components';
+import { FormGroup } from '@angular/forms';
+import { SelectionItem } from '../../../../../dist/ng2-material-components';
 
 @Component({
     selector: 'demo-select-picker',
-    directives: [MATERIAL_FORM, MATERIAL_USER_INTERFACE, REACTIVE_FORM_DIRECTIVES],
     template: require('./select-picker.html'),
 })
 export class DemoSelectPickerComponent implements OnInit {
@@ -12,9 +11,9 @@ export class DemoSelectPickerComponent implements OnInit {
     public fg: FormGroup;
 
     public colorItems: Array<SelectionItem> = [
-        { id: '1', title: 'Red' },
-        { id: '2', title: 'Blue' },
-        { id: '3', title: 'Green' },
+        new SelectionItem('1', 'Red'),
+        new SelectionItem('2', 'Blue'),
+        new SelectionItem('3', 'Green'),
     ];
 
     public items: Array<string> = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
@@ -35,7 +34,6 @@ export class DemoSelectPickerComponent implements OnInit {
     ngOnInit() {}
 
     updateItems() {
-        debugger;
-        this.colorItems =  [ { id: '1', title: 'Cuba' }];
+        this.colorItems = [ new SelectionItem('1', 'Cuba') ];
     }
 }

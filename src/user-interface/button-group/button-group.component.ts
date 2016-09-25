@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'bw-button-group',
   templateUrl: 'button-group.component.pug',
 })

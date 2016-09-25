@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { TypeEnum } from '../../models/type-enum';
-import { MaskedInputDirective } from '../mask/masked-input.directive';
 import { NumberMaskConfig } from '../mask/addons/create-number-mask';
 import createNumberMask from '../mask/addons/create-number-mask';
 
@@ -10,7 +9,6 @@ import createNumberMask from '../mask/addons/create-number-mask';
 @Component({
     selector: 'number',
     templateUrl: './number.component.pug',
-    directives: [ REACTIVE_FORM_DIRECTIVES, MaskedInputDirective ],
     styles: ['.form-control { text-align: right; } '],
 })
 export class NumberComponent extends InputBase implements OnInit {
@@ -43,7 +41,6 @@ export class NumberComponent extends InputBase implements OnInit {
     constructor(el: ElementRef) {
         super(el);
         this.dataType = TypeEnum.Number;
-        this.inputType = 'number';
     }
 
     public addValidators(): void {

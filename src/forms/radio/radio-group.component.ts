@@ -3,12 +3,10 @@
 import { Component, Input, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
-import { RadioComponent } from './radio.component';
 import { RadioGroupService } from './radio-group.service';
 
 @Component({
     selector: 'radio-group',
-    directives: [ RadioComponent ],
     templateUrl: './radio-group.component.pug',
     providers: [ RadioGroupService ],
     // encapsulation: ViewEncapsulation.None,
@@ -25,7 +23,7 @@ export class RadioGroupComponent extends InputBase {
         super(el);
 
         this.service.optionSelected$.subscribe((value) => {
-            this.control.updateValue(value);
+            this.control.setValue(value);
         });
     }
 

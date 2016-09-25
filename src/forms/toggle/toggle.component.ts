@@ -1,11 +1,10 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
 import { guid } from '../../utils/utilities';
 
 @Component({
     selector: 'toggle',
-    directives: [ REACTIVE_FORM_DIRECTIVES, DefaultValueAccessor ],
     templateUrl: './toggle.component.pug',
 })
 export class ToggleComponent extends InputBase implements OnInit {

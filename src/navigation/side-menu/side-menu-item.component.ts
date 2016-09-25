@@ -5,7 +5,6 @@ import { MenuItem } from '../../models/menu-item';
 
 @Component({
     selector: 'side-menu-item',
-    directives: [ SideMenuItemComponent ],
     templateUrl: 'side-menu-item.component.pug',
     // animations: [
     //     trigger('isVisibleChanged', [
