@@ -11,10 +11,11 @@ import { routing, appRoutingProviders } from './routes';
 
 import {
     NgTranscludeDirective,
-    MATERIAL_LAYOUT,
+    // MATERIAL_LAYOUT,
     MATERIAL_NAVIGATION,
     MATERIAL_FORM,
     MATERIAL_USER_INTERFACE,
+    LayoutModule,
 } from '../dist/ng2-material-components';
 
 // form components
@@ -61,7 +62,7 @@ import { SupportRoute } from './components/support/support';
 
         // directves
         NgTranscludeDirective,
-        MATERIAL_LAYOUT,
+        // MATERIAL_LAYOUT,
         MATERIAL_NAVIGATION,
         MATERIAL_FORM,
         MATERIAL_USER_INTERFACE,
@@ -105,6 +106,7 @@ import { SupportRoute } from './components/support/support';
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        LayoutModule,
         routing,
     ],
     providers: [

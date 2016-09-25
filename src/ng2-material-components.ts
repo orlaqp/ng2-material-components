@@ -28,17 +28,17 @@ export const MATERIAL_MODELS = [
     ValidationInfo,
 ];
 
-// layout
-import { AppHeaderComponent } from './layout/app-header/app-header.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
+// // layout
+// import { AppHeaderComponent } from './layout/app-header/app-header.component';
+// import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
-export { AppHeaderComponent } from './layout/app-header/app-header.component';
-export { SidebarComponent } from './layout/sidebar/sidebar.component';
+// export { AppHeaderComponent } from './layout/app-header/app-header.component';
+// export { SidebarComponent } from './layout/sidebar/sidebar.component';
 
-export const MATERIAL_LAYOUT = [
-    AppHeaderComponent,
-    SidebarComponent,
-];
+// export const MATERIAL_LAYOUT = [
+//     AppHeaderComponent,
+//     SidebarComponent,
+// ];
 
 // navigation
 import { SideMenuComponent } from './navigation/side-menu/side-menu.component';
@@ -156,8 +156,11 @@ export const MATERIAL_USER_INTERFACE = [
 
 export const MATERIAL_ALL = [
     MATERIAL_COMMON,
-    MATERIAL_LAYOUT,
+    // MATERIAL_LAYOUT,
     MATERIAL_NAVIGATION,
     MATERIAL_FORM,
     MATERIAL_USER_INTERFACE,
 ];
+
+export { LayoutModule } from './layout/layout.module';
+
