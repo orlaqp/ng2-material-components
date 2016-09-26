@@ -6,7 +6,7 @@
     left: 0;
     height: calc(100% - 65px);
     @include translate3d(-$sidebar-left-width, 0, 0);
-    z-index: 5;
+    z-index: 20;
     width: $sidebar-left-width;
     overflow: hidden;
     @include opacity(0);
