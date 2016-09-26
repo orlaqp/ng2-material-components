@@ -21,18 +21,10 @@ export class AppComponent {
     constructor(private _router: Router) {
         this.menuItems = [
             { id: '3', title: 'Forms', icon: 'check-all', route: '/forms' },
-            { id: '5', title: 'Widgets', icon: 'view-compact', children: [
-                { id: '11', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '12', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '13', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '14', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '15', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '16', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '17', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '18', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '19', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '20', title: 'Header', icon: 'navigation', route: '/navigation' },
-                { id: '21', title: 'Header', icon: 'navigation', route: '/navigation' },
+            { id: '5', title: 'Tests', icon: 'view-compact', children: [
+                { id: '11', title: 'Tes menu 1', icon: 'check', route: '/check' },
+                { id: '11', title: 'Test menu 2', icon: 'star', route: '/star' },
+                { id: '11', title: 'Test Menu 3', icon: 'headset', route: '/headset' },
             ]},
             { id: '4', title: 'User Interface', icon: 'widgets', route: '/user-interface' },
         ];
