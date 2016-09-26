@@ -1,18 +1,25 @@
-import { Component, OnInit, Input,
-    trigger, state, animate, transition, style } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    trigger,
+    state,
+    animate,
+    transition,
+    style } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from '../../models/menu-item';
 
 @Component({
     selector: 'side-menu-item',
     templateUrl: 'side-menu-item.component.pug',
-    // animations: [
-    //     trigger('isVisibleChanged', [
-    //         state('true', style({ opacity: 1 })),
-    //         state('false', style({ opacity: 0 })),
-    //         transition('* => *', animate('.5s')),
-    //     ]),
-    // ],
+    animations: [
+        trigger('isVisibleChanged', [
+            state('true', style({ opacity: 1 })),
+            state('false', style({ opacity: 0, height: 0 })),
+            transition('* => *', animate('.2s')),
+        ]),
+    ],
 })
 export class SideMenuItemComponent implements OnInit {
 
@@ -33,7 +40,7 @@ export class SideMenuItemComponent implements OnInit {
         if (this.item.children && this.item.children.length > 0) {
             this.expanded = !this.expanded;
             // show/hide children items
-            this.childrenDisplay = this.expanded ? 'block' : 'none';
+            // this.childrenDisplay = this.expanded ? 'block' : 'none';
             return;
         }
 

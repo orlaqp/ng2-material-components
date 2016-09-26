@@ -5,9 +5,7 @@ li.toggled(
         i(*ngIf="item.icon", class="zmdi zmdi-{{item.icon}}")
         | {{item.title}}
 
-    ul(
-        *ngIf="item.children", 
-        [ngStyle]="{ display: childrenDisplay }")
+    ul([@isVisibleChanged]="expanded", *ngIf="item.children")
         side-menu-item(
             [item]="child", 
             *ngFor="let child of item.children")
