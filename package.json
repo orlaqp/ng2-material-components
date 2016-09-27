@@ -9,7 +9,6 @@
     "url": "https://github.com/orlaqp/ng2-material-components"
   },
   "scripts": {
-    "postinstall": "typings install",
     "build": "gulp",
     "demo": "webpack --config ./demo/webpack.config.js --watch",
     "demo:build": "npm run build && webpack --config ./demo/webpack.config.js",
@@ -79,7 +78,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-tslint": "^6.0.2",
-    "gulp-typescript": "^2.13.6",
+    "gulp-typescript": "^3.0.1",
     "gulp-util": "^3.0.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.22.0",
@@ -106,7 +105,7 @@
     "ts-helpers": "^1.1.1",
     "ts-loader": "^0.8.2",
     "tslint": "^3.14.0",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.3",
     "typescript-compiler": "^1.4.1-2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",

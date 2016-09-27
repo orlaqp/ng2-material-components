@@ -1,9 +1,0 @@
-{
-    "globalDependencies": {
-        "core-js": "registry:dt/core-js#0.0.0+20160725163759",
-        "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-        "moment": "github:DefinitelyTyped/DefinitelyTyped/moment/moment.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
-   "moment-node": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
-        "node": "registry:dt/node#6.0.0+20160815222444"
-    }
-}

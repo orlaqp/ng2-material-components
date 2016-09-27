@@ -1,0 +1,42 @@
+.datetime-picker(tabindex='0')
+  // Month - Year
+  .month
+    button.prev(type='button', (click)='updateMonthData(-1)') «
+    span(title='{{dateTime.months[monthData.month].fullName}}')
+      | {{dateTime.months[monthData.month].shortName}}
+    |     {{monthData.year}}
+    button.next(type='button', (click)='updateMonthData(+1)') »
+  .days
+    // Su Mo Tu We Th Fr Sa
+    .day-of-week(*ngFor='let dayOfWeek of dateTime.localizedDaysOfWeek', [ngClass]='{weekend: dayOfWeek.weekend}', title='{{dayOfWeek.fullName}}')
+      | {{dayOfWeek.shortName}}
+    // Fill up blank days for this month
+    div(*ngIf='monthData.leadingDays.length < 7')
+      .day(*ngFor='let dayNum of monthData.leadingDays', [ngClass]='{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month-1, dayNum).getDay()) !== -1}')
+        | {{dayNum}}
+    .day.selectable(*ngFor='let dayNum of monthData.days', (click)='selectDate(dayNum)', title='{{monthData.year}}-{{monthData.month+1}}-{{dayNum}}', [ngClass]='{\
+    selected:\
+    toDate(monthData.year, monthData.month, dayNum).getTime() === toDateOnly(selectedDate).getTime(),\
+    today:\
+    toDate(monthData.year, monthData.month, dayNum).getTime() === today.getTime(),\
+    weekend:\
+    [0,6].indexOf(toDate(monthData.year, monthData.month, dayNum).getDay()) !== -1\
+    }')
+      | {{dayNum}}
+    // Fill up blank days for this month
+    div(*ngIf='monthData.trailingDays.length < 7')
+      .day(*ngFor='let dayNum of monthData.trailingDays', [ngClass]='{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month+1, dayNum).getDay()) !== -1}')
+        | {{dayNum}}
+  // Time
+  #time.days(*ngIf='!dateOnly')
+    label.timeLabel Time:
+    span.timeValue
+      | {{("0"+hour).slice(-2)}} : {{("0"+minute).slice(-2)}}
+    br
+    label.hourLabel Hour:
+    input.hourInput(#hours='', (change)='selectDate()', type='range', min='0', max='23', [(ngModel)]="hour")
+    label.minutesLabel Min:
+    input.minutesInput(#minutes='', (change)='selectDate()', type='range', min='0', max='59', range='10', [(ngModel)]="minute")
+// <hr/>
+// Date: {{selectedDate}}<br/>
+// Hour: {{hour}} Minute: {{minute}}<br/>

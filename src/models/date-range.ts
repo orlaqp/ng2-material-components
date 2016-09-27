@@ -1,3 +1,5 @@
+declare var moment: any;
+
 export class DateRange {
     constructor(public from: moment.Moment, public to: moment.Moment) {
         this.from = from;
