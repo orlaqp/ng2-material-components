@@ -1,4 +1,4 @@
-import {DateRange} from '../../../../../src/forms/date-range-picker/date-range-picker.component';
+import {DateRange} from '../../../../../src/models/date-range';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 

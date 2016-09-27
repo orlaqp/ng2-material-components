@@ -1,12 +1,10 @@
-declare var moment: any;
-
 export class DateRange {
-    constructor(public from: moment.Moment, public to: moment.Moment) {
+    constructor(public from: Date, public to: Date) {
         this.from = from;
         this.to = to;
     }
 
     get isValid(): boolean {
-        return this.from.isValid() && this.to.isValid() && this.to.isAfter(this.from);
+        return  this.to >= this.from;
     }
 }
