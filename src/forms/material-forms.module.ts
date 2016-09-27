@@ -19,7 +19,6 @@ import { TextBoxComponent } from './text-box/text-box.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { DateTimePickerComponent } from './datetime-picker/date-time-picker.component';
 import { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-popup.component';
-import { DateTimePickerDirective } from './datetime-picker/datetime-picker.directive';
 
 @NgModule({
     imports: [
@@ -32,7 +31,6 @@ import { DateTimePickerDirective } from './datetime-picker/datetime-picker.direc
         DateRangePickerComponent,
         DateTimePickerComponent,
         DateTimePickerPopupComponent,
-        DateTimePickerDirective,
         EmailComponent,
         MaskedInputDirective,
         NumberComponent,
@@ -50,7 +48,6 @@ import { DateTimePickerDirective } from './datetime-picker/datetime-picker.direc
         DateRangePickerComponent,
         DateTimePickerComponent,
         DateTimePickerPopupComponent,
-        DateTimePickerDirective,
         EmailComponent,
         MaskedInputDirective,
         NumberComponent,
