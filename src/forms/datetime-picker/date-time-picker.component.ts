@@ -146,26 +146,31 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
     //show datetimePicker element below the current element
     showDatetimePicker(event: MouseEvent) {
         event.preventDefault();
+        event.stopPropagation();
+
         if (this.componentRef) { /* if already shown, do nothing */
             return;
         }
 
-        let factory = this.resolver.resolveComponentFactory(DateTimePickerPopupComponent);
+        setTimeout(() => {
+            let factory = this.resolver.resolveComponentFactory(DateTimePickerPopupComponent);
 
-        this.componentRef = this.viewContainerRef.createComponent(factory);
-        this.datetimePickerEl = this.componentRef.location.nativeElement;
-        this.datetimePickerEl.addEventListener('keyup', this.keyEventListener);
+            this.componentRef = this.viewContainerRef.createComponent(factory);
+            this.datetimePickerEl = this.componentRef.location.nativeElement;
+            this.datetimePickerEl.addEventListener('keyup', this.keyEventListener);
 
-        let component = this.componentRef.instance;
-        component.initDateTime(<Date>this.el['dateValue']);
-        component.dateOnly = this.dateOnly;
+            let component = this.componentRef.instance;
+            component.initDateTime(<Date>this.el['dateValue']);
+            component.dateOnly = this.dateOnly;
 
-        this.styleDatetimePicker();
+            this.styleDatetimePicker();
 
-        component.changes.subscribe(this.valueChanged);
-        component.closing.subscribe(() => {
-            return this.closeOnSelect !== 'false' && this.hideDatetimePicker();
-        });
+            component.changes.subscribe(this.valueChanged);
+            component.closing.subscribe(() => {
+                return this.closeOnSelect !== 'false' && this.hideDatetimePicker();
+            });
+        }, 10);
+
     }
 
     hideDatetimePicker = (event?: any): void => {

@@ -8,8 +8,9 @@
             placeholder="{{placeholder}}",
             [formControl]="control",
             [attr.disabled]="disabled",
-            (focus)="onFocus(i); showDatetimePicker($event)",
-            (blur)="onBlur(i)",
+            (focus)="onFocus(i, $event); showDatetimePicker($event)",
+            (blur)="onBlur(i, $event)",
+            (click)="showDatetimePicker($event)",
             (change)="valueChanged()")
 
                 

@@ -1,3 +1,4 @@
+import {MouseEvent} from '@angular/platform-browser/src/facade/browser';
 import { ElementRef } from '@angular/core';
 import {
     FormGroup,
@@ -51,11 +52,21 @@ export class InputBase {
         this.dataType = TypeEnum.String;
     }
 
-    public onFocus(ele: any): void {
+    public onFocus(ele: any, event: MouseEvent): void {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
         this.toggled = true;
     }
 
-    public onBlur(ele: any): void {
+    public onBlur(ele: any, event: MouseEvent): void {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
         if (!this.control.value) {
             this.toggled = false;
         }
