@@ -1,11 +1,13 @@
 .datetime-picker(tabindex='0')
   // Month - Year
   .month
-    button.prev(type='button', (click)='updateMonthData(-1)') «
+    button.prev(type='button', (click)='updateMonthData(-1)')
+      i.zmdi.zmdi-chevron-left
     span(title='{{dateTime.months[monthData.month].fullName}}')
-      | {{dateTime.months[monthData.month].shortName}}
+      | {{dateTime.months[monthData.month].fullName}}
     |     {{monthData.year}}
-    button.next(type='button', (click)='updateMonthData(+1)') »
+    button.next(type='button', (click)='updateMonthData(+1)')
+      i.zmdi.zmdi-chevron-right
   .days
     // Su Mo Tu We Th Fr Sa
     .day-of-week(*ngFor='let dayOfWeek of dateTime.localizedDaysOfWeek', [ngClass]='{weekend: dayOfWeek.weekend}', title='{{dayOfWeek.fullName}}')

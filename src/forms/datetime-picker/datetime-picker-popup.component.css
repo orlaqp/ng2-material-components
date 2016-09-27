@@ -10,7 +10,7 @@
 .datetime-picker {
     color: #333;
     outline-width: 0;
-    font: normal 14px sans-serif;
+    font-size: 12px;
     border: 1px solid #ddd;
     display: inline-block;
     background: #fff;
@@ -20,15 +20,17 @@
 .datetime-picker > .month {
     text-align: center;
     line-height: 22px;
-    padding: 10px;
-    background: #fcfcfc;
+    padding: 20px 10px;
+    background: #2196F3;
     text-transform: uppercase;
     font-weight: bold;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
     position: relative;
+    color: whitesmoke;
+    font-size: 14px;
 }
 .datetime-picker > .month > button {
-    color: #555;
+    color: whitesmoke;
     font: normal 14px sans-serif;
     outline: none;
     position: absolute;
@@ -37,7 +39,7 @@
     cursor: pointer;
 }
 .datetime-picker > .month > button:hover {
-    color: #333;
+    color: whitesmoke;
 }
 .datetime-picker > .month > button.prev {
     left: 10px;
@@ -46,17 +48,19 @@
     right: 10px;
 }
 .datetime-picker > .days {
-    width: 210px; /* 30 x 7 */
-    margin: 10px;
+    width: 224px; /* 30 x 7 */
+    margin: 20px;
     text-align: center;
 }
+
+
 .datetime-picker > .days .day-of-week,
 .datetime-picker > .days .day {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     border: 1px solid transparent;
-    width: 30px;
-    line-height: 28px;
+    width: 32px;
+    line-height: 31px;
     float: left;
 }
 .datetime-picker > .days .day-of-week {
@@ -64,7 +68,7 @@
 }
 .datetime-picker > .days .day-of-week.weekend {
     color: #ccc;
-    background-color: inherit;
+    /*background-color: inherit;*/
 }
 .datetime-picker > .days .day:not(.selectable) {
     color: #ccc;
@@ -72,17 +76,19 @@
 }
 .datetime-picker > .days .weekend {
     color: #ccc;
-    background-color: #eee;
+    /*background-color: #eee;*/
 }
 .datetime-picker > .days .day.selectable  {
     cursor: pointer;
 }
 .datetime-picker > .days .day.selected {
-    background: gray;
+    background: #2196F3;
     color: #fff;
+    border-radius: 50%;
 }
 .datetime-picker > .days .day:not(.selected).selectable:hover {
     background: #eee;
+    border-radius: 50%;
 }
 .datetime-picker > .days:after {
     content: '';

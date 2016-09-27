@@ -3,12 +3,10 @@
 import {
     Component,
     Input,
-    Output,
     OnInit,
     OnChanges,
     ComponentRef,
     ViewContainerRef,
-    EventEmitter,
     ComponentFactoryResolver,
     Optional,
     SimpleChanges,
@@ -40,8 +38,8 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
     @Input() alt: boolean;
     @Input() required: boolean;
 
-    @Input() dateFormat = 'DD-MM-YYYY hh:mm';
-    @Input() dateOnly: boolean;
+    @Input() dateFormat = 'MM/DD/YYYY';
+    @Input() dateOnly = true;
     @Input() hour = 23;
     @Input() minute = 59;
     @Input() closeOnSelect = true;
@@ -64,7 +62,12 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
 
     ngOnInit(): void {
         this.onInit();
-        debugger;
+
+        // show native date picker in mobile apps
+        if (isMobile()) {
+            this.inputType = 'date';
+            return;
+        }
 
         if (this.parent && this.parent['form'] && this.formControlName) {
             this.ctrl = (<FormGroup>this.parent['form']).get(this.formControlName);
@@ -124,6 +127,13 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         }
     }
 
+    preventDefault(event: MouseEvent) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }
+
     /* input element string value is changed */
     valueChanged = (date: string | Date): void => {
         if (typeof date === 'string' && date) {
@@ -134,20 +144,18 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
             this.el['dateValue'] = null;
         }
 
-        this.el.value = this.getFormattedDateStr();
+        // this.el.value = this.getFormattedDateStr();
+        this.control.setValue(this.getFormattedDateStr());
 
-        this.ngModel = this.el['dateValue'];
-        if (this.ngModel) {
-            this.ngModel.toString = () => { return this.el.value; };
-            this.ngModelChange.emit(this.ngModel);
-        }
+        // this.ngModel = this.el['dateValue'];
+        // if (this.ngModel) {
+        //     this.ngModel.toString = () => { return this.el.value; };
+        //     this.ngModelChange.emit(this.ngModel);
+        // }
     };
 
     //show datetimePicker element below the current element
     showDatetimePicker(event: MouseEvent) {
-        event.preventDefault();
-        event.stopPropagation();
-
         if (this.componentRef) { /* if already shown, do nothing */
             return;
         }
@@ -167,7 +175,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
 
             component.changes.subscribe(this.valueChanged);
             component.closing.subscribe(() => {
-                return this.closeOnSelect !== 'false' && this.hideDatetimePicker();
+                return this.closeOnSelect !== false && this.hideDatetimePicker();
             });
         }, 10);
 

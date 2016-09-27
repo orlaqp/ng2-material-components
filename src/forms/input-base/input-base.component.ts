@@ -52,21 +52,11 @@ export class InputBase {
         this.dataType = TypeEnum.String;
     }
 
-    public onFocus(ele: any, event: MouseEvent): void {
-        if (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
+    public onFocus(ele: any): void {
         this.toggled = true;
     }
 
-    public onBlur(ele: any, event: MouseEvent): void {
-        if (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
+    public onBlur(ele: any): void {
         if (!this.control.value) {
             this.toggled = false;
         }
