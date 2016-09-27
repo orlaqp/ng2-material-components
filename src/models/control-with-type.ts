@@ -2,6 +2,8 @@ import { FormControl } from '@angular/forms';
 import { TypeEnum } from './type-enum';
 // import * as moment from 'moment/moment';
 
+declare var moment: any;
+
 export class ControlWithType extends FormControl {
 
     public dataType: TypeEnum;
@@ -30,8 +32,8 @@ export class ControlWithType extends FormControl {
                 value = Number(this.value.replace(',', ''));
                 break;
             case TypeEnum.Date:
-                // let momentDate: moment.Moment = moment(this.value);
-                // value = momentDate.toDate();
+                let momentDate: moment.Moment = moment(this.value);
+                value = momentDate.toDate();
                 break;
             case TypeEnum.Boolean:
                 value = Boolean(this.value);
