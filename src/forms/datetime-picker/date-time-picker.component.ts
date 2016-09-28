@@ -1,5 +1,9 @@
 // from: https://github.com/ng2-ui/ng2-datetime-picker
 
+export interface HTMLInputElement {
+    [key: string]: Date;
+}
+
 import {
     Component,
     Input,
@@ -44,7 +48,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
     @Input() minute = 59;
     @Input() closeOnSelect = true;
 
-    private el: HTMLInputElement;                               /* input element */
+    private el: any;                               /* input element */
     private datetimePickerEl: HTMLElement;                      /* dropdown element */
     private componentRef: ComponentRef<DateTimePickerPopupComponent>; /* dropdown component reference */
     private ctrl: AbstractControl;
@@ -57,11 +61,13 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         @Optional() @Host() @SkipSelf() private parent: ControlContainer
     ) {
         super(ele);
-        this.el = this.viewContainerRef.element.nativeElement;
     }
 
     ngOnInit(): void {
         this.onInit();
+
+        this.el = this.viewContainerRef.element.nativeElement
+                    .getElementsByTagName('input')[0];
 
         // show native date picker in mobile apps
         if (isMobile()) {
@@ -69,12 +75,12 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
             return;
         }
 
-        if (this.parent && this.parent['form'] && this.formControlName) {
-            this.ctrl = (<FormGroup>this.parent['form']).get(this.formControlName);
-            this.sub = this.ctrl.valueChanges.subscribe((newNgModel) => {
-                this.triggerChange(newNgModel);
-            });
-        }
+        // if (this.parent && this.parent['form'] && this.formControlName) {
+        //     this.ctrl = (<FormGroup>this.parent['form']).get(this.formControlName);
+        //     this.sub = this.ctrl.valueChanges.subscribe((newNgModel) => {
+        //         this.triggerChange(newNgModel);
+        //     });
+        // }
 
         //wrap this element with a <div> tag, so that we can position dynamic elememnt correctly
         let wrapper = document.createElement('div');
@@ -95,7 +101,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
     public addValidators(): void { }
 
     ngOnChanges(changes: SimpleChanges) {
-        let newNgModel;
+        let newNgModel: any;
         if (changes && changes['ngModel']) {
             newNgModel = changes['ngModel'].currentValue;
         }
@@ -103,7 +109,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         this.triggerChange(newNgModel);
     }
 
-    triggerChange(newNgModel) {
+    triggerChange(newNgModel: any) {
         if (this.ctrl) {
             this.ctrl.markAsDirty();
         }
@@ -145,7 +151,10 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         }
 
         // this.el.value = this.getFormattedDateStr();
-        this.control.setValue(this.getFormattedDateStr());
+        let formattedDate = this.getFormattedDateStr();
+
+        if (!moment(this.control.value).isSame(formattedDate))
+            this.control.setValue(this.getFormattedDateStr());
 
         // this.ngModel = this.el['dateValue'];
         // if (this.ngModel) {
@@ -253,7 +262,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         }
     }
 
-    private getDate(arg: string): Date {
+    private getDate(arg: any): Date {
         let date: Date;
         if (typeof arg === 'string') {
             if (this.dateFormat) {

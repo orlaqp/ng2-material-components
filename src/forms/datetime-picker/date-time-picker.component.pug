@@ -11,6 +11,6 @@
             (focus)="onFocus(i); showDatetimePicker($event)",
             (blur)="onBlur(i)",
             (click)="preventDefault($event)",
-            (change)="valueChanged()")
+            (change)="valueChanged($event.target.value)")
 
                 

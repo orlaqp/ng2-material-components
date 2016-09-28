@@ -1,21 +1,19 @@
 import {
     FormGroup,
     AbstractControl,
+    ValidatorFn,
     AsyncValidatorFn,
 } from '@angular/forms';
-
-
 
 export class SubmitableFormGroup extends FormGroup {
     // public controls: {[key: string]: AbstractControl};
 
     public submitted: boolean;
 
-    constructor(
-        controls?: {[key: string]: AbstractControl},
-        other?: {[key: string]: boolean },
-        asyncValidator?: AsyncValidatorFn) {
-        super(controls, other, asyncValidator);
+    constructor(controls: {
+        [key: string]: AbstractControl;
+        }, validator?: ValidatorFn, asyncValidator?: AsyncValidatorFn) {
+        super(controls, validator, asyncValidator);
     }
 
     public getValue(): any {

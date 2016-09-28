@@ -1,4 +1,3 @@
-import {MouseEvent} from '@angular/platform-browser/src/facade/browser';
 import { ElementRef } from '@angular/core';
 import {
     FormGroup,

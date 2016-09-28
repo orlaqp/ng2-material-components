@@ -17,10 +17,10 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
     @Input() label: string;
 
     @Input() parentEl: JQuery = $('body');
-    @Input() startDate: moment.Moment = moment().startOf('day');
-    @Input() endDate: moment.Moment = moment().endOf('day');
-    @Input() minDate: moment.Moment;
-    @Input() maxDate: moment.Moment;
+    @Input() startDate: any = moment().startOf('day').toString();
+    @Input() endDate: any = moment().endOf('day').toString();
+    @Input() minDate: any;
+    @Input() maxDate: any;
     @Input() dateLimit: boolean | Object = false;
     @Input() autoApply: boolean = false;
     @Input() singleDatePicker: boolean = false;
@@ -834,7 +834,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
                 var isCustom = this.isCustomDate(calendar[row][col]);
                 if (isCustom !== false) {
                     if (typeof isCustom === 'string') {
-                        classes.push(isCustom);
+                        classes.push(isCustom.toString());
                     } else
                         Array.prototype.push.apply(classes, isCustom);
                 }

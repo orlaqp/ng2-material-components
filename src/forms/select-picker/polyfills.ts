@@ -12,7 +12,7 @@ export function processPolyfills() {
             var defineProperty = (function() {
                 // IE 8 only supports `Object.defineProperty` on DOM elements
                 try {
-                    var object = {};
+                    var object: any = {};
                     var $defineProperty = Object.defineProperty;
                     var result = $defineProperty(object, object, object) && $defineProperty;
                 } catch (error) {
@@ -67,7 +67,7 @@ export function processPolyfills() {
             var defineProperty = (function() {
                 // IE 8 only supports `Object.defineProperty` on DOM elements
                 try {
-                    var object = {};
+                    var object: any = {};
                     var $defineProperty = Object.defineProperty;
                     var result = $defineProperty(object, object, object) && $defineProperty;
                 } catch (error) {
@@ -123,23 +123,64 @@ export function processPolyfills() {
      */
 
     if (!Object.keys) {
-        Object.keys = function(
-            o, // object
-            k, // key
-            r  // result array
-        ) {
-            // initialize object and result
-            r = [];
-            // iterate over object keys
-            for (k in o)
-                // fill result array with non-prototypical keys
-                /* tslint:disable */
-                r.hasOwnProperty.call(o, k) && r.push(k);
-            /* tslint:enabled */
-            // return result
-            return r;
+    Object.keys = (function() {
+        'use strict';
+        var hasOwnProperty = Object.prototype.hasOwnProperty,
+            hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+            dontEnums = [
+            'toString',
+            'toLocaleString',
+            'valueOf',
+            'hasOwnProperty',
+            'isPrototypeOf',
+            'propertyIsEnumerable',
+            'constructor',
+            ],
+            dontEnumsLength = dontEnums.length;
+
+        return function(obj: any) {
+        if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+            throw new TypeError('Object.keys called on non-object');
+        }
+
+        var result: any = [], prop: string, i: number;
+
+        for (prop in obj) {
+            if (hasOwnProperty.call(obj, prop)) {
+            result.push(prop);
+            }
+        }
+
+        if (hasDontEnumBug) {
+            for (i = 0; i < dontEnumsLength; i++) {
+            if (hasOwnProperty.call(obj, dontEnums[i])) {
+                result.push(dontEnums[i]);
+            }
+            }
+        }
+        return result;
         };
+    }());
     }
+
+    // if (!Object.keys) {
+    //     Object.keys = function(
+    //         o, // object
+    //         k, // key
+    //         r  // result array
+    //     ) {
+    //         // initialize object and result
+    //         r = [];
+    //         // iterate over object keys
+    //         for (k in o)
+    //             // fill result array with non-prototypical keys
+    //             /* tslint:disable */
+    //             r.hasOwnProperty.call(o, k) && r.push(k);
+    //         /* tslint:enabled */
+    //         // return result
+    //         return r;
+    //     };
+    // }
 }
 
 /**
@@ -150,19 +191,19 @@ export function processPolyfills() {
    */
 export function normalizeToBase(text: string) {
     var rExps = [
-        { re: /[\xC0-\xC6]/g, ch: "A" },
-        { re: /[\xE0-\xE6]/g, ch: "a" },
-        { re: /[\xC8-\xCB]/g, ch: "E" },
-        { re: /[\xE8-\xEB]/g, ch: "e" },
-        { re: /[\xCC-\xCF]/g, ch: "I" },
-        { re: /[\xEC-\xEF]/g, ch: "i" },
-        { re: /[\xD2-\xD6]/g, ch: "O" },
-        { re: /[\xF2-\xF6]/g, ch: "o" },
-        { re: /[\xD9-\xDC]/g, ch: "U" },
-        { re: /[\xF9-\xFC]/g, ch: "u" },
-        { re: /[\xC7-\xE7]/g, ch: "c" },
-        { re: /[\xD1]/g, ch: "N" },
-        { re: /[\xF1]/g, ch: "n" }
+        { re: /[\xC0-\xC6]/g, ch: 'A' },
+        { re: /[\xE0-\xE6]/g, ch: 'a' },
+        { re: /[\xC8-\xCB]/g, ch: 'E' },
+        { re: /[\xE8-\xEB]/g, ch: 'e' },
+        { re: /[\xCC-\xCF]/g, ch: 'I' },
+        { re: /[\xEC-\xEF]/g, ch: 'i' },
+        { re: /[\xD2-\xD6]/g, ch: 'O' },
+        { re: /[\xF2-\xF6]/g, ch: 'o' },
+        { re: /[\xD9-\xDC]/g, ch: 'U' },
+        { re: /[\xF9-\xFC]/g, ch: 'u' },
+        { re: /[\xC7-\xE7]/g, ch: 'c' },
+        { re: /[\xD1]/g, ch: 'N' },
+        { re: /[\xF1]/g, ch: 'n' },
     ];
     $.each(rExps, function() {
         text = text.replace(this.re, this.ch);
@@ -172,13 +213,13 @@ export function normalizeToBase(text: string) {
 
 
 export function htmlEscape(html: string) {
-    var escapeMap = {
+    var escapeMap: any = {
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
         '"': '&quot;',
-        "'": '&#x27;',
-        '`': '&#x60;'
+        '\'': '&#x27;',
+        '`': '&#x60;',
     };
     var source = '(?:' + Object.keys(escapeMap).join('|') + ')',
         testRegexp = new RegExp(source),
