@@ -26,6 +26,8 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
     @Input() disabled: boolean;
     @Input() placeholder: string;
     @Input() alt: boolean;
+    @Input() leftIcon: string;
+    @Input() rightIcon: string;
 
     // options
     @Input() items: SelectionItem[];

@@ -1,23 +1,34 @@
-.btn-group.bootstrap-select([class.fc-alt]="alt")
-    button.btn.dropdown-toggle.btn-default(type='button', data-toggle='dropdown',
-            role='button', title='{{selected}}', aria-expanded='true', (click)="toggleOpen()")
-        span.filter-option.pull-left {{selection}}
-        span.bs-caret
-            span.caret
-    .dropdown-menu([class.open]="open", role='combobox', style='max-height: 394px; overflow: hidden; min-height: 0px;')
+include ../../mixins/base.pug
 
-        .bs-searchbox(*ngIf="liveSearch")
-            input.form-control([formControl]="query", type='text',
-                autocomplete='off', role='textbox', aria-label='Search', placeholder="{{liveSearchPlaceholder}}")
+.input-group.m-b-15.w-100(
+    [ngClass]="{ 'has-error': !control.valid && (fg.submitted || control.dirty)}")
 
-        ul.dropdown-menu.inner(role='listbox', aria-expanded='true', style='max-height: 392px; overflow-y: auto; min-height: 0px;')
+    span.input-group-addon(*ngIf="leftIcon")
+        +dynamic-icn('leftIcon')
 
-            li(*ngFor="let item of filteredItems; let idx = index", [attr.data-original-index]="idx", [class.selected]="item.selected", (click)="toggleItem(item)")
-                a(tabindex='{{idx}}', style='', [attr.data-tokens]='null', role='option', [attr.aria-disabled]='item.disabled', [attr.aria-selected]='item.selected')
-                    span.text {{item.title}}
-                    span.zmdi.check-mark(class="{{tickIcon}}")
+    .btn-group.bootstrap-select([class.fc-alt]="alt")
+        button.btn.dropdown-toggle.btn-default(type='button', data-toggle='dropdown',
+                role='button', title='{{selected}}', aria-expanded='true', (click)="toggleOpen()")
+            span.filter-option.pull-left {{selection}}
+            span.bs-caret
+                span.caret
+        .dropdown-menu([class.open]="open", role='combobox', style='max-height: 394px; overflow: hidden; min-height: 0px;')
 
-            li.no-results(*ngIf="emptySearch") {{ noneResultsText }} "{{ query.valueChanges | async }}"
+            .bs-searchbox(*ngIf="liveSearch")
+                input.form-control([formControl]="query", type='text',
+                    autocomplete='off', role='textbox', aria-label='Search', placeholder="{{liveSearchPlaceholder}}")
 
-    select.my-selectpicker(style='display: none', tabindex='-98', [class.mobile-device]="isMobile", [attr.multiple]="multiple")
-        option(*ngFor="let item of filteredItems", value="{{item.id}}", [attr.selected]="item.selected ? true : null") {{item.title}}
+            ul.dropdown-menu.inner(role='listbox', aria-expanded='true', style='max-height: 392px; overflow-y: auto; min-height: 0px;')
+
+                li(*ngFor="let item of filteredItems; let idx = index", [attr.data-original-index]="idx", [class.selected]="item.selected", (click)="toggleItem(item)")
+                    a(tabindex='{{idx}}', style='', [attr.data-tokens]='null', role='option', [attr.aria-disabled]='item.disabled', [attr.aria-selected]='item.selected')
+                        span.text {{item.title}}
+                        span.zmdi.check-mark(class="{{tickIcon}}")
+
+                li.no-results(*ngIf="emptySearch") {{ noneResultsText }} "{{ query.valueChanges | async }}"
+
+        select.my-selectpicker(style='display: none', tabindex='-98', [class.mobile-device]="isMobile", [attr.multiple]="multiple")
+            option(*ngFor="let item of filteredItems", value="{{item.id}}", [attr.selected]="item.selected ? true : null") {{item.title}}
+
+    span.input-group-addon.last(*ngIf="rightIcon")
+        +dynamic-icn('rightIcon')
