@@ -40,4 +40,8 @@ export class AppComponent {
         }
     }
 
+    onItemClicked(item: MenuItem) {
+        console.dir(item);
+    }
+
 }

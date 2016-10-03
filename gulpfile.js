@@ -140,7 +140,7 @@ gulp.task('build:ts', gulp.series('lint:ts', function build_ts_impl() {
 
     var tsResult = gulp.src(PATHS.src.concat(PATHS.typings))
         .pipe(inlineTemplatesTask())
-        .pipe(ts(tsProject));
+        .pipe(tsProject());
 
     return merge([tsResult.dts, tsResult.js])
         .pipe(cache('build:ts'))

@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from '../../models/menu-item';
 
 @Component({
@@ -7,4 +7,9 @@ import { MenuItem } from '../../models/menu-item';
 })
 export class SideMenuComponent {
     @Input() items: MenuItem[];
+    @Output() itemClicked = new EventEmitter<MenuItem>();
+
+    onItemClicked(item: MenuItem) {
+        this.itemClicked.emit(item);
+    }
 }

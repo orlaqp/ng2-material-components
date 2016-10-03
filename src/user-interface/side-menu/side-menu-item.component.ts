@@ -2,6 +2,8 @@ import {
     Component,
     OnInit,
     Input,
+    Output,
+    EventEmitter,
     trigger,
     state,
     animate,
@@ -24,6 +26,7 @@ import { MenuItem } from '../../models/menu-item';
 export class SideMenuItemComponent implements OnInit {
 
     @Input() item: MenuItem;
+    @Output() itemClicked = new EventEmitter<MenuItem>();
 
     public expanded: boolean = false;
     public childrenDisplay: string;
@@ -34,6 +37,7 @@ export class SideMenuItemComponent implements OnInit {
 
     onItemClicked(e: any): void {
         e.preventDefault();
+        this.itemClicked.emit(this.item);
 
         // when item contain childrens then forget about everything else
         // this may change in the futuro though

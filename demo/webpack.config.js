@@ -67,7 +67,7 @@ const config = {
                 new BrowserSyncPlugin({
                     // browse to http://localhost:3000/ during development,
                     // ./public directory is being served
-                    host: 'localhost',
+                    host: '0.0.0.0',
                     port: 4000,
                     server: {
                         baseDir: [path.resolve(__dirname, 'dist')]
