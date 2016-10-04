@@ -37,9 +37,10 @@ export class SideMenuItemComponent implements OnInit {
 
     onItemClicked(e: any): void {
         e.preventDefault();
-        e.stopPropagation();
 
-        this.itemClicked.emit(this.item);
+        if (!this.item.children) {
+            this.itemClicked.emit(this.item);
+        }
 
         // when item contain childrens then forget about everything else
         // this may change in the futuro though
