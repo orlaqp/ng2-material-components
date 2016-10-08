@@ -1,4 +1,4 @@
-header#header.clearfix([attr.data-current-skin]='color')
+header#header.clearfix.animated.slideInDown([attr.data-current-skin]='color')
     ul.header-inner
         // menu trigger
         li#menu-trigger([attr.data-trigger]="'#sidebar'", *ngIf="addMenuTrigger", [class.open]="sidebarOpen", (click)="toggleSidebar()")
