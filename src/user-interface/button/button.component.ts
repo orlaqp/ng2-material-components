@@ -13,6 +13,7 @@ export class ButtonComponent implements OnInit {
     @Input() circular: boolean;
     @Input() rounded: boolean;
     @Input() simple: boolean;
+    @Input() type = 'button';
 
     @Input() size: string = ''; // lg, sm, xs
     @Input() disabled: boolean;
