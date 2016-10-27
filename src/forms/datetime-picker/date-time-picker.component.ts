@@ -165,7 +165,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
 
     //show datetimePicker element below the current element
     showDatetimePicker(event: MouseEvent) {
-        if (this.componentRef || isMobile()) { /* if already shown, do nothing */
+        if (this.componentRef || iOS()) { /* if already shown, do nothing */
             return;
         }
 
