@@ -22,7 +22,7 @@ import { AbstractControl, ControlContainer, FormGroup } from '@angular/forms';
 import { DateTimePickerPopupComponent } from './datetime-picker-popup.component';
 import { DateTime } from './datetime';
 import { InputBase } from '../input-base/input-base.component';
-import { isMobile } from '../../utils/utilities';
+import { iOS } from '../../utils/utilities';
 
 /**
  * If the given string is not a valid date, it defaults back to today
@@ -70,7 +70,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
                     .getElementsByTagName('input')[0];
 
         // show native date picker in mobile apps
-        if (isMobile()) {
+        if (iOS()) {
             this.inputType = 'date';
             return;
         }
