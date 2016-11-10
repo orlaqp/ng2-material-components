@@ -264,6 +264,15 @@ html:not(.ie9) {
         }
 
     }
+
+    &.has-error {
+        .input-group-addon {
+            color: $m-red !important;
+            border-color: transparent !important;
+            background-color: transparent !important;
+        }
+    }
+
 }
 
 .input-group-addon {
