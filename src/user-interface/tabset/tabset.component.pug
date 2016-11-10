@@ -5,7 +5,7 @@ ul.tab-nav.tn-justified(role='tablist', (click)='$event.preventDefault()', [ngCl
         [class.disabled]='tabz.disabled', 
         role="presentation")
         
-        a.nav-link(href='', [class.active]='tabz.active', [class.disabled]='tabz.disabled', (click)='tabz.active = true')
+        a.nav-link(href='', [class.active]='tabz.active', [class.disabled]='tabz.disabled', (click)='tabClicked(tabz)')
             i.zmdi(*ngIf="tabz.icon", class="zmdi-{{tabz.icon}}", [ngClass]="{ 'icon-tab': iconTab }")
             span([ngTransclude]='tabz.headingRef') {{tabz.heading}}
             span(*ngIf='tabz.removable')

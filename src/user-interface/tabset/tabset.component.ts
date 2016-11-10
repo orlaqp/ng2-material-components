@@ -32,6 +32,19 @@ export class TabsetComponent implements OnInit, OnDestroy {
     this.isDestroyed = true;
   }
 
+  public tabClicked(tab: TabDirective) {
+    tab.active = true;
+  }
+
+  public selectTab(index: number) {
+    if (index < 1 || index > this.tabs.length) {
+      console.error('Tab index out of range');
+    }
+
+    let tab = this.tabs[index - 1];
+    tab.active = true;
+  }
+
   public addTab(tab: TabDirective): void {
     this.tabs.push(tab);
     tab.active = this.tabs.length === 1 && tab.active !== false;
