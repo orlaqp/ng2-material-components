@@ -20,6 +20,24 @@ import { ToggleComponent } from './toggle/toggle.component';
 import { DateTimePickerComponent } from './datetime-picker/date-time-picker.component';
 import { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-popup.component';
 
+export { CheckboxComponent } from './checkbox/checkbox.component';
+export { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
+// export { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+export { EmailComponent } from './email/email.component';
+export { MaskedInputDirective } from './mask/masked-input.directive';
+export { NumberComponent } from './number/number.component';
+export { PasswordComponent } from './password/password.component';
+export { PhoneComponent } from './phone/phone.component';
+export { RadioGroupComponent } from './radio/radio-group.component';
+export { RadioGroupService } from './radio/radio-group.service';
+export { RadioComponent } from './radio/radio.component';
+export { SelectPickerComponent } from './select-picker/select-picker.component';
+export { TextAreaComponent } from './text-area/text-area.component';
+export { TextBoxComponent } from './text-box/text-box.component';
+export { ToggleComponent } from './toggle/toggle.component';
+export { DateTimePickerComponent } from './datetime-picker/date-time-picker.component';
+export { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-popup.component';
+
 @NgModule({
     imports: [
         CommonModule,

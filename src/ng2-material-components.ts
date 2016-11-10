@@ -31,5 +31,5 @@ export const MATERIAL_MODELS = [
     ValidationInfo,
 ];
 
-export { MaterialFormsModule } from './forms/material-forms.module';
-export { MaterialUserInterfaceModule } from './user-interface/material-user-interface.module';
+export * from './forms/material-forms.module';
+export * from './user-interface/material-user-interface.module';

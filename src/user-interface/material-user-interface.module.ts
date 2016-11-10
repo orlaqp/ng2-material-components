@@ -25,6 +25,23 @@ import { TabsetComponent } from './tabset/tabset.component';
 
 import { NgTranscludeDirective } from '../common';
 
+export { CardActionComponent } from './card/card-action.component';
+export { CardBodyComponent } from './card/card-body.component';
+export { CardHeaderComponent } from './card/card-header.component';
+export { CardPaddingDirective } from './card/card-padding.directive';
+export { CardComponent } from './card/card.component';
+export { HeaderComponent } from './header/header.component';
+export { PreloaderComponent } from './preloader/preloader.component';
+export { PreLoaderDirective } from './preloader/preloader.directive';
+export { SideMenuItemComponent } from './side-menu/side-menu-item.component';
+export { SideMenuComponent } from './side-menu/side-menu.component';
+export { SidebarComponent } from './sidebar/sidebar.component';
+export { TabDirective } from './tabset/tab.directive';
+export { TabHeadingDirective } from './tabset/tab-heading.directive';
+export { TabsetComponent } from './tabset/tabset.component';
+
+export { NgTranscludeDirective } from '../common';
+
 @NgModule({
     imports: [
         CommonModule,
