@@ -19,7 +19,7 @@ include ../../mixins/base.pug
             [textMask]="{ control: control, mask: numberMask }"
             placeholder="{{placeholder}}",
             [formControl]="control",
-            [attr.disabled]="disabled",
+            [disabled]="disabled",
             (focus)="onFocus(i)",
             (blur)="onBlur(i)")
 

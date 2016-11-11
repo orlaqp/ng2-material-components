@@ -1,7 +1,7 @@
 .radio.m-b-15([class.disabled]="disabled")
   label
     input(type='radio', [name]="groupName",
-        [attr.disabled]="disabled",
+        [disabled]="disabled",
         [attr.value]="value",
         (click)="check()")
     i.input-helper
