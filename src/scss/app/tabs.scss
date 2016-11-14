@@ -123,6 +123,19 @@
                 background: $m-cyan;
             }
         }
+        &.ts-alt {
+            box-shadow: inset 0 -2px 0 0 #555 !important;
+            &>li {
+                &.active {
+                    &>a {
+                        color: #ddd;
+                        &:after {
+                            background: #ccc !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

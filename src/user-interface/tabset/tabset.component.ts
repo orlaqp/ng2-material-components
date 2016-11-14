@@ -10,6 +10,7 @@ export class TabsetComponent implements OnInit, OnDestroy {
 
   @Input()
   public get iconTab(): boolean { return this._iconTab; }
+  @Input() alt = false;
 
   @HostBinding('class.tab-container') protected clazz: boolean = true;
 
