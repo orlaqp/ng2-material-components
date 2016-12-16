@@ -1,11 +1,17 @@
 header#header.clearfix.animated.slideInDown([attr.data-current-skin]='color')
     ul.header-inner
         // menu trigger
-        li#menu-trigger([attr.data-trigger]="'#sidebar'", *ngIf="addMenuTrigger", [class.open]="sidebarOpen", (click)="toggleSidebar()")
+        li#menu-trigger([attr.data-trigger]="'#sidebar'", *ngIf="addMenuTrigger && !goBackActive", [class.open]="sidebarOpen", (click)="toggleSidebar()")
             .line-wrap
                 .line.top
                 .line.center
                 .line.bottom
+        li#menu-trigger.open(*ngIf="goBackActive", (click)="goBack()")
+            .line-wrap
+                .line.top
+                .line.center
+                .line.bottom
+
         // brand
         li.logo(*ngIf="brand")
             a([href]='logoHref') {{brand}}

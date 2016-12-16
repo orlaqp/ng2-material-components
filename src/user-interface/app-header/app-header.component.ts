@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
 import { MenuItem } from '../../models/menu-item';
 import { Router } from '@angular/router';
 
@@ -14,11 +15,15 @@ export class AppHeaderComponent {
     @Input() actions: MenuItem[];
     @Input() logoPath: string;
     @Input() logoHref: string = '/';
+    @Input() goBackActive: boolean = false;
 
     @Output() onSidebarToggle = new EventEmitter();
     @Output() onActionClicked = new EventEmitter();
 
-    constructor(private _router: Router) { }
+    constructor(
+            private _router: Router,
+            private _location: Location
+        ) { }
 
     toggleSidebar(): void {
         this.sidebarOpen = !this.sidebarOpen;
@@ -27,5 +32,9 @@ export class AppHeaderComponent {
 
     headerActionClicked(item: MenuItem) {
         this.onActionClicked.emit(item);
+    }
+
+     goBack(){
+        this._location.back();
     }
 }
