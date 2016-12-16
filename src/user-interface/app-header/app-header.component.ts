@@ -14,9 +14,11 @@ export class AppHeaderComponent {
     @Input() actions: MenuItem[];
     @Input() logoPath: string;
     @Input() logoHref: string = '/';
+    @Input() backActive: boolean = false;
 
     @Output() onSidebarToggle = new EventEmitter();
     @Output() onActionClicked = new EventEmitter();
+    @Output() onbackActionClicked = new EventEmitter();
 
     constructor(private _router: Router) { }
 
@@ -27,5 +29,9 @@ export class AppHeaderComponent {
 
     headerActionClicked(item: MenuItem) {
         this.onActionClicked.emit(item);
+    }
+
+    backActionClicked() {
+         this.onbackActionClicked.emit();
     }
 }
