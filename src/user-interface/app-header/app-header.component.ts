@@ -24,9 +24,8 @@ export class AppHeaderComponent {
             private _router: Router) { }
 
     toggleSidebar(): void {
-        //this.sidebarOpen = !this.sidebarOpen;
-        //this.onSidebarToggle.emit(this.sidebarOpen);
-        this.backActive = true;
+        this.sidebarOpen = !this.sidebarOpen;
+        this.onSidebarToggle.emit(this.sidebarOpen);
     }
 
     headerActionClicked(item: MenuItem) {
