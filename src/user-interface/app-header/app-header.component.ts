@@ -20,8 +20,7 @@ export class AppHeaderComponent {
     @Output() onActionClicked = new EventEmitter();
     @Output() onbackActionClicked = new EventEmitter();
 
-    constructor(
-            private _router: Router) { }
+    constructor(private _router: Router) { }
 
     toggleSidebar(): void {
         this.sidebarOpen = !this.sidebarOpen;
