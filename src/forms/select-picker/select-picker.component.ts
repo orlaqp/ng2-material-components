@@ -101,6 +101,8 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
         this.query.valueChanges.subscribe(filter => {
             this._filterResults(filter);
         });
+
+        this._updateValue();
     }
 
     public ngOnChanges(changes: {[propertyName: string]: any}) {
@@ -116,13 +118,18 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
                         id: item.id,
                         title: item.title,
                         disabled: item.disabled,
-                        selected: item.selected
+                        selected: item.selected,
                     };
                 });
             }
 
             that._clonedItems = clone;
             this._updateSelectionText();
+
+            if (this.initialized) {
+                this._updateValue();
+            }
+
             this._filterResults(null);
         }
     }
@@ -158,6 +165,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
             .map(item => item.id);
         let values = selectedItems.join(',');
         this.control.setValue(values);
+        this.value = values;
     }
 
     private _updateSelectionText() {

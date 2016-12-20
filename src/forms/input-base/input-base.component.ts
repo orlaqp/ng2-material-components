@@ -28,6 +28,8 @@ export class InputBase {
 
     public _el: ElementRef;
 
+    public initialized = false;
+
     static minValidator(length: number): ValidationInfo {
         return {
             validator: Validators.minLength(length),
@@ -96,6 +98,8 @@ export class InputBase {
         if (this.control.value) {
             this.toggled = true;
         }
+
+        this.initialized = true;
     }
 
     private _getValidators(): any {
