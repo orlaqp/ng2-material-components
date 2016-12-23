@@ -22,6 +22,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TabDirective } from './tabset/tab.directive';
 import { TabHeadingDirective } from './tabset/tab-heading.directive';
 import { TabsetComponent } from './tabset/tabset.component';
+import { ModalComponent } from './modal/modal.component';
+import { ModalHeaderComponent } from './modal/modal-header.component';
+import { ModalBodyComponent } from './modal/modal-body.component';
+import { ModalFooterComponent } from './modal/modal-footer.component';
+import { AutofocusDirective } from './modal/autofocus.directive';
 
 import { NgTranscludeDirective } from '../common';
 
@@ -39,6 +44,11 @@ export { SidebarComponent } from './sidebar/sidebar.component';
 export { TabDirective } from './tabset/tab.directive';
 export { TabHeadingDirective } from './tabset/tab-heading.directive';
 export { TabsetComponent } from './tabset/tabset.component';
+export { ModalComponent } from './modal/modal.component';
+export { ModalHeaderComponent } from './modal/modal-header.component';
+export { ModalBodyComponent } from './modal/modal-body.component';
+export { ModalFooterComponent } from './modal/modal-footer.component';
+export { AutofocusDirective } from './modal/autofocus.directive';
 
 export { NgTranscludeDirective } from '../common';
 
@@ -68,6 +78,11 @@ export { NgTranscludeDirective } from '../common';
         TabDirective,
         TabHeadingDirective,
         TabsetComponent,
+        ModalComponent,
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalFooterComponent,
+        AutofocusDirective,
     ],
     exports: [
         ActionItemDirective,
@@ -89,6 +104,11 @@ export { NgTranscludeDirective } from '../common';
         TabDirective,
         TabHeadingDirective,
         TabsetComponent,
+        ModalComponent,
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalFooterComponent,
+        AutofocusDirective,
     ],
     providers: [
         ActionsService,

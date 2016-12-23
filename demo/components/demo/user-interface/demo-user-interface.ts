@@ -12,6 +12,7 @@ import { DemoButtonComponent } from './button/button';
 import { DemoButtonGroupComponent } from './button-group/button-group';
 import { DemoPreLoaderComponent } from './pre-loader/pre-loader';
 import { DemoCardComponent } from './card/card';
+import { DemoModalComponent } from './modal/modal';
 
 const components: any[] = [
     { category: 'user-interface', key: 'app-header', component: DemoAppHeaderComponent },
@@ -24,6 +25,7 @@ const components: any[] = [
     { category: 'user-interface', key: 'button-group', component: DemoButtonGroupComponent },
     { category: 'user-interface', key: 'pre-loader', component: DemoPreLoaderComponent },
     { category: 'user-interface', key: 'card', component: DemoCardComponent },
+    { category: 'user-interface', key: 'modal', component: DemoModalComponent },
 ];
 
 const content = {};
