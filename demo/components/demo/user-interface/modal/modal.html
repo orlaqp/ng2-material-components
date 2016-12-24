@@ -1,6 +1,6 @@
 <section class="container">
     <h1>Modal based on ng2-bs3-modal</h1>
-    <small>https://github.com/dougludlow/ng2-bs3-modal</small>
+    <small><a href="https://github.com/dougludlow/ng2-bs3-modal">https://github.com/dougludlow/ng2-bs3-modal</a></small>
     <hr>
 
     <h2>Configuration</h2>
@@ -25,7 +25,6 @@
     <h2>Other Usages</h2>
     <hr>
     <p>
-        <button type="button" class="btn btn-default" (click)="navigateModal.open()">Navigate in modal</button>
         <button type="button" class="btn btn-default" (click)="open()">Open from parent component</button>
         <button type="button" class="btn btn-default" (click)="parentModal.open()">Nested modals</button>
     </p>
@@ -50,19 +49,6 @@
         <modal-footer [show-default-buttons]="true"></modal-footer>
     </modal>
 
-    <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="navigate()" (onOpen)="opened()" [cssClass]="cssClass" #navigateModal>
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">I'm a modal!</h4>
-        </modal-header>
-        <modal-body>
-            <p>I will navigate to another route when you close the modal.</p>
-        </modal-body>
-        <modal-footer>
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="navigateModal.dismiss()">Close</button>
-            <button type="button" class="btn btn-primary" autofocus (click)="navigateModal.close()">Go</button>
-        </modal-footer>
-    </modal>
-
     <modal style="z-index: 1049" [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
         (onOpen)="opened()" [cssClass]="cssClass" #parentModal>
         <modal-header [show-close]="true">
@@ -77,5 +63,4 @@
             <button type="button" class="btn btn-primary" (click)="parentModal.close()">Ok</button>
         </modal-footer>
     </modal>
-
 </section>
