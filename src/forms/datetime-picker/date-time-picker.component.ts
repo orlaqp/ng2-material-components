@@ -41,6 +41,7 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
     @Input() disabled: boolean;
     @Input() alt: boolean;
     @Input() required: boolean;
+    @Input() value: string;
 
     @Input() dateFormat = 'MM/DD/YYYY';
     @Input() dateOnly = true;
