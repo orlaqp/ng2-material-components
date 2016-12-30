@@ -1,3 +1,8 @@
+<a name="0.1.33"></a>
+## [0.1.33](https://github.com/orlaqp/ng2-material-components/compare/v0.1.32...v0.1.33) (2016-12-30)
+
+
+
 <a name="0.1.32"></a>
 ## [0.1.32](https://github.com/orlaqp/ng2-material-components/compare/v0.1.31...v0.1.32) (2016-12-30)
 
