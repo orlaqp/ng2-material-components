@@ -3,13 +3,7 @@ import { ModalComponent } from './modal.component';
 
 @Component({
     selector: 'modal-footer',
-    template: `
-        <div class="modal-footer">
-            <ng-content></ng-content>
-            <button *ngIf="showDefaultButtons" type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">{{dismissButtonLabel}}</button>
-            <button *ngIf="showDefaultButtons" type="button" class="btn btn-primary" (click)="modal.close()">{{closeButtonLabel}}</button>
-        </div>
-    `,
+    templateUrl: 'modal-footer.component.pug',
 })
 export class ModalFooterComponent {
     @Input('show-default-buttons') showDefaultButtons: boolean = false;
