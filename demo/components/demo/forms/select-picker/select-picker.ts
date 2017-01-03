@@ -12,7 +12,7 @@ export class DemoSelectPickerComponent implements OnInit {
 
     public colorItems: Array<SelectionItem> = [
         new SelectionItem('1', 'Red'),
-        new SelectionItem('2', 'Blue'),
+        new SelectionItem('2', 'Blue', true),
         new SelectionItem('3', 'Green'),
     ];
 

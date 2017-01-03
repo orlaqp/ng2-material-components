@@ -1,3 +1,28 @@
+<a name="0.1.35"></a>
+## [0.1.35](https://github.com/orlaqp/ng2-material-components/compare/v0.1.34...v0.1.35) (2016-12-30)
+
+
+
+<a name="0.1.34"></a>
+## [0.1.34](https://github.com/orlaqp/ng2-material-components/compare/v0.1.33...v0.1.34) (2016-12-30)
+
+
+
+<a name="0.1.33"></a>
+## [0.1.33](https://github.com/orlaqp/ng2-material-components/compare/v0.1.32...v0.1.33) (2016-12-30)
+
+
+
+<a name="0.1.32"></a>
+## [0.1.32](https://github.com/orlaqp/ng2-material-components/compare/v0.1.31...v0.1.32) (2016-12-30)
+
+
+
+<a name="0.1.31"></a>
+## [0.1.31](https://github.com/orlaqp/ng2-material-components/compare/v0.1.30...v0.1.31) (2016-12-20)
+
+
+
 <a name="0.1.30"></a>
 ## [0.1.30](https://github.com/orlaqp/ng2-material-components/compare/v0.1.29...v0.1.30) (2016-12-16)
 
