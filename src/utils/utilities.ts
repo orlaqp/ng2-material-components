@@ -23,7 +23,7 @@ export function iOS() {
     'iPod Simulator',
     'iPad',
     'iPhone',
-    'iPod'
+    'iPod',
   ];
 
   if (!!navigator.platform) {

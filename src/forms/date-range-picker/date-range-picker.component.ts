@@ -834,7 +834,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
                 var isCustom = this.isCustomDate(calendar[row][col]);
                 if (isCustom !== false) {
                     if (typeof isCustom === 'string') {
-                        classes.push(isCustom.toString());
+                        classes.push(String(isCustom));
                     } else
                         Array.prototype.push.apply(classes, isCustom);
                 }

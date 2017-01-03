@@ -116,7 +116,7 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
                         id: item.id,
                         title: item.title,
                         disabled: item.disabled,
-                        selected: item.selected
+                        selected: item.selected,
                     };
                 });
             }
