@@ -55,8 +55,9 @@ export class SideMenuItemComponent implements OnInit {
             this._router.navigate([this.item.route]);
         } else if (this.item.url) {
             this._router.navigateByUrl(this.item.url);
+        } else if (this.item.externalUrl) {
+            window.open(this.item.externalUrl);
         }
-
     }
 
 }
