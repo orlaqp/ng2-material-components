@@ -1,0 +1,4 @@
+.modal-footer
+  ng-content
+  button.btn.btn-default(*ngIf='showDefaultButtons', type='button', data-dismiss='modal', (click)='modal.dismiss()') {{dismissButtonLabel}}
+  button.btn.btn-primary(*ngIf='showDefaultButtons', type='button', (click)='modal.close()') {{closeButtonLabel}}

@@ -1,0 +1,4 @@
+.modal-header
+  button.close(*ngIf='showClose', type='button', data-dismiss='modal', aria-label='Close', (click)='modal.dismiss()')
+    span(aria-hidden='true') ×
+  ng-content
