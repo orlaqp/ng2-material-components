@@ -13,6 +13,11 @@
     @include transition(all);
     @include transition-duration(300ms);
 
+    &.full-height {
+        top: 0px;
+        height: 100%;
+    }
+
     .sidebar-inner {
         height: 100%;
         overflow-y: auto;
