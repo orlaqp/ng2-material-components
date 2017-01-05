@@ -5,7 +5,7 @@ app-header(color="blue",
     (onActionClicked)="onActionClicked($event)",
     [actions]="headerActions")
 
-sidebar([open]="open", [fullHeight]="true")
+sidebar([open]="open")
     img.w-100(src="./img/angular-logo2.png")
     side-menu([items]="menuItems",
     (itemClicked)="onItemClicked($event)")
