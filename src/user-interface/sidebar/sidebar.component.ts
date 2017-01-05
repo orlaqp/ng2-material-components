@@ -6,4 +6,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SidebarComponent {
     @Input() open: boolean;
+    @Input() fullHeight = false;
 }
