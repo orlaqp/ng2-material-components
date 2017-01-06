@@ -20,7 +20,7 @@ export class CardHeaderComponent implements AfterViewInit {
             return '';
         }
 
-        return 'bgm-' + this.color;
+        return this.color === 'alt' ? 'ch-alt' : 'bgm-' + this.color;
     }
 
 }
