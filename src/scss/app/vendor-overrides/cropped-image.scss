@@ -1,0 +1,11 @@
+.ci-image {
+    position: absolute;
+}    
+
+.ci-footer {
+    color: $m-gray;
+
+    &.ci-alt {
+        color: $m-alt !important;
+    }
+}

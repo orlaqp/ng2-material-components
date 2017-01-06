@@ -27,6 +27,7 @@ import { ModalHeaderComponent } from './modal/modal-header.component';
 import { ModalBodyComponent } from './modal/modal-body.component';
 import { ModalFooterComponent } from './modal/modal-footer.component';
 import { AutofocusDirective } from './modal/autofocus.directive';
+import { CroppedImageComponent } from './cropped-image/cropped-image.component';
 
 import { NgTranscludeDirective } from '../common';
 
@@ -49,6 +50,7 @@ export { ModalHeaderComponent } from './modal/modal-header.component';
 export { ModalBodyComponent } from './modal/modal-body.component';
 export { ModalFooterComponent } from './modal/modal-footer.component';
 export { AutofocusDirective } from './modal/autofocus.directive';
+export { CroppedImageComponent } from './cropped-image/cropped-image.component';
 
 export { NgTranscludeDirective } from '../common';
 
@@ -83,6 +85,7 @@ export { NgTranscludeDirective } from '../common';
         ModalBodyComponent,
         ModalFooterComponent,
         AutofocusDirective,
+        CroppedImageComponent,
     ],
     exports: [
         ActionItemDirective,
@@ -109,6 +112,7 @@ export { NgTranscludeDirective } from '../common';
         ModalBodyComponent,
         ModalFooterComponent,
         AutofocusDirective,
+        CroppedImageComponent,
     ],
     providers: [
         ActionsService,
