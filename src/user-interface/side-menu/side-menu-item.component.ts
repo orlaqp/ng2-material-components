@@ -24,7 +24,7 @@ import { MenuItem } from '../../models/menu-item';
     ],
 })
 export class SideMenuItemComponent implements OnInit {
-
+    @Input() alt: boolean;
     @Input() item: MenuItem;
     @Output() itemClicked = new EventEmitter<MenuItem>();
 
