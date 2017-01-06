@@ -1,0 +1,7 @@
+.layout-column.layout-align-center-center
+    .ci-cropper([style.width.px]="width", [style.height.px]="width")
+        .cropped-image([style.width.px]="width", [style.height.px]="width")
+            img(*ngIf="image", src="{{imageUrl}}", [attr.style]="croppedImageStyle")
+    .ci-footer.text-center([class.ci-alt]="alt", [style.margin-top.px]="textMargin") 
+        | {{ text }}
+            
