@@ -44,7 +44,7 @@ export class PasswordComponent extends InputBase implements OnInit {
                 message: `This password is not complex enough.
                 It requires at least one of each: upper case letter,
                 lower case letter, digit and a special character.
-                Also it should be at least eight charaacters long.`,
+                Also it should be at least eight characters long.`,
             });
         } else {
             if (this.min) {
