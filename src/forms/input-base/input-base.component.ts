@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { ElementRef } from '@angular/core';
 import {
     FormGroup,
@@ -20,6 +21,7 @@ export class InputBase {
     public max: number;
     public value: any;
     public decimal: boolean;
+    public disabled: boolean;
 
     public validations: ValidationInfo[];
     public control: ControlWithType;
@@ -34,7 +36,8 @@ export class InputBase {
         return {
             validator: Validators.minLength(length),
             type: 'minlength',
-            message: `At least ${length} characters are required`,
+            message: 'At least %s characters are required',
+            args: [length],
         };
     }
 
@@ -42,11 +45,12 @@ export class InputBase {
         return {
             validator: Validators.maxLength(length),
             type: 'maxlength',
-            message: `No more than ${length} characters are allowed`,
+            message: 'No more than %s characters are allowed',
+            args: [length],
         };
     }
 
-    constructor(el: ElementRef) {
+    constructor(el: ElementRef, public formService: FormService) {
         this._el = el;
         this.validations = [];
         // be default assign string type becasue it is the most common
@@ -72,7 +76,8 @@ export class InputBase {
             this.validations.push({
                 validator: CustomValidators.minNumber(this.min),
                 type: 'tooLow',
-                message: `Minimum aceptable value is ${this.min}`,
+                message: 'Minimum aceptable value is %s',
+                args: [this.min],
             });
         }
     }
@@ -82,7 +87,8 @@ export class InputBase {
             this.validations.push({
                 validator: CustomValidators.maxNumber(this.max),
                 type: 'tooHigh',
-                message: `Maximum aceptable value is ${this.max}`,
+                message: 'Maximum aceptable value is %s',
+                args: [this.max],
             });
         }
     }
@@ -100,6 +106,10 @@ export class InputBase {
         }
 
         this.initialized = true;
+    }
+
+    public translate(validation: ValidationInfo): string {
+        return this.formService.translate(validation.message, ...validation.args);
     }
 
     private _getValidators(): any {
@@ -149,6 +159,12 @@ export class InputBase {
             this.dataType,
             this.value,
             Validators.compose(validators));
+
+        // Disable this input via the form control instead of the DOM.
+        // This method will do the dom for me too
+        if (this.disabled) {
+            this.control.disable();
+        }
 
         // subscribe for changes
         // this.control.valueChanges.subscribe(data => {

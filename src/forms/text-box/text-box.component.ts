@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -24,8 +25,8 @@ export class TextBoxComponent extends InputBase implements OnInit {
     @Input() min: number;
     @Input() max: number;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
     }
 
     public addValidators(): void {

@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 // from here: https://github.com/pleerock/ng2-radio-group
 
 import { Component, Input, ElementRef } from '@angular/core';
@@ -19,8 +20,8 @@ export class RadioGroupComponent extends InputBase {
     @Input() defaultValue: string;
     @Input() alt: boolean;
 
-    constructor(el: ElementRef, private service: RadioGroupService) {
-        super(el);
+    constructor(el: ElementRef, private service: RadioGroupService, formService: FormService) {
+        super(el, formService);
 
         this.service.optionSelected$.subscribe((value) => {
             this.control.setValue(value);

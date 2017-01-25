@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, OnInit, OnDestroy, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
@@ -60,8 +61,8 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
     private previousRightTime: moment.Moment;
     private chosenLabel: string;
 
-    constructor(private ele: ElementRef) {
-        super(ele);
+    constructor(private ele: ElementRef, formService: FormService) {
+        super(ele, formService);
     }
 
     ngOnInit() {

@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -38,8 +39,8 @@ export class NumberComponent extends InputBase implements OnInit {
 
     public numberMask: (rawValue: any) => string[];
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
         this.dataType = TypeEnum.Number;
     }
 

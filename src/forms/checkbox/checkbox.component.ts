@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -20,8 +21,8 @@ export class CheckboxComponent extends InputBase implements OnInit {
     @Input() value: boolean;
     @Input() alt: boolean;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
         this.dataType = TypeEnum.Boolean;
     }
 

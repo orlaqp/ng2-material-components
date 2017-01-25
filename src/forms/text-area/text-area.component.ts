@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import {
     Component,
     Input,
@@ -33,8 +34,8 @@ export class TextAreaComponent extends InputBase implements OnInit {
     @Input() autosize: boolean = true;
     @Input() rows: number = 3;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
     }
 
     public addValidators(): void {

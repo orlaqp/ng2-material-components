@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -24,8 +25,8 @@ export class PhoneComponent extends InputBase implements OnInit {
     // validators
     @Input() required: boolean;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
         this.inputType = 'tel';
     }
 

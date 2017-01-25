@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -29,8 +30,8 @@ export class PasswordComponent extends InputBase implements OnInit {
 
     public validations: ValidationInfo[];
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
         // change text control to password
         this.inputType = 'password';
     }
