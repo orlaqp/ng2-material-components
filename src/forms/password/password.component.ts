@@ -39,21 +39,21 @@ export class PasswordComponent extends InputBase implements OnInit {
     public addValidators(): void {
 
         if (this.enforceComplexity) {
-            this.validations.push({
+            this.addValidation({
                 validator: CustomValidators.complexPassword,
                 type: 'weakPassword',
                 message: `This password is not complex enough.
                 It requires at least one of each: upper case letter,
                 lower case letter, digit and a special character.
-                Also it should be at least eight characters long.`,
+                Also it should be at least 8 characters long.`,
             });
         } else {
             if (this.min) {
-                this.validations.push(InputBase.minValidator(this.min));
+                this.addValidation(InputBase.minValidator(this.min));
             }
 
             if (this.max) {
-                this.validations.push(InputBase.maxValidator(this.max));
+                this.addValidation(InputBase.maxValidator(this.max));
             }
         }
     }

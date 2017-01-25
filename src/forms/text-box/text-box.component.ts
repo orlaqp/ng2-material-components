@@ -31,11 +31,11 @@ export class TextBoxComponent extends InputBase implements OnInit {
 
     public addValidators(): void {
         if (this.min) {
-            this.validations.push(InputBase.minValidator(this.min));
+            this.addValidation(InputBase.minValidator(this.min));
         }
 
         if (this.max) {
-            this.validations.push(InputBase.maxValidator(this.max));
+            this.addValidation(InputBase.maxValidator(this.max));
         }
     }
 

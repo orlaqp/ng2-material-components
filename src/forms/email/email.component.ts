@@ -33,7 +33,7 @@ export class EmailComponent extends InputBase implements OnInit {
     }
 
     public addValidators(): void {
-        this.validations.push(
+        this.addValidation(
             {
                 validator: CustomValidators.emailAddress,
                 type: 'invalidEmail',

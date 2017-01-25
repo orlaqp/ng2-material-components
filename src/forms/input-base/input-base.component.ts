@@ -1,3 +1,4 @@
+import { formatString } from '../../utils/utilities';
 import { FormService } from '../form.service';
 import { ElementRef } from '@angular/core';
 import {
@@ -36,7 +37,7 @@ export class InputBase {
         return {
             validator: Validators.minLength(length),
             type: 'minlength',
-            message: 'At least %s characters are required',
+            message: 'At least {0} characters are required',
             args: [length],
         };
     }
@@ -45,7 +46,7 @@ export class InputBase {
         return {
             validator: Validators.maxLength(length),
             type: 'maxlength',
-            message: 'No more than %s characters are allowed',
+            message: 'No more than {0} characters are allowed',
             args: [length],
         };
     }
@@ -71,12 +72,26 @@ export class InputBase {
         throw 'Validators should be defined at the derived class';
     }
 
+    public addValidation(validation: ValidationInfo) {
+        if (!validation) {
+            return;
+        }
+
+        // translate the validation message before add it
+        if (validation.message) {
+            let translated = this.formService.translate(validation.message);
+            validation.message = formatString(translated, ...validation.args);
+        }
+
+        this.validations.push(validation);
+    }
+
     public addMinValidation(): void {
         if (this.min) {
-            this.validations.push({
+            this.addValidation({
                 validator: CustomValidators.minNumber(this.min),
                 type: 'tooLow',
-                message: 'Minimum aceptable value is %s',
+                message: 'Minimum aceptable value is {0}',
                 args: [this.min],
             });
         }
@@ -84,10 +99,10 @@ export class InputBase {
 
     public addMaxValidation(): void {
         if (this.max) {
-            this.validations.push({
+            this.addValidation({
                 validator: CustomValidators.maxNumber(this.max),
                 type: 'tooHigh',
-                message: 'Maximum aceptable value is %s',
+                message: 'Maximum aceptable value is {0}',
                 args: [this.max],
             });
         }
@@ -108,15 +123,11 @@ export class InputBase {
         this.initialized = true;
     }
 
-    public translate(validation: ValidationInfo): string {
-        return this.formService.translate(validation.message, ...validation.args);
-    }
-
     private _getValidators(): any {
         this.addValidators();
 
         if (this.required) {
-            this.validations.push({
+            this.addValidation({
                 validator: Validators.required,
                 type: 'required',
                 message: 'This field is required',

@@ -26,4 +26,4 @@ include ../../mixins/base.pug
         +dynamic-icn('rightIcon')
 
     div(*ngIf="!control.valid && (control.dirty || fg.submitted)")
-        small.help-block.animated.fadeInDown(*ngFor="let v of validations", [class.hidden]="!control.errors[v.type]") {{translate(v)}}
+        small.help-block.animated.fadeInDown(*ngFor="let v of validations", [class.hidden]="!control.errors[v.type]") {{v.message}}
