@@ -92,9 +92,6 @@ const config = {
                     }),
                 }),
                 new CopyWebpackPlugin([{
-                    from: path.resolve(__dirname, '../node_modules/@salesforce-ux/design-system/assets'),
-                    to: 'assets'
-                }, {
                     from: path.resolve(__dirname, '../node_modules/prismjs/themes/prism-okaidia.css'),
                     to: 'assets/prismjs'
                 }, {
