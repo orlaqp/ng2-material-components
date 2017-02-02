@@ -9,7 +9,7 @@ import { guid } from '../../utils/utilities';
     templateUrl: './toggle.component.pug',
 })
 export class ToggleComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

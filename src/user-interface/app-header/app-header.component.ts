@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: 'app-header.component.pug',
 })
 export class AppHeaderComponent {
+    @Input() class: string;
     @Input() color: string;
     @Input() addMenuTrigger: boolean;
     @Input() brand: string;

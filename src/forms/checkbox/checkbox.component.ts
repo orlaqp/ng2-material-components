@@ -13,7 +13,7 @@ import { TypeEnum } from '../../models/type-enum';
     templateUrl: './checkbox.component.pug',
 })
 export class CheckboxComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() field: string;
     @Input() label: string;

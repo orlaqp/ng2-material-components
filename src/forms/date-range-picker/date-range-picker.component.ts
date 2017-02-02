@@ -11,7 +11,7 @@ import { DateRange } from '../../models/date-range';
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class DateRangePickerComponent extends InputBase implements OnInit, OnDestroy {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

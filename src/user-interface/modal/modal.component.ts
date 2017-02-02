@@ -9,7 +9,7 @@ import { ModalInstance, ModalResult } from './modal-instance.model';
         'tabindex': '-1',
     },
     template: `
-        <div class="modal-dialog" [ngClass]="getCssClasses()">
+        <div class="modal-dialog {{class}}" [ngClass]="getCssClasses()">
             <div class="modal-content">
                 <ng-content></ng-content>
             </div>
@@ -20,6 +20,7 @@ export class ModalComponent implements OnDestroy {
     instance: ModalInstance;
     visible: boolean = false;
 
+    @Input() class: string;
     @Input() animation: boolean = true;
     @Input() backdrop: string | boolean = true;
     @Input() keyboard: boolean = true;

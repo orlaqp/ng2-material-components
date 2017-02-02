@@ -21,7 +21,7 @@ processPolyfills();
     templateUrl: 'select-picker.component.pug',
 })
 export class SelectPickerComponent extends InputBase implements OnChanges {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() field: string;
     @Input() disabled: boolean;

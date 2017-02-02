@@ -1,2 +1,2 @@
-ul.main-menu
+ul.main-menu(class="{{class}}")
     side-menu-item(*ngFor="let item of items", [item]="item", (itemClicked)="onItemClicked($event)", [alt]="alt")

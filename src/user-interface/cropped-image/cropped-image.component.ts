@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
     host: { '[style.position]': 'relative' },
 })
 export class CroppedImageComponent {
+    @Input() class: string;
     @Input() width = 96;
     @Input() image: string;
     @Input() text: string;

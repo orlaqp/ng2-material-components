@@ -34,6 +34,7 @@ import { iOS } from '../../utils/utilities';
     providers: [DateTime],
 })
 export class DateTimePickerComponent extends InputBase implements OnInit, OnChanges {
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

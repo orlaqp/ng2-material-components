@@ -9,7 +9,7 @@ import { InputBase } from '../input-base/input-base.component';
     styles: ['.form-control { text-align: right; } '],
 })
 export class PhoneComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

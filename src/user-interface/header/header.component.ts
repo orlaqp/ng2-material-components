@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
     templateUrl: 'header.component.pug',
 })
 export class HeaderComponent implements OnInit {
-
+    @Input() class: string;
     @Input() block: boolean;
 
     constructor() { }

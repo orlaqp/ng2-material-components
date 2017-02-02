@@ -11,7 +11,7 @@ import { RadioGroupService } from './radio-group.service';
     templateUrl: './radio.component.pug',
 })
 export class RadioComponent implements AfterViewInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() field: string;
     @Input() label: string;

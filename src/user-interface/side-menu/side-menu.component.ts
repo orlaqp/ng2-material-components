@@ -6,6 +6,7 @@ import { MenuItem } from '../../models/menu-item';
     templateUrl: 'side-menu.component.pug',
 })
 export class SideMenuComponent {
+    @Input() class: string;
     @Input() alt = false;
     @Input() items: MenuItem[];
     @Output() itemClicked = new EventEmitter<MenuItem>();

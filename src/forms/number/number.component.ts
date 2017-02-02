@@ -13,7 +13,7 @@ import createNumberMask from '../mask/addons/create-number-mask';
     styles: ['.form-control { text-align: right; } '],
 })
 export class NumberComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

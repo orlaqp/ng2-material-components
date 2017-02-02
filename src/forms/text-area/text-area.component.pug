@@ -1,4 +1,5 @@
 .text-area.form-group.m-b-25.w-100(
+        class="{{class}}",
         [class.fc-alt]="alt",
         [ngClass]="{ 'has-error': !control.valid && (fg.submitted || control.dirty)}")
     label(*ngIf="label") {{label}}

@@ -10,7 +10,7 @@ import { ValidationInfo } from  '../../models/validation-info';
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class PasswordComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;

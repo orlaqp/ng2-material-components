@@ -16,7 +16,7 @@ import autosize from './autosize';
     templateUrl: './text-area.component.pug',
 })
 export class TextAreaComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
