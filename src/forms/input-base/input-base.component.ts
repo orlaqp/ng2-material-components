@@ -166,6 +166,10 @@ export class InputBase {
         }
 
         let validators: any = this._getValidators();
+
+        if (fg.contains(fieldName))
+            return;
+
         this.control = new ControlWithType(
             this.dataType,
             this.value,
@@ -177,19 +181,11 @@ export class InputBase {
             this.control.disable();
         }
 
-        // subscribe for changes
-        // this.control.valueChanges.subscribe(data => {
-        //     console.log('value changed: ' + data);
-        // });
-
         // because I am using an input mask control I need to pass this info
         // in order to treat the validators correctly (expect always two decimal places)
         this.control.__isDecimal = this.decimal;
         fg.addControl(fieldName, this.control);
-
-        // if (!this.required) {
-        //     fg.exclude(fieldName);
-        // }
-    }
-
+     }
 }
+
+
