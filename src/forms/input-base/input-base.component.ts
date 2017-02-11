@@ -167,8 +167,10 @@ export class InputBase {
 
         let validators: any = this._getValidators();
 
-        if (fg.contains(fieldName))
+        if (fg.contains(fieldName)) {
+            this.control = <ControlWithType>fg.controls[fieldName];
             return;
+        }
 
         this.control = new ControlWithType(
             this.dataType,
