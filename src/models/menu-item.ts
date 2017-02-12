@@ -1,7 +1,7 @@
 export class MenuItem {
     id?: string;
     title?: string;
-    originalIcon: string;
+    originalIcon?: string;
     icon?: string;
     order?: number;
     route?: string;
