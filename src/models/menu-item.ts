@@ -8,5 +8,5 @@ export class MenuItem {
     url?: string;
     externalUrl?: string;
     children?: MenuItem[];
-    active: boolean;
+    active?: boolean;
 }
