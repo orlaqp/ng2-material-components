@@ -1,4 +1,5 @@
 li(
+    class="{{activeClass}}",
     [ngClass]="{ 'active': active, 'toggled': expanded, 'sub-menu': item.children }", 
     (click)="onItemClicked($event)")
     a(href='', (click)="$event.preventDefault()", [class.fc-alt]="alt")

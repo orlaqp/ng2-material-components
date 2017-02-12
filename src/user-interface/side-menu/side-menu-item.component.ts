@@ -1,9 +1,9 @@
+import { Subscription } from 'rxjs/Subscription';
+import { MenuService } from './menu.service';
 import {
     Component,
     OnInit,
     Input,
-    Output,
-    EventEmitter,
     trigger,
     state,
     animate,
@@ -26,20 +26,28 @@ import { MenuItem } from '../../models/menu-item';
 export class SideMenuItemComponent implements OnInit {
     @Input() alt: boolean;
     @Input() item: MenuItem;
-    @Output() itemClicked = new EventEmitter<MenuItem>();
 
     public expanded: boolean = false;
     public childrenDisplay: string;
+    public activeClass: string;
 
-    constructor(private _router: Router) { }
+    private _activeItemSubscription: Subscription;
 
-    ngOnInit() { }
+    constructor(private _router: Router, private _menuService: MenuService) { }
+
+    ngOnInit() {
+        let that = this;
+        this._activeItemSubscription = this._menuService.activeItem$.subscribe((item) => {
+            that.activeClass = item.id === that.item.id ?
+                 that._menuService.activeClass : '';
+        });
+    }
 
     onItemClicked(e: any): void {
         e.preventDefault();
 
         if (!this.item.children) {
-            this.itemClicked.emit(this.item);
+            this._menuService.setActive(this.item);
         }
 
         // when item contain childrens then forget about everything else

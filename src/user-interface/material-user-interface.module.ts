@@ -53,6 +53,7 @@ export { AutofocusDirective } from './modal/autofocus.directive';
 export { CroppedImageComponent } from './cropped-image/cropped-image.component';
 
 export { NgTranscludeDirective } from '../common';
+import { MenuService } from './side-menu/menu.service';
 
 @NgModule({
     imports: [
@@ -116,6 +117,7 @@ export { NgTranscludeDirective } from '../common';
     ],
     providers: [
         ActionsService,
+        MenuService,
     ],
 })
 export class MaterialUserInterfaceModule { }
