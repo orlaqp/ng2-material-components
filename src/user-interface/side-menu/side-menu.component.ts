@@ -22,8 +22,9 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     constructor(private _service: MenuService) { }
 
     ngOnInit() {
+        let that = this;
         this._activeItemSubscription = this._service.activeItem$.subscribe((item) => {
-            this.itemClicked.emit(item);
+            that.itemClicked.emit(item);
         });
 
         this._service.initialize(this.items, this.activeClass, this.activeIcon);
