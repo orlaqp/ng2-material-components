@@ -116,8 +116,7 @@ import { MenuService } from './side-menu/menu.service';
         CroppedImageComponent,
     ],
     providers: [
-        ActionsService,
-        MenuService,
+        ActionsService
     ],
 })
 export class MaterialUserInterfaceModule { }
