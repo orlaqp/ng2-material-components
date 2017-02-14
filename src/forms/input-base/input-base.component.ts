@@ -1,6 +1,7 @@
+import { Subscription } from 'rxjs/Subscription';
 import { formatString } from '../../utils/utilities';
 import { FormService } from '../form.service';
-import { ElementRef } from '@angular/core';
+import { ElementRef, OnDestroy } from '@angular/core';
 import {
     FormGroup,
     Validators } from '@angular/forms';
@@ -10,7 +11,7 @@ import { TypeEnum }  from '../../models/type-enum';
 import { CustomValidators } from '../validators/custom-validators';
 import { ValidationInfo } from '../../models/validation-info';
 
-export class InputBase {
+export class InputBase implements OnDestroy {
 
     public dataType: TypeEnum;
     public model: Object;
@@ -32,6 +33,8 @@ export class InputBase {
     public _el: ElementRef;
 
     public initialized = false;
+
+    private _valueChangeSubscription: Subscription;
 
     static minValidator(length: number): ValidationInfo {
         return {
@@ -56,6 +59,10 @@ export class InputBase {
         this.validations = [];
         // be default assign string type becasue it is the most common
         this.dataType = TypeEnum.String;
+    }
+
+    ngOnDestroy() {
+        this._valueChangeSubscription.unsubscribe();
     }
 
     public onFocus(ele: any): void {
@@ -187,6 +194,10 @@ export class InputBase {
         // in order to treat the validators correctly (expect always two decimal places)
         this.control.__isDecimal = this.decimal;
         fg.addControl(fieldName, this.control);
+
+        this._valueChangeSubscription = this.control.valueChanges.subscribe(value => {
+            that.toggled = value !== undefined && value !== null;
+        });
      }
 }
 

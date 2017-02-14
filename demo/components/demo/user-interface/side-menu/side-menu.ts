@@ -1,3 +1,4 @@
+import { ITemplateCacheService } from '@angular/upgrade/src/angular_js';
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from '../../../dist/ng2-material-components';
 
@@ -28,4 +29,8 @@ export class DemoSideMenuComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  onItemClicked(item: MenuItem) {
+    console.dir(item);
+  }
 }

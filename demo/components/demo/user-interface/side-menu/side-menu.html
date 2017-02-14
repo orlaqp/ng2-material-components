@@ -1,6 +1,6 @@
 <div class="layout-row layout-padding">
     <div class="flex">
-        <side-menu [items]="menuItems" activeIcon="check"></side-menu>
+        <side-menu [items]="menuItems" activeIcon="check" (itemClicked)="onItemClicked(item)"></side-menu>
     </div>
     <div class="flex bgm-blue">
         <side-menu [items]="menuItems2" [alt]="true"></side-menu>
