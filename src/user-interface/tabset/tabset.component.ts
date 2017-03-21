@@ -46,7 +46,7 @@ export class TabsetComponent implements OnInit, OnDestroy {
     let tab = this.tabs[index - 1];
     setTimeout(function() {
       tab.active = true;
-    }, 0)
+    }, 0);
 
   }
 

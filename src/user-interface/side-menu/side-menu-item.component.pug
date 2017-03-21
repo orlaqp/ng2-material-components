@@ -6,7 +6,7 @@ li(
         i(*ngIf="item.icon", class="zmdi zmdi-{{item.icon}}")
         | {{item.title}}
 
-    ul([@isVisibleChanged]="expanded", *ngIf="item.children")
+    ul([class.hidden]="!expanded", *ngIf="item.children")
         side-menu-item(
             [item]="child", 
             *ngFor="let child of item.children")
