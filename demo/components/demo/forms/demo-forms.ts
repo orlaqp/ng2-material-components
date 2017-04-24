@@ -13,7 +13,6 @@ import { DemoTextAreaComponent } from './text-area/text-area';
 import { DemoTextBoxComponent } from './text-box/text-box';
 import { DemoToggleComponent } from './toggle/toggle';
 import { DemoDateTimePickerComponent } from './date-time-picker/date-time-picker';
-import { DemoDateRangePickerComponent } from './date-range-picker/date-range-picker';
 
 const components: any[] = [
     { category: 'forms', key: 'checkbox', component: DemoCheckboxComponent },
@@ -27,7 +26,6 @@ const components: any[] = [
     { category: 'forms', key: 'text-box', component: DemoTextBoxComponent },
     { category: 'forms', key: 'toggle', component: DemoToggleComponent },
     { category: 'forms', key: 'date-time-picker', component: DemoDateTimePickerComponent },
-    { category: 'forms', key: 'date-range-picker', component: DemoDateRangePickerComponent },
 ];
 
 const content = {};

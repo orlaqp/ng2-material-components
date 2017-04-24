@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 // import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { EmailComponent } from './email/email.component';
 import { MaskedInputDirective } from './mask/masked-input.directive';
@@ -21,7 +20,6 @@ import { DateTimePickerComponent } from './datetime-picker/date-time-picker.comp
 import { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-popup.component';
 
 export { CheckboxComponent } from './checkbox/checkbox.component';
-export { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 // export { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 export { EmailComponent } from './email/email.component';
 export { MaskedInputDirective } from './mask/masked-input.directive';
@@ -50,7 +48,6 @@ export { FormService } from './form.service';
     ],
     declarations: [
         CheckboxComponent,
-        DateRangePickerComponent,
         DateTimePickerComponent,
         DateTimePickerPopupComponent,
         EmailComponent,
@@ -67,7 +64,6 @@ export { FormService } from './form.service';
     ],
     exports: [
         CheckboxComponent,
-        DateRangePickerComponent,
         DateTimePickerComponent,
         DateTimePickerPopupComponent,
         EmailComponent,
