@@ -21,3 +21,5 @@ In the mean time you can run the following to play  with the demo locally:
 
 
 **Note**: This version is already running on the final version of Angular 2.4!
+
+In addition, if you want to give it a try to Angular 4 you can use the angular-4 branch
