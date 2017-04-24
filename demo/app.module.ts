@@ -17,6 +17,7 @@ import { DemoFormsModule } from './components/demo/forms/demo-forms.module';
 import { DemoUserInterfaceModule } from './components/demo/user-interface/demo-user-interface.module';
 import { HomeComponent } from './components/demo/home/home.component';
 import { SupportRoute } from './components/support/support';
+import { PlaygroundComponent } from './components/playground/playground.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SupportRoute } from './components/support/support';
         AppComponent,
         HomeComponent,
         SupportRoute,
+        PlaygroundComponent,
     ],
     imports:      [
         BrowserModule,
@@ -42,4 +44,4 @@ import { SupportRoute } from './components/support/support';
     ],
     bootstrap:    [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -27,6 +27,7 @@ export class AppComponent {
                 { id: '11', title: 'Test Menu 3', icon: 'headset', route: '/headset' },
             ]},
             { id: '4', title: 'User Interface', icon: 'widgets', route: '/user-interface' },
+            { id: '5', title: 'Playground', icon: 'bike', route: '/playground' },
         ];
 
         this.headerActions = [
