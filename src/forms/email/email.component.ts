@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -9,7 +10,7 @@ import { ValidationInfo } from  '../../models/validation-info';
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class EmailComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
@@ -26,13 +27,13 @@ export class EmailComponent extends InputBase implements OnInit {
 
     public validations: ValidationInfo[];
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
         this.inputType = 'email';
     }
 
     public addValidators(): void {
-        this.validations.push(
+        this.addValidation(
             {
                 validator: CustomValidators.emailAddress,
                 type: 'invalidEmail',

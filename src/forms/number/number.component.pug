@@ -1,6 +1,7 @@
 include ../../mixins/base.pug
 
 .input-group.m-b-15.w-100(
+    class="{{class}}",
     [class.fg-float]="floatingLabel",
     [class.fc-alt]="alt",
     style="width: 100%",
@@ -19,7 +20,6 @@ include ../../mixins/base.pug
             [textMask]="{ control: control, mask: numberMask }"
             placeholder="{{placeholder}}",
             [formControl]="control",
-            [disabled]="disabled",
             (focus)="onFocus(i)",
             (blur)="onBlur(i)")
 

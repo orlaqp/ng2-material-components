@@ -1,7 +1,8 @@
-li.toggled(
-    [ngClass]="{ 'active': active, 'toggled': expanded, 'sub-menu': item.children }", 
+li(
+    class="{{activeClass}}",
+    [ngClass]="{ 'toggled': expanded, 'sub-menu': item.children }", 
     (click)="onItemClicked($event)")
-    a(href='', (click)="$event.preventDefault()")
+    a(href='', (click)="$event.preventDefault()", [class.fc-alt]="alt")
         i(*ngIf="item.icon", class="zmdi zmdi-{{item.icon}}")
         | {{item.title}}
 

@@ -5,7 +5,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
     templateUrl: 'button.component.pug',
 })
 export class ButtonComponent implements OnInit {
-
+    @Input() class: string;
     @Input() title: string;
     @Input() color: string;
     @Input() icon: string;

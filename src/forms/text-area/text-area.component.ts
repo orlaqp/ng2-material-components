@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import {
     Component,
     Input,
@@ -15,7 +16,7 @@ import autosize from './autosize';
     templateUrl: './text-area.component.pug',
 })
 export class TextAreaComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
@@ -33,17 +34,17 @@ export class TextAreaComponent extends InputBase implements OnInit {
     @Input() autosize: boolean = true;
     @Input() rows: number = 3;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
     }
 
     public addValidators(): void {
         if (this.min) {
-            this.validations.push(InputBase.minValidator(this.min));
+            this.addValidation(InputBase.minValidator(this.min));
         }
 
         if (this.max) {
-            this.validations.push(InputBase.maxValidator(this.max));
+            this.addValidation(InputBase.maxValidator(this.max));
         }
     }
 

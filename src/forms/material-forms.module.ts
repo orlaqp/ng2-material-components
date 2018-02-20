@@ -38,6 +38,10 @@ export { ToggleComponent } from './toggle/toggle.component';
 export { DateTimePickerComponent } from './datetime-picker/date-time-picker.component';
 export { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-popup.component';
 
+import { FormService } from './form.service';
+
+export { FormService } from './form.service';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -80,6 +84,7 @@ export { DateTimePickerPopupComponent } from './datetime-picker/datetime-picker-
     ],
     providers: [
         RadioGroupService,
+        FormService,
     ],
     entryComponents: [ DateTimePickerPopupComponent ],
 })

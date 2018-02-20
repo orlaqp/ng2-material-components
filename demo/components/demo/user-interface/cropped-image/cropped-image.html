@@ -1,0 +1,48 @@
+<div class="layout-column layout-align-center-center layout-padding">
+    <img src="img/angular.io-logo.png">
+    <p>Normal Image</p>
+</div>
+
+<div class="layout-row layout-padding layout-align-center-center">
+    <div>
+        <cropped-image [width]="96" image="img/angular.io-logo.png" text="Circular without border" [border]="false"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="96" image="img/angular.io-logo.png" text="Circular with border"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="48" image="img/angular.io-logo.png" text="Small"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="32" image="img/angular.io-logo.png" text="Smaller"> </cropped-image>
+    </div>
+
+        <div>
+        <cropped-image [width]="24" image="img/angular.io-logo.png"> </cropped-image>
+    </div>
+</div>
+
+<div class="layout-row layout-padding layout-align-center-center layout-wrap">
+    <div>
+        <cropped-image [width]="96" image="img/angular.io-logo.png" text="Rounded without border" [border]="false" [radius]="20"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="96" image="img/angular.io-logo.png" text="Rounded with border" [radius]="20"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="48" image="img/angular.io-logo.png" text="Small" [radius]="20"> </cropped-image>
+    </div>
+
+    <div>
+        <cropped-image [width]="32" image="img/angular.io-logo.png" text="Smaller" [radius]="20"> </cropped-image>
+    </div>
+
+        <div>
+        <cropped-image [width]="24" image="img/angular.io-logo.png" [radius]="20"> </cropped-image>
+    </div>
+</div>

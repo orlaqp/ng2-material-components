@@ -1,6 +1,7 @@
 include ../../mixins/base.pug
 
 .input-group.m-b-15.w-100(
+    class="{{class}}",
     [class.fg-float]="floatingLabel",
     [class.fc-alt]="alt",
     [ngClass]="{ 'has-error': !control.valid && (fg.submitted || control.dirty)}")
@@ -17,7 +18,6 @@ include ../../mixins/base.pug
             [type]="inputType",
             placeholder="{{placeholder}}",
             [formControl]="control",
-            [disabled]="disabled",
             (focus)="onFocus(i)",
             (blur)="onBlur(i)")
 

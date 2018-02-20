@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase } from '../input-base/input-base.component';
@@ -7,7 +8,7 @@ import { InputBase } from '../input-base/input-base.component';
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class TextBoxComponent extends InputBase implements OnInit {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
@@ -24,17 +25,17 @@ export class TextBoxComponent extends InputBase implements OnInit {
     @Input() min: number;
     @Input() max: number;
 
-    constructor(el: ElementRef) {
-        super(el);
+    constructor(el: ElementRef, formService: FormService) {
+        super(el, formService);
     }
 
     public addValidators(): void {
         if (this.min) {
-            this.validations.push(InputBase.minValidator(this.min));
+            this.addValidation(InputBase.minValidator(this.min));
         }
 
         if (this.max) {
-            this.validations.push(InputBase.maxValidator(this.max));
+            this.addValidation(InputBase.maxValidator(this.max));
         }
     }
 

@@ -1,4 +1,4 @@
-aside#sidebar.sidebar.c-overflow(style='overflow: visible;', [ngClass]="{ 'toggled': open, 'full-height': fullHeight }")
+aside#sidebar.sidebar.c-overflow(class="{{class}}", style='overflow: visible;', [ngClass]="{ 'toggled': open, 'full-height': fullHeight }")
   #mCSB_1(tabindex='0', style='height: 100%;')
     div(style='position: relative; top: 0px; left: 0px; width: 100%; height: 100%; overflow: auto;', dir='ltr')
         ng-content

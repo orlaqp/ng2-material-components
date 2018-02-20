@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 // from: https://github.com/ng2-ui/ng2-datetime-picker
 
 export interface HTMLInputElement {
@@ -33,6 +34,7 @@ import { iOS } from '../../utils/utilities';
     providers: [DateTime],
 })
 export class DateTimePickerComponent extends InputBase implements OnInit, OnChanges {
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
@@ -59,9 +61,10 @@ export class DateTimePickerComponent extends InputBase implements OnInit, OnChan
         private ele: ElementRef,
         private resolver: ComponentFactoryResolver,
         private viewContainerRef: ViewContainerRef,
+        formService: FormService,
         @Optional() @Host() @SkipSelf() private parent: ControlContainer
     ) {
-        super(ele);
+        super(ele, formService);
     }
 
     ngOnInit(): void {

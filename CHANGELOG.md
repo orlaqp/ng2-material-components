@@ -1,3 +1,148 @@
+<a name="0.2.12"></a>
+## [0.2.12](https://github.com/orlaqp/ng2-material-components/compare/v0.2.11...v0.2.12) (2017-02-14)
+
+
+
+<a name="0.2.11"></a>
+## [0.2.11](https://github.com/orlaqp/ng2-material-components/compare/v0.2.10...v0.2.11) (2017-02-14)
+
+
+
+<a name="0.2.10"></a>
+## [0.2.10](https://github.com/orlaqp/ng2-material-components/compare/v0.2.9...v0.2.10) (2017-02-12)
+
+
+
+<a name="0.2.9"></a>
+## [0.2.9](https://github.com/orlaqp/ng2-material-components/compare/v0.2.8...v0.2.9) (2017-02-12)
+
+
+
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/orlaqp/ng2-material-components/compare/v0.2.7...v0.2.8) (2017-02-12)
+
+
+
+<a name="0.2.7"></a>
+## [0.2.7](https://github.com/orlaqp/ng2-material-components/compare/v0.2.6...v0.2.7) (2017-02-12)
+
+
+
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/orlaqp/ng2-material-components/compare/v0.2.5...v0.2.6) (2017-02-12)
+
+
+
+<a name="0.2.5"></a>
+## [0.2.5](https://github.com/orlaqp/ng2-material-components/compare/v0.2.4...v0.2.5) (2017-02-11)
+
+
+
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/orlaqp/ng2-material-components/compare/v0.2.3...v0.2.4) (2017-02-11)
+
+
+
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/orlaqp/ng2-material-components/compare/v0.2.2...v0.2.3) (2017-02-03)
+
+
+
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/orlaqp/ng2-material-components/compare/v0.2.1...v0.2.2) (2017-02-02)
+
+
+
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/orlaqp/ng2-material-components/compare/v0.1.56...v0.2.1) (2017-02-01)
+
+
+
+<a name="0.1.56"></a>
+## [0.1.56](https://github.com/orlaqp/ng2-material-components/compare/v0.1.55...v0.1.56) (2017-01-25)
+
+
+
+<a name="0.1.55"></a>
+## [0.1.55](https://github.com/orlaqp/ng2-material-components/compare/v0.1.54...v0.1.55) (2017-01-25)
+
+
+
+<a name="0.1.54"></a>
+## [0.1.54](https://github.com/orlaqp/ng2-material-components/compare/v0.1.53...v0.1.54) (2017-01-25)
+
+
+
+<a name="0.1.53"></a>
+## [0.1.53](https://github.com/orlaqp/ng2-material-components/compare/v0.1.52...v0.1.53) (2017-01-25)
+
+
+
+<a name="0.1.52"></a>
+## [0.1.52](https://github.com/orlaqp/ng2-material-components/compare/v0.1.51...v0.1.52) (2017-01-25)
+
+
+
+<a name="0.1.51"></a>
+## [0.1.51](https://github.com/orlaqp/ng2-material-components/compare/v0.1.50...v0.1.51) (2017-01-25)
+
+
+
+<a name="0.1.50"></a>
+## [0.1.50](https://github.com/orlaqp/ng2-material-components/compare/v0.1.49...v0.1.50) (2017-01-25)
+
+
+
+<a name="0.1.49"></a>
+## [0.1.49](https://github.com/orlaqp/ng2-material-components/compare/v0.1.48...v0.1.49) (2017-01-25)
+
+
+
+<a name="0.1.48"></a>
+## [0.1.48](https://github.com/orlaqp/ng2-material-components/compare/v0.1.47...v0.1.48) (2017-01-25)
+
+
+
+<a name="0.1.47"></a>
+## [0.1.47](https://github.com/orlaqp/ng2-material-components/compare/v0.1.46...v0.1.47) (2017-01-06)
+
+
+
+<a name="0.1.46"></a>
+## [0.1.46](https://github.com/orlaqp/ng2-material-components/compare/v0.1.45...v0.1.46) (2017-01-06)
+
+
+
+<a name="0.1.45"></a>
+## [0.1.45](https://github.com/orlaqp/ng2-material-components/compare/v0.1.44...v0.1.45) (2017-01-06)
+
+
+
+<a name="0.1.44"></a>
+## [0.1.44](https://github.com/orlaqp/ng2-material-components/compare/v0.1.43...v0.1.44) (2017-01-06)
+
+
+
+<a name="0.1.43"></a>
+## [0.1.43](https://github.com/orlaqp/ng2-material-components/compare/v0.1.42...v0.1.43) (2017-01-06)
+
+
+
+<a name="0.1.42"></a>
+## [0.1.42](https://github.com/orlaqp/ng2-material-components/compare/v0.1.41...v0.1.42) (2017-01-06)
+
+
+
+<a name="0.1.41"></a>
+## [0.1.41](https://github.com/orlaqp/ng2-material-components/compare/v0.1.40...v0.1.41) (2017-01-05)
+
+
+
+<a name="0.1.38"></a>
+## [0.1.38](https://github.com/orlaqp/ng2-material-components/compare/v0.1.37...v0.1.38) (2017-01-04)
+
+
+
 <a name="0.1.40"></a>
 ## [0.1.40](https://github.com/orlaqp/ng2-material-components/compare/v0.1.39...v0.1.40) (2017-01-05)
 

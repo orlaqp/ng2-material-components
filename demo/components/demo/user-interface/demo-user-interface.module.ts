@@ -17,6 +17,8 @@ import { DemoButtonComponent } from './button/button';
 import { DemoButtonGroupComponent } from './button-group/button-group';
 import { DemoPreLoaderComponent } from './pre-loader/pre-loader';
 import { DemoCardComponent } from './card/card';
+import { DemoModalComponent } from './modal/modal';
+import { DemoCroppedImageComponent } from './cropped-image/cropped-image';
 import { DemoUserInterfaceRoute } from './demo-user-interface';
 
 @NgModule({
@@ -37,6 +39,8 @@ import { DemoUserInterfaceRoute } from './demo-user-interface';
         DemoButtonGroupComponent,
         DemoPreLoaderComponent,
         DemoCardComponent,
+        DemoModalComponent,
+        DemoCroppedImageComponent,
         DemoUserInterfaceRoute,
     ],
     exports: [

@@ -1,4 +1,4 @@
-.input-group.form-group([class.fc-alt]="alt")
+.input-group.form-group(class="{{class}}", [class.fc-alt]="alt")
     span.input-group-addon
         i.zmdi.zmdi-calendar
     .dtp-container.fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
@@ -7,7 +7,6 @@
             [type]="inputType",
             placeholder="{{placeholder}}",
             [formControl]="control",
-            [disabled]="disabled",
             (focus)="onFocus(i); showDatetimePicker($event)",
             (blur)="onBlur(i)",
             (click)="preventDefault($event)",

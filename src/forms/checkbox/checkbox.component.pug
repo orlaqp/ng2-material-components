@@ -1,5 +1,5 @@
-.checkbox.m-b-25([class.fc-alt]="alt")
+.checkbox(class="{{class}}", [class.fc-alt]="alt")
     label
-        input.form-control(type="checkbox", [formControl]="control", [disabled]="disabled")
+        input.form-control(type="checkbox", [formControl]="control")
         i.input-helper
         | {{label}}

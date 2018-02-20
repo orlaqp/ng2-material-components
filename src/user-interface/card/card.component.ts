@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
     @Input() depth: number;
     @Input() topDepth: number;
+    @Input() class: string;
 
     get depthClass(): string {
         return this.depth ? `z-depth-${this.depth}` : '';

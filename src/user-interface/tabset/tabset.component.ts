@@ -8,6 +8,7 @@ import {TabDirective} from './tab.directive';
 })
 export class TabsetComponent implements OnInit, OnDestroy {
 
+  @Input() class: string;
   @Input()
   public get iconTab(): boolean { return this._iconTab; }
   @Input() alt = false;

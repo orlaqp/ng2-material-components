@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, OnInit, OnDestroy, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IDateRangePickerLocale } from './date-range-picker-locale';
@@ -10,7 +11,7 @@ import { DateRange } from '../../models/date-range';
     templateUrl: '../input-base/input-base.component.pug',
 })
 export class DateRangePickerComponent extends InputBase implements OnInit, OnDestroy {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() placeholder: string;
     @Input() field: string;
@@ -60,8 +61,8 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
     private previousRightTime: moment.Moment;
     private chosenLabel: string;
 
-    constructor(private ele: ElementRef) {
-        super(ele);
+    constructor(private ele: ElementRef, formService: FormService) {
+        super(ele, formService);
     }
 
     ngOnInit() {
@@ -834,7 +835,7 @@ export class DateRangePickerComponent extends InputBase implements OnInit, OnDes
                 var isCustom = this.isCustomDate(calendar[row][col]);
                 if (isCustom !== false) {
                     if (typeof isCustom === 'string') {
-                        classes.push((<any>isCustom).toString());
+                        classes.push(String(isCustom));
                     } else
                         Array.prototype.push.apply(classes, isCustom);
                 }

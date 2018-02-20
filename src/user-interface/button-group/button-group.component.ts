@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'button-group.component.pug',
 })
 export class ButtonGroupComponent {
-
+    @Input() class: string;
     @Input() options: string[];
     @Input() type: string; // default, primary, info, success, warning, danger
     @Input() activeOption: string;

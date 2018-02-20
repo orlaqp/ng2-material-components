@@ -17,8 +17,8 @@ export class DemoDateTimePickerComponent implements OnInit {
         this.fg = new FormGroup({});
 
         let now = moment();
-        this.minDate = now.subtract('day', 5);
-        this.maxDate = now.add('day', 5);
+        this.minDate = now.subtract(5, 'day');
+        this.maxDate = now.add(5, 'day');
         this.today = now.format('MM/DD/YYYY');
     }
 

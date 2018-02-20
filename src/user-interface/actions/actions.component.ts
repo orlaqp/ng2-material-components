@@ -12,6 +12,7 @@ export class ActionsComponent implements OnInit {
     @Input() alt: boolean = false;
     @Input() showBig: boolean = false;
     @Input() color: string = 'light-gray';
+    @Input() class: string;
 
     @Output() actionClicked = new EventEmitter();
 

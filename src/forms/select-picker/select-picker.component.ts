@@ -1,3 +1,4 @@
+import { FormService } from '../form.service';
 import { Component, Input, ElementRef, OnChanges } from '@angular/core';
 import {
     FormGroup,
@@ -20,7 +21,7 @@ processPolyfills();
     templateUrl: 'select-picker.component.pug',
 })
 export class SelectPickerComponent extends InputBase implements OnChanges {
-
+    @Input() class: string;
     @Input() fg: FormGroup;
     @Input() field: string;
     @Input() disabled: boolean;
@@ -89,8 +90,8 @@ export class SelectPickerComponent extends InputBase implements OnChanges {
     //     ];
     // };
 
-    constructor(private el: ElementRef) {
-        super(el);
+    constructor(private el: ElementRef, formService: FormService) {
+        super(el, formService);
     }
 
     public ngOnInit(): void {

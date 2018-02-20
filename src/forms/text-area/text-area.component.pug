@@ -1,9 +1,10 @@
 .text-area.form-group.m-b-25.w-100(
+        class="{{class}}",
         [class.fc-alt]="alt",
         [ngClass]="{ 'has-error': !control.valid && (fg.submitted || control.dirty)}")
     label(*ngIf="label") {{label}}
     .fg-line([class.disabled]="disabled", [class.fg-toggled]="toggled")
-        textarea.form-control.auto-size(#i, [attr.disabled]="disabled",
+        textarea.form-control.auto-size(#i,
             placeholder="{{placeholder}}", [formControl]="control",
             (focus)="onFocus(i)", (blur)="onBlur(i)", [attr.rows]="rows")
 
