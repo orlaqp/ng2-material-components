@@ -20,4 +20,6 @@ In the mean time you can run the following to play  with the demo locally:
 `npm run`
 
 
-**Note**: This version is already running on the final version of Angular 2.4!
+**Note**: This version is already running on the final version of Angular 4. In order to avoid some confusiones regarding version numbers and bumping version number to 0.4.0.
+
+In addition, if you want to give it a try to Angular 4 you can use the angular-4 branch

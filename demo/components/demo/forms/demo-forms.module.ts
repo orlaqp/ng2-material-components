@@ -17,7 +17,6 @@ import { DemoTextAreaComponent } from './text-area/text-area';
 import { DemoTextBoxComponent } from './text-box/text-box';
 import { DemoToggleComponent } from './toggle/toggle';
 import { DemoDateTimePickerComponent } from './date-time-picker/date-time-picker';
-import { DemoDateRangePickerComponent } from './date-range-picker/date-range-picker';
 import { DemoFormsRoute } from './demo-forms';
 
 @NgModule({
@@ -39,7 +38,6 @@ import { DemoFormsRoute } from './demo-forms';
         DemoTextBoxComponent,
         DemoToggleComponent,
         DemoDateTimePickerComponent,
-        DemoDateRangePickerComponent,
         DemoFormsRoute,
     ],
     exports: [

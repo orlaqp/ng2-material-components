@@ -1,6 +1,6 @@
 {
     "name": "ng2-material-components",
-    "version": "0.2.13-0",
+    "version": "0.5.0-0",
     "description": "Great colleciton of beautiful designed material components",
     "main": "./ng2-material-components.js",
     "homepage": "https://github.com/orlaqp/ng2-material-components",
@@ -16,6 +16,8 @@
     },
     "keywords": [
       "angular2",
+      "angular5",
+      "ng5",
       "ng2",
       "material",
       "form"

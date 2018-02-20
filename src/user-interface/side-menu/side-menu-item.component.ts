@@ -4,24 +4,25 @@ import {
     Component,
     OnInit,
     Input,
-    trigger,
-    state,
-    animate,
-    transition,
-    style } from '@angular/core';
+    // trigger,
+    // state,
+    // animate,
+    // transition,
+    // style 
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from '../../models/menu-item';
 
 @Component({
     selector: 'side-menu-item',
     templateUrl: 'side-menu-item.component.pug',
-    animations: [
-        trigger('isVisibleChanged', [
-            state('true', style({ opacity: 1 })),
-            state('false', style({ opacity: 0, height: 0 })),
-            transition('* => *', animate('.2s')),
-        ]),
-    ],
+    // animations: [
+    //     trigger('isVisibleChanged', [
+    //         state('true', style({ opacity: 1 })),
+    //         state('false', style({ opacity: 0, height: 0 })),
+    //         transition('* => *', animate('.2s')),
+    //     ]),
+    // ],
 })
 export class SideMenuItemComponent implements OnInit {
     @Input() alt: boolean;

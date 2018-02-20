@@ -1,0 +1,12 @@
+.m-35
+
+    pre {{tabDisabled}}
+    bw-button(title="Toggle Disabled", (click)="toggleDisabled()")
+
+    card
+        card-body
+            tabset
+                tab(heading='Tab 1')
+                    pre Tab 1 Content
+                tab(heading='Tab 2', [disabled]="tabDisabled")
+                    pre Tab 2 Content
