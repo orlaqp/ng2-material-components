@@ -5,7 +5,7 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent }   from './app.component';
 import { routing, appRoutingProviders } from './routes';
 
@@ -29,6 +29,7 @@ import { SupportRoute } from './components/support/support';
     ],
     imports:      [
         BrowserModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         routing,
 
