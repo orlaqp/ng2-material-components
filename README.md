@@ -1,3 +1,7 @@
+# Migrated
+
+This library was moved to https://github.com/orlaqp/ng-material-components to support Angular 4+
+
 # ng2-material-components
 
 Angular 2 components/directives beautifully designed and ready to use
