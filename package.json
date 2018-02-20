@@ -37,7 +37,6 @@
     "@angular/compiler-cli": "^5.2.5",
     "@angular/core": "^5.2.5",
     "@angular/forms": "^5.2.5",
-    "@angular/http": "^5.2.5",
     "@angular/platform-browser": "^5.2.5",
     "@angular/platform-browser-dynamic": "^5.2.5",
     "@angular/platform-server": "^5.2.5",
